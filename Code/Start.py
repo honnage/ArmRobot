@@ -5,12 +5,21 @@ import time
 import os
 import drivers
 
-print("Hello")
+display = drivers.Lcd()
+
+display.lcd_display_string("Hello World!", 1)  
+display.lcd_display_string("This is project", 2)  
+print("Hello World!")
+print("This is project")
+time.sleep(1)                                           
+display.lcd_clear()
+
+
 command = "python testtext.py" #command run testtext.py for show message
 os.system(command)
 
-print("run file demo_lcd.py")
-command = "python demo_lcd.py" #command run demo_lcd.py for show message LCD
+print("run file Ultrasonict.py")
+command = "python Ultrasonict.py" #command run demo_lcd.py for show message LCD
 os.system(command)
 
     
