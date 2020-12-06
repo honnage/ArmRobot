@@ -15,9 +15,6 @@ time.sleep(1)
 display.lcd_clear()
 
 
-command = "python testtext.py" #command run testtext.py for show message
-os.system(command)
-
 print("run file Ultrasonict.py")
 command = "python Ultrasonict.py" #command run demo_lcd.py for show message LCD
 os.system(command)
