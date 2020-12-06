@@ -1,14 +1,15 @@
 import RPi.GPIO as GPIO
 import time
 import drivers
-import lcdlib
+#import lcdlib
 
 TRIG=14
 ECHO=15
+
 GPIO.setmode(GPIO.BCM)
 GPIO.setwarnings(False)
 
-lcd = lcdlib.lcd()
+#lcd = lcdlib.lcd()
 
 try:
     while True:
@@ -31,15 +32,16 @@ try:
             pulse_end = time.time()
             
         pulse_duration = pulse_end-pulse_start
-        distance = pulse_duration*17150
+        distance = pulse_duration*17000
         distance = round(distance,2)
         
         dist = str(distance)
-        lcd.lcd_display_string("Distance is",1)
+        #lcd.lcd_display_string("Distance is",1)
+        
         print "distance:",distance,"cm"
-        lcd.lcd_display_string(">>> "+dist+" cm",2)
-        time.sleep(10)
-        lcd.lcd_clear()   
+        #lcd.lcd_display_string(">>> "+dist+" cm",2)
+        #time.sleep(2)
+        #lcd.lcd_clear()   
         
         time.sleep(1)
         print("")

@@ -20,7 +20,31 @@ p1.start(0) # ArmDown
 p2.start(0) # ArmUp
 
 try:
-  while True: 
+   while True: 
+      p1.ChangeDutyCycle(8)
+      time.sleep(0.25)
+      
+      p1.ChangeDutyCycle(9)
+      time.sleep(0.25)
+      
+      p1.ChangeDutyCycle(10)
+      time.sleep(0.25)
+      
+      p1.ChangeDutyCycle(11)
+      time.sleep(0.25)
+      
+      p1.ChangeDutyCycle(12)
+      time.sleep(0.25)
+      
+      p1.ChangeDutyCycle(11)
+      time.sleep(0.25)
+      
+      p1.ChangeDutyCycle(10)
+      time.sleep(0.25)
+      
+      p1.ChangeDutyCycle(9)
+      time.sleep(0.25)
+
    # p0.ChangeDutyCycle(1) # 0 degree
    # p1.ChangeDutyCycle(1)
    # print("degree 0")
