@@ -16,7 +16,7 @@ display.lcd_clear()
 
 
 print("run file Ultrasonict.py")
-command = "python Ultrasonict.py" #command run demo_lcd.py for show message LCD
-os.system(command)
+# command = "python Ultrasonict.py" #command run demo_lcd.py for show message LCD
+# os.system(command)
 
     

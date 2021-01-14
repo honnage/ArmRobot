@@ -1,10 +1,15 @@
 import RPi.GPIO as GPIO
 import time
-import drivers
 #import lcdlib
+import drivers
 
-TRIG=14
-ECHO=15
+# Ultrasonict Canera
+TRIG_1 = 23 
+ECHO_1 = 24
+
+# Ultrasonict Arm Robot
+TRIG_2 = 27 
+ECHO_2 = 22 
 
 GPIO.setmode(GPIO.BCM)
 GPIO.setwarnings(False)
@@ -15,20 +20,20 @@ try:
     while True:
         print("distance measurement in progress")
         
-        GPIO.setup(TRIG,GPIO.OUT)
-        GPIO.setup(ECHO,GPIO.IN)
-        GPIO.output(TRIG,False)
+        GPIO.setup(TRIG_2, GPIO.OUT)
+        GPIO.setup(ECHO_2, GPIO.IN)
+        GPIO.output(TRIG_2,False)
         
         #print("waiting for sensor to settle")
         
         time.sleep(0.2)
-        GPIO.output(TRIG,True)
+        GPIO.output(TRIG_2, True)
         time.sleep(0.00001)
-        GPIO.output(TRIG,False)
+        GPIO.output(TRIG_2, False)
         
-        while GPIO.input(ECHO) == 0:
+        while GPIO.input(ECHO_2) == 0:
             pulse_start = time.time()
-        while GPIO.input(ECHO) == 1:
+        while GPIO.input(ECHO_2) == 1:
             pulse_end = time.time()
             
         pulse_duration = pulse_end-pulse_start
@@ -43,7 +48,7 @@ try:
         #time.sleep(2)
         #lcd.lcd_clear()   
         
-        time.sleep(1)
+        time.sleep(0.5)
         print("")
     
 

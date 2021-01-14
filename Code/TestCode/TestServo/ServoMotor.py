@@ -13,7 +13,4 @@ while True:
         sleep(0.01)
     sleep(0.5)
     
-    for duty in range(100,-1,-1):
-        pi_pwm.ChangeDutyCycle(duty)
-        sleep(0.01)
-    sleep(0.5)
+ 
