@@ -4,14 +4,14 @@ It is the library for LCD.
 * Folder name drivers 
 * File name lcdlib.py
 
-<img src="prototype_pi.png"
+<img src="Prototype_pi.png"
 alt="prototype"
 style="float: left; margin-right: 10px;" />
 
-<img src="prototype_nono.png"
+<img src="Prototype_nono.png"
 alt="prototype"
 style="float: left; margin-right: 10px;" />
 
-<img src="prototype_all.png"
+<img src="Prototype_all.png"
 alt="prototype"
 style="float: left; margin-right: 10px;" />
