@@ -8,7 +8,7 @@ It is the library for LCD.
 alt="prototype"
 style="float: left; margin-right: 10px;" />
 
-<img src="Prototype_nono.png"
+<img src="Prototype_nano.png"
 alt="prototype"
 style="float: left; margin-right: 10px;" />
 
