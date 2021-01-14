@@ -81,11 +81,11 @@ def testservo_1():
 def testservo_2():
     pwm.set_pwm(2, 0, 200)
     time.sleep(2)
-    for i in range(200,450,2):
+    for i in range(200,300,2):
 	    pwm.set_pwm(2,0,i)
 	    time.sleep(0.005)
     time.sleep(2)
-    for i in range(450,200,-2):
+    for i in range(300,200,-2):
 	    pwm.set_pwm(2,0,i)
 	    time.sleep(0.005)
     time.sleep(5)
@@ -116,7 +116,7 @@ if(__name__=='__main__'):
     p1.start()
     p2.start()
     p3.start()
-    
+
 
     
 
