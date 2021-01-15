@@ -1,0 +1,89 @@
+Determining if the pthread_create exist failed with the following output:
+Change Dir: /home/pi/Desktop/NSC2020/dlib/build/temp.linux-armv7l-2.7/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_02f10/fast"
+/usr/bin/make -f CMakeFiles/cmTC_02f10.dir/build.make CMakeFiles/cmTC_02f10.dir/build
+make[1]: Entering directory '/home/pi/Desktop/NSC2020/dlib/build/temp.linux-armv7l-2.7/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_02f10.dir/CheckSymbolExists.c.o
+/usr/bin/cc   -fPIE   -o CMakeFiles/cmTC_02f10.dir/CheckSymbolExists.c.o   -c /home/pi/Desktop/NSC2020/dlib/build/temp.linux-armv7l-2.7/CMakeFiles/CMakeTmp/CheckSymbolExists.c
+Linking C executable cmTC_02f10
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_02f10.dir/link.txt --verbose=1
+/usr/bin/cc      -rdynamic CMakeFiles/cmTC_02f10.dir/CheckSymbolExists.c.o  -o cmTC_02f10 
+/usr/bin/ld: CMakeFiles/cmTC_02f10.dir/CheckSymbolExists.c.o: in function `main':
+CheckSymbolExists.c:(.text+0x48): undefined reference to `pthread_create'
+collect2: error: ld returned 1 exit status
+make[1]: *** [CMakeFiles/cmTC_02f10.dir/build.make:87: cmTC_02f10] Error 1
+make[1]: Leaving directory '/home/pi/Desktop/NSC2020/dlib/build/temp.linux-armv7l-2.7/CMakeFiles/CMakeTmp'
+make: *** [Makefile:121: cmTC_02f10/fast] Error 2
+
+File /home/pi/Desktop/NSC2020/dlib/build/temp.linux-armv7l-2.7/CMakeFiles/CMakeTmp/CheckSymbolExists.c:
+/* */
+#include <pthread.h>
+
+int main(int argc, char** argv)
+{
+  (void)argv;
+#ifndef pthread_create
+  return ((int*)(&pthread_create))[argc];
+#else
+  (void)argc;
+  return 0;
+#endif
+}
+
+Determining if the function pthread_create exists in the pthreads failed with the following output:
+Change Dir: /home/pi/Desktop/NSC2020/dlib/build/temp.linux-armv7l-2.7/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_98645/fast"
+/usr/bin/make -f CMakeFiles/cmTC_98645.dir/build.make CMakeFiles/cmTC_98645.dir/build
+make[1]: Entering directory '/home/pi/Desktop/NSC2020/dlib/build/temp.linux-armv7l-2.7/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_98645.dir/CheckFunctionExists.c.o
+/usr/bin/cc   -DCHECK_FUNCTION_EXISTS=pthread_create -fPIE   -o CMakeFiles/cmTC_98645.dir/CheckFunctionExists.c.o   -c /usr/share/cmake-3.13/Modules/CheckFunctionExists.c
+Linking C executable cmTC_98645
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_98645.dir/link.txt --verbose=1
+/usr/bin/cc  -DCHECK_FUNCTION_EXISTS=pthread_create    -rdynamic CMakeFiles/cmTC_98645.dir/CheckFunctionExists.c.o  -o cmTC_98645 -lpthreads 
+/usr/bin/ld: cannot find -lpthreads
+collect2: error: ld returned 1 exit status
+make[1]: *** [CMakeFiles/cmTC_98645.dir/build.make:87: cmTC_98645] Error 1
+make[1]: Leaving directory '/home/pi/Desktop/NSC2020/dlib/build/temp.linux-armv7l-2.7/CMakeFiles/CMakeTmp'
+make: *** [Makefile:121: cmTC_98645/fast] Error 2
+
+
+Determining if the function sgesv exists failed with the following output:
+Change Dir: /home/pi/Desktop/NSC2020/dlib/build/temp.linux-armv7l-2.7/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_c7349/fast"
+/usr/bin/make -f CMakeFiles/cmTC_c7349.dir/build.make CMakeFiles/cmTC_c7349.dir/build
+make[1]: Entering directory '/home/pi/Desktop/NSC2020/dlib/build/temp.linux-armv7l-2.7/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_c7349.dir/CheckFunctionExists.c.o
+/usr/bin/cc   -DCHECK_FUNCTION_EXISTS=sgesv -fPIE   -o CMakeFiles/cmTC_c7349.dir/CheckFunctionExists.c.o   -c /usr/share/cmake-3.13/Modules/CheckFunctionExists.c
+Linking C executable cmTC_c7349
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_c7349.dir/link.txt --verbose=1
+/usr/bin/cc  -DCHECK_FUNCTION_EXISTS=sgesv    -rdynamic CMakeFiles/cmTC_c7349.dir/CheckFunctionExists.c.o  -o cmTC_c7349 
+/usr/bin/ld: CMakeFiles/cmTC_c7349.dir/CheckFunctionExists.c.o: in function `main':
+CheckFunctionExists.c:(.text+0x14): undefined reference to `sgesv'
+collect2: error: ld returned 1 exit status
+make[1]: *** [CMakeFiles/cmTC_c7349.dir/build.make:87: cmTC_c7349] Error 1
+make[1]: Leaving directory '/home/pi/Desktop/NSC2020/dlib/build/temp.linux-armv7l-2.7/CMakeFiles/CMakeTmp'
+make: *** [Makefile:121: cmTC_c7349/fast] Error 2
+
+
+Determining if the function sgesv_ exists failed with the following output:
+Change Dir: /home/pi/Desktop/NSC2020/dlib/build/temp.linux-armv7l-2.7/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_96c2a/fast"
+/usr/bin/make -f CMakeFiles/cmTC_96c2a.dir/build.make CMakeFiles/cmTC_96c2a.dir/build
+make[1]: Entering directory '/home/pi/Desktop/NSC2020/dlib/build/temp.linux-armv7l-2.7/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_96c2a.dir/CheckFunctionExists.c.o
+/usr/bin/cc   -DCHECK_FUNCTION_EXISTS=sgesv_ -fPIE   -o CMakeFiles/cmTC_96c2a.dir/CheckFunctionExists.c.o   -c /usr/share/cmake-3.13/Modules/CheckFunctionExists.c
+Linking C executable cmTC_96c2a
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_96c2a.dir/link.txt --verbose=1
+/usr/bin/cc  -DCHECK_FUNCTION_EXISTS=sgesv_    -rdynamic CMakeFiles/cmTC_96c2a.dir/CheckFunctionExists.c.o  -o cmTC_96c2a 
+/usr/bin/ld: CMakeFiles/cmTC_96c2a.dir/CheckFunctionExists.c.o: in function `main':
+CheckFunctionExists.c:(.text+0x14): undefined reference to `sgesv_'
+collect2: error: ld returned 1 exit status
+make[1]: *** [CMakeFiles/cmTC_96c2a.dir/build.make:87: cmTC_96c2a] Error 1
+make[1]: Leaving directory '/home/pi/Desktop/NSC2020/dlib/build/temp.linux-armv7l-2.7/CMakeFiles/CMakeTmp'
+make: *** [Makefile:121: cmTC_96c2a/fast] Error 2
+
+

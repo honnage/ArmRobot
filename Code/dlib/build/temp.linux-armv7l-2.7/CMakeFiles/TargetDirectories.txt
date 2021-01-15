@@ -1,0 +1,8 @@
+/home/pi/Desktop/NSC2020/dlib/build/temp.linux-armv7l-2.7/CMakeFiles/rebuild_cache.dir
+/home/pi/Desktop/NSC2020/dlib/build/temp.linux-armv7l-2.7/CMakeFiles/dlib_python.dir
+/home/pi/Desktop/NSC2020/dlib/build/temp.linux-armv7l-2.7/CMakeFiles/edit_cache.dir
+/home/pi/Desktop/NSC2020/dlib/build/temp.linux-armv7l-2.7/pybind11_build/CMakeFiles/edit_cache.dir
+/home/pi/Desktop/NSC2020/dlib/build/temp.linux-armv7l-2.7/pybind11_build/CMakeFiles/rebuild_cache.dir
+/home/pi/Desktop/NSC2020/dlib/build/temp.linux-armv7l-2.7/dlib_build/CMakeFiles/rebuild_cache.dir
+/home/pi/Desktop/NSC2020/dlib/build/temp.linux-armv7l-2.7/dlib_build/CMakeFiles/dlib.dir
+/home/pi/Desktop/NSC2020/dlib/build/temp.linux-armv7l-2.7/dlib_build/CMakeFiles/edit_cache.dir

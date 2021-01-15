@@ -1,0 +1,891 @@
+The system is: Linux - 4.19.93-v7l+ - armv7l
+Compiling the C compiler identification source file "CMakeCCompilerId.c" succeeded.
+Compiler: /usr/bin/cc 
+Build flags: 
+Id flags:  
+
+The output was:
+0
+
+
+Compilation of the C compiler identification source "CMakeCCompilerId.c" produced "a.out"
+
+The C compiler identification is GNU, found in "/home/pi/Desktop/NSC2020/dlib/build/temp.linux-armv7l-2.7/CMakeFiles/3.13.4/CompilerIdC/a.out"
+
+Compiling the CXX compiler identification source file "CMakeCXXCompilerId.cpp" succeeded.
+Compiler: /usr/bin/c++ 
+Build flags: 
+Id flags:  
+
+The output was:
+0
+
+
+Compilation of the CXX compiler identification source "CMakeCXXCompilerId.cpp" produced "a.out"
+
+The CXX compiler identification is GNU, found in "/home/pi/Desktop/NSC2020/dlib/build/temp.linux-armv7l-2.7/CMakeFiles/3.13.4/CompilerIdCXX/a.out"
+
+Determining if the C compiler works passed with the following output:
+Change Dir: /home/pi/Desktop/NSC2020/dlib/build/temp.linux-armv7l-2.7/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_522ee/fast"
+/usr/bin/make -f CMakeFiles/cmTC_522ee.dir/build.make CMakeFiles/cmTC_522ee.dir/build
+make[1]: Entering directory '/home/pi/Desktop/NSC2020/dlib/build/temp.linux-armv7l-2.7/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_522ee.dir/testCCompiler.c.o
+/usr/bin/cc    -o CMakeFiles/cmTC_522ee.dir/testCCompiler.c.o   -c /home/pi/Desktop/NSC2020/dlib/build/temp.linux-armv7l-2.7/CMakeFiles/CMakeTmp/testCCompiler.c
+Linking C executable cmTC_522ee
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_522ee.dir/link.txt --verbose=1
+/usr/bin/cc      -rdynamic CMakeFiles/cmTC_522ee.dir/testCCompiler.c.o  -o cmTC_522ee 
+make[1]: Leaving directory '/home/pi/Desktop/NSC2020/dlib/build/temp.linux-armv7l-2.7/CMakeFiles/CMakeTmp'
+
+
+Detecting C compiler ABI info compiled with the following output:
+Change Dir: /home/pi/Desktop/NSC2020/dlib/build/temp.linux-armv7l-2.7/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_86d01/fast"
+/usr/bin/make -f CMakeFiles/cmTC_86d01.dir/build.make CMakeFiles/cmTC_86d01.dir/build
+make[1]: Entering directory '/home/pi/Desktop/NSC2020/dlib/build/temp.linux-armv7l-2.7/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_86d01.dir/CMakeCCompilerABI.c.o
+/usr/bin/cc    -o CMakeFiles/cmTC_86d01.dir/CMakeCCompilerABI.c.o   -c /usr/share/cmake-3.13/Modules/CMakeCCompilerABI.c
+Linking C executable cmTC_86d01
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_86d01.dir/link.txt --verbose=1
+/usr/bin/cc     -v -rdynamic CMakeFiles/cmTC_86d01.dir/CMakeCCompilerABI.c.o  -o cmTC_86d01 
+Using built-in specs.
+COLLECT_GCC=/usr/bin/cc
+COLLECT_LTO_WRAPPER=/usr/lib/gcc/arm-linux-gnueabihf/8/lto-wrapper
+Target: arm-linux-gnueabihf
+Configured with: ../src/configure -v --with-pkgversion='Raspbian 8.3.0-6+rpi1' --with-bugurl=file:///usr/share/doc/gcc-8/README.Bugs --enable-languages=c,ada,c++,go,d,fortran,objc,obj-c++ --prefix=/usr --with-gcc-major-version-only --program-suffix=-8 --program-prefix=arm-linux-gnueabihf- --enable-shared --enable-linker-build-id --libexecdir=/usr/lib --without-included-gettext --enable-threads=posix --libdir=/usr/lib --enable-nls --enable-bootstrap --enable-clocale=gnu --enable-libstdcxx-debug --enable-libstdcxx-time=yes --with-default-libstdcxx-abi=new --enable-gnu-unique-object --disable-libitm --disable-libquadmath --disable-libquadmath-support --enable-plugin --with-system-zlib --with-target-system-zlib --enable-objc-gc=auto --enable-multiarch --disable-sjlj-exceptions --with-arch=armv6 --with-fpu=vfp --with-float=hard --disable-werror --enable-checking=release --build=arm-linux-gnueabihf --host=arm-linux-gnueabihf --target=arm-linux-gnueabihf
+Thread model: posix
+gcc version 8.3.0 (Raspbian 8.3.0-6+rpi1) 
+COMPILER_PATH=/usr/lib/gcc/arm-linux-gnueabihf/8/:/usr/lib/gcc/arm-linux-gnueabihf/8/:/usr/lib/gcc/arm-linux-gnueabihf/:/usr/lib/gcc/arm-linux-gnueabihf/8/:/usr/lib/gcc/arm-linux-gnueabihf/
+LIBRARY_PATH=/usr/lib/gcc/arm-linux-gnueabihf/8/:/usr/lib/gcc/arm-linux-gnueabihf/8/../../../arm-linux-gnueabihf/:/usr/lib/gcc/arm-linux-gnueabihf/8/../../../:/lib/arm-linux-gnueabihf/:/lib/:/usr/lib/arm-linux-gnueabihf/:/usr/lib/
+COLLECT_GCC_OPTIONS='-v' '-rdynamic' '-o' 'cmTC_86d01'  '-mfloat-abi=hard' '-mfpu=vfp' '-mtls-dialect=gnu' '-marm' '-march=armv6+fp'
+ /usr/lib/gcc/arm-linux-gnueabihf/8/collect2 -plugin /usr/lib/gcc/arm-linux-gnueabihf/8/liblto_plugin.so -plugin-opt=/usr/lib/gcc/arm-linux-gnueabihf/8/lto-wrapper -plugin-opt=-fresolution=/tmp/cck3EGE8.res -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lc -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_s --build-id --eh-frame-hdr -export-dynamic -dynamic-linker /lib/ld-linux-armhf.so.3 -X --hash-style=gnu -m armelf_linux_eabi -o cmTC_86d01 /usr/lib/gcc/arm-linux-gnueabihf/8/../../../arm-linux-gnueabihf/crt1.o /usr/lib/gcc/arm-linux-gnueabihf/8/../../../arm-linux-gnueabihf/crti.o /usr/lib/gcc/arm-linux-gnueabihf/8/crtbegin.o -L/usr/lib/gcc/arm-linux-gnueabihf/8 -L/usr/lib/gcc/arm-linux-gnueabihf/8/../../../arm-linux-gnueabihf -L/usr/lib/gcc/arm-linux-gnueabihf/8/../../.. -L/lib/arm-linux-gnueabihf -L/usr/lib/arm-linux-gnueabihf CMakeFiles/cmTC_86d01.dir/CMakeCCompilerABI.c.o -lgcc --push-state --as-needed -lgcc_s --pop-state -lc -lgcc --push-state --as-needed -lgcc_s --pop-state /usr/lib/gcc/arm-linux-gnueabihf/8/crtend.o /usr/lib/gcc/arm-linux-gnueabihf/8/../../../arm-linux-gnueabihf/crtn.o
+COLLECT_GCC_OPTIONS='-v' '-rdynamic' '-o' 'cmTC_86d01'  '-mfloat-abi=hard' '-mfpu=vfp' '-mtls-dialect=gnu' '-marm' '-march=armv6+fp'
+make[1]: Leaving directory '/home/pi/Desktop/NSC2020/dlib/build/temp.linux-armv7l-2.7/CMakeFiles/CMakeTmp'
+
+
+Parsed C implicit link information from above output:
+  link line regex: [^( *|.*[/\])(ld|CMAKE_LINK_STARTFILE-NOTFOUND|([^/\]+-)?ld|collect2)[^/\]*( |$)]
+  ignore line: [Change Dir: /home/pi/Desktop/NSC2020/dlib/build/temp.linux-armv7l-2.7/CMakeFiles/CMakeTmp]
+  ignore line: []
+  ignore line: [Run Build Command:"/usr/bin/make" "cmTC_86d01/fast"]
+  ignore line: [/usr/bin/make -f CMakeFiles/cmTC_86d01.dir/build.make CMakeFiles/cmTC_86d01.dir/build]
+  ignore line: [make[1]: Entering directory '/home/pi/Desktop/NSC2020/dlib/build/temp.linux-armv7l-2.7/CMakeFiles/CMakeTmp']
+  ignore line: [Building C object CMakeFiles/cmTC_86d01.dir/CMakeCCompilerABI.c.o]
+  ignore line: [/usr/bin/cc    -o CMakeFiles/cmTC_86d01.dir/CMakeCCompilerABI.c.o   -c /usr/share/cmake-3.13/Modules/CMakeCCompilerABI.c]
+  ignore line: [Linking C executable cmTC_86d01]
+  ignore line: [/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_86d01.dir/link.txt --verbose=1]
+  ignore line: [/usr/bin/cc     -v -rdynamic CMakeFiles/cmTC_86d01.dir/CMakeCCompilerABI.c.o  -o cmTC_86d01 ]
+  ignore line: [Using built-in specs.]
+  ignore line: [COLLECT_GCC=/usr/bin/cc]
+  ignore line: [COLLECT_LTO_WRAPPER=/usr/lib/gcc/arm-linux-gnueabihf/8/lto-wrapper]
+  ignore line: [Target: arm-linux-gnueabihf]
+  ignore line: [Configured with: ../src/configure -v --with-pkgversion='Raspbian 8.3.0-6+rpi1' --with-bugurl=file:///usr/share/doc/gcc-8/README.Bugs --enable-languages=c,ada,c++,go,d,fortran,objc,obj-c++ --prefix=/usr --with-gcc-major-version-only --program-suffix=-8 --program-prefix=arm-linux-gnueabihf- --enable-shared --enable-linker-build-id --libexecdir=/usr/lib --without-included-gettext --enable-threads=posix --libdir=/usr/lib --enable-nls --enable-bootstrap --enable-clocale=gnu --enable-libstdcxx-debug --enable-libstdcxx-time=yes --with-default-libstdcxx-abi=new --enable-gnu-unique-object --disable-libitm --disable-libquadmath --disable-libquadmath-support --enable-plugin --with-system-zlib --with-target-system-zlib --enable-objc-gc=auto --enable-multiarch --disable-sjlj-exceptions --with-arch=armv6 --with-fpu=vfp --with-float=hard --disable-werror --enable-checking=release --build=arm-linux-gnueabihf --host=arm-linux-gnueabihf --target=arm-linux-gnueabihf]
+  ignore line: [Thread model: posix]
+  ignore line: [gcc version 8.3.0 (Raspbian 8.3.0-6+rpi1) ]
+  ignore line: [COMPILER_PATH=/usr/lib/gcc/arm-linux-gnueabihf/8/:/usr/lib/gcc/arm-linux-gnueabihf/8/:/usr/lib/gcc/arm-linux-gnueabihf/:/usr/lib/gcc/arm-linux-gnueabihf/8/:/usr/lib/gcc/arm-linux-gnueabihf/]
+  ignore line: [LIBRARY_PATH=/usr/lib/gcc/arm-linux-gnueabihf/8/:/usr/lib/gcc/arm-linux-gnueabihf/8/../../../arm-linux-gnueabihf/:/usr/lib/gcc/arm-linux-gnueabihf/8/../../../:/lib/arm-linux-gnueabihf/:/lib/:/usr/lib/arm-linux-gnueabihf/:/usr/lib/]
+  ignore line: [COLLECT_GCC_OPTIONS='-v' '-rdynamic' '-o' 'cmTC_86d01'  '-mfloat-abi=hard' '-mfpu=vfp' '-mtls-dialect=gnu' '-marm' '-march=armv6+fp']
+  link line: [ /usr/lib/gcc/arm-linux-gnueabihf/8/collect2 -plugin /usr/lib/gcc/arm-linux-gnueabihf/8/liblto_plugin.so -plugin-opt=/usr/lib/gcc/arm-linux-gnueabihf/8/lto-wrapper -plugin-opt=-fresolution=/tmp/cck3EGE8.res -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lc -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_s --build-id --eh-frame-hdr -export-dynamic -dynamic-linker /lib/ld-linux-armhf.so.3 -X --hash-style=gnu -m armelf_linux_eabi -o cmTC_86d01 /usr/lib/gcc/arm-linux-gnueabihf/8/../../../arm-linux-gnueabihf/crt1.o /usr/lib/gcc/arm-linux-gnueabihf/8/../../../arm-linux-gnueabihf/crti.o /usr/lib/gcc/arm-linux-gnueabihf/8/crtbegin.o -L/usr/lib/gcc/arm-linux-gnueabihf/8 -L/usr/lib/gcc/arm-linux-gnueabihf/8/../../../arm-linux-gnueabihf -L/usr/lib/gcc/arm-linux-gnueabihf/8/../../.. -L/lib/arm-linux-gnueabihf -L/usr/lib/arm-linux-gnueabihf CMakeFiles/cmTC_86d01.dir/CMakeCCompilerABI.c.o -lgcc --push-state --as-needed -lgcc_s --pop-state -lc -lgcc --push-state --as-needed -lgcc_s --pop-state /usr/lib/gcc/arm-linux-gnueabihf/8/crtend.o /usr/lib/gcc/arm-linux-gnueabihf/8/../../../arm-linux-gnueabihf/crtn.o]
+    arg [/usr/lib/gcc/arm-linux-gnueabihf/8/collect2] ==> ignore
+    arg [-plugin] ==> ignore
+    arg [/usr/lib/gcc/arm-linux-gnueabihf/8/liblto_plugin.so] ==> ignore
+    arg [-plugin-opt=/usr/lib/gcc/arm-linux-gnueabihf/8/lto-wrapper] ==> ignore
+    arg [-plugin-opt=-fresolution=/tmp/cck3EGE8.res] ==> ignore
+    arg [-plugin-opt=-pass-through=-lgcc] ==> ignore
+    arg [-plugin-opt=-pass-through=-lgcc_s] ==> ignore
+    arg [-plugin-opt=-pass-through=-lc] ==> ignore
+    arg [-plugin-opt=-pass-through=-lgcc] ==> ignore
+    arg [-plugin-opt=-pass-through=-lgcc_s] ==> ignore
+    arg [--build-id] ==> ignore
+    arg [--eh-frame-hdr] ==> ignore
+    arg [-export-dynamic] ==> ignore
+    arg [-dynamic-linker] ==> ignore
+    arg [/lib/ld-linux-armhf.so.3] ==> ignore
+    arg [-X] ==> ignore
+    arg [--hash-style=gnu] ==> ignore
+    arg [-m] ==> ignore
+    arg [armelf_linux_eabi] ==> ignore
+    arg [-o] ==> ignore
+    arg [cmTC_86d01] ==> ignore
+    arg [/usr/lib/gcc/arm-linux-gnueabihf/8/../../../arm-linux-gnueabihf/crt1.o] ==> ignore
+    arg [/usr/lib/gcc/arm-linux-gnueabihf/8/../../../arm-linux-gnueabihf/crti.o] ==> ignore
+    arg [/usr/lib/gcc/arm-linux-gnueabihf/8/crtbegin.o] ==> ignore
+    arg [-L/usr/lib/gcc/arm-linux-gnueabihf/8] ==> dir [/usr/lib/gcc/arm-linux-gnueabihf/8]
+    arg [-L/usr/lib/gcc/arm-linux-gnueabihf/8/../../../arm-linux-gnueabihf] ==> dir [/usr/lib/gcc/arm-linux-gnueabihf/8/../../../arm-linux-gnueabihf]
+    arg [-L/usr/lib/gcc/arm-linux-gnueabihf/8/../../..] ==> dir [/usr/lib/gcc/arm-linux-gnueabihf/8/../../..]
+    arg [-L/lib/arm-linux-gnueabihf] ==> dir [/lib/arm-linux-gnueabihf]
+    arg [-L/usr/lib/arm-linux-gnueabihf] ==> dir [/usr/lib/arm-linux-gnueabihf]
+    arg [CMakeFiles/cmTC_86d01.dir/CMakeCCompilerABI.c.o] ==> ignore
+    arg [-lgcc] ==> lib [gcc]
+    arg [--push-state] ==> ignore
+    arg [--as-needed] ==> ignore
+    arg [-lgcc_s] ==> lib [gcc_s]
+    arg [--pop-state] ==> ignore
+    arg [-lc] ==> lib [c]
+    arg [-lgcc] ==> lib [gcc]
+    arg [--push-state] ==> ignore
+    arg [--as-needed] ==> ignore
+    arg [-lgcc_s] ==> lib [gcc_s]
+    arg [--pop-state] ==> ignore
+    arg [/usr/lib/gcc/arm-linux-gnueabihf/8/crtend.o] ==> ignore
+    arg [/usr/lib/gcc/arm-linux-gnueabihf/8/../../../arm-linux-gnueabihf/crtn.o] ==> ignore
+  collapse library dir [/usr/lib/gcc/arm-linux-gnueabihf/8] ==> [/usr/lib/gcc/arm-linux-gnueabihf/8]
+  collapse library dir [/usr/lib/gcc/arm-linux-gnueabihf/8/../../../arm-linux-gnueabihf] ==> [/usr/lib/arm-linux-gnueabihf]
+  collapse library dir [/usr/lib/gcc/arm-linux-gnueabihf/8/../../..] ==> [/usr/lib]
+  collapse library dir [/lib/arm-linux-gnueabihf] ==> [/lib/arm-linux-gnueabihf]
+  collapse library dir [/usr/lib/arm-linux-gnueabihf] ==> [/usr/lib/arm-linux-gnueabihf]
+  implicit libs: [gcc;gcc_s;c;gcc;gcc_s]
+  implicit dirs: [/usr/lib/gcc/arm-linux-gnueabihf/8;/usr/lib/arm-linux-gnueabihf;/usr/lib;/lib/arm-linux-gnueabihf]
+  implicit fwks: []
+
+
+
+
+Detecting C [-std=c11] compiler features compiled with the following output:
+Change Dir: /home/pi/Desktop/NSC2020/dlib/build/temp.linux-armv7l-2.7/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_f7326/fast"
+/usr/bin/make -f CMakeFiles/cmTC_f7326.dir/build.make CMakeFiles/cmTC_f7326.dir/build
+make[1]: Entering directory '/home/pi/Desktop/NSC2020/dlib/build/temp.linux-armv7l-2.7/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_f7326.dir/feature_tests.c.o
+/usr/bin/cc   -std=c11 -o CMakeFiles/cmTC_f7326.dir/feature_tests.c.o   -c /home/pi/Desktop/NSC2020/dlib/build/temp.linux-armv7l-2.7/CMakeFiles/feature_tests.c
+Linking C executable cmTC_f7326
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_f7326.dir/link.txt --verbose=1
+/usr/bin/cc      -rdynamic CMakeFiles/cmTC_f7326.dir/feature_tests.c.o  -o cmTC_f7326 
+make[1]: Leaving directory '/home/pi/Desktop/NSC2020/dlib/build/temp.linux-armv7l-2.7/CMakeFiles/CMakeTmp'
+
+
+    Feature record: C_FEATURE:1c_function_prototypes
+    Feature record: C_FEATURE:1c_restrict
+    Feature record: C_FEATURE:1c_static_assert
+    Feature record: C_FEATURE:1c_variadic_macros
+
+
+Detecting C [-std=c99] compiler features compiled with the following output:
+Change Dir: /home/pi/Desktop/NSC2020/dlib/build/temp.linux-armv7l-2.7/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_334cb/fast"
+/usr/bin/make -f CMakeFiles/cmTC_334cb.dir/build.make CMakeFiles/cmTC_334cb.dir/build
+make[1]: Entering directory '/home/pi/Desktop/NSC2020/dlib/build/temp.linux-armv7l-2.7/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_334cb.dir/feature_tests.c.o
+/usr/bin/cc   -std=c99 -o CMakeFiles/cmTC_334cb.dir/feature_tests.c.o   -c /home/pi/Desktop/NSC2020/dlib/build/temp.linux-armv7l-2.7/CMakeFiles/feature_tests.c
+Linking C executable cmTC_334cb
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_334cb.dir/link.txt --verbose=1
+/usr/bin/cc      -rdynamic CMakeFiles/cmTC_334cb.dir/feature_tests.c.o  -o cmTC_334cb 
+make[1]: Leaving directory '/home/pi/Desktop/NSC2020/dlib/build/temp.linux-armv7l-2.7/CMakeFiles/CMakeTmp'
+
+
+    Feature record: C_FEATURE:1c_function_prototypes
+    Feature record: C_FEATURE:1c_restrict
+    Feature record: C_FEATURE:0c_static_assert
+    Feature record: C_FEATURE:1c_variadic_macros
+
+
+Detecting C [-std=c90] compiler features compiled with the following output:
+Change Dir: /home/pi/Desktop/NSC2020/dlib/build/temp.linux-armv7l-2.7/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_4ceca/fast"
+/usr/bin/make -f CMakeFiles/cmTC_4ceca.dir/build.make CMakeFiles/cmTC_4ceca.dir/build
+make[1]: Entering directory '/home/pi/Desktop/NSC2020/dlib/build/temp.linux-armv7l-2.7/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_4ceca.dir/feature_tests.c.o
+/usr/bin/cc   -std=c90 -o CMakeFiles/cmTC_4ceca.dir/feature_tests.c.o   -c /home/pi/Desktop/NSC2020/dlib/build/temp.linux-armv7l-2.7/CMakeFiles/feature_tests.c
+Linking C executable cmTC_4ceca
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_4ceca.dir/link.txt --verbose=1
+/usr/bin/cc      -rdynamic CMakeFiles/cmTC_4ceca.dir/feature_tests.c.o  -o cmTC_4ceca 
+make[1]: Leaving directory '/home/pi/Desktop/NSC2020/dlib/build/temp.linux-armv7l-2.7/CMakeFiles/CMakeTmp'
+
+
+    Feature record: C_FEATURE:1c_function_prototypes
+    Feature record: C_FEATURE:0c_restrict
+    Feature record: C_FEATURE:0c_static_assert
+    Feature record: C_FEATURE:0c_variadic_macros
+Determining if the CXX compiler works passed with the following output:
+Change Dir: /home/pi/Desktop/NSC2020/dlib/build/temp.linux-armv7l-2.7/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_d5124/fast"
+/usr/bin/make -f CMakeFiles/cmTC_d5124.dir/build.make CMakeFiles/cmTC_d5124.dir/build
+make[1]: Entering directory '/home/pi/Desktop/NSC2020/dlib/build/temp.linux-armv7l-2.7/CMakeFiles/CMakeTmp'
+Building CXX object CMakeFiles/cmTC_d5124.dir/testCXXCompiler.cxx.o
+/usr/bin/c++     -o CMakeFiles/cmTC_d5124.dir/testCXXCompiler.cxx.o -c /home/pi/Desktop/NSC2020/dlib/build/temp.linux-armv7l-2.7/CMakeFiles/CMakeTmp/testCXXCompiler.cxx
+Linking CXX executable cmTC_d5124
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_d5124.dir/link.txt --verbose=1
+/usr/bin/c++       -rdynamic CMakeFiles/cmTC_d5124.dir/testCXXCompiler.cxx.o  -o cmTC_d5124 
+make[1]: Leaving directory '/home/pi/Desktop/NSC2020/dlib/build/temp.linux-armv7l-2.7/CMakeFiles/CMakeTmp'
+
+
+Detecting CXX compiler ABI info compiled with the following output:
+Change Dir: /home/pi/Desktop/NSC2020/dlib/build/temp.linux-armv7l-2.7/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_75ef3/fast"
+/usr/bin/make -f CMakeFiles/cmTC_75ef3.dir/build.make CMakeFiles/cmTC_75ef3.dir/build
+make[1]: Entering directory '/home/pi/Desktop/NSC2020/dlib/build/temp.linux-armv7l-2.7/CMakeFiles/CMakeTmp'
+Building CXX object CMakeFiles/cmTC_75ef3.dir/CMakeCXXCompilerABI.cpp.o
+/usr/bin/c++     -o CMakeFiles/cmTC_75ef3.dir/CMakeCXXCompilerABI.cpp.o -c /usr/share/cmake-3.13/Modules/CMakeCXXCompilerABI.cpp
+Linking CXX executable cmTC_75ef3
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_75ef3.dir/link.txt --verbose=1
+/usr/bin/c++      -v -rdynamic CMakeFiles/cmTC_75ef3.dir/CMakeCXXCompilerABI.cpp.o  -o cmTC_75ef3 
+Using built-in specs.
+COLLECT_GCC=/usr/bin/c++
+COLLECT_LTO_WRAPPER=/usr/lib/gcc/arm-linux-gnueabihf/8/lto-wrapper
+Target: arm-linux-gnueabihf
+Configured with: ../src/configure -v --with-pkgversion='Raspbian 8.3.0-6+rpi1' --with-bugurl=file:///usr/share/doc/gcc-8/README.Bugs --enable-languages=c,ada,c++,go,d,fortran,objc,obj-c++ --prefix=/usr --with-gcc-major-version-only --program-suffix=-8 --program-prefix=arm-linux-gnueabihf- --enable-shared --enable-linker-build-id --libexecdir=/usr/lib --without-included-gettext --enable-threads=posix --libdir=/usr/lib --enable-nls --enable-bootstrap --enable-clocale=gnu --enable-libstdcxx-debug --enable-libstdcxx-time=yes --with-default-libstdcxx-abi=new --enable-gnu-unique-object --disable-libitm --disable-libquadmath --disable-libquadmath-support --enable-plugin --with-system-zlib --with-target-system-zlib --enable-objc-gc=auto --enable-multiarch --disable-sjlj-exceptions --with-arch=armv6 --with-fpu=vfp --with-float=hard --disable-werror --enable-checking=release --build=arm-linux-gnueabihf --host=arm-linux-gnueabihf --target=arm-linux-gnueabihf
+Thread model: posix
+gcc version 8.3.0 (Raspbian 8.3.0-6+rpi1) 
+COMPILER_PATH=/usr/lib/gcc/arm-linux-gnueabihf/8/:/usr/lib/gcc/arm-linux-gnueabihf/8/:/usr/lib/gcc/arm-linux-gnueabihf/:/usr/lib/gcc/arm-linux-gnueabihf/8/:/usr/lib/gcc/arm-linux-gnueabihf/
+LIBRARY_PATH=/usr/lib/gcc/arm-linux-gnueabihf/8/:/usr/lib/gcc/arm-linux-gnueabihf/8/../../../arm-linux-gnueabihf/:/usr/lib/gcc/arm-linux-gnueabihf/8/../../../:/lib/arm-linux-gnueabihf/:/lib/:/usr/lib/arm-linux-gnueabihf/:/usr/lib/
+COLLECT_GCC_OPTIONS='-v' '-rdynamic' '-o' 'cmTC_75ef3' '-shared-libgcc'  '-mfloat-abi=hard' '-mfpu=vfp' '-mtls-dialect=gnu' '-marm' '-march=armv6+fp'
+ /usr/lib/gcc/arm-linux-gnueabihf/8/collect2 -plugin /usr/lib/gcc/arm-linux-gnueabihf/8/liblto_plugin.so -plugin-opt=/usr/lib/gcc/arm-linux-gnueabihf/8/lto-wrapper -plugin-opt=-fresolution=/tmp/ccSPxxHF.res -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lc -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lgcc --build-id --eh-frame-hdr -export-dynamic -dynamic-linker /lib/ld-linux-armhf.so.3 -X --hash-style=gnu -m armelf_linux_eabi -o cmTC_75ef3 /usr/lib/gcc/arm-linux-gnueabihf/8/../../../arm-linux-gnueabihf/crt1.o /usr/lib/gcc/arm-linux-gnueabihf/8/../../../arm-linux-gnueabihf/crti.o /usr/lib/gcc/arm-linux-gnueabihf/8/crtbegin.o -L/usr/lib/gcc/arm-linux-gnueabihf/8 -L/usr/lib/gcc/arm-linux-gnueabihf/8/../../../arm-linux-gnueabihf -L/usr/lib/gcc/arm-linux-gnueabihf/8/../../.. -L/lib/arm-linux-gnueabihf -L/usr/lib/arm-linux-gnueabihf CMakeFiles/cmTC_75ef3.dir/CMakeCXXCompilerABI.cpp.o -lstdc++ -lm -lgcc_s -lgcc -lc -lgcc_s -lgcc /usr/lib/gcc/arm-linux-gnueabihf/8/crtend.o /usr/lib/gcc/arm-linux-gnueabihf/8/../../../arm-linux-gnueabihf/crtn.o
+COLLECT_GCC_OPTIONS='-v' '-rdynamic' '-o' 'cmTC_75ef3' '-shared-libgcc'  '-mfloat-abi=hard' '-mfpu=vfp' '-mtls-dialect=gnu' '-marm' '-march=armv6+fp'
+make[1]: Leaving directory '/home/pi/Desktop/NSC2020/dlib/build/temp.linux-armv7l-2.7/CMakeFiles/CMakeTmp'
+
+
+Parsed CXX implicit link information from above output:
+  link line regex: [^( *|.*[/\])(ld|CMAKE_LINK_STARTFILE-NOTFOUND|([^/\]+-)?ld|collect2)[^/\]*( |$)]
+  ignore line: [Change Dir: /home/pi/Desktop/NSC2020/dlib/build/temp.linux-armv7l-2.7/CMakeFiles/CMakeTmp]
+  ignore line: []
+  ignore line: [Run Build Command:"/usr/bin/make" "cmTC_75ef3/fast"]
+  ignore line: [/usr/bin/make -f CMakeFiles/cmTC_75ef3.dir/build.make CMakeFiles/cmTC_75ef3.dir/build]
+  ignore line: [make[1]: Entering directory '/home/pi/Desktop/NSC2020/dlib/build/temp.linux-armv7l-2.7/CMakeFiles/CMakeTmp']
+  ignore line: [Building CXX object CMakeFiles/cmTC_75ef3.dir/CMakeCXXCompilerABI.cpp.o]
+  ignore line: [/usr/bin/c++     -o CMakeFiles/cmTC_75ef3.dir/CMakeCXXCompilerABI.cpp.o -c /usr/share/cmake-3.13/Modules/CMakeCXXCompilerABI.cpp]
+  ignore line: [Linking CXX executable cmTC_75ef3]
+  ignore line: [/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_75ef3.dir/link.txt --verbose=1]
+  ignore line: [/usr/bin/c++      -v -rdynamic CMakeFiles/cmTC_75ef3.dir/CMakeCXXCompilerABI.cpp.o  -o cmTC_75ef3 ]
+  ignore line: [Using built-in specs.]
+  ignore line: [COLLECT_GCC=/usr/bin/c++]
+  ignore line: [COLLECT_LTO_WRAPPER=/usr/lib/gcc/arm-linux-gnueabihf/8/lto-wrapper]
+  ignore line: [Target: arm-linux-gnueabihf]
+  ignore line: [Configured with: ../src/configure -v --with-pkgversion='Raspbian 8.3.0-6+rpi1' --with-bugurl=file:///usr/share/doc/gcc-8/README.Bugs --enable-languages=c,ada,c++,go,d,fortran,objc,obj-c++ --prefix=/usr --with-gcc-major-version-only --program-suffix=-8 --program-prefix=arm-linux-gnueabihf- --enable-shared --enable-linker-build-id --libexecdir=/usr/lib --without-included-gettext --enable-threads=posix --libdir=/usr/lib --enable-nls --enable-bootstrap --enable-clocale=gnu --enable-libstdcxx-debug --enable-libstdcxx-time=yes --with-default-libstdcxx-abi=new --enable-gnu-unique-object --disable-libitm --disable-libquadmath --disable-libquadmath-support --enable-plugin --with-system-zlib --with-target-system-zlib --enable-objc-gc=auto --enable-multiarch --disable-sjlj-exceptions --with-arch=armv6 --with-fpu=vfp --with-float=hard --disable-werror --enable-checking=release --build=arm-linux-gnueabihf --host=arm-linux-gnueabihf --target=arm-linux-gnueabihf]
+  ignore line: [Thread model: posix]
+  ignore line: [gcc version 8.3.0 (Raspbian 8.3.0-6+rpi1) ]
+  ignore line: [COMPILER_PATH=/usr/lib/gcc/arm-linux-gnueabihf/8/:/usr/lib/gcc/arm-linux-gnueabihf/8/:/usr/lib/gcc/arm-linux-gnueabihf/:/usr/lib/gcc/arm-linux-gnueabihf/8/:/usr/lib/gcc/arm-linux-gnueabihf/]
+  ignore line: [LIBRARY_PATH=/usr/lib/gcc/arm-linux-gnueabihf/8/:/usr/lib/gcc/arm-linux-gnueabihf/8/../../../arm-linux-gnueabihf/:/usr/lib/gcc/arm-linux-gnueabihf/8/../../../:/lib/arm-linux-gnueabihf/:/lib/:/usr/lib/arm-linux-gnueabihf/:/usr/lib/]
+  ignore line: [COLLECT_GCC_OPTIONS='-v' '-rdynamic' '-o' 'cmTC_75ef3' '-shared-libgcc'  '-mfloat-abi=hard' '-mfpu=vfp' '-mtls-dialect=gnu' '-marm' '-march=armv6+fp']
+  link line: [ /usr/lib/gcc/arm-linux-gnueabihf/8/collect2 -plugin /usr/lib/gcc/arm-linux-gnueabihf/8/liblto_plugin.so -plugin-opt=/usr/lib/gcc/arm-linux-gnueabihf/8/lto-wrapper -plugin-opt=-fresolution=/tmp/ccSPxxHF.res -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lc -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lgcc --build-id --eh-frame-hdr -export-dynamic -dynamic-linker /lib/ld-linux-armhf.so.3 -X --hash-style=gnu -m armelf_linux_eabi -o cmTC_75ef3 /usr/lib/gcc/arm-linux-gnueabihf/8/../../../arm-linux-gnueabihf/crt1.o /usr/lib/gcc/arm-linux-gnueabihf/8/../../../arm-linux-gnueabihf/crti.o /usr/lib/gcc/arm-linux-gnueabihf/8/crtbegin.o -L/usr/lib/gcc/arm-linux-gnueabihf/8 -L/usr/lib/gcc/arm-linux-gnueabihf/8/../../../arm-linux-gnueabihf -L/usr/lib/gcc/arm-linux-gnueabihf/8/../../.. -L/lib/arm-linux-gnueabihf -L/usr/lib/arm-linux-gnueabihf CMakeFiles/cmTC_75ef3.dir/CMakeCXXCompilerABI.cpp.o -lstdc++ -lm -lgcc_s -lgcc -lc -lgcc_s -lgcc /usr/lib/gcc/arm-linux-gnueabihf/8/crtend.o /usr/lib/gcc/arm-linux-gnueabihf/8/../../../arm-linux-gnueabihf/crtn.o]
+    arg [/usr/lib/gcc/arm-linux-gnueabihf/8/collect2] ==> ignore
+    arg [-plugin] ==> ignore
+    arg [/usr/lib/gcc/arm-linux-gnueabihf/8/liblto_plugin.so] ==> ignore
+    arg [-plugin-opt=/usr/lib/gcc/arm-linux-gnueabihf/8/lto-wrapper] ==> ignore
+    arg [-plugin-opt=-fresolution=/tmp/ccSPxxHF.res] ==> ignore
+    arg [-plugin-opt=-pass-through=-lgcc_s] ==> ignore
+    arg [-plugin-opt=-pass-through=-lgcc] ==> ignore
+    arg [-plugin-opt=-pass-through=-lc] ==> ignore
+    arg [-plugin-opt=-pass-through=-lgcc_s] ==> ignore
+    arg [-plugin-opt=-pass-through=-lgcc] ==> ignore
+    arg [--build-id] ==> ignore
+    arg [--eh-frame-hdr] ==> ignore
+    arg [-export-dynamic] ==> ignore
+    arg [-dynamic-linker] ==> ignore
+    arg [/lib/ld-linux-armhf.so.3] ==> ignore
+    arg [-X] ==> ignore
+    arg [--hash-style=gnu] ==> ignore
+    arg [-m] ==> ignore
+    arg [armelf_linux_eabi] ==> ignore
+    arg [-o] ==> ignore
+    arg [cmTC_75ef3] ==> ignore
+    arg [/usr/lib/gcc/arm-linux-gnueabihf/8/../../../arm-linux-gnueabihf/crt1.o] ==> ignore
+    arg [/usr/lib/gcc/arm-linux-gnueabihf/8/../../../arm-linux-gnueabihf/crti.o] ==> ignore
+    arg [/usr/lib/gcc/arm-linux-gnueabihf/8/crtbegin.o] ==> ignore
+    arg [-L/usr/lib/gcc/arm-linux-gnueabihf/8] ==> dir [/usr/lib/gcc/arm-linux-gnueabihf/8]
+    arg [-L/usr/lib/gcc/arm-linux-gnueabihf/8/../../../arm-linux-gnueabihf] ==> dir [/usr/lib/gcc/arm-linux-gnueabihf/8/../../../arm-linux-gnueabihf]
+    arg [-L/usr/lib/gcc/arm-linux-gnueabihf/8/../../..] ==> dir [/usr/lib/gcc/arm-linux-gnueabihf/8/../../..]
+    arg [-L/lib/arm-linux-gnueabihf] ==> dir [/lib/arm-linux-gnueabihf]
+    arg [-L/usr/lib/arm-linux-gnueabihf] ==> dir [/usr/lib/arm-linux-gnueabihf]
+    arg [CMakeFiles/cmTC_75ef3.dir/CMakeCXXCompilerABI.cpp.o] ==> ignore
+    arg [-lstdc++] ==> lib [stdc++]
+    arg [-lm] ==> lib [m]
+    arg [-lgcc_s] ==> lib [gcc_s]
+    arg [-lgcc] ==> lib [gcc]
+    arg [-lc] ==> lib [c]
+    arg [-lgcc_s] ==> lib [gcc_s]
+    arg [-lgcc] ==> lib [gcc]
+    arg [/usr/lib/gcc/arm-linux-gnueabihf/8/crtend.o] ==> ignore
+    arg [/usr/lib/gcc/arm-linux-gnueabihf/8/../../../arm-linux-gnueabihf/crtn.o] ==> ignore
+  collapse library dir [/usr/lib/gcc/arm-linux-gnueabihf/8] ==> [/usr/lib/gcc/arm-linux-gnueabihf/8]
+  collapse library dir [/usr/lib/gcc/arm-linux-gnueabihf/8/../../../arm-linux-gnueabihf] ==> [/usr/lib/arm-linux-gnueabihf]
+  collapse library dir [/usr/lib/gcc/arm-linux-gnueabihf/8/../../..] ==> [/usr/lib]
+  collapse library dir [/lib/arm-linux-gnueabihf] ==> [/lib/arm-linux-gnueabihf]
+  collapse library dir [/usr/lib/arm-linux-gnueabihf] ==> [/usr/lib/arm-linux-gnueabihf]
+  implicit libs: [stdc++;m;gcc_s;gcc;c;gcc_s;gcc]
+  implicit dirs: [/usr/lib/gcc/arm-linux-gnueabihf/8;/usr/lib/arm-linux-gnueabihf;/usr/lib;/lib/arm-linux-gnueabihf]
+  implicit fwks: []
+
+
+
+
+Detecting CXX [-std=c++2a] compiler features compiled with the following output:
+Change Dir: /home/pi/Desktop/NSC2020/dlib/build/temp.linux-armv7l-2.7/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_f3230/fast"
+/usr/bin/make -f CMakeFiles/cmTC_f3230.dir/build.make CMakeFiles/cmTC_f3230.dir/build
+make[1]: Entering directory '/home/pi/Desktop/NSC2020/dlib/build/temp.linux-armv7l-2.7/CMakeFiles/CMakeTmp'
+Building CXX object CMakeFiles/cmTC_f3230.dir/feature_tests.cxx.o
+/usr/bin/c++    -std=c++2a -o CMakeFiles/cmTC_f3230.dir/feature_tests.cxx.o -c /home/pi/Desktop/NSC2020/dlib/build/temp.linux-armv7l-2.7/CMakeFiles/feature_tests.cxx
+Linking CXX executable cmTC_f3230
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_f3230.dir/link.txt --verbose=1
+/usr/bin/c++       -rdynamic CMakeFiles/cmTC_f3230.dir/feature_tests.cxx.o  -o cmTC_f3230 
+make[1]: Leaving directory '/home/pi/Desktop/NSC2020/dlib/build/temp.linux-armv7l-2.7/CMakeFiles/CMakeTmp'
+
+
+    Feature record: CXX_FEATURE:1cxx_aggregate_default_initializers
+    Feature record: CXX_FEATURE:1cxx_alias_templates
+    Feature record: CXX_FEATURE:1cxx_alignas
+    Feature record: CXX_FEATURE:1cxx_alignof
+    Feature record: CXX_FEATURE:1cxx_attributes
+    Feature record: CXX_FEATURE:1cxx_attribute_deprecated
+    Feature record: CXX_FEATURE:1cxx_auto_type
+    Feature record: CXX_FEATURE:1cxx_binary_literals
+    Feature record: CXX_FEATURE:1cxx_constexpr
+    Feature record: CXX_FEATURE:1cxx_contextual_conversions
+    Feature record: CXX_FEATURE:1cxx_decltype
+    Feature record: CXX_FEATURE:1cxx_decltype_auto
+    Feature record: CXX_FEATURE:1cxx_decltype_incomplete_return_types
+    Feature record: CXX_FEATURE:1cxx_default_function_template_args
+    Feature record: CXX_FEATURE:1cxx_defaulted_functions
+    Feature record: CXX_FEATURE:1cxx_defaulted_move_initializers
+    Feature record: CXX_FEATURE:1cxx_delegating_constructors
+    Feature record: CXX_FEATURE:1cxx_deleted_functions
+    Feature record: CXX_FEATURE:1cxx_digit_separators
+    Feature record: CXX_FEATURE:1cxx_enum_forward_declarations
+    Feature record: CXX_FEATURE:1cxx_explicit_conversions
+    Feature record: CXX_FEATURE:1cxx_extended_friend_declarations
+    Feature record: CXX_FEATURE:1cxx_extern_templates
+    Feature record: CXX_FEATURE:1cxx_final
+    Feature record: CXX_FEATURE:1cxx_func_identifier
+    Feature record: CXX_FEATURE:1cxx_generalized_initializers
+    Feature record: CXX_FEATURE:1cxx_generic_lambdas
+    Feature record: CXX_FEATURE:1cxx_inheriting_constructors
+    Feature record: CXX_FEATURE:1cxx_inline_namespaces
+    Feature record: CXX_FEATURE:1cxx_lambdas
+    Feature record: CXX_FEATURE:1cxx_lambda_init_captures
+    Feature record: CXX_FEATURE:1cxx_local_type_template_args
+    Feature record: CXX_FEATURE:1cxx_long_long_type
+    Feature record: CXX_FEATURE:1cxx_noexcept
+    Feature record: CXX_FEATURE:1cxx_nonstatic_member_init
+    Feature record: CXX_FEATURE:1cxx_nullptr
+    Feature record: CXX_FEATURE:1cxx_override
+    Feature record: CXX_FEATURE:1cxx_range_for
+    Feature record: CXX_FEATURE:1cxx_raw_string_literals
+    Feature record: CXX_FEATURE:1cxx_reference_qualified_functions
+    Feature record: CXX_FEATURE:1cxx_relaxed_constexpr
+    Feature record: CXX_FEATURE:1cxx_return_type_deduction
+    Feature record: CXX_FEATURE:1cxx_right_angle_brackets
+    Feature record: CXX_FEATURE:1cxx_rvalue_references
+    Feature record: CXX_FEATURE:1cxx_sizeof_member
+    Feature record: CXX_FEATURE:1cxx_static_assert
+    Feature record: CXX_FEATURE:1cxx_strong_enums
+    Feature record: CXX_FEATURE:1cxx_template_template_parameters
+    Feature record: CXX_FEATURE:1cxx_thread_local
+    Feature record: CXX_FEATURE:1cxx_trailing_return_types
+    Feature record: CXX_FEATURE:1cxx_unicode_literals
+    Feature record: CXX_FEATURE:1cxx_uniform_initialization
+    Feature record: CXX_FEATURE:1cxx_unrestricted_unions
+    Feature record: CXX_FEATURE:1cxx_user_literals
+    Feature record: CXX_FEATURE:1cxx_variable_templates
+    Feature record: CXX_FEATURE:1cxx_variadic_macros
+    Feature record: CXX_FEATURE:1cxx_variadic_templates
+
+
+Detecting CXX [-std=c++17] compiler features compiled with the following output:
+Change Dir: /home/pi/Desktop/NSC2020/dlib/build/temp.linux-armv7l-2.7/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_daf08/fast"
+/usr/bin/make -f CMakeFiles/cmTC_daf08.dir/build.make CMakeFiles/cmTC_daf08.dir/build
+make[1]: Entering directory '/home/pi/Desktop/NSC2020/dlib/build/temp.linux-armv7l-2.7/CMakeFiles/CMakeTmp'
+Building CXX object CMakeFiles/cmTC_daf08.dir/feature_tests.cxx.o
+/usr/bin/c++    -std=c++17 -o CMakeFiles/cmTC_daf08.dir/feature_tests.cxx.o -c /home/pi/Desktop/NSC2020/dlib/build/temp.linux-armv7l-2.7/CMakeFiles/feature_tests.cxx
+Linking CXX executable cmTC_daf08
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_daf08.dir/link.txt --verbose=1
+/usr/bin/c++       -rdynamic CMakeFiles/cmTC_daf08.dir/feature_tests.cxx.o  -o cmTC_daf08 
+make[1]: Leaving directory '/home/pi/Desktop/NSC2020/dlib/build/temp.linux-armv7l-2.7/CMakeFiles/CMakeTmp'
+
+
+    Feature record: CXX_FEATURE:1cxx_aggregate_default_initializers
+    Feature record: CXX_FEATURE:1cxx_alias_templates
+    Feature record: CXX_FEATURE:1cxx_alignas
+    Feature record: CXX_FEATURE:1cxx_alignof
+    Feature record: CXX_FEATURE:1cxx_attributes
+    Feature record: CXX_FEATURE:1cxx_attribute_deprecated
+    Feature record: CXX_FEATURE:1cxx_auto_type
+    Feature record: CXX_FEATURE:1cxx_binary_literals
+    Feature record: CXX_FEATURE:1cxx_constexpr
+    Feature record: CXX_FEATURE:1cxx_contextual_conversions
+    Feature record: CXX_FEATURE:1cxx_decltype
+    Feature record: CXX_FEATURE:1cxx_decltype_auto
+    Feature record: CXX_FEATURE:1cxx_decltype_incomplete_return_types
+    Feature record: CXX_FEATURE:1cxx_default_function_template_args
+    Feature record: CXX_FEATURE:1cxx_defaulted_functions
+    Feature record: CXX_FEATURE:1cxx_defaulted_move_initializers
+    Feature record: CXX_FEATURE:1cxx_delegating_constructors
+    Feature record: CXX_FEATURE:1cxx_deleted_functions
+    Feature record: CXX_FEATURE:1cxx_digit_separators
+    Feature record: CXX_FEATURE:1cxx_enum_forward_declarations
+    Feature record: CXX_FEATURE:1cxx_explicit_conversions
+    Feature record: CXX_FEATURE:1cxx_extended_friend_declarations
+    Feature record: CXX_FEATURE:1cxx_extern_templates
+    Feature record: CXX_FEATURE:1cxx_final
+    Feature record: CXX_FEATURE:1cxx_func_identifier
+    Feature record: CXX_FEATURE:1cxx_generalized_initializers
+    Feature record: CXX_FEATURE:1cxx_generic_lambdas
+    Feature record: CXX_FEATURE:1cxx_inheriting_constructors
+    Feature record: CXX_FEATURE:1cxx_inline_namespaces
+    Feature record: CXX_FEATURE:1cxx_lambdas
+    Feature record: CXX_FEATURE:1cxx_lambda_init_captures
+    Feature record: CXX_FEATURE:1cxx_local_type_template_args
+    Feature record: CXX_FEATURE:1cxx_long_long_type
+    Feature record: CXX_FEATURE:1cxx_noexcept
+    Feature record: CXX_FEATURE:1cxx_nonstatic_member_init
+    Feature record: CXX_FEATURE:1cxx_nullptr
+    Feature record: CXX_FEATURE:1cxx_override
+    Feature record: CXX_FEATURE:1cxx_range_for
+    Feature record: CXX_FEATURE:1cxx_raw_string_literals
+    Feature record: CXX_FEATURE:1cxx_reference_qualified_functions
+    Feature record: CXX_FEATURE:1cxx_relaxed_constexpr
+    Feature record: CXX_FEATURE:1cxx_return_type_deduction
+    Feature record: CXX_FEATURE:1cxx_right_angle_brackets
+    Feature record: CXX_FEATURE:1cxx_rvalue_references
+    Feature record: CXX_FEATURE:1cxx_sizeof_member
+    Feature record: CXX_FEATURE:1cxx_static_assert
+    Feature record: CXX_FEATURE:1cxx_strong_enums
+    Feature record: CXX_FEATURE:1cxx_template_template_parameters
+    Feature record: CXX_FEATURE:1cxx_thread_local
+    Feature record: CXX_FEATURE:1cxx_trailing_return_types
+    Feature record: CXX_FEATURE:1cxx_unicode_literals
+    Feature record: CXX_FEATURE:1cxx_uniform_initialization
+    Feature record: CXX_FEATURE:1cxx_unrestricted_unions
+    Feature record: CXX_FEATURE:1cxx_user_literals
+    Feature record: CXX_FEATURE:1cxx_variable_templates
+    Feature record: CXX_FEATURE:1cxx_variadic_macros
+    Feature record: CXX_FEATURE:1cxx_variadic_templates
+
+
+Detecting CXX [-std=c++14] compiler features compiled with the following output:
+Change Dir: /home/pi/Desktop/NSC2020/dlib/build/temp.linux-armv7l-2.7/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_b7b9a/fast"
+/usr/bin/make -f CMakeFiles/cmTC_b7b9a.dir/build.make CMakeFiles/cmTC_b7b9a.dir/build
+make[1]: Entering directory '/home/pi/Desktop/NSC2020/dlib/build/temp.linux-armv7l-2.7/CMakeFiles/CMakeTmp'
+Building CXX object CMakeFiles/cmTC_b7b9a.dir/feature_tests.cxx.o
+/usr/bin/c++    -std=c++14 -o CMakeFiles/cmTC_b7b9a.dir/feature_tests.cxx.o -c /home/pi/Desktop/NSC2020/dlib/build/temp.linux-armv7l-2.7/CMakeFiles/feature_tests.cxx
+Linking CXX executable cmTC_b7b9a
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_b7b9a.dir/link.txt --verbose=1
+/usr/bin/c++       -rdynamic CMakeFiles/cmTC_b7b9a.dir/feature_tests.cxx.o  -o cmTC_b7b9a 
+make[1]: Leaving directory '/home/pi/Desktop/NSC2020/dlib/build/temp.linux-armv7l-2.7/CMakeFiles/CMakeTmp'
+
+
+    Feature record: CXX_FEATURE:1cxx_aggregate_default_initializers
+    Feature record: CXX_FEATURE:1cxx_alias_templates
+    Feature record: CXX_FEATURE:1cxx_alignas
+    Feature record: CXX_FEATURE:1cxx_alignof
+    Feature record: CXX_FEATURE:1cxx_attributes
+    Feature record: CXX_FEATURE:1cxx_attribute_deprecated
+    Feature record: CXX_FEATURE:1cxx_auto_type
+    Feature record: CXX_FEATURE:1cxx_binary_literals
+    Feature record: CXX_FEATURE:1cxx_constexpr
+    Feature record: CXX_FEATURE:1cxx_contextual_conversions
+    Feature record: CXX_FEATURE:1cxx_decltype
+    Feature record: CXX_FEATURE:1cxx_decltype_auto
+    Feature record: CXX_FEATURE:1cxx_decltype_incomplete_return_types
+    Feature record: CXX_FEATURE:1cxx_default_function_template_args
+    Feature record: CXX_FEATURE:1cxx_defaulted_functions
+    Feature record: CXX_FEATURE:1cxx_defaulted_move_initializers
+    Feature record: CXX_FEATURE:1cxx_delegating_constructors
+    Feature record: CXX_FEATURE:1cxx_deleted_functions
+    Feature record: CXX_FEATURE:1cxx_digit_separators
+    Feature record: CXX_FEATURE:1cxx_enum_forward_declarations
+    Feature record: CXX_FEATURE:1cxx_explicit_conversions
+    Feature record: CXX_FEATURE:1cxx_extended_friend_declarations
+    Feature record: CXX_FEATURE:1cxx_extern_templates
+    Feature record: CXX_FEATURE:1cxx_final
+    Feature record: CXX_FEATURE:1cxx_func_identifier
+    Feature record: CXX_FEATURE:1cxx_generalized_initializers
+    Feature record: CXX_FEATURE:1cxx_generic_lambdas
+    Feature record: CXX_FEATURE:1cxx_inheriting_constructors
+    Feature record: CXX_FEATURE:1cxx_inline_namespaces
+    Feature record: CXX_FEATURE:1cxx_lambdas
+    Feature record: CXX_FEATURE:1cxx_lambda_init_captures
+    Feature record: CXX_FEATURE:1cxx_local_type_template_args
+    Feature record: CXX_FEATURE:1cxx_long_long_type
+    Feature record: CXX_FEATURE:1cxx_noexcept
+    Feature record: CXX_FEATURE:1cxx_nonstatic_member_init
+    Feature record: CXX_FEATURE:1cxx_nullptr
+    Feature record: CXX_FEATURE:1cxx_override
+    Feature record: CXX_FEATURE:1cxx_range_for
+    Feature record: CXX_FEATURE:1cxx_raw_string_literals
+    Feature record: CXX_FEATURE:1cxx_reference_qualified_functions
+    Feature record: CXX_FEATURE:1cxx_relaxed_constexpr
+    Feature record: CXX_FEATURE:1cxx_return_type_deduction
+    Feature record: CXX_FEATURE:1cxx_right_angle_brackets
+    Feature record: CXX_FEATURE:1cxx_rvalue_references
+    Feature record: CXX_FEATURE:1cxx_sizeof_member
+    Feature record: CXX_FEATURE:1cxx_static_assert
+    Feature record: CXX_FEATURE:1cxx_strong_enums
+    Feature record: CXX_FEATURE:1cxx_template_template_parameters
+    Feature record: CXX_FEATURE:1cxx_thread_local
+    Feature record: CXX_FEATURE:1cxx_trailing_return_types
+    Feature record: CXX_FEATURE:1cxx_unicode_literals
+    Feature record: CXX_FEATURE:1cxx_uniform_initialization
+    Feature record: CXX_FEATURE:1cxx_unrestricted_unions
+    Feature record: CXX_FEATURE:1cxx_user_literals
+    Feature record: CXX_FEATURE:1cxx_variable_templates
+    Feature record: CXX_FEATURE:1cxx_variadic_macros
+    Feature record: CXX_FEATURE:1cxx_variadic_templates
+
+
+Detecting CXX [-std=c++11] compiler features compiled with the following output:
+Change Dir: /home/pi/Desktop/NSC2020/dlib/build/temp.linux-armv7l-2.7/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_f9e13/fast"
+/usr/bin/make -f CMakeFiles/cmTC_f9e13.dir/build.make CMakeFiles/cmTC_f9e13.dir/build
+make[1]: Entering directory '/home/pi/Desktop/NSC2020/dlib/build/temp.linux-armv7l-2.7/CMakeFiles/CMakeTmp'
+Building CXX object CMakeFiles/cmTC_f9e13.dir/feature_tests.cxx.o
+/usr/bin/c++    -std=c++11 -o CMakeFiles/cmTC_f9e13.dir/feature_tests.cxx.o -c /home/pi/Desktop/NSC2020/dlib/build/temp.linux-armv7l-2.7/CMakeFiles/feature_tests.cxx
+Linking CXX executable cmTC_f9e13
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_f9e13.dir/link.txt --verbose=1
+/usr/bin/c++       -rdynamic CMakeFiles/cmTC_f9e13.dir/feature_tests.cxx.o  -o cmTC_f9e13 
+make[1]: Leaving directory '/home/pi/Desktop/NSC2020/dlib/build/temp.linux-armv7l-2.7/CMakeFiles/CMakeTmp'
+
+
+    Feature record: CXX_FEATURE:0cxx_aggregate_default_initializers
+    Feature record: CXX_FEATURE:1cxx_alias_templates
+    Feature record: CXX_FEATURE:1cxx_alignas
+    Feature record: CXX_FEATURE:1cxx_alignof
+    Feature record: CXX_FEATURE:1cxx_attributes
+    Feature record: CXX_FEATURE:0cxx_attribute_deprecated
+    Feature record: CXX_FEATURE:1cxx_auto_type
+    Feature record: CXX_FEATURE:0cxx_binary_literals
+    Feature record: CXX_FEATURE:1cxx_constexpr
+    Feature record: CXX_FEATURE:0cxx_contextual_conversions
+    Feature record: CXX_FEATURE:1cxx_decltype
+    Feature record: CXX_FEATURE:0cxx_decltype_auto
+    Feature record: CXX_FEATURE:1cxx_decltype_incomplete_return_types
+    Feature record: CXX_FEATURE:1cxx_default_function_template_args
+    Feature record: CXX_FEATURE:1cxx_defaulted_functions
+    Feature record: CXX_FEATURE:1cxx_defaulted_move_initializers
+    Feature record: CXX_FEATURE:1cxx_delegating_constructors
+    Feature record: CXX_FEATURE:1cxx_deleted_functions
+    Feature record: CXX_FEATURE:0cxx_digit_separators
+    Feature record: CXX_FEATURE:1cxx_enum_forward_declarations
+    Feature record: CXX_FEATURE:1cxx_explicit_conversions
+    Feature record: CXX_FEATURE:1cxx_extended_friend_declarations
+    Feature record: CXX_FEATURE:1cxx_extern_templates
+    Feature record: CXX_FEATURE:1cxx_final
+    Feature record: CXX_FEATURE:1cxx_func_identifier
+    Feature record: CXX_FEATURE:1cxx_generalized_initializers
+    Feature record: CXX_FEATURE:0cxx_generic_lambdas
+    Feature record: CXX_FEATURE:1cxx_inheriting_constructors
+    Feature record: CXX_FEATURE:1cxx_inline_namespaces
+    Feature record: CXX_FEATURE:1cxx_lambdas
+    Feature record: CXX_FEATURE:0cxx_lambda_init_captures
+    Feature record: CXX_FEATURE:1cxx_local_type_template_args
+    Feature record: CXX_FEATURE:1cxx_long_long_type
+    Feature record: CXX_FEATURE:1cxx_noexcept
+    Feature record: CXX_FEATURE:1cxx_nonstatic_member_init
+    Feature record: CXX_FEATURE:1cxx_nullptr
+    Feature record: CXX_FEATURE:1cxx_override
+    Feature record: CXX_FEATURE:1cxx_range_for
+    Feature record: CXX_FEATURE:1cxx_raw_string_literals
+    Feature record: CXX_FEATURE:1cxx_reference_qualified_functions
+    Feature record: CXX_FEATURE:0cxx_relaxed_constexpr
+    Feature record: CXX_FEATURE:0cxx_return_type_deduction
+    Feature record: CXX_FEATURE:1cxx_right_angle_brackets
+    Feature record: CXX_FEATURE:1cxx_rvalue_references
+    Feature record: CXX_FEATURE:1cxx_sizeof_member
+    Feature record: CXX_FEATURE:1cxx_static_assert
+    Feature record: CXX_FEATURE:1cxx_strong_enums
+    Feature record: CXX_FEATURE:1cxx_template_template_parameters
+    Feature record: CXX_FEATURE:1cxx_thread_local
+    Feature record: CXX_FEATURE:1cxx_trailing_return_types
+    Feature record: CXX_FEATURE:1cxx_unicode_literals
+    Feature record: CXX_FEATURE:1cxx_uniform_initialization
+    Feature record: CXX_FEATURE:1cxx_unrestricted_unions
+    Feature record: CXX_FEATURE:1cxx_user_literals
+    Feature record: CXX_FEATURE:0cxx_variable_templates
+    Feature record: CXX_FEATURE:1cxx_variadic_macros
+    Feature record: CXX_FEATURE:1cxx_variadic_templates
+
+
+Detecting CXX [-std=c++98] compiler features compiled with the following output:
+Change Dir: /home/pi/Desktop/NSC2020/dlib/build/temp.linux-armv7l-2.7/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_87ebb/fast"
+/usr/bin/make -f CMakeFiles/cmTC_87ebb.dir/build.make CMakeFiles/cmTC_87ebb.dir/build
+make[1]: Entering directory '/home/pi/Desktop/NSC2020/dlib/build/temp.linux-armv7l-2.7/CMakeFiles/CMakeTmp'
+Building CXX object CMakeFiles/cmTC_87ebb.dir/feature_tests.cxx.o
+/usr/bin/c++    -std=c++98 -o CMakeFiles/cmTC_87ebb.dir/feature_tests.cxx.o -c /home/pi/Desktop/NSC2020/dlib/build/temp.linux-armv7l-2.7/CMakeFiles/feature_tests.cxx
+Linking CXX executable cmTC_87ebb
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_87ebb.dir/link.txt --verbose=1
+/usr/bin/c++       -rdynamic CMakeFiles/cmTC_87ebb.dir/feature_tests.cxx.o  -o cmTC_87ebb 
+make[1]: Leaving directory '/home/pi/Desktop/NSC2020/dlib/build/temp.linux-armv7l-2.7/CMakeFiles/CMakeTmp'
+
+
+    Feature record: CXX_FEATURE:0cxx_aggregate_default_initializers
+    Feature record: CXX_FEATURE:0cxx_alias_templates
+    Feature record: CXX_FEATURE:0cxx_alignas
+    Feature record: CXX_FEATURE:0cxx_alignof
+    Feature record: CXX_FEATURE:0cxx_attributes
+    Feature record: CXX_FEATURE:0cxx_attribute_deprecated
+    Feature record: CXX_FEATURE:0cxx_auto_type
+    Feature record: CXX_FEATURE:0cxx_binary_literals
+    Feature record: CXX_FEATURE:0cxx_constexpr
+    Feature record: CXX_FEATURE:0cxx_contextual_conversions
+    Feature record: CXX_FEATURE:0cxx_decltype
+    Feature record: CXX_FEATURE:0cxx_decltype_auto
+    Feature record: CXX_FEATURE:0cxx_decltype_incomplete_return_types
+    Feature record: CXX_FEATURE:0cxx_default_function_template_args
+    Feature record: CXX_FEATURE:0cxx_defaulted_functions
+    Feature record: CXX_FEATURE:0cxx_defaulted_move_initializers
+    Feature record: CXX_FEATURE:0cxx_delegating_constructors
+    Feature record: CXX_FEATURE:0cxx_deleted_functions
+    Feature record: CXX_FEATURE:0cxx_digit_separators
+    Feature record: CXX_FEATURE:0cxx_enum_forward_declarations
+    Feature record: CXX_FEATURE:0cxx_explicit_conversions
+    Feature record: CXX_FEATURE:0cxx_extended_friend_declarations
+    Feature record: CXX_FEATURE:0cxx_extern_templates
+    Feature record: CXX_FEATURE:0cxx_final
+    Feature record: CXX_FEATURE:0cxx_func_identifier
+    Feature record: CXX_FEATURE:0cxx_generalized_initializers
+    Feature record: CXX_FEATURE:0cxx_generic_lambdas
+    Feature record: CXX_FEATURE:0cxx_inheriting_constructors
+    Feature record: CXX_FEATURE:0cxx_inline_namespaces
+    Feature record: CXX_FEATURE:0cxx_lambdas
+    Feature record: CXX_FEATURE:0cxx_lambda_init_captures
+    Feature record: CXX_FEATURE:0cxx_local_type_template_args
+    Feature record: CXX_FEATURE:0cxx_long_long_type
+    Feature record: CXX_FEATURE:0cxx_noexcept
+    Feature record: CXX_FEATURE:0cxx_nonstatic_member_init
+    Feature record: CXX_FEATURE:0cxx_nullptr
+    Feature record: CXX_FEATURE:0cxx_override
+    Feature record: CXX_FEATURE:0cxx_range_for
+    Feature record: CXX_FEATURE:0cxx_raw_string_literals
+    Feature record: CXX_FEATURE:0cxx_reference_qualified_functions
+    Feature record: CXX_FEATURE:0cxx_relaxed_constexpr
+    Feature record: CXX_FEATURE:0cxx_return_type_deduction
+    Feature record: CXX_FEATURE:0cxx_right_angle_brackets
+    Feature record: CXX_FEATURE:0cxx_rvalue_references
+    Feature record: CXX_FEATURE:0cxx_sizeof_member
+    Feature record: CXX_FEATURE:0cxx_static_assert
+    Feature record: CXX_FEATURE:0cxx_strong_enums
+    Feature record: CXX_FEATURE:1cxx_template_template_parameters
+    Feature record: CXX_FEATURE:0cxx_thread_local
+    Feature record: CXX_FEATURE:0cxx_trailing_return_types
+    Feature record: CXX_FEATURE:0cxx_unicode_literals
+    Feature record: CXX_FEATURE:0cxx_uniform_initialization
+    Feature record: CXX_FEATURE:0cxx_unrestricted_unions
+    Feature record: CXX_FEATURE:0cxx_user_literals
+    Feature record: CXX_FEATURE:0cxx_variable_templates
+    Feature record: CXX_FEATURE:0cxx_variadic_macros
+    Feature record: CXX_FEATURE:0cxx_variadic_templates
+Performing C++ SOURCE FILE Test HAS_CPP14_FLAG succeeded with the following output:
+Change Dir: /home/pi/Desktop/NSC2020/dlib/build/temp.linux-armv7l-2.7/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_ca535/fast"
+/usr/bin/make -f CMakeFiles/cmTC_ca535.dir/build.make CMakeFiles/cmTC_ca535.dir/build
+make[1]: Entering directory '/home/pi/Desktop/NSC2020/dlib/build/temp.linux-armv7l-2.7/CMakeFiles/CMakeTmp'
+Building CXX object CMakeFiles/cmTC_ca535.dir/src.cxx.o
+/usr/bin/c++    -DHAS_CPP14_FLAG   -std=c++14 -o CMakeFiles/cmTC_ca535.dir/src.cxx.o -c /home/pi/Desktop/NSC2020/dlib/build/temp.linux-armv7l-2.7/CMakeFiles/CMakeTmp/src.cxx
+Linking CXX executable cmTC_ca535
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_ca535.dir/link.txt --verbose=1
+/usr/bin/c++   -DHAS_CPP14_FLAG    -rdynamic CMakeFiles/cmTC_ca535.dir/src.cxx.o  -o cmTC_ca535 
+make[1]: Leaving directory '/home/pi/Desktop/NSC2020/dlib/build/temp.linux-armv7l-2.7/CMakeFiles/CMakeTmp'
+
+Source file was:
+int main() { return 0; }
+Determining if the include file pthread.h exists passed with the following output:
+Change Dir: /home/pi/Desktop/NSC2020/dlib/build/temp.linux-armv7l-2.7/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_cc73b/fast"
+/usr/bin/make -f CMakeFiles/cmTC_cc73b.dir/build.make CMakeFiles/cmTC_cc73b.dir/build
+make[1]: Entering directory '/home/pi/Desktop/NSC2020/dlib/build/temp.linux-armv7l-2.7/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_cc73b.dir/CheckIncludeFile.c.o
+/usr/bin/cc   -fPIE   -o CMakeFiles/cmTC_cc73b.dir/CheckIncludeFile.c.o   -c /home/pi/Desktop/NSC2020/dlib/build/temp.linux-armv7l-2.7/CMakeFiles/CMakeTmp/CheckIncludeFile.c
+Linking C executable cmTC_cc73b
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_cc73b.dir/link.txt --verbose=1
+/usr/bin/cc      -rdynamic CMakeFiles/cmTC_cc73b.dir/CheckIncludeFile.c.o  -o cmTC_cc73b 
+make[1]: Leaving directory '/home/pi/Desktop/NSC2020/dlib/build/temp.linux-armv7l-2.7/CMakeFiles/CMakeTmp'
+
+
+Determining if the function pthread_create exists in the pthread passed with the following output:
+Change Dir: /home/pi/Desktop/NSC2020/dlib/build/temp.linux-armv7l-2.7/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_68f39/fast"
+/usr/bin/make -f CMakeFiles/cmTC_68f39.dir/build.make CMakeFiles/cmTC_68f39.dir/build
+make[1]: Entering directory '/home/pi/Desktop/NSC2020/dlib/build/temp.linux-armv7l-2.7/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_68f39.dir/CheckFunctionExists.c.o
+/usr/bin/cc   -DCHECK_FUNCTION_EXISTS=pthread_create -fPIE   -o CMakeFiles/cmTC_68f39.dir/CheckFunctionExists.c.o   -c /usr/share/cmake-3.13/Modules/CheckFunctionExists.c
+Linking C executable cmTC_68f39
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_68f39.dir/link.txt --verbose=1
+/usr/bin/cc  -DCHECK_FUNCTION_EXISTS=pthread_create    -rdynamic CMakeFiles/cmTC_68f39.dir/CheckFunctionExists.c.o  -o cmTC_68f39 -lpthread 
+make[1]: Leaving directory '/home/pi/Desktop/NSC2020/dlib/build/temp.linux-armv7l-2.7/CMakeFiles/CMakeTmp'
+
+
+Determining if the function XOpenDisplay exists in the /usr/lib/arm-linux-gnueabihf/libX11.so;/usr/lib/arm-linux-gnueabihf/libXext.so passed with the following output:
+Change Dir: /home/pi/Desktop/NSC2020/dlib/build/temp.linux-armv7l-2.7/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_800fe/fast"
+/usr/bin/make -f CMakeFiles/cmTC_800fe.dir/build.make CMakeFiles/cmTC_800fe.dir/build
+make[1]: Entering directory '/home/pi/Desktop/NSC2020/dlib/build/temp.linux-armv7l-2.7/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_800fe.dir/CheckFunctionExists.c.o
+/usr/bin/cc   -DCHECK_FUNCTION_EXISTS=XOpenDisplay -fPIE   -o CMakeFiles/cmTC_800fe.dir/CheckFunctionExists.c.o   -c /usr/share/cmake-3.13/Modules/CheckFunctionExists.c
+Linking C executable cmTC_800fe
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_800fe.dir/link.txt --verbose=1
+/usr/bin/cc  -DCHECK_FUNCTION_EXISTS=XOpenDisplay    -rdynamic CMakeFiles/cmTC_800fe.dir/CheckFunctionExists.c.o  -o cmTC_800fe /usr/lib/arm-linux-gnueabihf/libX11.so /usr/lib/arm-linux-gnueabihf/libXext.so 
+make[1]: Leaving directory '/home/pi/Desktop/NSC2020/dlib/build/temp.linux-armv7l-2.7/CMakeFiles/CMakeTmp'
+
+
+Determining if the function gethostbyname exists passed with the following output:
+Change Dir: /home/pi/Desktop/NSC2020/dlib/build/temp.linux-armv7l-2.7/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_5cf4b/fast"
+/usr/bin/make -f CMakeFiles/cmTC_5cf4b.dir/build.make CMakeFiles/cmTC_5cf4b.dir/build
+make[1]: Entering directory '/home/pi/Desktop/NSC2020/dlib/build/temp.linux-armv7l-2.7/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_5cf4b.dir/CheckFunctionExists.c.o
+/usr/bin/cc   -DCHECK_FUNCTION_EXISTS=gethostbyname -fPIE   -o CMakeFiles/cmTC_5cf4b.dir/CheckFunctionExists.c.o   -c /usr/share/cmake-3.13/Modules/CheckFunctionExists.c
+Linking C executable cmTC_5cf4b
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_5cf4b.dir/link.txt --verbose=1
+/usr/bin/cc  -DCHECK_FUNCTION_EXISTS=gethostbyname    -rdynamic CMakeFiles/cmTC_5cf4b.dir/CheckFunctionExists.c.o  -o cmTC_5cf4b 
+make[1]: Leaving directory '/home/pi/Desktop/NSC2020/dlib/build/temp.linux-armv7l-2.7/CMakeFiles/CMakeTmp'
+
+
+Determining if the function connect exists passed with the following output:
+Change Dir: /home/pi/Desktop/NSC2020/dlib/build/temp.linux-armv7l-2.7/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_145f5/fast"
+/usr/bin/make -f CMakeFiles/cmTC_145f5.dir/build.make CMakeFiles/cmTC_145f5.dir/build
+make[1]: Entering directory '/home/pi/Desktop/NSC2020/dlib/build/temp.linux-armv7l-2.7/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_145f5.dir/CheckFunctionExists.c.o
+/usr/bin/cc   -DCHECK_FUNCTION_EXISTS=connect -fPIE   -o CMakeFiles/cmTC_145f5.dir/CheckFunctionExists.c.o   -c /usr/share/cmake-3.13/Modules/CheckFunctionExists.c
+Linking C executable cmTC_145f5
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_145f5.dir/link.txt --verbose=1
+/usr/bin/cc  -DCHECK_FUNCTION_EXISTS=connect    -rdynamic CMakeFiles/cmTC_145f5.dir/CheckFunctionExists.c.o  -o cmTC_145f5 
+make[1]: Leaving directory '/home/pi/Desktop/NSC2020/dlib/build/temp.linux-armv7l-2.7/CMakeFiles/CMakeTmp'
+
+
+Determining if the function remove exists passed with the following output:
+Change Dir: /home/pi/Desktop/NSC2020/dlib/build/temp.linux-armv7l-2.7/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_40720/fast"
+/usr/bin/make -f CMakeFiles/cmTC_40720.dir/build.make CMakeFiles/cmTC_40720.dir/build
+make[1]: Entering directory '/home/pi/Desktop/NSC2020/dlib/build/temp.linux-armv7l-2.7/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_40720.dir/CheckFunctionExists.c.o
+/usr/bin/cc   -DCHECK_FUNCTION_EXISTS=remove -fPIE   -o CMakeFiles/cmTC_40720.dir/CheckFunctionExists.c.o   -c /usr/share/cmake-3.13/Modules/CheckFunctionExists.c
+Linking C executable cmTC_40720
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_40720.dir/link.txt --verbose=1
+/usr/bin/cc  -DCHECK_FUNCTION_EXISTS=remove    -rdynamic CMakeFiles/cmTC_40720.dir/CheckFunctionExists.c.o  -o cmTC_40720 
+make[1]: Leaving directory '/home/pi/Desktop/NSC2020/dlib/build/temp.linux-armv7l-2.7/CMakeFiles/CMakeTmp'
+
+
+Determining if the function shmat exists passed with the following output:
+Change Dir: /home/pi/Desktop/NSC2020/dlib/build/temp.linux-armv7l-2.7/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_c629d/fast"
+/usr/bin/make -f CMakeFiles/cmTC_c629d.dir/build.make CMakeFiles/cmTC_c629d.dir/build
+make[1]: Entering directory '/home/pi/Desktop/NSC2020/dlib/build/temp.linux-armv7l-2.7/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_c629d.dir/CheckFunctionExists.c.o
+/usr/bin/cc   -DCHECK_FUNCTION_EXISTS=shmat -fPIE   -o CMakeFiles/cmTC_c629d.dir/CheckFunctionExists.c.o   -c /usr/share/cmake-3.13/Modules/CheckFunctionExists.c
+Linking C executable cmTC_c629d
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_c629d.dir/link.txt --verbose=1
+/usr/bin/cc  -DCHECK_FUNCTION_EXISTS=shmat    -rdynamic CMakeFiles/cmTC_c629d.dir/CheckFunctionExists.c.o  -o cmTC_c629d 
+make[1]: Leaving directory '/home/pi/Desktop/NSC2020/dlib/build/temp.linux-armv7l-2.7/CMakeFiles/CMakeTmp'
+
+
+Determining if the function IceConnectionNumber exists in the ICE passed with the following output:
+Change Dir: /home/pi/Desktop/NSC2020/dlib/build/temp.linux-armv7l-2.7/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_997a6/fast"
+/usr/bin/make -f CMakeFiles/cmTC_997a6.dir/build.make CMakeFiles/cmTC_997a6.dir/build
+make[1]: Entering directory '/home/pi/Desktop/NSC2020/dlib/build/temp.linux-armv7l-2.7/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_997a6.dir/CheckFunctionExists.c.o
+/usr/bin/cc   -DCHECK_FUNCTION_EXISTS=IceConnectionNumber -fPIE   -o CMakeFiles/cmTC_997a6.dir/CheckFunctionExists.c.o   -c /usr/share/cmake-3.13/Modules/CheckFunctionExists.c
+Linking C executable cmTC_997a6
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_997a6.dir/link.txt --verbose=1
+/usr/bin/cc  -DCHECK_FUNCTION_EXISTS=IceConnectionNumber    -rdynamic CMakeFiles/cmTC_997a6.dir/CheckFunctionExists.c.o  -o cmTC_997a6 -lICE 
+make[1]: Leaving directory '/home/pi/Desktop/NSC2020/dlib/build/temp.linux-armv7l-2.7/CMakeFiles/CMakeTmp'
+
+
+Determining if the include file sys/types.h exists passed with the following output:
+Change Dir: /home/pi/Desktop/NSC2020/dlib/build/temp.linux-armv7l-2.7/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_db5e5/fast"
+/usr/bin/make -f CMakeFiles/cmTC_db5e5.dir/build.make CMakeFiles/cmTC_db5e5.dir/build
+make[1]: Entering directory '/home/pi/Desktop/NSC2020/dlib/build/temp.linux-armv7l-2.7/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_db5e5.dir/CheckIncludeFile.c.o
+/usr/bin/cc   -fPIE   -o CMakeFiles/cmTC_db5e5.dir/CheckIncludeFile.c.o   -c /home/pi/Desktop/NSC2020/dlib/build/temp.linux-armv7l-2.7/CMakeFiles/CMakeTmp/CheckIncludeFile.c
+Linking C executable cmTC_db5e5
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_db5e5.dir/link.txt --verbose=1
+/usr/bin/cc      -rdynamic CMakeFiles/cmTC_db5e5.dir/CheckIncludeFile.c.o  -o cmTC_db5e5 
+make[1]: Leaving directory '/home/pi/Desktop/NSC2020/dlib/build/temp.linux-armv7l-2.7/CMakeFiles/CMakeTmp'
+
+
+Determining if the include file stdint.h exists passed with the following output:
+Change Dir: /home/pi/Desktop/NSC2020/dlib/build/temp.linux-armv7l-2.7/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_802b2/fast"
+/usr/bin/make -f CMakeFiles/cmTC_802b2.dir/build.make CMakeFiles/cmTC_802b2.dir/build
+make[1]: Entering directory '/home/pi/Desktop/NSC2020/dlib/build/temp.linux-armv7l-2.7/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_802b2.dir/CheckIncludeFile.c.o
+/usr/bin/cc   -fPIE   -o CMakeFiles/cmTC_802b2.dir/CheckIncludeFile.c.o   -c /home/pi/Desktop/NSC2020/dlib/build/temp.linux-armv7l-2.7/CMakeFiles/CMakeTmp/CheckIncludeFile.c
+Linking C executable cmTC_802b2
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_802b2.dir/link.txt --verbose=1
+/usr/bin/cc      -rdynamic CMakeFiles/cmTC_802b2.dir/CheckIncludeFile.c.o  -o cmTC_802b2 
+make[1]: Leaving directory '/home/pi/Desktop/NSC2020/dlib/build/temp.linux-armv7l-2.7/CMakeFiles/CMakeTmp'
+
+
+Determining if the include file stddef.h exists passed with the following output:
+Change Dir: /home/pi/Desktop/NSC2020/dlib/build/temp.linux-armv7l-2.7/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_62e4a/fast"
+/usr/bin/make -f CMakeFiles/cmTC_62e4a.dir/build.make CMakeFiles/cmTC_62e4a.dir/build
+make[1]: Entering directory '/home/pi/Desktop/NSC2020/dlib/build/temp.linux-armv7l-2.7/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_62e4a.dir/CheckIncludeFile.c.o
+/usr/bin/cc   -fPIE   -o CMakeFiles/cmTC_62e4a.dir/CheckIncludeFile.c.o   -c /home/pi/Desktop/NSC2020/dlib/build/temp.linux-armv7l-2.7/CMakeFiles/CMakeTmp/CheckIncludeFile.c
+Linking C executable cmTC_62e4a
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_62e4a.dir/link.txt --verbose=1
+/usr/bin/cc      -rdynamic CMakeFiles/cmTC_62e4a.dir/CheckIncludeFile.c.o  -o cmTC_62e4a 
+make[1]: Leaving directory '/home/pi/Desktop/NSC2020/dlib/build/temp.linux-armv7l-2.7/CMakeFiles/CMakeTmp'
+
+
+Determining size of void* passed with the following output:
+Change Dir: /home/pi/Desktop/NSC2020/dlib/build/temp.linux-armv7l-2.7/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_5f982/fast"
+/usr/bin/make -f CMakeFiles/cmTC_5f982.dir/build.make CMakeFiles/cmTC_5f982.dir/build
+make[1]: Entering directory '/home/pi/Desktop/NSC2020/dlib/build/temp.linux-armv7l-2.7/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_5f982.dir/SIZE_OF_VOID_PTR.c.o
+/usr/bin/cc   -fPIE   -o CMakeFiles/cmTC_5f982.dir/SIZE_OF_VOID_PTR.c.o   -c /home/pi/Desktop/NSC2020/dlib/build/temp.linux-armv7l-2.7/CMakeFiles/CheckTypeSize/SIZE_OF_VOID_PTR.c
+Linking C executable cmTC_5f982
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_5f982.dir/link.txt --verbose=1
+/usr/bin/cc      -rdynamic CMakeFiles/cmTC_5f982.dir/SIZE_OF_VOID_PTR.c.o  -o cmTC_5f982 
+make[1]: Leaving directory '/home/pi/Desktop/NSC2020/dlib/build/temp.linux-armv7l-2.7/CMakeFiles/CMakeTmp'
+
+
+Determining if the function sgetrf_single exists passed with the following output:
+Change Dir: /home/pi/Desktop/NSC2020/dlib/build/temp.linux-armv7l-2.7/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_230e5/fast"
+/usr/bin/make -f CMakeFiles/cmTC_230e5.dir/build.make CMakeFiles/cmTC_230e5.dir/build
+make[1]: Entering directory '/home/pi/Desktop/NSC2020/dlib/build/temp.linux-armv7l-2.7/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_230e5.dir/CheckFunctionExists.c.o
+/usr/bin/cc   -DCHECK_FUNCTION_EXISTS=sgetrf_single -fPIE   -o CMakeFiles/cmTC_230e5.dir/CheckFunctionExists.c.o   -c /usr/share/cmake-3.13/Modules/CheckFunctionExists.c
+Linking C executable cmTC_230e5
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_230e5.dir/link.txt --verbose=1
+/usr/bin/cc  -DCHECK_FUNCTION_EXISTS=sgetrf_single    -rdynamic CMakeFiles/cmTC_230e5.dir/CheckFunctionExists.c.o  -o cmTC_230e5 /usr/lib/arm-linux-gnueabihf/libopenblas.so 
+make[1]: Leaving directory '/home/pi/Desktop/NSC2020/dlib/build/temp.linux-armv7l-2.7/CMakeFiles/CMakeTmp'
+
+
+Determining if the function cblas_ddot exists passed with the following output:
+Change Dir: /home/pi/Desktop/NSC2020/dlib/build/temp.linux-armv7l-2.7/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_81026/fast"
+/usr/bin/make -f CMakeFiles/cmTC_81026.dir/build.make CMakeFiles/cmTC_81026.dir/build
+make[1]: Entering directory '/home/pi/Desktop/NSC2020/dlib/build/temp.linux-armv7l-2.7/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_81026.dir/CheckFunctionExists.c.o
+/usr/bin/cc   -DCHECK_FUNCTION_EXISTS=cblas_ddot -fPIE   -o CMakeFiles/cmTC_81026.dir/CheckFunctionExists.c.o   -c /usr/share/cmake-3.13/Modules/CheckFunctionExists.c
+Linking C executable cmTC_81026
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_81026.dir/link.txt --verbose=1
+/usr/bin/cc  -DCHECK_FUNCTION_EXISTS=cblas_ddot    -rdynamic CMakeFiles/cmTC_81026.dir/CheckFunctionExists.c.o  -o cmTC_81026 /usr/lib/arm-linux-gnueabihf/libopenblas.so 
+make[1]: Leaving directory '/home/pi/Desktop/NSC2020/dlib/build/temp.linux-armv7l-2.7/CMakeFiles/CMakeTmp'
+
+
