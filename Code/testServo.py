@@ -10,11 +10,7 @@ pwm = Adafruit_PCA9685.PCA9685()
 #pwm = Adafruit_PCA9685.PCA9685(address=0x41, busnum=2)
 
 servo_min = 100
-servo_max = 450
-
-servo_Deg0 = 100 	# Angle 0
-servo_Deg90 = 450 	# Angle 90
-servo_Deg180 = 700      # Angle 180
+servo_max = 700
 
 #0 degree = 100 Hz
 #15 degree = 142 Hz
@@ -26,6 +22,7 @@ servo_Deg180 = 700      # Angle 180
 
 #***
 #1 degree = 2.77 Hz
+
 
 # Helper function to make setting a servo pulse width simpler.
 def set_servo_pulse(channel, pulse):
