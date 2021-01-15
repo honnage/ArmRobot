@@ -9,20 +9,22 @@ pwm = Adafruit_PCA9685.PCA9685()
 # Alternatively specify a different address and/or bus:
 #pwm = Adafruit_PCA9685.PCA9685(address=0x41, busnum=2)
 
-servo_min = 100
-servo_max = 700
+'''
+    # servo_min = 100 Hz = 0   degree
+    # servo_max = 600 Hz = 180 degree
+    # servo_max = 700 Hz = 252 degree
 
-#0 degree = 100 Hz
-#15 degree = 142 Hz
-#30 degree = 183 Hz
-#45 degree = 225 Hz
-#90 degree = 350 Hz
-#135 degree = 475 Hz
-#180 degree = 600 Hz
+    # 0 degree = 100 Hz
+    # 15 degree = 142 Hz
+    # 30 degree = 183 Hz
+    # 45 degree = 225 Hz
+    # 90 degree = 350 Hz
+    # 135 degree = 475 Hz
+    # 180 degree = 600 Hz
 
-#***
-#1 degree = 2.77 Hz
-
+    #***
+    # 1 degree = 2.77 Hz
+'''
 
 # Helper function to make setting a servo pulse width simpler.
 def set_servo_pulse(channel, pulse):
@@ -42,25 +44,56 @@ def set_servo_pulse(channel, pulse):
     
 pwm.set_pwm_freq(60)
 
-# convert pulse to degree
+
+''' convert pulse to degree 
+    variable a Is Channel
+    variable b To 0, don't need to pay attention
+    variable c Is Degree
+'''
 def calDeg(a,b,c): 
 	degree = 2.77*c
 	degree = degree+100
 	degree = int(degree)
 	pwm.set_pwm(a,b,degree)
-	
+
+#function default
 def default():
     calDeg(0, 0, 10)
-    calDeg(1, 0, 40)
-    calDeg(2, 0, 10)
+    calDeg(1, 0, 45)
+    calDeg(2, 0, 40)
     calDeg(3, 0, 135)
     calDeg(4, 0, 90)
-
+    
+#function default
 def takkao():
     calDeg(0, 0, 10)
     calDeg(1, 0, 65)
     calDeg(2, 0, 20)
     calDeg(3, 0, 135)
+    calDeg(4, 0, 90)
+
+#Make the furthest corner
+def furthest():
+    calDeg(0, 0, 90)
+    calDeg(1, 0, 170)
+    calDeg(2, 0, 165)
+    calDeg(3, 0, 90)
+    calDeg(4, 0, 90)
+
+#Make the narrow angle
+def narrow():
+    calDeg(0, 0, 90)
+    calDeg(1, 0, 20)
+    calDeg(2, 0, 0)
+    calDeg(3, 0, 90)
+    calDeg(4, 0, 90)
+
+#Make the shortest angle
+def shortest():
+    calDeg(0, 0, 90)
+    calDeg(1, 0, 20)
+    calDeg(2, 0, 80)
+    calDeg(3, 0, 180)
     calDeg(4, 0, 90)
         
 def testservo_1():
@@ -103,7 +136,10 @@ print('Moving servo on channel 0, press Ctrl-C to quit...')
 
 #default()
 #time.sleep(2)
-takkao()
+#takkao()
+#furthest()
+narrow()
+#shortest()
 
 if(__name__=='__main__'):
     #testservo_1()

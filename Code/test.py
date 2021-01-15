@@ -14,8 +14,8 @@ display.lcd_display_string("Hello World!", 1)
 display.lcd_display_string("This is project", 2)  
 print("Hello World!")
 print("This is project")
-time.sleep(1)                                           
-display.lcd_clear()
+time.sleep(10)                                           
+display.lcd_clear()    
 
 
 print("run file Ultrasonict.py")
