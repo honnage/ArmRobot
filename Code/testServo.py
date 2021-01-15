@@ -14,8 +14,18 @@ servo_max = 450
 
 servo_Deg0 = 100 	# Angle 0
 servo_Deg90 = 450 	# Angle 90
-servo_Deg180 = 700  # Angle 180
+servo_Deg180 = 700      # Angle 180
 
+#0 degree = 100 Hz
+#15 degree = 142 Hz
+#30 degree = 183 Hz
+#45 degree = 225 Hz
+#90 degree = 350 Hz
+#135 degree = 475 Hz
+#180 degree = 600 Hz
+
+#***
+#1 degree = 2.77 Hz
 
 # Helper function to make setting a servo pulse width simpler.
 def set_servo_pulse(channel, pulse):
@@ -35,45 +45,35 @@ def set_servo_pulse(channel, pulse):
     
 pwm.set_pwm_freq(60)
 
+# convert pulse to degree
+def calDeg(a,b,c): 
+	degree = 2.77*c
+	degree = degree+100
+	degree = int(degree)
+	pwm.set_pwm(a,b,degree)
+	
 def default():
-    pwm.set_pwm(0, 0, 100)
-    pwm.set_pwm(1, 0, 170)
-    pwm.set_pwm(2, 0, 200)
-    pwm.set_pwm(3, 0, 500)
-    pwm.set_pwm(4, 0, 450)
-    
-'''def testservo_1():
-    for i in range(10,20,1):
-	    print(i)
-	    time.sleep(1)
-    time.sleep(1)
-    for i in range(20,10,-1):
-	    print(i)
-	    time.sleep(1)
-    time.sleep(1)
-    
-    return
+    calDeg(0, 0, 10)
+    calDeg(1, 0, 40)
+    calDeg(2, 0, 10)
+    calDeg(3, 0, 135)
+    calDeg(4, 0, 90)
 
-def testservo_2():
-    for i in range(80,90,1):
-	    print(i)
-	    time.sleep(1)
-    time.sleep(1)
-    for i in range(90,80,1):
-	    print(i)
-	    time.sleep(1)
-    time.sleep(1)
-    
-    return
-'''
+def takkao():
+    calDeg(0, 0, 10)
+    calDeg(1, 0, 65)
+    calDeg(2, 0, 20)
+    calDeg(3, 0, 135)
+    calDeg(4, 0, 90)
+        
 def testservo_1():
     pwm.set_pwm(1, 0, 170)
     time.sleep(2)
-    for i in range(170,450,1):
+    for i in range(170,250,1):
 	    pwm.set_pwm(1, 0, i)
 	    time.sleep(0.005)
     time.sleep(2)
-    for i in range(450,170,-1):
+    for i in range(250,150,-1):
 	    pwm.set_pwm(1,0,i)
 	    time.sleep(0.005)
     time.sleep(5)
@@ -81,11 +81,11 @@ def testservo_1():
 def testservo_2():
     pwm.set_pwm(2, 0, 200)
     time.sleep(2)
-    for i in range(200,300,2):
+    for i in range(200,300,1):
 	    pwm.set_pwm(2,0,i)
 	    time.sleep(0.005)
     time.sleep(2)
-    for i in range(300,200,-2):
+    for i in range(300,200,-1):
 	    pwm.set_pwm(2,0,i)
 	    time.sleep(0.005)
     time.sleep(5)
@@ -104,18 +104,18 @@ def testservo_3():
 
 print('Moving servo on channel 0, press Ctrl-C to quit...')
 
-default()
-time.sleep(3)
-
+#default()
+#time.sleep(2)
+takkao()
 
 if(__name__=='__main__'):
     #testservo_1()
     p1 = mp.Process(target=testservo_1)
     p2 = mp.Process(target=testservo_2)
     p3 = mp.Process(target=testservo_3)
-    p1.start()
-    p2.start()
-    p3.start()
+    #p1.start()
+    #p2.start()
+    #p3.start()
 
 
     
