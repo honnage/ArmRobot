@@ -138,8 +138,8 @@ print('Moving servo on channel 0, press Ctrl-C to quit...')
 #time.sleep(2)
 #takkao()
 #furthest()
-narrow()
-#shortest()
+#narrow()
+shortest()
 
 if(__name__=='__main__'):
     #testservo_1()
