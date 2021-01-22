@@ -3,7 +3,6 @@ import time
 import Adafruit_PCA9685
 import multiprocessing as mp
 import Ultrasonict 
-import SetDistance as SetD
 
 pwm = Adafruit_PCA9685.PCA9685()
 
@@ -21,7 +20,6 @@ def set_servo_pulse(channel, pulse):
     pwm.set_pwm(channel, 3, pulse)
     pwm.set_pwm(channel, 4, pulse)
 
-    
 pwm.set_pwm_freq(60)
 
 ''' convert pulse to degree 
@@ -58,59 +56,63 @@ def default():
     calDeg(3, 0, 135)
     calDeg(4, 0, 90)
     
+#function default
+def takkao():
+    calDeg(0, 0, 10)
+    calDeg(1, 0, 65)
+    calDeg(2, 0, 20)
+    calDeg(3, 0, 135)
+    calDeg(4, 0, 90)
 
+#Make the furthest corner
+def furthest():
+    calDeg(0, 0, 90)
+    calDeg(1, 0, 170)
+    calDeg(2, 0, 165)
+    calDeg(3, 0, 90)
+    calDeg(4, 0, 90)
+
+#Make the narrow angle
+def narrow():
+    calDeg(0, 0, 90)
+    calDeg(1, 0, 20)
+    calDeg(2, 0, 0)
+    calDeg(3, 0, 90)
+    calDeg(4, 0, 90)
+
+#Make the shortest angle
+def shortest():
+    calDeg(0, 0, 90)
+    calDeg(1, 0, 20)
+    calDeg(2, 0, 80)
+    calDeg(3, 0, 180)
+    calDeg(4, 0, 90)
         
-def testservo_1():
-    pwm.set_pwm(1, 0, 170)
-    time.sleep(2)
-    for i in range(170,250,1):
-	    pwm.set_pwm(1, 0, i)
-	    time.sleep(0.005)
-	    
-    time.sleep(2)
-    for i in range(250,150,-1):
-	    pwm.set_pwm(1,0,i)
-	    time.sleep(0.005)
-    time.sleep(5)
+# Default Camera 	=  79.12
+# Default Arm    	=  56.02
+# Default Camera - Arm 	=  23.1
 
-def testservo_2():
-    pwm.set_pwm(2, 0, 200)
-    time.sleep(2)
-    for i in range(200,300,1):
-	    pwm.set_pwm(2,0,i)
-	    time.sleep(0.005)
-    time.sleep(2)
-    for i in range(300,200,-1):
-	    pwm.set_pwm(2,0,i)
-	    time.sleep(0.005)
-    time.sleep(5)
-    
+def test1(): # Default Camera  9.12
+    calDeg(0, 0, 90)
+    calDeg(1, 0, 90)
+    calDeg(2, 0, 80)
+    calDeg(3, 0, 90)
+    calDeg(4, 0, 90)
 
-
-print('Moving servo on channel 0, press Ctrl-C to quit...')
-
-
-
-#default()
-#time.sleep(2)
-#takkao()
-#SetD.narrow()
-#SetD.default()
-#SetD.furthest()
-
-Ultrasonict.Camera()
-Ultrasonict.Arm()
+# Default Camera 	=  56.66
+# Default Arm    	=  48.88
+# Default Camera - Arm 	=  7.78
+def test2():
+    calDeg(0, 0, 90)
+    calDeg(1, 0, 60)
+    calDeg(2, 0, 80)
+    calDeg(3, 0, 138)
+    calDeg(4, 0, 90)
 
 
 
 
 
-if(__name__=='__main__'):
-    #testservo_1()
-    p1 = mp.Process(target=testservo_1)
-    p2 = mp.Process(target=testservo_2)
-    #p1.start()
-    #p2.start()
     
 
 

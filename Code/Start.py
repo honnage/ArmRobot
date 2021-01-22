@@ -4,12 +4,12 @@ import RPi.GPIO as GPIO
 import time
 import os
 import drivers
-import Ultrasonict as Ulta
+import Ultrasonict 
 
 display = drivers.Lcd()
 
-Ulta.Arm()
-Ulta.Camera()
+Ultrasonict.Arm()
+Ultrasonict.Camera()
 
 display.lcd_display_string("Hello World!", 1)  
 display.lcd_display_string("This is project", 2)  

@@ -17,13 +17,19 @@ GPIO.setwarnings(False)
 lcd = lcdlib.lcd()
 
 try:
-        distance = 0
-        sum_I = 0
-        average_I = 0 
+        #Camera
+        distance_Camera = 0
+        sum_Camera = 0
+        average_Camera = 0 
+        
+        #Arm
+        distance_Arm = 0
+        sum_Arm = 0
+        average_Arm = 0 
          
         def Camera():
                 print("distance measurement in progress 1")
-                sum_I = 0
+                sum_Camera = 0
                 for i in range(10):
                         print "Ulta 1 is i = ",i+1
                         GPIO.setup(TRIG_1, GPIO.OUT)
@@ -41,42 +47,43 @@ try:
                             pulse_end = time.time()
                             
                         pulse_duration = pulse_end-pulse_start
-                        distance = pulse_duration*17000
-                        distance = round(distance,2)
+                        distance_Camera = pulse_duration*17000
+                        distance_Camera = round(distance_Camera,2)
                 
-                        sum_I += distance 
+                        sum_Camera += distance_Camera 
 
-                        print "Ulta 1 is distance:",distance,"cm"
-                        print 'Ulta 1 is sum = ', sum_I  
+                        print "Ulta 1 is distance:",distance_Camera,"cm"
+                        print 'Ulta 1 is sum = ', sum_Camera  
                         print('')
                         
                         time.sleep(0.01)
                      
                 # Outside the loop       
                 print ("---------------")
-                print "Ulta 1 is sum = ", sum_I
+                print "Ulta 1 is sum = ", sum_Camera
                 print "Ulta 1 is num = ", i+1
                 
-                average_I = round( sum_I / (i + 1) , 2 )
+                average_Camera = round( sum_Camera / (i + 1) , 2 )
                
-                print "Ulta 1 is average =", average_I
+                print "Ulta 1 is average =", average_Camera
                 print ("---------------")
 
-                dist = str(average_I)
+                dist = str(average_Camera)
                 lcd.lcd_display_string("Distance Camera",1)
                 lcd.lcd_display_string(">>> "+dist+" cm",2)
                 print "Ulta 1 is Distance is"
                 print "Ulta 1 is >>> "+dist+" cm"
-                time.sleep(2)
+                time.sleep(0.1)
                 
                 lcd.lcd_clear()
                 print("\n \n")
-                return sum_I, i,average_I 
+                return sum_Camera, i, average_Camera 
         
+        # ==============================================================
         
         def Arm():
                 print("distance measurement in progress 2")
-                sum_I = 0
+                sum_Arm = 0
                 for i in range(10):
                         print "Ulta 2 is i = ",i+1
                         GPIO.setup(TRIG_2, GPIO.OUT)
@@ -94,43 +101,44 @@ try:
                             pulse_end = time.time()
                             
                         pulse_duration = pulse_end-pulse_start
-                        distance = pulse_duration*17000
-                        distance = round(distance,2)
+                        distance_Arm = pulse_duration*17000
+                        distance_Arm = round(distance_Arm,2)
                 
-                        sum_I += distance 
+                        sum_Arm += distance_Arm 
 
-                        print "Ulta 2 is distance:",distance,"cm"
-                        print 'Ulta 2 is sum = ', sum_I  
+                        print "Ulta 2 is distance:",distance_Arm,"cm"
+                        print 'Ulta 2 is sum = ', sum_Arm 
                         print('')
                         
                         time.sleep(0.01)
                      
                 # Outside the loop       
                 print ("---------------")
-                print "Ulta 2 is sum = ", sum_I
+                print "Ulta 2 is sum = ", sum_Arm
                 print "Ulta 2 is num = ", i+1
                 
-                average_I = round( sum_I / (i + 1) , 2 )
+                average_Arm = round( sum_Arm / (i + 1) , 2 )
                
-                print "Ulta 2 is average =", average_I
+                print "Ulta 2 is average =", average_Arm
                 print ("---------------")
 
-                dist = str(average_I)
+                dist = str(average_Arm)
                 lcd.lcd_display_string("Distance Arm",1)
                 lcd.lcd_display_string(">>> "+dist+" cm",2)
                 print "Ulta 2 is Distance is"
                 print "Ulta 2 is >>> "+dist+" cm"
-                time.sleep(2)
+                time.sleep(0.1)
                 
                 lcd.lcd_clear()
                 print("\n \n")
-                return sum_I, i,average_I 
+                return sum_Arm, i, average_Arm 
         
+        # ==============================================================
+
         #Camera()
         #Arm()
         
 
-    
 except KeyboardInterrupt:
     GPIO.cleanup()
     print("Cleaning up!")
