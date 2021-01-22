@@ -4,15 +4,19 @@ import RPi.GPIO as GPIO
 import time
 import os
 import drivers
+import Ultrasonict 
 
 display = drivers.Lcd()
+
 
 display.lcd_display_string("Hello World!", 1)  
 display.lcd_display_string("This is project", 2)  
 print("Hello World!")
 print("This is project")
 time.sleep(1)                                           
-display.lcd_clear()
+#display.lcd_clear
+command = "aplay Sound_EndDetect.wav"
+os.system(command)
 
 
 print("run file Ultrasonict.py")

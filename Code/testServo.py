@@ -101,7 +101,8 @@ def testservo_1():
     time.sleep(2)
     for i in range(170,250,1):
 	    pwm.set_pwm(1, 0, i)
-	    time.sleep(0.005)
+	    time.sleep(0.005
+	    
     time.sleep(2)
     for i in range(250,150,-1):
 	    pwm.set_pwm(1,0,i)
