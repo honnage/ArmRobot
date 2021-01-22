@@ -22,16 +22,11 @@ try:
         sum_Camera = 0
         average_Camera = 0 
         
-        #Arm
-        distance_Arm = 0
-        sum_Arm = 0
-        average_Arm = 0 
-         
         def Camera():
-                print("distance measurement in progress 1")
+                print("distance measurement in progress 1 is Camera")
                 sum_Camera = 0
                 for i in range(10):
-                        print "Ulta 1 is i = ",i+1
+                        print "Ultrasonic 1 is Camera i = ",i+1
                         GPIO.setup(TRIG_1, GPIO.OUT)
                         GPIO.setup(ECHO_1, GPIO.IN)
                         GPIO.output(TRIG_1,False)
@@ -52,27 +47,26 @@ try:
                 
                         sum_Camera += distance_Camera 
 
-                        print "Ulta 1 is distance:",distance_Camera,"cm"
-                        print 'Ulta 1 is sum = ', sum_Camera  
+                        print "Ultrasonic 1 is Camera distance:",distance_Camera,"cm"
+                        print 'Ultrasonic 1 is Camera sum = ', sum_Camera  
                         print('')
                         
                         time.sleep(0.01)
                      
                 # Outside the loop       
                 print ("---------------")
-                print "Ulta 1 is sum = ", sum_Camera
-                print "Ulta 1 is num = ", i+1
+                print "Ultrasonic 1 is Camera sum = ", sum_Camera
+                print "Ultrasonic 1 is Camera num = ", i+1
                 
                 average_Camera = round( sum_Camera / (i + 1) , 2 )
                
-                print "Ulta 1 is average =", average_Camera
+                print "Ultrasonic 1 is average =", average_Camera
                 print ("---------------")
 
                 dist = str(average_Camera)
                 lcd.lcd_display_string("Distance Camera",1)
                 lcd.lcd_display_string(">>> "+dist+" cm",2)
-                print "Ulta 1 is Distance is"
-                print "Ulta 1 is >>> "+dist+" cm"
+                print "Ultrasonic 1 is Camera Distance is >>> "+dist+" cm"
                 time.sleep(0.1)
                 
                 lcd.lcd_clear()
@@ -81,11 +75,16 @@ try:
         
         # ==============================================================
         
+        #Arm
+        distance_Arm = 0
+        sum_Arm = 0
+        average_Arm = 0 
+         
         def Arm():
-                print("distance measurement in progress 2")
+                print("distance measurement in progress 2 is Arm")
                 sum_Arm = 0
                 for i in range(10):
-                        print "Ulta 2 is i = ",i+1
+                        print "Ultrasonict 2 is i = ",i+1
                         GPIO.setup(TRIG_2, GPIO.OUT)
                         GPIO.setup(ECHO_2, GPIO.IN)
                         GPIO.output(TRIG_2,False)
@@ -106,27 +105,26 @@ try:
                 
                         sum_Arm += distance_Arm 
 
-                        print "Ulta 2 is distance:",distance_Arm,"cm"
-                        print 'Ulta 2 is sum = ', sum_Arm 
+                        print "Ultrasonict 2 is distance:",distance_Arm,"cm"
+                        print 'Ultrasonict 2 is sum = ', sum_Arm 
                         print('')
                         
                         time.sleep(0.01)
                      
                 # Outside the loop       
                 print ("---------------")
-                print "Ulta 2 is sum = ", sum_Arm
-                print "Ulta 2 is num = ", i+1
+                print "Ultrasonict 2 is sum = ", sum_Arm
+                print "Ultrasonict 2 is num = ", i+1
                 
                 average_Arm = round( sum_Arm / (i + 1) , 2 )
                
-                print "Ulta 2 is average =", average_Arm
+                print "Ultrasonict 2 is average =", average_Arm
                 print ("---------------")
 
                 dist = str(average_Arm)
                 lcd.lcd_display_string("Distance Arm",1)
                 lcd.lcd_display_string(">>> "+dist+" cm",2)
-                print "Ulta 2 is Distance is"
-                print "Ulta 2 is >>> "+dist+" cm"
+                print "Ultrasonic 2 is Camera Distance is >>> "+dist+" cm"
                 time.sleep(0.1)
                 
                 lcd.lcd_clear()

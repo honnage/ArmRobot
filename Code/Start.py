@@ -5,8 +5,13 @@ import time
 import os
 import drivers
 import Ultrasonict 
+import FaceCV 
 
 display = drivers.Lcd()
+command = "python FaceCV.py"
+os.system(command)
+
+print "Start ", FaceCV.distance 
 
 Ultrasonict.Arm()
 Ultrasonict.Camera()
