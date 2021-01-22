@@ -36,8 +36,7 @@ while True:
         distance = math.sqrt( ((p1[0]-p2[0])**2)+((p1[1]-p2[1])**2) )
         print(distance)
         
-        if(distance >= 3)
-                print
+      
 
     cv2.imshow("Frame", frame)
 

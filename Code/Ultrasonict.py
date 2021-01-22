@@ -16,138 +16,123 @@ GPIO.setwarnings(False)
 
 lcd = lcdlib.lcd()
 
-#class Ultasonict for Camera
-class Camera:
-        try:
-                distance = 0
+try:
+        distance = 0
+        sum_I = 0
+        average_I = 0 
+         
+        def Camera():
+                print("distance measurement in progress 1")
                 sum_I = 0
-                average_I = 0 
-                 
-                def Camera():
-                        print("distance measurement in progress 1")
-                        sum_I = 0
-                        for i in range(10):
-                                print "Ulta 1 is i = ",i+1
-                                GPIO.setup(TRIG_1, GPIO.OUT)
-                                GPIO.setup(ECHO_1, GPIO.IN)
-                                GPIO.output(TRIG_1,False)
-                                
-                                time.sleep(0.1) # Origin is 0.2
-                                GPIO.output(TRIG_1, True)
-                                time.sleep(0.00001)
-                                GPIO.output(TRIG_1, False)
-                                
-                                while GPIO.input(ECHO_1) == 0:
-                                    pulse_start = time.time()
-                                while GPIO.input(ECHO_1) == 1:
-                                    pulse_end = time.time()
-                                    
-                                pulse_duration = pulse_end-pulse_start
-                                distance = pulse_duration*17000
-                                distance = round(distance,2)
+                for i in range(10):
+                        print "Ulta 1 is i = ",i+1
+                        GPIO.setup(TRIG_1, GPIO.OUT)
+                        GPIO.setup(ECHO_1, GPIO.IN)
+                        GPIO.output(TRIG_1,False)
                         
-                                sum_I += distance 
-
-                                print "Ulta 1 is distance:",distance,"cm"
-                                print 'Ulta 1 is sum = ', sum_I  
-                                print('')
-                                
-                                time.sleep(0.01)
-                             
-                        # Outside the loop       
-                        print ("---------------")
-                        print "Ulta 1 is sum = ", sum_I
-                        print "Ulta 1 is num = ", i+1
+                        time.sleep(0.1) # Origin is 0.2
+                        GPIO.output(TRIG_1, True)
+                        time.sleep(0.00001)
+                        GPIO.output(TRIG_1, False)
                         
-                        average_I = round( sum_I / (i + 1) , 2 )
-                       
-                        print "Ulta 1 is average =", average_I
-                        print ("---------------")
-
-                        dist = str(average_I)
-                        lcd.lcd_display_string("Distance Camera",1)
-                        lcd.lcd_display_string(">>> "+dist+" cm",2)
-                        print "Ulta 1 is Distance is"
-                        print "Ulta 1 is >>> "+dist+" cm"
-                        time.sleep(2)
-                        
-                        lcd.lcd_clear()
-                        print("\n \n")
-                        return sum_I, i,average_I 
-                      
-                Camera()
+                        while GPIO.input(ECHO_1) == 0:
+                            pulse_start = time.time()
+                        while GPIO.input(ECHO_1) == 1:
+                            pulse_end = time.time()
+                            
+                        pulse_duration = pulse_end-pulse_start
+                        distance = pulse_duration*17000
+                        distance = round(distance,2)
                 
+                        sum_I += distance 
 
-            
-        except KeyboardInterrupt:
-            GPIO.cleanup()
-            print("Cleaning up!")
-            lcd.lcd_clear()
+                        print "Ulta 1 is distance:",distance,"cm"
+                        print 'Ulta 1 is sum = ', sum_I  
+                        print('')
+                        
+                        time.sleep(0.01)
+                     
+                # Outside the loop       
+                print ("---------------")
+                print "Ulta 1 is sum = ", sum_I
+                print "Ulta 1 is num = ", i+1
+                
+                average_I = round( sum_I / (i + 1) , 2 )
+               
+                print "Ulta 1 is average =", average_I
+                print ("---------------")
 
-
-#class Ultasonict for ArmRobot
-class ArmRobot:
-        try:    
-                distance = 0
+                dist = str(average_I)
+                lcd.lcd_display_string("Distance Camera",1)
+                lcd.lcd_display_string(">>> "+dist+" cm",2)
+                print "Ulta 1 is Distance is"
+                print "Ulta 1 is >>> "+dist+" cm"
+                time.sleep(2)
+                
+                lcd.lcd_clear()
+                print("\n \n")
+                return sum_I, i,average_I 
+        
+        
+        def Arm():
+                print("distance measurement in progress 2")
                 sum_I = 0
-                average_I = 0 
-                 
-                def arm():
-                        print("distance measurement in progress 2")
-                        sum_I = 0
-                        for i in range(10):
-                                print "Ulta 2 is i = ",i+1
-                                GPIO.setup(TRIG_2, GPIO.OUT)
-                                GPIO.setup(ECHO_2, GPIO.IN)
-                                GPIO.output(TRIG_2,False)
-                                
-                                time.sleep(0.1) # Origin is 0.2
-                                GPIO.output(TRIG_2, True)
-                                time.sleep(0.00001)
-                                GPIO.output(TRIG_2, False)
-                                
-                                while GPIO.input(ECHO_2) == 0:
-                                    pulse_start = time.time()
-                                while GPIO.input(ECHO_2) == 1:
-                                    pulse_end = time.time()
-                                    
-                                pulse_duration = pulse_end-pulse_start
-                                distance = pulse_duration*17000
-                                distance = round(distance,2)
+                for i in range(10):
+                        print "Ulta 2 is i = ",i+1
+                        GPIO.setup(TRIG_2, GPIO.OUT)
+                        GPIO.setup(ECHO_2, GPIO.IN)
+                        GPIO.output(TRIG_2,False)
                         
-                                sum_I += distance 
-
-                                print "Ulta 2 is distance:",distance,"cm"
-                                print 'Ulta 2 is sum = ', sum_I  
-                                print('')
-                                
-                                time.sleep(0.01)
-                             
-                        # Outside the loop       
-                        print ("---------------")
-                        print "Ulta 2 is sum = ", sum_I
-                        print "Ulta 2 is num = ", i+1
+                        time.sleep(0.1) # Origin is 0.2
+                        GPIO.output(TRIG_2, True)
+                        time.sleep(0.00001)
+                        GPIO.output(TRIG_2, False)
                         
-                        average_I = round( sum_I / (i + 1) , 2 )
-                       
-                        print "Ulta 2 is average =", average_I
-                        print ("---------------")
-
-                        dist = str(average_I)
-                        lcd.lcd_display_string("Distance Arm",1)
-                        lcd.lcd_display_string(">>> "+dist+" cm",2)
-                        print "Ulta 2 is Distance is"
-                        print "Ulta 2 is >>> "+dist+" cm"
-                        time.sleep(2)
-                        
-                        lcd.lcd_clear()
-                        print("\n \n")
-                        return sum_I, i,average_I 
+                        while GPIO.input(ECHO_2) == 0:
+                            pulse_start = time.time()
+                        while GPIO.input(ECHO_2) == 1:
+                            pulse_end = time.time()
+                            
+                        pulse_duration = pulse_end-pulse_start
+                        distance = pulse_duration*17000
+                        distance = round(distance,2)
                 
-                arm()
-            
-        except KeyboardInterrupt:
-            GPIO.cleanup()
-            print("Cleaning up!")
-            lcd.lcd_clear()
+                        sum_I += distance 
+
+                        print "Ulta 2 is distance:",distance,"cm"
+                        print 'Ulta 2 is sum = ', sum_I  
+                        print('')
+                        
+                        time.sleep(0.01)
+                     
+                # Outside the loop       
+                print ("---------------")
+                print "Ulta 2 is sum = ", sum_I
+                print "Ulta 2 is num = ", i+1
+                
+                average_I = round( sum_I / (i + 1) , 2 )
+               
+                print "Ulta 2 is average =", average_I
+                print ("---------------")
+
+                dist = str(average_I)
+                lcd.lcd_display_string("Distance Arm",1)
+                lcd.lcd_display_string(">>> "+dist+" cm",2)
+                print "Ulta 2 is Distance is"
+                print "Ulta 2 is >>> "+dist+" cm"
+                time.sleep(2)
+                
+                lcd.lcd_clear()
+                print("\n \n")
+                return sum_I, i,average_I 
+        
+        #Camera()
+        #Arm()
+        
+
+    
+except KeyboardInterrupt:
+    GPIO.cleanup()
+    print("Cleaning up!")
+    lcd.lcd_clear()
 
