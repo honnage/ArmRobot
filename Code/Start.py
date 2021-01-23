@@ -3,34 +3,38 @@ from threading import Thread
 import RPi.GPIO as GPIO
 import time
 import os
+import sys
 import drivers
-import Ultrasonict 
-import FaceCV
-import Servo 
+#import FaceCV
 
+print ("Run File Start.py")
 display = drivers.Lcd()
-command = "python Servo.py"
-os.system(command)
+#a = FaceCV.OpenCV()
 
-#Ultrasonict.Arm()
-#Ultrasonict.Camera()
+while True:
+    print("Writing to display")
+    display.lcd_display_string("Start on", 1)  
+    display.lcd_display_string("This is Project", 2)  
+    time.sleep(0.5)                                           
+    display.lcd_clear()
 
-display.lcd_display_string("Hello World!", 1)  
-display.lcd_display_string("This is project", 2)  
-print("Hello World!")
-print("This is project")
-time.sleep(1)                                           
-#display.lcd_clear
-command = "aplay Sound_EndDetect.wav"
-os.system(command)
+    display.lcd_display_string("Arm roboot", 1)   
+    time.sleep(0.5)                                          
+    display.lcd_clear()                           
+         
+    display.lcd_display_string("Open Camera", 1)   
+    print ("run file servo.py")
+    command = "python Servo.py"
+    time.sleep(0.5)                                          
+    display.lcd_clear() 
+    os.system(command)
+
+    command = "aplay Sound_EndDetect.wav"
+    os.system(command)
+    print ("Sound on")
 
 
 
 
-
-
-#print("run file Ultrasonict.py")
-# command = "python Ultrasonict.py" #command run demo_lcd.py for show message LCD
-# os.system(command)
 
     

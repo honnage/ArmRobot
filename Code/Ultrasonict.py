@@ -165,7 +165,7 @@ try:
         # ==============================================================
         #Camera()
         #Arm()
-        check_extra()
+        #check_extra()
 
 except KeyboardInterrupt:
     GPIO.cleanup()

@@ -9,8 +9,7 @@ import FaceCV
 
 pwm = Adafruit_PCA9685.PCA9685()
 
-command = "python FaceCV.py"
-os.system(command)
+print("test")
 
 def set_servo_pulse(channel, pulse):
     pulse_length = 1000000    # 1,000,000 us per second
@@ -150,14 +149,6 @@ def arm2user():
 	print "arm to user :",i
     time.sleep(1)
     
-    '''
-    for i in range(90, 0, -1):
-	calDeg(0, 0, i)
-
-	time.sleep(0.01)
-	print "arm to user :",i
-    time.sleep(1)
-    '''
 
 def arm2user_fit():
     calDeg(0, 0, 90)
@@ -175,10 +166,12 @@ def re_standby():
     
 print('Moving servo on channel 0, press Ctrl-C to quit...')
 
+
+face = FaceCV.OpenCV()
+print(face)
 servo_time = 0.001
-#a = Ultrasonict.Camera()
 
-
+a = Ultrasonict.Camera()
 
 default()
 time.sleep(1)
@@ -213,22 +206,11 @@ arm_dis = Ultrasonict.check_extra()
 while arm_dis < 20:
     arm_dis = Ultrasonict.check_extra()
 arm2user_fit()
-time.sleep(8)
+time.sleep(4)
 re_standby()
 default()
     
     
-#for i in range(3):
-    
-
-
-
-    
-#Ultrasonict.Camera()
-
-
-
-
 
 
 
