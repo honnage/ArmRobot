@@ -7,7 +7,7 @@ import dlib
 import math 
 import time
 import os
-import drivers
+#import drivers
 import Ultrasonict 
 
 cap = cv2.VideoCapture(0)

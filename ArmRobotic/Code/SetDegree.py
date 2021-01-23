@@ -108,7 +108,7 @@ def scoop_rice():
 	    time.sleep(0.01)
 
     def scoop_rice_channel4(): #servo channel 4
-	for i in range(10, 90, 1):
+	for i in range(0, 90, 1):
 	    calDeg(4, 0, i)
 	    time.sleep(0.01)
     
@@ -127,7 +127,7 @@ def scoop_rice():
 
 def scoop_rice_default():    
     def scoop_rice_default_channel3(): #servo channel 3
-	for i in range(105, 90, -1):
+	for i in range(140, 90, -1):
 	    calDeg(3, 0, i)
 	    time.sleep(0.05)
 	   
@@ -142,48 +142,49 @@ def scoop_rice_default():
 # xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx	    
 	    
 def make_angle():
-    def make_angle_channel1(): #servo channel 1
-	for i in range(60, 90, 1):
-	    calDeg(1, 0, i)
-	    time.sleep(0.03)
-	    
-    def make_angle_channel2(): #servo channel 2
-	for i in range(42, 80, 1):
-	    calDeg(2, 0, i)
-	    time.sleep(0.03)
-	    
     calDeg(0, 0, 10)
     calDeg(1, 0, 60)
     calDeg(2, 0, 42)
     calDeg(3, 0, 90)
     calDeg(4, 0, 90)
 
+def make_angle_channel1(): #servo channel 1
+    for i in range(60, 90, 1):
+	calDeg(1, 0, i)
+	time.sleep(0.03)
+	    
+def make_angle_channel2(): #servo channel 2
+    for i in range(42, 80, 1):
+	calDeg(2, 0, i)
+	time.sleep(0.03)
+    
+'''
     if(__name__=='__main__'):
         p1 = mp.Process(target=make_angle_channel1)
         p2 = mp.Process(target=make_angle_channel2)
         p1.start()
         p2.start()
     time.sleep(0.05)
-	
+'''	
 # xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 
 def arm2user():
-    calDeg(1, 0, 90)
-    calDeg(2, 0, 80)
+    calDeg(1, 0, 60)
+    calDeg(2, 0, 42)
     calDeg(3, 0, 90)
+    print "arm to user"
     for i in range(0, 90, 1):
 	calDeg(0, 0, i)
 
 	time.sleep(0.03)
-	print "arm to user :",i
     time.sleep(1)
     
 # xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 
 def arm2user_fit():
     calDeg(0, 0, 90)
-    calDeg(1, 0, 60)
-    calDeg(2, 0, 42)
+    calDeg(1, 0, 90)
+    calDeg(2, 0, 80)
     calDeg(3, 0, 90)
     calDeg(4, 0, 90)
     print 'arm to user fit'
@@ -207,19 +208,19 @@ def re_default():
     def re_default_channel1(): #servo channel 1
 	for i in range(60, 15, -1):
 	    calDeg(1, 0, i)
-	    time.sleep(0.1)
+	    time.sleep(0.07)
 	
     def re_default_channel2(): #servo channel 2
 	for i in range(42, 0, -1):
 	    calDeg(2, 0, i)
-	    time.sleep(0.1)
+	    time.sleep(0.07)
     
     def re_default_channel3(): #servo channel 3
 	for i in range(90, 85, -1):
 	    calDeg(3, 0, i)
-	    time.sleep(0.1)
+	    time.sleep(0.07)
 	    
-    time.sleep(0.1)
+    time.sleep(0.05)
     calDeg(1, 0, 60)
     calDeg(2, 0, 42)
     calDeg(3, 0, 90)
@@ -232,10 +233,11 @@ def re_default():
         p1.start()
         p2.start()
 	p3.start()
+   
     print "re d"
-    time.sleep(0.05
-    
+	
 # xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+
 '''
 while True:
     time.sleep(1)
@@ -252,4 +254,10 @@ while True:
     time.sleep(1)
     default()
     time.sleep(1)
+'''
+
+'''
+calDeg(3, 0, 180)
+print "c"
+calDeg(0, 0, 20)
 '''

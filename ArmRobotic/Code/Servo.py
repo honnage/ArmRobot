@@ -30,23 +30,30 @@ print(face)
 
 a = Ultrasonict.Camera()
 
+time.sleep(1)
 DEG.default()
 time.sleep(1)
 DEG.default_takkao()
-DEG.scoop_rice()
+#----
+DEG.scoop_rice() 
 DEG.scoop_rice_default()
 time.sleep(0.003)
-DEG.make_angle()
+print("problem1")
+DEG.make_angle() #problem1
 time.sleep(0.001)
 DEG.arm2user()
 #time.sleep(0.001)
 DEG.arm2user_fit()
 
-ser1 = calDeg(1, 0, 90)
-ser2 = calDeg(2, 0, 80)
+time.sleep(0.01)
+#DEG.make_angle_channel1()
+#DEG.make_angle_channel2()
 
-b = Ultrasonict.Camera()
-print b
+ser1 = calDeg(1, 0, 60)
+ser2 = calDeg(2, 0, 42)
+
+
+
 arm_dis = Ultrasonict.check_extra()
 
 while arm_dis >= 20:

@@ -81,7 +81,7 @@ try:
         sum_Arm = 0
         
         def Arm():
-                #print("distance measurement in progress 2 is Arm")
+                print("distance measurement in progress 2 is Arm")
                 sum_Arm = 0
                 for i in range(5):
                         #print "Ultrasonict 2 is i = ",i+1
