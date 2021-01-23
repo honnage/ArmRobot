@@ -72,17 +72,17 @@ try:
                 print("\n \n")
                 return average_Camera
         
-
+        # ==============================================================
+        
         #Arm
         distance_Arm = 0
         sum_Arm = 0
-        average_Arm = 0 
-         
+        
         def Arm():
-                print("distance measurement in progress 2 is Arm")
+                #print("distance measurement in progress 2 is Arm")
                 sum_Arm = 0
                 for i in range(5):
-                        print "Ultrasonict 2 is i = ",i+1
+                        #print "Ultrasonict 2 is i = ",i+1
                         GPIO.setup(TRIG_2, GPIO.OUT)
                         GPIO.setup(ECHO_2, GPIO.IN)
                         GPIO.output(TRIG_2,False)
@@ -103,36 +103,69 @@ try:
                 
                         sum_Arm += distance_Arm 
 
-                        print "Ultrasonict 2 is distance:",distance_Arm,"cm"
-                        print 'Ultrasonict 2 is sum = ', sum_Arm 
-                        print('')
+                        #print "Ultrasonict 2 is distance:",distance_Arm,"cm"
+                        #print 'Ultrasonict 2 is sum = ', sum_Arm 
+                        #print('')
                         
                         time.sleep(0.01)
                      
                 # Outside the loop       
-                print ("---------------")
-                print "Ultrasonict 2 is sum = ", sum_Arm
-                print "Ultrasonict 2 is num = ", i+1
+                #print ("---------------")
+                #print "Ultrasonict 2 is sum = ", sum_Arm
+                #print "Ultrasonict 2 is num = ", i+1
                 
                 average_Arm = round( sum_Arm / (i + 1) , 2 )
                
                 print "Ultrasonict 2 is average =", average_Arm
-                print ("---------------")
+                #print ("---------------")
 
                 dist = str(average_Arm)
                 lcd.lcd_display_string("Distance Arm",1)
                 lcd.lcd_display_string(">>> "+dist+" cm",2)
-                print "Ultrasonic 2 is Camera Distance is >>> "+dist+" cm"
+                #print "Ultrasonic 2 is Camera Distance is >>> "+dist+" cm"
                 time.sleep(0.1)
                 
                 lcd.lcd_clear()
                 print("\n \n")
-                return sum_Arm, i, average_Arm 
+                return average_Arm
+                
+        # ==============================================================
+                 
+        def extra_arm():
+                GPIO.setup(TRIG_2, GPIO.OUT)
+                GPIO.setup(ECHO_2, GPIO.IN)
+                GPIO.output(TRIG_2,False)
+                        
+                time.sleep(0.1) # Origin is 0.2
+                GPIO.output(TRIG_2, True)
+                time.sleep(0.00001)
+                GPIO.output(TRIG_2, False)
+                
+                while GPIO.input(ECHO_2) == 0:
+                    pulse_start = time.time()
+                while GPIO.input(ECHO_2) == 1:
+                    pulse_end = time.time()
+                    
+                pulse_duration = pulse_end-pulse_start
+                distance_extra = pulse_duration*17000
+                distance_extra = round(distance_extra,2)
         
+                lcd.lcd_clear()
+                return distance_extra
+        
+        def check_extra():
+                a = extra_arm()
+                print(a)
+                while a<=2 or a>=500:
+                        a = extra_arm()
+                        print(a)
+                return a
+                        
+                
         # ==============================================================
         #Camera()
         #Arm()
-        
+        check_extra()
 
 except KeyboardInterrupt:
     GPIO.cleanup()
