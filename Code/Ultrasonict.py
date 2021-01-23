@@ -20,12 +20,11 @@ try:
         #Camera
         distance_Camera = 0
         sum_Camera = 0
-        average_Camera = 0 
         
         def Camera():
                 print("distance measurement in progress 1 is Camera")
                 sum_Camera = 0
-                for i in range(10):
+                for i in range(5):
                         print "Ultrasonic 1 is Camera i = ",i+1
                         GPIO.setup(TRIG_1, GPIO.OUT)
                         GPIO.setup(ECHO_1, GPIO.IN)
@@ -71,8 +70,9 @@ try:
                 
                 lcd.lcd_clear()
                 print("\n \n")
-                return sum_Camera, i, average_Camera 
+                return average_Camera
         
+
         #Arm
         distance_Arm = 0
         sum_Arm = 0
@@ -81,7 +81,7 @@ try:
         def Arm():
                 print("distance measurement in progress 2 is Arm")
                 sum_Arm = 0
-                for i in range(10):
+                for i in range(5):
                         print "Ultrasonict 2 is i = ",i+1
                         GPIO.setup(TRIG_2, GPIO.OUT)
                         GPIO.setup(ECHO_2, GPIO.IN)
@@ -130,7 +130,6 @@ try:
                 return sum_Arm, i, average_Arm 
         
         # ==============================================================
-
         #Camera()
         #Arm()
         

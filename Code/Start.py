@@ -5,13 +5,12 @@ import time
 import os
 import drivers
 import Ultrasonict 
-import FaceCV 
+import FaceCV
+import Servo 
 
 display = drivers.Lcd()
-command = "python FaceCV.py"
+command = "python Servo.py"
 os.system(command)
-
-print "Start ", FaceCV.distance 
 
 #Ultrasonict.Arm()
 #Ultrasonict.Camera()

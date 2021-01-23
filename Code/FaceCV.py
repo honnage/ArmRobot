@@ -17,6 +17,7 @@ cap.set(4,200)
 detector = dlib.get_frontal_face_detector()
 predictor = dlib.shape_predictor("shape_predictor_68_face_landmarks.dat")
 
+sum_dis = 0
 while True:
         _, frame = cap.read()
         gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
@@ -46,6 +47,7 @@ while True:
                 if distance >= 4:
                         print "Run Ultrasonict function Camera \n"
                         Ultrasonict.Camera()
+                time.sleep(0.5)
                 
         cv2.imshow("Frame", frame)
 

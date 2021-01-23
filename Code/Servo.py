@@ -4,8 +4,12 @@ import Adafruit_PCA9685
 import multiprocessing as mp
 import Ultrasonict 
 import SetDistance as SetD
+#import FaceCV
 
 pwm = Adafruit_PCA9685.PCA9685()
+
+#command = "python FaceCV.py"
+#os.system(command)
 
 def set_servo_pulse(channel, pulse):
     pulse_length = 1000000    # 1,000,000 us per second
@@ -61,79 +65,129 @@ def CalDegloop(Channel,Deg_begin,Deg_end,i):
 #function default
 def default():
     calDeg(0, 0, 10)
-    calDeg(1, 0, 45)
-    calDeg(2, 0, 40)
-    calDeg(3, 0, 135)
+    calDeg(1, 0, 15)
+    calDeg(2, 0, 0)
+    calDeg(3, 0, 85)
     calDeg(4, 0, 90)
-    
-
-        
-def testservo_1():
-    pwm.set_pwm(1, 0, 170)
-    time.sleep(2)
-    for i in range(170,250,1):
-	    pwm.set_pwm(1, 0, i)
-	    time.sleep(0.005)
-	    
-    time.sleep(2)
-    for i in range(250,150,-1):
-	    pwm.set_pwm(1,0,i)
-	    time.sleep(0.005)
-    time.sleep(5)
-
-def testservo_2():
-    pwm.set_pwm(2, 0, 200)
-    time.sleep(2)
-    for i in range(200,300,1):
-	    pwm.set_pwm(2,0,i)
-	    time.sleep(0.005)
-    time.sleep(2)
-    for i in range(300,200,-1):
-	    pwm.set_pwm(2,0,i)
-	    time.sleep(0.005)
-    time.sleep(5)
     
 
 
 print('Moving servo on channel 0, press Ctrl-C to quit...')
 
-servo_time = 0.000001
-a = 90
+servo_time = 0.001
+#a = Ultrasonict.Camera()
+    	
+def default_takkao():
+    def default_takkao_channel1(): #servo channel 1
+	for i in range(20, 45, 1):
+	    calDeg(1, 0, i)
+	    time.sleep(0.02)
+	    print "b +", 
 
-def test_x(in_a):
+    def default_takkao_channel2(): #servo channel 2
+	for i in range(10, 40, 1):
+	    calDeg(2, 0, i)
+	    time.sleep(0.02)
+	    print "c +", i
+   
+    def default_takkao_channel3(): #servo channel 3
+	for i in range(60, 90, 1):
+	    calDeg(3, 0, i)
+	    time.sleep(0.01)
+	    print "d +", i
     
-    for i in range(0, int(a), 1):
-	calDeg(0, 0, i)
-	calDeg(1, 0, i)
-	calDeg(2, 0, i)
-	
-	#70 to 110
-	for j in range(int(a), 110, 1):
-	    calDeg(3, 0, j)
+    calDeg(0, 0, 10)
+    calDeg(1, 0, 20)
+    calDeg(2, 0, 10)
+    calDeg(3, 0, 60)
+    calDeg(4, 0, 0)
+    default_takkao_channel2()
+    default_takkao_channel1()
+    default_takkao_channel3()
+
+    time.sleep(0.5)
+
+
+
+def scoop_rice():
+    def scoop_rice_channel1(): #servo channel 1
+	for i in range(45, 60, 1):
+	    calDeg(1, 0, i)
+	    time.sleep(0.01)
+	    print "a +", i
 	    
-	time.sleep(servo_time)
-    time.sleep(servo_time)
+    def scoop_rice_channel3(): #servo channel 3
+	for i in range(90, 140, 1):
+	    calDeg(3, 0, i)
+	    time.sleep(0.01)
+	    print "d +", i
+
+    def scoop_rice_channel4(): #servo channel 4
+	for i in range(10, 90, 1):
+	    calDeg(4, 0, i)
+	    time.sleep(0.01)
+	    print "e +", i
     
-    for i in range(int(round(a,0)), 0, -1):
+    calDeg(0, 0, 10)
+    calDeg(1, 0, 45)
+    calDeg(2, 0, 42)
+    calDeg(3, 0, 90)
+    calDeg(4, 0, 0)
+    
+    scoop_rice_channel1()
+    scoop_rice_channel3()
+    scoop_rice_channel4()
+
+
+def scoop_rice_default():    
+    def scoop_rice_default_channel3(): #servo channel 3
+	for i in range(105, 90, -1):
+	    calDeg(3, 0, i)
+	    time.sleep(0.05)
+	    print "e +", i
+	    
+    calDeg(0, 0, 10)
+    calDeg(1, 0, 60)
+    calDeg(2, 0, 42)
+    calDeg(3, 0, 140)
+    calDeg(4, 0, 90)
+    scoop_rice_default_channel3()
+	    
+    
+def arm2user():
+    for i in range(0, 90, 1):
 	calDeg(0, 0, i)
-	calDeg(1, 0, i)
-	calDeg(2, 0, i)
-	
-	#70 to 110
-	for j in range(int(round(a,0)), 70, -1):
-	    calDeg(3, 0, j)
-	
-	time.sleep(servo_time)
-    time.sleep(servo_time)
+
+	time.sleep(0.01)
+	print "i :",i
+    time.sleep(1)
     
+    for i in range(90, 0, -1):
+	calDeg(0, 0, i)
 
-#default()
-#time.sleep(2)
-#takkao()
+	time.sleep(0.01)
+	print "i :",i
+    time.sleep(1)
 
-for i in range(30):
+
+for i in range(3):
+    
+    default()
+    time.sleep(1)
+    default_takkao()
+    scoop_rice()
+    scoop_rice_default()
+    time.sleep(0.5)
+    arm2user()
+    time.sleep(1)
+
+#calDeg(4, 0, 90)
+    
+#Ultrasonict.Camera()
+'''
+for i in range(10):
     test_x(a)
-
+'''
 
 #calDeg(1, 0, 0)
 
@@ -157,10 +211,10 @@ while True:
 
 
 
-if(__name__=='__main__'):
+#if(__name__=='__main__'):
     #testservo_1()
-    p1 = mp.Process(target=testservo_1)
-    p2 = mp.Process(target=testservo_2)
+    #p1 = mp.Process(target=testservo_1)
+    #p2 = mp.Process(target=testservo_2)
     #p1.start()
     #p2.start()
     
