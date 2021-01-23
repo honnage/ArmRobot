@@ -26,10 +26,7 @@ def calDeg(a,b,c):
 print('Moving servo on channel 0, press Ctrl-C to quit...')
 
 face = FaceCV.OpenCV()
-
-
 print(face)
-servo_time = 0.001
 
 a = Ultrasonict.Camera()
 
@@ -38,14 +35,16 @@ time.sleep(1)
 DEG.default_takkao()
 DEG.scoop_rice()
 DEG.scoop_rice_default()
+time.sleep(0.003)
 DEG.make_angle()
-time.sleep(0.5)
+time.sleep(0.001)
 DEG.arm2user()
-time.sleep(1)
+#time.sleep(0.001)
 DEG.arm2user_fit()
 
 ser1 = calDeg(1, 0, 90)
 ser2 = calDeg(2, 0, 80)
+
 b = Ultrasonict.Camera()
 print b
 arm_dis = Ultrasonict.check_extra()
@@ -69,10 +68,12 @@ while arm_dis < 20:
     arm_dis = Ultrasonict.check_extra()
     
 DEG.arm2user_fit()
-time.sleep(1)
+time.sleep(0.005)
 DEG.re_standby()
 DEG.re_default()
+time.sleep(0.5)
 DEG.default()
+time.sleep(1)
 
 
     

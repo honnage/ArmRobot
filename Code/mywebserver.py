@@ -12,7 +12,7 @@ import Ultrasonict
 import time
 import Adafruit_PCA9685
 import multiprocessing as mp
-import SetDistance as SetD
+import SetDegree as DEG
 import FaceCV
 import Servo
 
@@ -53,20 +53,50 @@ while True:
 		if distance >= 4:
 			a = 0
 			print "Run Ultrasonict function Camera \n"
-			servo_time = 0.001
-
+			
 			a = Ultrasonict.Camera()
 
-			Servo.default()
+			DEG.default()
 			time.sleep(1)
-			Servo.default_takkao()
-			Servo.scoop_rice()
-			sServo.coop_rice_default()
+			DEG.default_takkao()
+			DEG.scoop_rice()
+			DEG.scoop_rice_default()
+			DEG.make_angle()
 			time.sleep(0.5)
-			Servo.arm2user()
+			DEG.arm2user()
 			time.sleep(1)
-			Servo.arm2user_fit()
-			
+			DEG.arm2user_fit()
+
+			ser1 = calDeg(1, 0, 90)
+			ser2 = calDeg(2, 0, 80)
+			b = Ultrasonict.Camera()
+			print b
+			arm_dis = Ultrasonict.check_extra()
+
+			while arm_dis >= 20:
+				arm_dis = Ultrasonict.check_extra()
+				print(arm_dis)
+				ser1 += 1
+				print(ser1)
+				ser2 += 1
+				print(ser2)
+				calDeg(1, 0, ser1)
+				time.sleep(0.005)
+				calDeg(2, 0, ser2)
+				time.sleep(0.005)
+
+			time.sleep(3)
+
+			arm_dis = Ultrasonict.check_extra()
+			while arm_dis < 20:
+				arm_dis = Ultrasonict.check_extra()
+				
+			DEG.arm2user_fit()
+			time.sleep(1)
+			DEG.re_standby()
+			DEG.re_default()
+			DEG.default()
+						
 			
 		time.sleep(0.5)
 		

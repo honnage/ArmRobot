@@ -168,6 +168,9 @@ def make_angle():
 # xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 
 def arm2user():
+    calDeg(1, 0, 90)
+    calDeg(2, 0, 80)
+    calDeg(3, 0, 90)
     for i in range(0, 90, 1):
 	calDeg(0, 0, i)
 
@@ -204,18 +207,19 @@ def re_default():
     def re_default_channel1(): #servo channel 1
 	for i in range(60, 15, -1):
 	    calDeg(1, 0, i)
-	    time.sleep(0.04)
+	    time.sleep(0.1)
 	
     def re_default_channel2(): #servo channel 2
 	for i in range(42, 0, -1):
 	    calDeg(2, 0, i)
-	    time.sleep(0.04)
+	    time.sleep(0.1)
     
     def re_default_channel3(): #servo channel 3
 	for i in range(90, 85, -1):
 	    calDeg(3, 0, i)
-	    time.sleep(0.04)
+	    time.sleep(0.1)
 	    
+    time.sleep(0.1)
     calDeg(1, 0, 60)
     calDeg(2, 0, 42)
     calDeg(3, 0, 90)
@@ -228,10 +232,11 @@ def re_default():
         p1.start()
         p2.start()
 	p3.start()
-    time.sleep(0.05)
-	
+    print "re d"
+    time.sleep(0.05
+    
 # xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
-
+'''
 while True:
     time.sleep(1)
     default_takkao()
@@ -247,4 +252,4 @@ while True:
     time.sleep(1)
     default()
     time.sleep(1)
-
+'''
