@@ -9,7 +9,7 @@ import drivers
 
 print ("Run File Start.py")
 display = drivers.Lcd()
-#a = FaceCV.OpenCV()
+
 
 while True:
     print("Writing to display")

@@ -17,6 +17,8 @@ cap.set(4,200)
 detector = dlib.get_frontal_face_detector()
 predictor = dlib.shape_predictor("shape_predictor_68_face_landmarks.dat")
 
+print("Run file FaceCV.py")
+
 def OpenCV():
         a = 1
         while a==1:

@@ -16,6 +16,8 @@ GPIO.setwarnings(False)
 
 lcd = lcdlib.lcd()
 
+print("Run file Ultrasonict.py")
+
 try:
         #Camera
         distance_Camera = 0
