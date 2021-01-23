@@ -13,8 +13,8 @@ os.system(command)
 
 print "Start ", FaceCV.distance 
 
-Ultrasonict.Arm()
-Ultrasonict.Camera()
+#Ultrasonict.Arm()
+#Ultrasonict.Camera()
 
 display.lcd_display_string("Hello World!", 1)  
 display.lcd_display_string("This is project", 2)  

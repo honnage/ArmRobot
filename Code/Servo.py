@@ -49,6 +49,14 @@ def calDeg(a,b,c):
 	degree = degree+100
 	degree = int(degree)
 	pwm.set_pwm(a,b,degree)
+	
+def CalDegloop(Channel,Deg_begin,Deg_end,i):
+	Degree_b = int(Deg_begin*2.77)
+	Degree_e = int(Deg_end*2.77)
+	
+	for i in range(Degree_b,Degree_e, 1):
+	    pwm.set_pwm(Channel,0,i)
+	    time.sleep(0.00001)
 
 #function default
 def default():
@@ -89,17 +97,61 @@ def testservo_2():
 
 print('Moving servo on channel 0, press Ctrl-C to quit...')
 
+servo_time = 0.000001
+a = 90
 
+def test_x(in_a):
+    
+    for i in range(0, int(a), 1):
+	calDeg(0, 0, i)
+	calDeg(1, 0, i)
+	calDeg(2, 0, i)
+	
+	#70 to 110
+	for j in range(int(a), 110, 1):
+	    calDeg(3, 0, j)
+	    
+	time.sleep(servo_time)
+    time.sleep(servo_time)
+    
+    for i in range(int(round(a,0)), 0, -1):
+	calDeg(0, 0, i)
+	calDeg(1, 0, i)
+	calDeg(2, 0, i)
+	
+	#70 to 110
+	for j in range(int(round(a,0)), 70, -1):
+	    calDeg(3, 0, j)
+	
+	time.sleep(servo_time)
+    time.sleep(servo_time)
+    
 
 #default()
 #time.sleep(2)
 #takkao()
-#SetD.narrow()
-#SetD.default()
-#SetD.furthest()
 
-Ultrasonict.Camera()
-Ultrasonict.Arm()
+for i in range(30):
+    test_x(a)
+
+
+#calDeg(1, 0, 0)
+
+'''
+while True:
+    SetD.narrow()
+    time.sleep(0.5)
+    #SetD.default()
+    #SetD.furthest()
+    SetD.shortest
+    time.sleep(0.5)
+    SetD.test1()
+    time.sleep(0.5)
+    SetD.test2()
+    time.sleep(0.5)
+'''
+#Ultrasonict.Camera()
+#Ultrasonict.Arm()
 
 
 

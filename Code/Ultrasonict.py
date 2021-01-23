@@ -73,8 +73,6 @@ try:
                 print("\n \n")
                 return sum_Camera, i, average_Camera 
         
-        # ==============================================================
-        
         #Arm
         distance_Arm = 0
         sum_Arm = 0
