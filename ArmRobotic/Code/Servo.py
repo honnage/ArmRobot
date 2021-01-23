@@ -28,63 +28,6 @@ print('Moving servo on channel 0, press Ctrl-C to quit...')
 face = FaceCV.OpenCV()
 print(face)
 
-a = Ultrasonict.Camera()
-
-time.sleep(1)
-DEG.default()
-time.sleep(1)
-DEG.default_takkao()
-#----
-DEG.scoop_rice() 
-DEG.scoop_rice_default()
-time.sleep(0.003)
-print("problem1")
-DEG.make_angle() #problem1
-time.sleep(0.001)
-DEG.arm2user()
-#time.sleep(0.001)
-DEG.arm2user_fit()
-
-time.sleep(0.01)
-#DEG.make_angle_channel1()
-#DEG.make_angle_channel2()
-
-ser1 = calDeg(1, 0, 60)
-ser2 = calDeg(2, 0, 42)
-
-
-
-arm_dis = Ultrasonict.check_extra()
-
-while arm_dis >= 20:
-    arm_dis = Ultrasonict.check_extra()
-    print(arm_dis)
-    ser1 += 1
-    print(ser1)
-    ser2 += 1
-    print(ser2)
-    calDeg(1, 0, ser1)
-    time.sleep(0.005)
-    calDeg(2, 0, ser2)
-    time.sleep(0.005)
-
-time.sleep(3)
-
-arm_dis = Ultrasonict.check_extra()
-while arm_dis < 20:
-    arm_dis = Ultrasonict.check_extra()
-    
-DEG.arm2user_fit()
-time.sleep(0.005)
-DEG.re_standby()
-DEG.re_default()
-time.sleep(0.5)
-DEG.default()
-time.sleep(1)
-
-
-    
-
-
+DEG.main()
     
 

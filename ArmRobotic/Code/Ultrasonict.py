@@ -102,6 +102,7 @@ try:
                         pulse_duration = pulse_end-pulse_start
                         distance_Arm = pulse_duration*17000
                         distance_Arm = round(distance_Arm,2)
+                        
                 
                         sum_Arm += distance_Arm 
 
@@ -151,7 +152,7 @@ try:
                 pulse_duration = pulse_end-pulse_start
                 distance_extra = pulse_duration*17000
                 distance_extra = round(distance_extra,2)
-        
+                
                 lcd.lcd_clear()
                 return distance_extra
         
