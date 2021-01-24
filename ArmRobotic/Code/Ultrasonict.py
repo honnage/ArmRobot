@@ -32,7 +32,7 @@ try:
                         GPIO.setup(ECHO_1, GPIO.IN)
                         GPIO.output(TRIG_1,False)
                         
-                        time.sleep(0.1) # Origin is 0.2
+                        time.sleep(0.2) # Origin is 0.2
                         GPIO.output(TRIG_1, True)
                         time.sleep(0.00001)
                         GPIO.output(TRIG_1, False)
@@ -89,7 +89,7 @@ try:
                         GPIO.setup(ECHO_2, GPIO.IN)
                         GPIO.output(TRIG_2,False)
                         
-                        time.sleep(0.1) # Origin is 0.2
+                        time.sleep(0.2) # Origin is 0.2
                         GPIO.output(TRIG_2, True)
                         time.sleep(0.00001)
                         GPIO.output(TRIG_2, False)
@@ -166,8 +166,9 @@ try:
                         
                 
         # ==============================================================
-        #Camera()
+        
         #Arm()
+        #Camera()
         #check_extra()
 
 except KeyboardInterrupt:

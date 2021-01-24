@@ -5,6 +5,7 @@ import time
 import os
 import sys
 import drivers
+
 #import FaceCV
 
 print ("Run File Start.py")
@@ -23,7 +24,7 @@ while True:
     display.lcd_clear()                           
          
     display.lcd_display_string("Open Camera", 1)   
-    print ("run file servo.py")
+    print ("run file Servo.py")
     command = "python Servo.py"
     time.sleep(0.5)                                          
     display.lcd_clear() 
