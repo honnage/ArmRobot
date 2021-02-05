@@ -1,3 +1,5 @@
+
+
 from __future__ import division
 import time
 import Adafruit_PCA9685
@@ -148,26 +150,24 @@ def make_angle():
 	    time.sleep(0.03)
 		
     def make_angle_channel2(): #servo channel 2
-	for i in range(42, 80, 1):
+	for i in range(42, 80, 3):
 	    calDeg(2, 0, i)
 	    time.sleep(0.03)
     
-    #calDeg(0, 0, 10)
-    calDeg(1, 0, 90)
-    calDeg(2, 0, 80)
-    calDeg(3, 0, 90)
-    calDeg(4, 0, 90)
-    
-   # make_angle_channel1()
-   # make_angle_channel2()
-    
+    #make_angle_channel1()
+    #make_angle_channel2()
     
     if(__name__=='__main__'):
 	p1 = mp.Process(target=make_angle_channel1)
 	p2 = mp.Process(target=make_angle_channel2)
 	p1.start()
 	p2.start()
-    time.sleep(0.05)
+    
+    #calDeg(0, 0, 10)
+    calDeg(1, 0, 90)
+    calDeg(2, 0, 80)
+    calDeg(3, 0, 90)
+    calDeg(4, 0, 90)
     
 # xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 
@@ -194,10 +194,14 @@ def arm2user_fit():
     time.sleep(0.05)
 
 # xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+
+def re_arm2user_fit():
+    calDeg(1, 0, 90)
+    calDeg(2, 0, 100)
+
+# XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
     
 def re_standby():
-    calDeg(1, 0, 60)
-    calDeg(2, 0, 42)
     calDeg(3, 0, 90)
     for i in range(90, 0, -1):
 	calDeg(0,0,i)
@@ -241,70 +245,68 @@ def re_default():
 	
 # xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 
-#def main():
 face = FaceCV.OpenCV()
 print(face)
 
-print('Moving servo on channel 0, press Ctrl-C to quit...')
-time.sleep(1)
-default()
-time.sleep(1)
-default_takkao()
-#----
-scoop_rice() 
-scoop_rice_default()
-time.sleep(0.003)
-print("problem1")
-make_angle() #problem1
-time.sleep(0.001)
-arm2user()
-time.sleep(0.001)
-arm2user_fit()
-
-time.sleep(0.01)
-calDeg(1, 0, 90)
-calDeg(2, 0, 80)
-
-ser1 = calDeg(1, 0, 90)
-ser2 = calDeg(2, 0, 80)
-
-arm_dis = Ultrasonict.check_extra()
-
-while arm_dis >= 20:
-    arm_dis = Ultrasonict.check_extra()
-    print(arm_dis)
-    ser1 += 1
-    print(ser1)
-    ser2 += 1
-    print(ser2)
-    calDeg(1, 0, ser1)
-    time.sleep(0.005)
-    calDeg(2, 0, ser2)
-    time.sleep(0.005)
-
-time.sleep(3)
-
-arm_dis = Ultrasonict.check_extra()
-while arm_dis < 20:
-    arm_dis = Ultrasonict.check_extra()
-    
-arm2user_fit()
-time.sleep(0.005)
-re_standby()
-re_default()
-time.sleep(0.5)
-default()
-time.sleep(1)
-
 # xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+for i in range(5):
+    print('Moving servo on channel 0, press Ctrl-C to quit...')
+    time.sleep(1)
+    default()
+    time.sleep(1)
+    default_takkao()
+    #----
+    scoop_rice() 
+    scoop_rice_default()
+    #time.sleep(0.003)
+    print("problem1")
+    make_angle() #problem1
+    time.sleep(0.001)
+    arm2user()
+    time.sleep(0.001)
+    arm2user_fit()
 
-'''
-calDeg(3, 0, 180)
-print "c"
-calDeg(0, 0, 20)
-'''
-#while True:
-#main()
+    time.sleep(0.01)
+    calDeg(1, 0, 90)
+    calDeg(2, 0, 80)
 
-    
+    ser1 = calDeg(1, 0, 90)
+    ser2 = calDeg(2, 0, 80)
+
+    arm_dis = Ultrasonict.check_extra()
+
+    while arm_dis >= 20:
+	arm_dis = Ultrasonict.check_extra()
+	print(arm_dis)
+	ser1 += 1
+	print(ser1)
+	ser2 += 1
+	print(ser2)
+	if ser1 <= 180:
+	    calDeg(1, 0, ser1)
+	    time.sleep(0.005)
+	    
+	if ser2 <= 170:
+	    calDeg(2, 0, ser2)
+	    time.sleep(0.005)
+
+    time.sleep(5)
+
+    arm_dis = Ultrasonict.check_extra()
+    while arm_dis < 20:
+	arm_dis = Ultrasonict.check_extra()
+
+    time.sleep(3)
+
+
+    re_arm2user_fit()
+    time.sleep(0.005)
+    re_standby()
+    time.sleep(0.005)
+    re_default()
+    time.sleep(0.5)
+    default()
+    time.sleep(1)
+
+
 
