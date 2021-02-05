@@ -247,66 +247,63 @@ def re_default():
 
 face = FaceCV.OpenCV()
 print(face)
+print('Moving servo on channel 0, press Ctrl-C to quit...')
+time.sleep(1)
+default()
+time.sleep(1)
+default_takkao()
+#----
+scoop_rice() 
+scoop_rice_default()
+#time.sleep(0.003)
+print("problem1")
+make_angle() #problem1
+time.sleep(0.001)
+arm2user()
+time.sleep(0.001)
+arm2user_fit()
 
-# xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
-for i in range(5):
-    print('Moving servo on channel 0, press Ctrl-C to quit...')
-    time.sleep(1)
-    default()
-    time.sleep(1)
-    default_takkao()
-    #----
-    scoop_rice() 
-    scoop_rice_default()
-    #time.sleep(0.003)
-    print("problem1")
-    make_angle() #problem1
-    time.sleep(0.001)
-    arm2user()
-    time.sleep(0.001)
-    arm2user_fit()
+time.sleep(0.01)
+calDeg(1, 0, 90)
+calDeg(2, 0, 80)
 
-    time.sleep(0.01)
-    calDeg(1, 0, 90)
-    calDeg(2, 0, 80)
+ser1 = calDeg(1, 0, 90)
+ser2 = calDeg(2, 0, 80)
 
-    ser1 = calDeg(1, 0, 90)
-    ser2 = calDeg(2, 0, 80)
+arm_dis = Ultrasonict.check_extra()
 
+while arm_dis >= 20:
+    arm_dis = Ultrasonict.check_extra()
+    print(arm_dis)
+    ser1 += 1
+    print(ser1)
+    ser2 += 1
+    print(ser2)
+    if ser1 <= 180:
+	calDeg(1, 0, ser1)
+	time.sleep(0.005)
+	
+    if ser2 <= 170:
+	calDeg(2, 0, ser2)
+	time.sleep(0.005)
+
+time.sleep(4)
+
+arm_dis = Ultrasonict.check_extra()
+while arm_dis < 20:
     arm_dis = Ultrasonict.check_extra()
 
-    while arm_dis >= 20:
-	arm_dis = Ultrasonict.check_extra()
-	print(arm_dis)
-	ser1 += 1
-	print(ser1)
-	ser2 += 1
-	print(ser2)
-	if ser1 <= 180:
-	    calDeg(1, 0, ser1)
-	    time.sleep(0.005)
-	    
-	if ser2 <= 170:
-	    calDeg(2, 0, ser2)
-	    time.sleep(0.005)
-
-    time.sleep(5)
-
-    arm_dis = Ultrasonict.check_extra()
-    while arm_dis < 20:
-	arm_dis = Ultrasonict.check_extra()
-
-    time.sleep(3)
+time.sleep(3)
 
 
-    re_arm2user_fit()
-    time.sleep(0.005)
-    re_standby()
-    time.sleep(0.005)
-    re_default()
-    time.sleep(0.5)
-    default()
-    time.sleep(1)
+re_arm2user_fit()
+time.sleep(0.005)
+re_standby()
+time.sleep(0.005)
+re_default()
+time.sleep(0.5)
+default()
+time.sleep(1)
 
 
 
