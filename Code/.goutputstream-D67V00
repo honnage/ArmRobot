@@ -78,20 +78,13 @@ def default_low():
 	    calDeg(1, 1, i)
 	    time.sleep(0.02)
 	    
-    def default_low_channel2(): #servo channel 0
+     def default_low_channel2(): #servo channel 0
 	for i in range(90, 0, -1):
 	    calDeg(2, 2, i)
 	    time.sleep(0.03)
 	    
-    if(__name__=='__main__'):
-	p2 = mp.Process(target=default_low_channel2)
-	p1 = mp.Process(target=default_low_channel1)
-	
-	p2.start()
-	p1.start()
-    time.sleep(0.5)
-    
-    #default_low_channel2()
+    default_low_channel1()
+    default_low_channel2()
 
 # xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 
@@ -231,12 +224,14 @@ def arm2fit():
     time.sleep(0.05)
 
 # xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
-
 default_new()
 time.sleep(1)
 
 default_low()
+
+'''
 time.sleep(3)
+default()
 
 time.sleep(2)
 default_rice()
@@ -292,7 +287,7 @@ while arm_dis < 20:
 
 print('ok ')
 turn_back()
-
+'''
 #test()
 
 '''
