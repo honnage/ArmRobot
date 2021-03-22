@@ -2,7 +2,7 @@ from __future__ import division
 import time
 import Adafruit_PCA9685
 import multiprocessing as mp
-#import Ultrasonict
+import Ultrasonict
 import os
 #import FaceCV
 
@@ -59,7 +59,7 @@ def calDeg(a,b,c):
 #function default
 def default():
     calDeg(0, 0, 10)
-    calDeg(1, 0, 15)
+    calDeg(1, 0, 20)
     calDeg(2, 0, 0)
     calDeg(3, 0, 85)
     calDeg(4, 0, 90)
@@ -82,7 +82,7 @@ def default_rice():
 	    calDeg(3, 0, i)
 	    time.sleep(0.02)
 	    
-    print ("Function default rice")
+    print ("Function: default rice")
     calDeg(0, 0, 10)
     calDeg(1, 0, 20)
     calDeg(2, 0, 10)
@@ -111,7 +111,7 @@ def scoop_rice():
 	    calDeg(4, 0, i)
 	    time.sleep(0.01)
 
-    print ("Function scoop rice")
+    print ("Function: scoop rice")
     calDeg(0, 0, 10)
     calDeg(1, 0, 45)
     calDeg(2, 0, 50)
@@ -140,7 +140,7 @@ def scoop_up():
 	    calDeg(2, 0, i)
 	    time.sleep(0.03)
     
-    print ("Function scoop up")
+    print ("Function: scoop up")
     calDeg(0, 0, 10)
     calDeg(1, 0, 90)
     calDeg(2, 0, 50)
@@ -165,7 +165,7 @@ def turn_corner_forward():
 	    calDeg(0, 0, i)
 	    time.sleep(0.03)
 	    
-    print ("Function turn corner forward")
+    print ("Function: turn corner forward")
     calDeg(0, 0, 10)
     calDeg(1, 0, 90)
     calDeg(2, 0, 90)
@@ -182,7 +182,7 @@ def turn_back():
 	    calDeg(0, 0, i)
 	    time.sleep(0.03)
 
-    print ("Function turn back")
+    print ("Function: turn back")
     calDeg(0, 0, 10)
     calDeg(1, 0, 90)
     calDeg(2, 0, 90)
@@ -192,35 +192,82 @@ def turn_back():
     time.sleep(0.05)
 
 # xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+def arm2fit():
+    calDeg(0, 0, 90)
+    calDeg(1, 0, 90)
+    calDeg(2, 0, 90)
+    calDeg(3, 0, 100)
+    calDeg(4, 0, 90)
+    print 'Function: arm to fit'
+    time.sleep(0.05)
 
-time.sleep(3)
+# xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+
+default_rice()
+scoop_rice()
+'''
+time.sleep(1)
 default()
 
-time.sleep(1)
+time.sleep(2)
 default_rice()
 
-time.sleep(1)
+time.sleep(0.1)
 scoop_rice()
 
-time.sleep(1)
+time.sleep(0.1)
 scoop_up()
 
-
-time.sleep(1)
+time.sleep(0.1)
 turn_corner_forward()
 
+time.sleep(0.1)
+arm2fit()
+
 time.sleep(1)
-turn_back()
-#default()
+
+servo1 = calDeg(1, 0, 90)
+servo2 = calDeg(2, 0, 90)
+
+time.sleep(1)
+arm_dis = Ultrasonict.check_extra()
+while arm_dis >= 20:
+    arm_dis = Ultrasonict.check_extra()
+    print(arm_dis)
+    if servo1 <= 180:
+	servo1 += 1
+	calDeg(1, 0, servo1)
+	time.sleep(0.1)
+	print("servo 1 deg: "+str(servo1))
+	
+    if servo2 <= 180:
+	servo2 += 1
+	calDeg(2, 0, servo2)
+	time.sleep(0.1)
+	print("serv0 2 deg: "+str(servo2))
+    
+    print(" ")
+
+time.sleep(2)
+
+arm_dis = Ultrasonict.check_extra()
+while arm_dis < 20:
+    arm_dis = Ultrasonict.check_extra()
+
+print('ok ')
+#turn_back()
 
 #test()
 '''
-calDeg(0, 0, 0)
-calDeg(1, 0, 30)
-calDeg(2, 0, 0)
-calDeg(3, 0, 90)
-calDeg(4, 0, 90)
 '''
+def test_cannel1(): #servo channel 1
+	for i in range(0, 180, 1):
+	    calDeg(1, 0, i)
+	    time.sleep(0.02)
 
-
-#calDeg(4, 0, 0)
+test_cannel1()
+'''
+'''
+calDeg(1, 0, 0)
+calDeg(2, 0, 0)
+'''
