@@ -203,10 +203,7 @@ def arm2fit():
 
 # xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 
-default_rice()
-scoop_rice()
-'''
-time.sleep(1)
+time.sleep(3)
 default()
 
 time.sleep(2)
@@ -234,18 +231,24 @@ arm_dis = Ultrasonict.check_extra()
 while arm_dis >= 20:
     arm_dis = Ultrasonict.check_extra()
     print(arm_dis)
-    if servo1 <= 180:
+    if servo1 < 180:
 	servo1 += 1
 	calDeg(1, 0, servo1)
 	time.sleep(0.1)
 	print("servo 1 deg: "+str(servo1))
 	
-    if servo2 <= 180:
+    elif servo1 == 180:
+	calDeg(1, 0, 180)
+	
+    if servo2 < 180:
 	servo2 += 1
 	calDeg(2, 0, servo2)
 	time.sleep(0.1)
 	print("serv0 2 deg: "+str(servo2))
-    
+	
+    elif servo2 == 180:
+	calDeg(2, 0, 180)
+	
     print(" ")
 
 time.sleep(2)
@@ -258,16 +261,8 @@ print('ok ')
 #turn_back()
 
 #test()
-'''
-'''
-def test_cannel1(): #servo channel 1
-	for i in range(0, 180, 1):
-	    calDeg(1, 0, i)
-	    time.sleep(0.02)
 
-test_cannel1()
 '''
-'''
-calDeg(1, 0, 0)
-calDeg(2, 0, 0)
+calDeg(1, 0, 90)
+calDeg(2, 0, 90)
 '''
