@@ -1,13 +1,16 @@
 import RPi.GPIO as GPIO
 import time
-TRIG=14
-ECHO=15
+TRIG=27
+ECHO=22
 GPIO.setmode(GPIO.BCM)
+GPIO.setwarnings(False)
+
 while True:
     print("distance measurement in progress")
     GPIO.setup(TRIG,GPIO.OUT)
     GPIO.setup(ECHO,GPIO.IN)
     GPIO.output(TRIG,False)
+ 
     #print("waiting for sensor to settle")
     
     time.sleep(0.2)
@@ -24,5 +27,5 @@ while True:
     distance = pulse_duration*17150
     distance = round(distance,2)
     print("distance:",distance,"cm")
-    time.sleep(2)
+    time.sleep(0.3)
     print("")

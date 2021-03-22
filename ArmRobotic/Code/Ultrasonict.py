@@ -106,16 +106,16 @@ try:
                 
                         sum_Arm += distance_Arm 
 
-                        #print "Ultrasonict 2 is distance:",distance_Arm,"cm"
-                        #print 'Ultrasonict 2 is sum = ', sum_Arm 
-                        #print('')
+                        print "Ultrasonict 2 is distance:",distance_Arm,"cm"
+                        print 'Ultrasonict 2 is sum = ', sum_Arm 
+                        print('')
                         
                         time.sleep(0.01)
                      
                 # Outside the loop       
-                #print ("---------------")
-                #print "Ultrasonict 2 is sum = ", sum_Arm
-                #print "Ultrasonict 2 is num = ", i+1
+                print ("---------------")
+                print "Ultrasonict 2 is sum = ", sum_Arm
+                print "Ultrasonict 2 is num = ", i+1
                 
                 average_Arm = round( sum_Arm / (i + 1) , 2 )
                
@@ -130,7 +130,7 @@ try:
                 
                 lcd.lcd_clear()
                 print("\n \n")
-                return average_Arm
+                #return average_Arm
                 
         # ==============================================================
                  

@@ -259,6 +259,7 @@ face = FaceCV.OpenCV()
 dist = face + 8
 print 'Distance ',dist
 
+
 if dist >= 8:
 #for i in range(5):
     time.sleep(1)
@@ -278,7 +279,7 @@ if dist >= 8:
 
     calDeg(1, 0, 90)
     calDeg(2, 0, 80)
-
+    print ("show debug")
     ser1 = calDeg(1, 0, 90)
     ser2 = calDeg(2, 0, 80)
 
@@ -300,7 +301,7 @@ if dist >= 8:
     
 	print(" ")
 
-    time.sleep(4)
+    time.sleep(2)
 
     arm_dis = Ultrasonict.check_extra()
     while arm_dis < 20:
@@ -315,6 +316,5 @@ if dist >= 8:
     time.sleep(0.5)
     default()
     time.sleep(0.5)
-
 
 
