@@ -48,7 +48,7 @@ def OpenCV():
                         print "Distance mouth :",distance
                         
                         
-                        if distance >= 4:
+                        if distance >= 8:
                                 a = 0
                                 print "Run Ultrasonict function Camera \n"
                                 return a 
@@ -60,3 +60,5 @@ def OpenCV():
                 key = cv2.waitKey(1)
                 if key == 27:
                         break
+
+

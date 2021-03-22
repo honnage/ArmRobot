@@ -14,6 +14,7 @@ display = drivers.Lcd()
 
 while True:
     print("Writing to display")
+  
     display.lcd_display_string("Start on", 1)  
     display.lcd_display_string("This is Project", 2)  
     time.sleep(0.5)                                           
@@ -29,11 +30,15 @@ while True:
     time.sleep(0.5)                                          
     display.lcd_clear() 
     os.system(command)
+    print ("Sound on")
+    command = "aplay Sound_Power-on.wav"
+    os.system(command)
+
 
     command = "aplay Sound_EndDetect.wav"
     os.system(command)
     print ("Sound on")
-
+    time.sleep(0.5) 
 
 
 
