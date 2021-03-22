@@ -131,33 +131,86 @@ def scoop_rice():
 # xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 def scoop_up():    
     def scoop_up_channel3(): #servo channel 3
-	for i in range(141, 90, -1):
+	for i in range(141, 100, -1):
 	    calDeg(3, 0, i)
 	    time.sleep(0.05)
     
+    def scoop_up_channel2(): #servo channel 2
+	for i in range(42, 90, 1):
+	    calDeg(2, 0, i)
+	    time.sleep(0.03)
+    
     print ("Function scoop up")
     calDeg(0, 0, 10)
-    calDeg(1, 0, 60)
-    calDeg(2, 0, 42)
+    calDeg(1, 0, 90)
+    calDeg(2, 0, 50)
     calDeg(3, 0, 140)
     calDeg(4, 0, 90)
+    
     scoop_up_channel3()
+    time.sleep(0.05)
+    scoop_up_channel2()
+    time.sleep(0.05)
+    '''
+    if(__name__=='__main__'):
+	p3 = mp.Process(target=scoop_up_channel3)
+	p2 = mp.Process(target=scoop_up_channel2)
+	p3.start()
+	p2.start()
+    '''
+# xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+def turn_corner_forward():
+    def turn_corner_forward_channel0(): #servo channel 0
+	for i in range(10, 90, 1):
+	    calDeg(0, 0, i)
+	    time.sleep(0.03)
+	    
+    print ("Function turn corner forward")
+    calDeg(0, 0, 10)
+    calDeg(1, 0, 90)
+    calDeg(2, 0, 90)
+    calDeg(3, 0, 100)
+    calDeg(4, 0, 90)
+    turn_corner_forward_channel0()
     time.sleep(0.05)
 
 # xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 
+def turn_back():
+    def turn_back_channel0(): #servo channel 0
+	for i in range(90, 10, -1):
+	    calDeg(0, 0, i)
+	    time.sleep(0.03)
 
-time.sleep(1)
-default()
+    print ("Function turn back")
+    calDeg(0, 0, 10)
+    calDeg(1, 0, 90)
+    calDeg(2, 0, 90)
+    calDeg(3, 0, 100)
+    calDeg(4, 0, 90)
+    turn_back_channel0()
+    time.sleep(0.05)
+
+# xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 
 time.sleep(3)
+default()
+
+time.sleep(1)
 default_rice()
 
-time.sleep(2)
+time.sleep(1)
 scoop_rice()
 
 time.sleep(1)
 scoop_up()
+
+
+time.sleep(1)
+turn_corner_forward()
+
+time.sleep(1)
+turn_back()
 #default()
 
 #test()
@@ -169,3 +222,5 @@ calDeg(3, 0, 90)
 calDeg(4, 0, 90)
 '''
 
+
+#calDeg(4, 0, 0)
