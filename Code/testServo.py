@@ -55,17 +55,14 @@ def calDeg(a,b,c):
 	return re_deg
 
 # xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
-
-#function default
-
-    
-def default_new():
+def default():
     calDeg(0, 0, 10)
     calDeg(1, 1, 90)
     calDeg(2, 2, 90)
     calDeg(3, 3, 85)
     calDeg(4, 4, 90)
-    
+
+# xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 def default_low():
     calDeg(0, 0, 10)
     calDeg(1, 1, 90)
@@ -76,12 +73,12 @@ def default_low():
     def default_low_channel1(): #servo channel 0
 	for i in range(90, 20, -1):
 	    calDeg(1, 1, i)
-	    time.sleep(0.02)
+	    time.sleep(0.01)
 	    
     def default_low_channel2(): #servo channel 0
 	for i in range(90, 0, -1):
 	    calDeg(2, 2, i)
-	    time.sleep(0.03)
+	    time.sleep(0.01)
 	    
     if(__name__=='__main__'):
 	p2 = mp.Process(target=default_low_channel2)
@@ -105,6 +102,7 @@ def default_rice():
 	for i in range(10, 50, 1):
 	    calDeg(2, 2, i)
 	    time.sleep(0.02)
+	    #print("deg servo 2 "+str(i))
    
     def default_rice_channel3(): #servo channel 3
 	for i in range(60, 90, 1):
@@ -165,9 +163,10 @@ def scoop_up():
 	    time.sleep(0.05)
     
     def scoop_up_channel2(): #servo channel 2
-	for i in range(42, 90, 1):
+	for i in range(50, 90, 1):
 	    calDeg(2, 2, i)
 	    time.sleep(0.03)
+	    #print("deg servo 2 "+str(i))
     
     print ("Function: scoop up")
     calDeg(0, 0, 10)
@@ -200,6 +199,7 @@ def turn_corner_forward():
     calDeg(2, 2, 90)
     calDeg(3, 3, 100)
     calDeg(4, 4, 90)
+    
     turn_corner_forward_channel0()
     time.sleep(0.05)
 
@@ -232,19 +232,18 @@ def arm2fit():
 
 # xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 
-default_new()
+default()
 time.sleep(1)
 
 default_low()
-time.sleep(3)
+time.sleep(0.5)
 
-time.sleep(2)
+time.sleep(0.1)
 default_rice()
 
 time.sleep(0.1)
 scoop_rice()
-'''
-'''
+
 time.sleep(0.1)
 scoop_up()
 
@@ -259,7 +258,8 @@ time.sleep(1)
 servo1 = calDeg(1, 1, 90)
 servo2 = calDeg(2, 2, 90)
 
-time.sleep(1)
+time.sleep(0.5)
+print("Ultrasonic sensor")
 arm_dis = Ultrasonict.check_extra()
 while arm_dis >= 20:
     arm_dis = Ultrasonict.check_extra()
@@ -295,7 +295,4 @@ turn_back()
 
 #test()
 
-'''
-calDeg(1, 0, 90)
-calDeg(2, 0, 90)
-'''
+
