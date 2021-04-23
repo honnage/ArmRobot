@@ -204,12 +204,55 @@ def turn_corner_forward():
     time.sleep(0.05)
 
 # xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+def arm2fit():
+    calDeg(0, 0, 90)
+    calDeg(1, 1, 90)
+    calDeg(2, 2, 90)
+    calDeg(3, 3, 100)
+    calDeg(4, 4, 90)
+    print 'Function: arm to fit'
+    time.sleep(0.05)
 
+# xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+def turn_cornerback(s1, s2):
+    print 'Function: turn cornerback'
+    print ("Value servo 1 = " + str(s1))
+    print ("Value servo 2 = " + str(s2))
+    
+    def turn_cornerback_channel1(): #servo channel 1
+	for i in range(s1, 90, -1):
+	    calDeg(1, 0, i)
+	    print("servo 1 deg: "+str(i))
+	    time.sleep(0.03)
+	
+	
+    def turn_cornerback_channel2(): #servo channel 2
+	for i in range(s2, 90, -1):
+	    calDeg(2, 0, i)
+	    print("servo 2 deg: "+str(i))
+	    time.sleep(0.03)
+	
+	    
+    calDeg(3, 3, 100)
+    calDeg(4, 4, 90)
+    #turn_cornerback_channel1()
+    #turn_cornerback_channel2()
+    
+    if(__name__=='__main__'):
+	p2 = mp.Process(target=turn_cornerback_channel2)
+	p1 = mp.Process(target=turn_cornerback_channel1)
+	
+	p2.start()
+	p1.start()
+    
+    time.sleep(0.05)
+    
+# xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 def turn_back():
     def turn_back_channel0(): #servo channel 0
 	for i in range(90, 10, -1):
 	    calDeg(0, 0, i)
-	    time.sleep(0.03)
+	    time.sleep(0.01)
 
     print ("Function: turn back")
     calDeg(0, 0, 10)
@@ -218,16 +261,6 @@ def turn_back():
     calDeg(3, 3, 100)
     calDeg(4, 4, 90)
     turn_back_channel0()
-    time.sleep(0.05)
-
-# xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
-def arm2fit():
-    calDeg(0, 0, 90)
-    calDeg(1, 1, 90)
-    calDeg(2, 2, 90)
-    calDeg(3, 3, 100)
-    calDeg(4, 4, 90)
-    print 'Function: arm to fit'
     time.sleep(0.05)
 
 # xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
@@ -267,7 +300,7 @@ while arm_dis >= 20:
     if servo1 < 150:
 	servo1 += 1
 	calDeg(1, 1, servo1)
-	time.sleep(0.1)
+	#time.sleep(0.02)
 	print("servo 1 deg: "+str(servo1))
 	
     elif servo1 == 180:
@@ -276,21 +309,24 @@ while arm_dis >= 20:
     if servo2 < 150:
 	servo2 += 1
 	calDeg(2, 2, servo2)
-	time.sleep(0.1)
-	print("serv0 2 deg: "+str(servo2))
+	#time.sleep(0.02)
+	print("servo 2 deg: "+str(servo2))
 	
     elif servo2 == 180:
 	calDeg(2, 2, 180)
 	
-    print(" ")
+    print("======================")
 
-time.sleep(2)
-
+time.sleep(0.5)
 arm_dis = Ultrasonict.check_extra()
 while arm_dis < 20:
     arm_dis = Ultrasonict.check_extra()
 
 print('ok ')
+time.sleep(3)
+turn_cornerback(servo1, servo2)
+
+time.sleep(0.5)
 turn_back()
 
 #test()
