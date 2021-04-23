@@ -370,6 +370,7 @@ while True:
 	p2 = [BOTTOM_X,BOTTOM_Y]
 	distance = math.sqrt( ((p1[0]-p2[0])**2)+((p1[1]-p2[1])**2) )
 	    
+	cv2.imshow("Frame", frame) 
 	
 	print "Distance mouth: ",distance
 
@@ -377,9 +378,9 @@ while True:
 	    Thread(target=run_Servo(distance)).start()
 	    
 	distance = 0
-	time.sleep(5)
+	time.sleep(3)
 	
-    cv2.imshow("Frame", frame)     
+   
     time.sleep(0.5)
 
     key = cv2.waitKey(1)
