@@ -9,7 +9,6 @@ import dlib
 import math 
 import time
 import os
-#import drivers
 import Ultrasonict
 
 cap = cv2.VideoCapture(0)
@@ -20,8 +19,6 @@ detector = dlib.get_frontal_face_detector()
 predictor = dlib.shape_predictor("shape_predictor_68_face_landmarks.dat")
 
 pwm = Adafruit_PCA9685.PCA9685()
-
-print("Run file SetDegree.py")
 
 def set_servo_pulse(channel, pulse):
     pulse_length = 1000000    # 1,000,000 us per second
@@ -59,7 +56,295 @@ pwm.set_pwm_freq(60)
     #***
     # 1 degree = 2.77 Hz
 '''
+def calDeg(a,b,c):
+    re_deg = c
+    degree = 2.77*c
+    degree = degree+100
+    degree = int(degree)
+    pwm.set_pwm(a,b,degree)
+    return re_deg
 
+# xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+def default():
+    print ("Function: default")
+    calDeg(0, 0, 10)
+    calDeg(1, 1, 90)
+    calDeg(2, 2, 90)
+    calDeg(3, 3, 85)
+    calDeg(4, 4, 90)
+
+# xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+def default_low():
+    print ("Function: default low")
+    calDeg(0, 0, 10)
+    calDeg(1, 1, 90)
+    calDeg(2, 2, 90)
+    calDeg(3, 3, 85)
+    calDeg(4, 4, 90)
+    
+    def default_low_channel1(): #servo channel 0
+	for i in range(90, 20, -1):
+	    calDeg(1, 1, i)
+	    time.sleep(0.01)
+	    
+    def default_low_channel2(): #servo channel 0
+	for i in range(90, 0, -1):
+	    calDeg(2, 2, i)
+	    time.sleep(0.01)
+	    
+    if(__name__=='__main__'):
+	p2 = mp.Process(target=default_low_channel2)
+	p1 = mp.Process(target=default_low_channel1)
+	
+	p2.start()
+	p1.start()
+    time.sleep(0.5)
+    
+    #default_low_channel2()
+
+# xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+
+def default_rice():
+    def default_rice_channel1(): #servo channel 1
+	for i in range(20, 45, 1):
+	    calDeg(1, 1, i)
+	    time.sleep(0.02)
+
+    def default_rice_channel2(): #servo channel 2
+	for i in range(10, 50, 1):
+	    calDeg(2, 2, i)
+	    time.sleep(0.02)
+	    #print("deg servo 2 "+str(i))
+   
+    def default_rice_channel3(): #servo channel 3
+	for i in range(60, 90, 1):
+	    calDeg(3, 3, i)
+	    time.sleep(0.02)
+	    
+    print ("Function: default rice")
+    calDeg(0, 0, 10)
+    calDeg(1, 1, 20)
+    calDeg(2, 2, 10)
+    calDeg(3, 3, 60)
+    calDeg(4, 4, 0)
+    
+    default_rice_channel2()
+    default_rice_channel1()
+    default_rice_channel3()
+    time.sleep(0.5)
+
+# xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+def scoop_rice():
+    def scoop_rice_channel1(): #servo channel 1
+	for i in range(45, 90, 1):
+	    calDeg(1, 1, i)
+	    time.sleep(0.02)
+	    
+    def scoop_rice_channel3(): #servo channel 3
+	for i in range(90, 140, 1):
+	    calDeg(3, 3, i)
+	    time.sleep(0.02)
+    
+    def scoop_rice_channel4(): #servo channel 4
+	for i in range(0, 90, 1):
+	    calDeg(4, 4, i)
+	    time.sleep(0.01)
+
+    print ("Function: scoop rice")
+    calDeg(0, 0, 10)
+    calDeg(1, 1, 45)
+    calDeg(2, 2, 50)
+    calDeg(3, 3, 90)
+    calDeg(4, 4, 0)
+    
+    if(__name__=='__main__'):
+	p3 = mp.Process(target=scoop_rice_channel3)
+	p1 = mp.Process(target=scoop_rice_channel1)
+	p3.start()
+	p1.start()
+    
+    time.sleep(0.5)
+    scoop_rice_channel4()
+    time.sleep(0.5)
+
+# xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+def scoop_up():    
+    def scoop_up_channel3(): #servo channel 3
+	for i in range(141, 100, -1):
+	    calDeg(3, 3, i)
+	    time.sleep(0.05)
+    
+    def scoop_up_channel2(): #servo channel 2
+	for i in range(50, 90, 1):
+	    calDeg(2, 2, i)
+	    time.sleep(0.03)
+	    #print("deg servo 2 "+str(i))
+    
+    print ("Function: scoop up")
+    calDeg(0, 0, 10)
+    calDeg(1, 1, 90)
+    calDeg(2, 2, 50)
+    calDeg(3, 3, 140)
+    calDeg(4, 4, 90)
+    
+    scoop_up_channel3()
+    time.sleep(0.05)
+    scoop_up_channel2()
+    time.sleep(0.05)
+    '''
+    if(__name__=='__main__'):
+	p3 = mp.Process(target=scoop_up_channel3)
+	p2 = mp.Process(target=scoop_up_channel2)
+	p3.start()
+	p2.start()
+    '''
+# xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+def turn_corner_forward():
+    def turn_corner_forward_channel0(): #servo channel 0
+	for i in range(10, 90, 1):
+	    calDeg(0, 0, i)
+	    time.sleep(0.03)
+	    
+    print ("Function: turn corner forward")
+    calDeg(0, 0, 10)
+    calDeg(1, 1, 90)
+    calDeg(2, 2, 90)
+    calDeg(3, 3, 100)
+    calDeg(4, 4, 90)
+    
+    turn_corner_forward_channel0()
+    time.sleep(0.05)
+
+# xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+def arm2fit():
+    calDeg(0, 0, 90)
+    calDeg(1, 1, 90)
+    calDeg(2, 2, 90)
+    calDeg(3, 3, 100)
+    calDeg(4, 4, 90)
+    print 'Function: arm to fit'
+    time.sleep(0.05)
+
+# xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+def turn_cornerback(s1, s2):
+    print 'Function: turn cornerback'
+    print ("Value servo 1 = " + str(s1))
+    print ("Value servo 2 = " + str(s2))
+    
+    def turn_cornerback_channel1(): #servo channel 1
+	for i in range(s1, 90, -1):
+	    calDeg(1, 0, i)
+	    print("servo 1 deg: "+str(i))
+	    time.sleep(0.03)
+	
+    def turn_cornerback_channel2(): #servo channel 2
+	for i in range(s2, 90, -1):
+	    calDeg(2, 0, i)
+	    print("servo 2 deg: "+str(i))
+	    time.sleep(0.03)
+	
+    calDeg(3, 3, 100)
+    calDeg(4, 4, 90)
+    #turn_cornerback_channel1()
+    #turn_cornerback_channel2()
+    
+    if(__name__=='__main__'):
+	p2 = mp.Process(target=turn_cornerback_channel2)
+	p1 = mp.Process(target=turn_cornerback_channel1)
+	
+	p2.start()
+	p1.start()
+    
+    time.sleep(0.05)
+    
+# xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+def turn_back():
+    def turn_back_channel0(): #servo channel 0
+	for i in range(90, 10, -1):
+	    calDeg(0, 0, i)
+	    time.sleep(0.01)
+
+    print ("Function: turn back")
+    calDeg(0, 0, 10)
+    calDeg(1, 1, 90)
+    calDeg(2, 2, 90)
+    calDeg(3, 3, 100)
+    calDeg(4, 4, 90)
+    turn_back_channel0()
+    time.sleep(0.05)
+
+# xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+def run_Servo(distance):
+    print ("distance :" + str(distance))
+    if distance >= 10:
+	#default()
+	time.sleep(1)
+
+	default_low()
+	time.sleep(0.5)
+
+	time.sleep(0.1)
+	default_rice()
+
+	time.sleep(0.1)
+	scoop_rice()
+
+	time.sleep(0.1)
+	scoop_up()
+
+	time.sleep(0.1)
+	turn_corner_forward()
+
+	time.sleep(0.1)
+	arm2fit()
+
+	time.sleep(1)
+
+	servo1 = calDeg(1, 1, 90)
+	servo2 = calDeg(2, 2, 90)
+
+	time.sleep(0.5)
+	print("Ultrasonic sensor")
+	arm_dis = Ultrasonict.check_extra()
+	while arm_dis >= 20:
+	    arm_dis = Ultrasonict.check_extra()
+	    print(arm_dis)
+	    if servo1 < 150:
+		servo1 += 1
+		calDeg(1, 1, servo1)
+		print("servo 1 deg: " + str(servo1))
+		
+	    elif servo1 == 180:
+		calDeg(1, 1, 180)
+		
+	    if servo2 < 150:
+		servo2 += 1
+		calDeg(2, 2, servo2)
+		print("servo 2 deg: " + str(servo2))
+		
+	    elif servo2 == 180:
+		calDeg(2, 2, 180)
+		
+	    print("======================")
+
+	time.sleep(0.5)
+	arm_dis = Ultrasonict.check_extra()
+	while arm_dis < 20:
+	    arm_dis = Ultrasonict.check_extra()
+
+	print('ok ')
+	time.sleep(5)
+	turn_cornerback(servo1, servo2)
+
+	time.sleep(0.5)
+	turn_back()
+	
+
+# xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+# xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+default()
+print("Show frame")
+print(" ")
 while True:
     _, frame = cap.read()
     gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
@@ -84,14 +369,24 @@ while True:
 	p1 = [TOP_X,TOP_Y]
 	p2 = [BOTTOM_X,BOTTOM_Y]
 	distance = math.sqrt( ((p1[0]-p2[0])**2)+((p1[1]-p2[1])**2) )
-	print "Distance mouth :",distance
+	    
+	
+	print "Distance mouth: ",distance
 
-	if distance >= 8:
-	    print "Run Ultrasonict function Camera \n"
-	    time.sleep(0.5)
+	if distance >= 10:
+	    Thread(target=run_Servo(distance)).start()
+	    
+	distance = 0
+	time.sleep(5)
+	
+    cv2.imshow("Frame", frame)     
+    time.sleep(0.5)
 
-	cv2.imshow("Frame", frame)
+    key = cv2.waitKey(1)
+    if key == 27:
+	break
+	
+GPIO.cleanup()	    
+# xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+# xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 
-	key = cv2.waitKey(1)
-	if key == 27:
-	    break

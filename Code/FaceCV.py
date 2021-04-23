@@ -61,4 +61,5 @@ def OpenCV():
                 if key == 27:
                         break
 
+OpenCV()
 
