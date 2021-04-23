@@ -300,8 +300,7 @@ while arm_dis >= 20:
     if servo1 < 150:
 	servo1 += 1
 	calDeg(1, 1, servo1)
-	#time.sleep(0.02)
-	print("servo 1 deg: "+str(servo1))
+	print("servo 1 deg: " + str(servo1))
 	
     elif servo1 == 180:
 	calDeg(1, 1, 180)
@@ -309,8 +308,7 @@ while arm_dis >= 20:
     if servo2 < 150:
 	servo2 += 1
 	calDeg(2, 2, servo2)
-	#time.sleep(0.02)
-	print("servo 2 deg: "+str(servo2))
+	print("servo 2 deg: " + str(servo2))
 	
     elif servo2 == 180:
 	calDeg(2, 2, 180)
@@ -323,7 +321,7 @@ while arm_dis < 20:
     arm_dis = Ultrasonict.check_extra()
 
 print('ok ')
-time.sleep(3)
+time.sleep(5)
 turn_cornerback(servo1, servo2)
 
 time.sleep(0.5)
