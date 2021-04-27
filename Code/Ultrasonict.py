@@ -16,7 +16,7 @@ GPIO.setwarnings(False)
 
 lcd = lcdlib.lcd()
 
-print("Run file Ultrasonict.py")
+print("Import file Ultrasonict.py")
 
 try:
         #Camera

@@ -4,7 +4,6 @@ import Adafruit_PCA9685
 import multiprocessing as mp
 import Ultrasonict
 import os
-#import FaceCV
 
 pwm = Adafruit_PCA9685.PCA9685()
 
@@ -329,6 +328,5 @@ turn_cornerback(servo1, servo2)
 time.sleep(0.5)
 turn_back()
 
-#test()
 
 

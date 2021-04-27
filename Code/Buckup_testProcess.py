@@ -79,6 +79,7 @@ def default():
     calDeg(2, 2, 90)
     calDeg(3, 3, 85)
     calDeg(4, 4, 90)
+    print("Function: Set Degree Servo Default")
 
 # ======================================================================
 def default_low():
@@ -283,6 +284,7 @@ def turn_back():
 def WorkingArmRoBot():
 	print("Working Arm Robot ...")
 	global isWorking 
+	isWorking = False
 	
 	if distance >= 12:
 		print("distance: "+str(distance))
@@ -349,11 +351,24 @@ def WorkingArmRoBot():
 
 		time.sleep(0.5)
 		turn_back()
-	
+		
+	print("Status isWorking = "+str(isWorking))
+	print("======================")
 
-	return
+	time.sleep(5)
+	
+	return isWorking
+
 	
 # xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+def DetectEAT():
+	command = "python Servo.py"
+	os.system(command)
+	print("Run file Servo.py ")
+	global isWorking 
+	isWorking = False
+	return 
+	
 # xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 # xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 
@@ -391,11 +406,11 @@ while True:
 		if distance >= 12 and isWorking == False :
 			isWorking = True
 			print "run servo armrobot"
-			#Thread(target=WorkingArmRoBot).start()
+			Thread(target=DetectEAT).start()
 			
-			if(__name__=='__main__'):
-				p1 = mp.Process(target=WorkingArmRoBot())
-				p1.start()
+			#if(__name__=='__main__'):
+			#	p1 = mp.Process(target=WorkingArmRoBot())
+			#	p1.start()
 
 
 	cv2.imshow("Frame", frame)
