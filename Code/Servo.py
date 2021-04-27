@@ -323,12 +323,20 @@ arm_dis = Ultrasonict.check_extra()
 while arm_dis < 20:
     arm_dis = Ultrasonict.check_extra()
 
-print('ok ')
+for i in range(3):
+    print('========== OK ==========')
+    
 time.sleep(5)
 turn_cornerback(servo1, servo2)
 
 time.sleep(0.5)
 turn_back()
+
+time.sleep(0.5)
+print ("Sound off")
+command = "aplay Sound_EndDetect.wav"
+os.system(command)
+
 
 
 

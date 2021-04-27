@@ -10,6 +10,7 @@ import math
 import time
 import os
 #import drivers
+print("Start Project ....")
 import Ultrasonict
  
 cap = cv2.VideoCapture(0)
@@ -31,6 +32,9 @@ def WorkingArmRoBot():
 	isWorking = False
 	return 
 # xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+print ("Sound on")
+command = "aplay Sound_Power-on.wav"
+os.system(command)
 
 print("Opening Camera ...")
 while True:
@@ -62,7 +66,7 @@ while True:
 		    if distance >= 12 :
 			print "Distance mouth :",distance
 			isWorking = True
-			print "run servo armrobot"
+			print "Run servo armrobot"
 			Thread(target=WorkingArmRoBot).start()
 			    
 			    #if(__name__=='__main__'):
