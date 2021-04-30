@@ -1,6 +1,9 @@
 import lcdlib
 import time
+import drivers
 
-lcd = lcdlib.lcd()
-lcd.lcd_display_string("Hello Wolrd dd",1)
-lcd.lcd_display_string("This is Project",2)
+display = drivers.Lcd()
+display.lcd_display_string("No time to wastedd ", 1)  
+
+print("Cleaning up!")   
+display.lcd_clear()
