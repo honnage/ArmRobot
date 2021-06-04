@@ -265,6 +265,7 @@ def turn_back():
     time.sleep(0.05)
 
 # xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+'''
 default()
 time.sleep(1)
 
@@ -335,7 +336,19 @@ time.sleep(0.5)
 print ("Sound off")
 command = "aplay Sound_EndDetect.wav"
 os.system(command)
+'''
 
+arm2fit()
+
+time.sleep(1)
+
+servo1 = calDeg(1, 1, 90)
+servo2 = calDeg(2, 2, 90)
+
+time.sleep(0.5)
+print("Ultrasonic sensor")
+arm_dis = Ultrasonict.Camera()
+arm_dis = Ultrasonict.Arm()
 
 
 

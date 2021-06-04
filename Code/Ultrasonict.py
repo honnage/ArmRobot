@@ -120,12 +120,12 @@ try:
                 average_Arm = round( sum_Arm / (i + 1) , 2 )
                
                 print "Ultrasonict 2 is average =", average_Arm
-                #print ("---------------")
+                print ("---------------")
 
                 dist = str(average_Arm)
                 lcd.lcd_display_string("Distance Arm",1)
                 lcd.lcd_display_string(">>> "+dist+" cm",2)
-                #print "Ultrasonic 2 is Camera Distance is >>> "+dist+" cm"
+                print "Ultrasonic 2 is Camera Distance is >>> "+dist+" cm"
                 time.sleep(0.1)
                 
                 lcd.lcd_clear()
@@ -166,7 +166,33 @@ try:
                         
                 
         # ==============================================================
-        
+        def test()
+                while True:
+                        print("distance measurement in progress")
+                        GPIO.setup(TRIG_1,GPIO.OUT)
+                        GPIO.setup(ECHO_2,GPIO.IN)
+                        GPIO.output(TRIG_1,False)
+                     
+                        #print("waiting for sensor to settle")
+                        
+                        time.sleep(0.2)
+                        GPIO.output(TRIG_1,True)
+                        time.sleep(0.00001)
+                        GPIO.output(TRIG_1,False)
+                        
+                        while GPIO.input(ECHO_2) == 0:
+                            pulse_start = time.time()
+                        while GPIO.input(ECHO_2) == 1:
+                            pulse_end = time.time()
+                            
+                        pulse_duration = pulse_end-pulse_start
+                        distance = pulse_duration*17150
+                        distance = round(distance,2)
+                        print("distance:",distance,"cm")
+                        time.sleep(1)
+                        print("")
+
+
         #Arm()
         #Camera()
         #check_extra()
