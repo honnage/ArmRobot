@@ -130,7 +130,7 @@ try:
                 
                 lcd.lcd_clear()
                 print("\n \n")
-                #return average_Arm
+                return average_Arm
                 
         # ==============================================================
                  
@@ -166,7 +166,7 @@ try:
                         
                 
         # ==============================================================
-        def test()
+        def test():
                 while True:
                         print("distance measurement in progress")
                         GPIO.setup(TRIG_1,GPIO.OUT)

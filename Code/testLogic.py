@@ -213,60 +213,7 @@ def arm2fit():
     calDeg(4, 4, 90)
     print 'Function: arm to fit'
     time.sleep(0.05)
-    
-# xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
-def distance_deg(s1,s2):
-    print 'Function: distance deg'
-    s1 = int(round(s1))
-    s2 = int(round(s2))
-    
-    print ("Value servo 1 = " + str(s1))
-    print ("Value servo 2 = " + str(s2))
-    
-    def distance_deg_channel1(): #servo channel 1
-	if(s1 < 151):
-	    for i in range(91, s1+1, 1):
-		calDeg(1, 1, i)
-		print("servo 1 deg: "+str(i))
-		time.sleep(0.025)
 
-	else:
-	    for i in range(91, 151, 1):
-		calDeg(1, 1, i)
-		print("servo 1 deg: "+str(i))
-		time.sleep(0.025)
-	    
-	
-	
-    def distance_deg_channel2(): #servo channel 2
-	if(s2 < 151):
-	    for i in range(91, s2+1, 1):
-		calDeg(2, 2, i)
-		print("servo 2 deg: "+str(i))
-		time.sleep(0.025)
-
-	else:
-	    for i in range(91, 151, 1):
-		calDeg(2, 2, i)
-		print("servo 2 deg: "+str(i))
-		time.sleep(0.025)
-    	    
-    calDeg(3, 3, 100)
-    calDeg(4, 4, 90)
-    #distance_deg_channel1()
-    #distance_deg_channel2()
-    
-    
-    
-    if(__name__=='__main__'):
-	p2 = mp.Process(target=distance_deg_channel2)
-	p1 = mp.Process(target=distance_deg_channel1)
-	
-	p2.start()
-	p1.start()
-    
-    time.sleep(0.05)
-    
 # xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 def turn_cornerback(s1, s2):
     print 'Function: turn cornerback'
@@ -399,19 +346,32 @@ servo1 = calDeg(1, 1, 90)
 servo2 = calDeg(2, 2, 90)
 
 time.sleep(0.5)
-
+'''
 print("Ultrasonic sensor")
 average_Camera = Ultrasonict.Camera()
-print("Distance: "+ str(average_Camera))
+average_Arm = Ultrasonict.Arm()
 
-valueDeg = (float(average_Camera)*0.67)+90 
-print("Deg: "+ str(valueDeg))
-print("=================== \n")
 
-if(valueDeg < 151):
-    distance_deg(valueDeg, valueDeg)
-else:
-    distance_deg(151, 151)
+print ("average_Camera: "+str(average_Camera))
+print ("average_Arm: "+str(average_Arm))
+
+'''
+
+  
+while True:  
+    valueDistance = input("Enter value Distance: ")
+    print("Distance: "+ str(valueDistance))
+
+    valueDeg = (int(valueDistance)*0.67)+90 
+    print("Deg: "+ str(valueDeg))
+
+    servo = round(valueDistance)
+    print("Servo: " + str(int(round(servo))) )
+    print("=================== \n")
+    
+    
+  
+
 
 
 
