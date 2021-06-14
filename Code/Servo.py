@@ -6,7 +6,6 @@ import Ultrasonict
 import os
 
 pwm = Adafruit_PCA9685.PCA9685()
-
 print("Run file Servo.py")
 
 def set_servo_pulse(channel, pulse):
@@ -215,90 +214,56 @@ def arm2fit():
     time.sleep(0.05)
     
 # xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
-def distance_deg_T(s1,s2):
-    print 'Function: distance deg'
+#distance_deg(distanceIsDeg, valueDegX, valueDegY)
+def distance_deg(distanceIsDeg, valueDegX, valueDegY):
+    print '\nFunction: distance deg'
     calDeg(1, 1, 90)
     calDeg(2, 2, 90)
     calDeg(3, 3, 100)
     calDeg(4, 4, 90)
+    '''
     s1 = int(round(s1))
     s2 = int(round(s2))
     print ("Value servo 1 = " + str(s1))
     print ("Value servo 2 = " + str(s2))
+    '''
+    print('distanceIsDeg: '+str(distanceIsDeg))
+    print('valueDegX: '+str(valueDegX))
+    print('valueDegY: '+str(valueDegY))
+    
     
     def distance_deg_channel1(): #servo channel 1
-	if(s1 < 151):
-	    for i in range(91, s1+1, -1):
+	if(distanceIsDeg < 151):
+	    for i in range(90, valueDegY + 1, 1):
 		calDeg(1, 1, i)
 		print("servo 1 deg: "+str(i))
 		time.sleep(0.025)
 	else:
-	    for i in range(91, 151, -1):
+	    for i in range(90, 151 + 1, 1):
 		calDeg(1, 1, i)
 		print("servo 1 deg: "+str(i))
 		time.sleep(0.025)
 
     def distance_deg_channel2(): #servo channel 2
-	if(s2 < 151):
-	    for i in range(91, s2+1, 1):
+	if(distanceIsDeg < 151):
+	    for i in range(90, valueDegY + 1, 1):
 		calDeg(2, 2, i)
 		print("servo 2 deg: "+str(i))
 		time.sleep(0.025)
 	else:
-	    for i in range(91, 151, 1):
+	    for i in range(90, 151, 1):
 		calDeg(2, 2, i)
 		print("servo 2 deg: "+str(i))
 		time.sleep(0.025)
-	
+    
+    
     if(__name__=='__main__'):
 	p2 = mp.Process(target=distance_deg_channel2)
 	p1 = mp.Process(target=distance_deg_channel1)
 	p2.start()
 	p1.start()    
     time.sleep(0.05)
-
-# xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
-def distance_deg_F(s1,s2):
-    print 'Function: distance deg'
-    calDeg(1, 1, 90)
-    calDeg(2, 2, 90)
-    calDeg(3, 3, 100)
-    calDeg(4, 4, 90)
-    s1 = int(round(s1))
-    s2 = int(round(s2))
-    print ("Value servo 1 = " + str(s1))
-    print ("Value servo 2 = " + str(s2))
     
-    def distance_deg_channel1(): #servo channel 1
-	if(s1 < 151):
-	    for i in range(91, s1+1, 1):
-		calDeg(1, 1, i)
-		print("servo 1 deg: "+str(i))
-		time.sleep(0.025)
-	else:
-	    for i in range(91, 151, 1):
-		calDeg(1, 1, i)
-		print("servo 1 deg: "+str(i))
-		time.sleep(0.025)
-
-    def distance_deg_channel2(): #servo channel 2
-	if(s2 < 151):
-	    for i in range(91, s2+1, 1):
-		calDeg(2, 2, i)
-		print("servo 2 deg: "+str(i))
-		time.sleep(0.025)
-	else:
-	    for i in range(91, 151, 1):
-		calDeg(2, 2, i)
-		print("servo 2 deg: "+str(i))
-		time.sleep(0.025)
-	
-    if(__name__=='__main__'):
-	p2 = mp.Process(target=distance_deg_channel2)
-	p1 = mp.Process(target=distance_deg_channel1)
-	p2.start()
-	p1.start()    
-    time.sleep(0.05)
     
 # xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 def turn_cornerback(s1, s2):
@@ -421,19 +386,149 @@ os.system(command)
 
 '''
 
-arm2fit()
 
+arm2fit()
 time.sleep(1)
 
 servo1 = calDeg(1, 1, 90)
 servo2 = calDeg(2, 2, 90)
 
 time.sleep(0.5)
-
 print("Ultrasonic sensor")
 average_Camera = Ultrasonict.Camera()
 print("Distance: "+ str(round(average_Camera,2)))
 
+#average_Camera = 20.01
+
+if(average_Camera >= 0 and average_Camera <= 10 ):
+    print("Distance case 1: 0 to 10  value = "+str(average_Camera))
+    distanceIsDeg =  float(average_Camera) - 0
+    valueDegX = 61
+    valueDegY = 70
+    print("Degree case 1: 61 to 70 ")
+    print('valueDegX: '+str(valueDegX))
+    print('valueDegY: '+str(valueDegY))
+    print('deg: '+str(distanceIsDeg))
+    
+    valueDegY = valueDegX + int(distanceIsDeg)
+    distance_deg(distanceIsDeg, valueDegX, valueDegY)
+    
+elif(average_Camera >= 10 and average_Camera <= 20 ):
+    print("Distance case 2: 11 to 20  value = "+str(average_Camera))
+    distanceIsDeg =  float(average_Camera) - 10
+    valueDegX = 71
+    valueDegY = 80
+    print("Degree case 2: 71 to 80 ")
+    print('valueDegX: '+str(valueDegX))
+    print('valueDegY: '+str(valueDegY))
+    print('deg: '+str(distanceIsDeg))
+    
+    valueDegY = valueDegX + int(distanceIsDeg)
+    distance_deg(distanceIsDeg, valueDegX, valueDegY)
+     
+elif(average_Camera >= 20 and average_Camera <= 30 ):
+    print("Distance case 3: 21 to 30  value = "+str(average_Camera))
+    distanceIsDeg =  float(average_Camera) - 20
+    valueDegX = 81
+    valueDegY = 90
+    print("Degree case 3: 81 to 90 ")
+    print('valueDegX: '+str(valueDegX))
+    print('valueDegY: '+str(valueDegY))
+    print('deg: '+str(distanceIsDeg))
+    
+    valueDegY = valueDegX + int(distanceIsDeg)
+    distance_deg(distanceIsDeg, valueDegX, valueDegY)
+    
+elif(average_Camera >= 30 and average_Camera <= 40 ):
+    print("Distance case 4: 31 to 40  value = "+str(average_Camera))
+    distanceIsDeg =  float(average_Camera) - 30
+    valueDegX = 91
+    valueDegY = 100
+    print("Degree case 4: 91 to 100 ")
+    print('valueDegX: '+str(valueDegX))
+    print('valueDegY: '+str(valueDegY))
+    print('deg: '+str(distanceIsDeg))
+    
+    valueDegY = valueDegX + int(distanceIsDeg)
+    distance_deg(distanceIsDeg, valueDegX, valueDegY)
+    
+elif(average_Camera >= 40 and average_Camera <= 50 ):
+    print("Distance caee 5: 41 to 50  value = "+str(average_Camera))
+    distanceIsDeg =  float(average_Camera) - 40
+    valueDegX = 101
+    valueDegY = 110
+    print("Degree case 5: 101 to 110 ")
+    print('valueDegX: '+str(valueDegX))
+    print('valueDegY: '+str(valueDegY))
+    print('deg: '+str(distanceIsDeg))
+    
+    valueDegY = valueDegX + int(distanceIsDeg)
+    distance_deg(distanceIsDeg, valueDegX, valueDegY)
+    
+elif(average_Camera >= 50 and average_Camera <= 60 ):
+    print("Distance case 6: 51 to 60  value = "+str(average_Camera))
+    distanceIsDeg =  float(average_Camera) - 50
+    valueDegX = 111
+    valueDegY = 120
+    print("Degree case 6: 111 to 120 ")
+    print('deg: '+str(distanceIsDeg))
+    
+    valueDegY = valueDegX + int(distanceIsDeg)
+    distance_deg(distanceIsDeg, valueDegX, valueDegY)
+    
+elif(average_Camera >= 60 and average_Camera <= 70 ):
+    print("Distance case 7: 61 to 70  value = "+str(average_Camera))
+    distanceIsDeg =  float(average_Camera) - 60
+    valueDegX = 121
+    valueDegY = 130
+    print("Degree case 7: 121 to 130 ")
+    print('valueDegX: '+str(valueDegX))
+    print('valueDegY: '+str(valueDegY))
+    print('deg: '+str(distanceIsDeg))
+    
+    valueDegY = valueDegX + int(distanceIsDeg)
+    distance_deg(distanceIsDeg, valueDegX, valueDegY)
+
+elif(average_Camera >= 70 and average_Camera <= 80 ):
+    print("Distance case 8: 71 to 80  value = "+str(average_Camera))
+    distanceIsDeg =  float(average_Camera) - 70
+    valueDegX = 131
+    valueDegY = 140
+    print("Degree case 8: 131 to 140 ")
+    print('valueDegX: '+str(valueDegX))
+    print('valueDegY: '+str(valueDegY))
+    print('deg: '+str(distanceIsDeg))
+    
+    valueDegY = valueDegX + int(distanceIsDeg)
+    distance_deg(distanceIsDeg, valueDegX, valueDegY)
+     
+elif(average_Camera >= 80 and average_Camera <= 90 ):
+    print("Distance case 9: 81 to 90  value = "+str(average_Camera))
+    distanceIsDeg =  float(average_Camera) - 80
+    valueDegX = 141
+    valueDegY = 150
+    print("Degree case 9: 141 to 150 ")
+    print('valueDegX: '+str(valueDegX))
+    print('valueDegY: '+str(valueDegY))
+    print('deg: '+str(distanceIsDeg))
+    
+    valueDegY = valueDegX + int(distanceIsDeg)
+    distance_deg(distanceIsDeg, valueDegX, valueDegY)
+         
+else:
+    print("Distance case 10: > 90  value = "+str(average_Camera))
+    distanceIsDeg =  float(average_Camera) - 90
+    valueDegX = 151
+    valueDegY = 151
+    print("Degree case 10: > 151 ")
+    print('valueDegX: '+str(valueDegX))
+    print('valueDegY: '+str(valueDegY))
+    print('deg: '+str(distanceIsDeg))
+    
+    valueDegY = valueDegX
+    distance_deg(distanceIsDeg, valueDegX, valueDegY)
+    
+'''
 if(average_Camera <= 30):
     print("t")
     valueDeg = float(average_Camera) * 0.12
@@ -463,3 +558,4 @@ print("=================== \n")
 print("Distance: "+ str(round(average_Camera,2)))
 print("Deg: "+ str(round(valueDeg,2)))
 print("=================== \n")
+'''
