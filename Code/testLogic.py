@@ -338,10 +338,11 @@ command = "aplay Sound_EndDetect.wav"
 os.system(command)
 '''
 
-arm2fit()
+#arm2fit()
 
 time.sleep(1)
 
+servo0 = calDeg(0, 0, 10)
 servo1 = calDeg(1, 1, 90)
 servo2 = calDeg(2, 2, 90)
 
@@ -357,18 +358,28 @@ print ("average_Arm: "+str(average_Arm))
 
 '''
 
-  
+
 while True:  
     valueDistance = input("Enter value Distance: ")
     print("Distance: "+ str(valueDistance))
-
-    valueDeg = (int(valueDistance)*0.67)+90 
-    print("Deg: "+ str(valueDeg))
-
-    servo = round(valueDistance)
-    print("Servo: " + str(int(round(servo))) )
-    print("=================== \n")
     
+    if(valueDistance <= 30):
+	valueDeg = 90 - (int(valueDistance)*0.4)
+
+	print("Deg: "+ str(valueDeg))
+
+	servo = round(valueDistance)
+	print("Servo: " + str(int(round(servo))) )
+	print("=================== \n")
+    else:
+	valueDeg = 90 + (int(valueDistance)*0.4)
+
+	print("Deg: "+ str(valueDeg))
+
+	servo = round(valueDistance)
+	print("Servo: " + str(int(round(servo))) )
+	print("=================== \n")
+
     
   
 
