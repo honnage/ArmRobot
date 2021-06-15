@@ -80,7 +80,7 @@ try:
         distance_Arm = 0
         sum_Arm = 0
         
-        def Arm():
+        def Arm_test():
                 print("distance measurement in progress 2 is Arm")
                 sum_Arm = 0
                 for i in range(5):
@@ -154,16 +154,41 @@ try:
                 distance_extra = round(distance_extra,2)
                 
                 lcd.lcd_clear()
+                time.sleep(0.5)
                 return distance_extra
         
         def check_extra():
                 a = extra_arm()
-                print(a)
-                while a<=2 or a>=500:
-                        a = extra_arm()
-                        print(a)
+                #print(a)
+                while a>=2 and a<=200:
+                        c = extra_arm()
+                        print(c)
                 return a
                         
+                        
+        def Arm():
+                GPIO.setup(TRIG_2, GPIO.OUT)
+                GPIO.setup(ECHO_2, GPIO.IN)
+                GPIO.output(TRIG_2,False)
+                        
+                time.sleep(0.1) # Origin is 0.2
+                GPIO.output(TRIG_2, True)
+                time.sleep(0.00001)
+                GPIO.output(TRIG_2, False)
+                
+                while GPIO.input(ECHO_2) == 0:
+                    pulse_start = time.time()
+                while GPIO.input(ECHO_2) == 1:
+                    pulse_end = time.time()
+                    
+                pulse_duration = pulse_end-pulse_start
+                distance_extra = pulse_duration*17000
+                distance_extra = round(distance_extra,2)
+                
+                lcd.lcd_clear()
+                time.sleep(0.5)
+                return distance_extra
+                
                 
         # ==============================================================
         def test():
