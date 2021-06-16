@@ -440,6 +440,7 @@ distance = average_Camera
 valueDegX = 30
 valueDegY = ((distance - valueDegX) * 2.5) + 30
 
+
 print("valueDegX: " + str(int(valueDegX)))
 print("process valueDegY = [("+ str(distance)+" - "+ str(valueDegX)+") x 2.5] + 30" )
 print("valueDegY: " + str(int(round(valueDegY))))
@@ -455,7 +456,11 @@ while arm_dis > 10:
     arm_dis = Ultrasonict.Arm()
     distance = arm_dis
     print("Distance: "+ str(distance) +" cm")
-   
+    
+    time.sleep(1)
+    print("======================")
+    
+    
     if distance < 30:
 	print("Peocess stop 6 ")
 	time.sleep(6)

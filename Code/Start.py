@@ -30,8 +30,9 @@ def WorkingArmRoBot():
 	print("Run file Servo.py ")
 	global isWorking 
 	isWorking = False
-	return 
+	return isWorking
 # xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+
 print ("Sound on")
 command = "aplay Sound_Power-on.wav"
 os.system(command)
@@ -64,14 +65,14 @@ while True:
 		
 		if isWorking == False :
 		    if distance >= 12 :
-			print "Distance mouth :",distance
-			isWorking = True
-			print "Run servo armrobot"
-			Thread(target=WorkingArmRoBot).start()
-			    
-			    #if(__name__=='__main__'):
-			    #	p1 = mp.Process(target=WorkingArmRoBot())
-			    #	p1.start()
+				print "Distance mouth :",distance
+				isWorking = True
+				print "Run servo armrobot"
+				Thread(target=WorkingArmRoBot).start()
+					
+					#if(__name__=='__main__'):
+					#	p1 = mp.Process(target=WorkingArmRoBot())
+					#	p1.start()
 		    else:
 			print "Distance mouth :",distance
 			
