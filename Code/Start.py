@@ -65,6 +65,7 @@ while True:
 		
 		if isWorking == False :
 		    if distance >= 12 :
+				
 				print "Distance mouth :",distance
 				isWorking = True
 				print "Run servo armrobot"
@@ -74,16 +75,14 @@ while True:
 					#	p1 = mp.Process(target=WorkingArmRoBot())
 					#	p1.start()
 		    else:
-			print "Distance mouth :",distance
+				print "Distance mouth :",distance
 			
 		'''
 		show message "IS WORK ARM ROBOT ..."
 		#else:
 		    # print "IS WORKING ARM ROBOT ..."
 		'''
-
 	cv2.imshow("Frame", frame)
-
 
 	key = cv2.waitKey(1)
 	if key == 27:

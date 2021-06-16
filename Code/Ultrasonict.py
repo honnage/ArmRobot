@@ -1,7 +1,7 @@
 import RPi.GPIO as GPIO
 import time
-import lcdlib
-import drivers
+#import lcdlib
+#import drivers
 
 # Ultrasonict Canera
 TRIG_1 = 24 #Purple     
@@ -154,7 +154,7 @@ try:
                 distance_extra = round(distance_extra,2)
                 
                 #lcd.lcd_clear()
-                time.sleep(0.1)
+                #time.sleep(0.1)
                 return distance_extra
         
         def check_extra():
@@ -189,14 +189,14 @@ try:
                 #print(dis)
                 
                 #lcd.lcd_clear()
-                time.sleep(0.5)
+                #time.sleep(0.5)
                 return distance_extra
                 
                 
         # ==============================================================
 
 
-        Arm()
+        #Arm()
         #Camera()
         #check_extra()
 

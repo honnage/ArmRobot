@@ -163,18 +163,21 @@ def scoop_up():
     calDeg(4, 4, 90)
     
     def scoop_up_channel1(): #servo channel 1
-	for i in range(90, 30, -1):
+	for i in range(90, 29, -1):
 	    calDeg(1, 1, i)
+	    print("servo 1 deg: "+str(i))
 	    time.sleep(0.05)
 	    
     def scoop_up_channel2(): #servo channel 2
-	for i in range(50, 30, -1):
+	for i in range(50, 29, -1):
 	    calDeg(2, 2, i)
+	    print("servo 2 deg: "+str(i))
 	    time.sleep(0.03)
 	    
     def scoop_up_channel3(): #servo channel 3
-	for i in range(141, 130, -1):
+	for i in range(141, 129, -1):
 	    calDeg(3, 3, i)
+	    print("servo 3 deg: "+str(i))
 	    time.sleep(0.05)
 
     if(__name__=='__main__'):
@@ -184,23 +187,14 @@ def scoop_up():
 	p3.start()
 	p2.start()
 	p1.start()
-
-    '''
-    scoop_up_channel3()
-    time.sleep(0.05)
-    scoop_up_channel2()
-    time.sleep(0.05)
-    scoop_up_channel1()
-    time.sleep(0.05)
-'''
     time.sleep(0.5)
     
 # xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 def arm2fit_scoop_up():
     calDeg(0, 0, 10)
-    calDeg(1, 1, 30)
-    calDeg(2, 2, 30)
-    calDeg(3, 3, 130)
+    calDeg(1, 1, 29)
+    calDeg(2, 2, 29)
+    calDeg(3, 3, 129)
     calDeg(4, 4, 90)
     print 'Function: arm to fit scoop up'
     time.sleep(0.05)
@@ -210,7 +204,7 @@ def turn_corner_forward():
     def turn_corner_forward_channel0(): #servo channel 0
 	for i in range(10, 90, 1):
 	    calDeg(0, 0, i)
-	    time.sleep(0.03)
+	    time.sleep(0.02)
 	    
     print ("Function: turn corner forward")
     time.sleep(1)
@@ -221,7 +215,7 @@ def turn_corner_forward():
     calDeg(4, 4, 90)
     
     turn_corner_forward_channel0()
-    time.sleep(0.05)
+    time.sleep(0.03)
 
 # xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 def arm2fit_turn_corner_forward():
@@ -420,7 +414,6 @@ average_Arm = Ultrasonict.Arm()
 print("Ultrasonic Sensor by arm")
 print("Distance: "+ str(round(average_Arm,2)) + " cm\n")
 
-#distanceArm = average_Arm
 distance = average_Camera
 valueDegX = 30
 valueDegY = ((distance - valueDegX) * 2.5) + 30
@@ -428,7 +421,6 @@ valueDegY = ((distance - valueDegX) * 2.5) + 30
 print("valueDegX: " + str(int(valueDegX)))
 print("process valueDegY = [("+ str(distance)+" - "+ str(valueDegX)+") x 2.5] + 30" )
 print("valueDegY: " + str(int(round(valueDegY))))
-
 
 time.sleep(0.5)
 distance_deg(distance, valueDegX, valueDegY)
@@ -446,9 +438,9 @@ while average_Arm > 1:
     print("======================")
     
     if distance < 30:
-	print("Peocess stop 6 ")
+	print("Stop working 6 seconds")
 	time.sleep(6)
-	print("stop Ultrasonic sensor")
+	print("Stop process Ultrasonic sensor")
 	break
 
 time.sleep(0.5)
@@ -461,5 +453,4 @@ time.sleep(0.5)
 turn_back()
 
 print("======================")
-
 
