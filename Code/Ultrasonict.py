@@ -14,7 +14,7 @@ ECHO_2 = 22 #Green
 GPIO.setmode(GPIO.BCM) # BCM is Number GPIO
 GPIO.setwarnings(False)
 
-lcd = lcdlib.lcd()
+#lcd = lcdlib.lcd()
 
 print("Import file Ultrasonict.py")
 
@@ -65,12 +65,12 @@ try:
                 print ("---------------")
 
                 dist = str(average_Camera)
-                lcd.lcd_display_string("Distance Camera",1)
-                lcd.lcd_display_string(">>> "+dist+" cm",2)
+                #lcd.lcd_display_string("Distance Camera",1)
+                #lcd.lcd_display_string(">>> "+dist+" cm",2)
                 print "Ultrasonic 1 is Camera Distance is >>> "+dist+" cm"
                 time.sleep(0.1)
                 
-                lcd.lcd_clear()
+                #lcd.lcd_clear()
                 print("\n \n")
                 return average_Camera
         
@@ -123,12 +123,12 @@ try:
                 print ("---------------")
 
                 dist = str(average_Arm)
-                lcd.lcd_display_string("Distance Arm",1)
-                lcd.lcd_display_string(">>> "+dist+" cm",2)
+                #lcd.lcd_display_string("Distance Arm",1)
+                #lcd.lcd_display_string(">>> "+dist+" cm",2)
                 print "Ultrasonic 2 is Camera Distance is >>> "+dist+" cm"
                 time.sleep(0.1)
                 
-                lcd.lcd_clear()
+                #lcd.lcd_clear()
                 print("\n \n")
                 return average_Arm
                 
@@ -153,8 +153,8 @@ try:
                 distance_extra = pulse_duration*17000
                 distance_extra = round(distance_extra,2)
                 
-                lcd.lcd_clear()
-                time.sleep(0.5)
+                #lcd.lcd_clear()
+                time.sleep(0.1)
                 return distance_extra
         
         def check_extra():
@@ -165,7 +165,7 @@ try:
                         print(c)
                 return a
                         
-                        
+        # ==============================================================        
         def Arm():
                 GPIO.setup(TRIG_2, GPIO.OUT)
                 GPIO.setup(ECHO_2, GPIO.IN)
@@ -185,45 +185,23 @@ try:
                 distance_extra = pulse_duration*17000
                 distance_extra = round(distance_extra,2)
                 
-                lcd.lcd_clear()
+                #dis = str(distance_extra)
+                #print(dis)
+                
+                #lcd.lcd_clear()
                 time.sleep(0.5)
                 return distance_extra
                 
                 
         # ==============================================================
-        def test():
-                while True:
-                        print("distance measurement in progress")
-                        GPIO.setup(TRIG_1,GPIO.OUT)
-                        GPIO.setup(ECHO_2,GPIO.IN)
-                        GPIO.output(TRIG_1,False)
-                     
-                        #print("waiting for sensor to settle")
-                        
-                        time.sleep(0.2)
-                        GPIO.output(TRIG_1,True)
-                        time.sleep(0.00001)
-                        GPIO.output(TRIG_1,False)
-                        
-                        while GPIO.input(ECHO_2) == 0:
-                            pulse_start = time.time()
-                        while GPIO.input(ECHO_2) == 1:
-                            pulse_end = time.time()
-                            
-                        pulse_duration = pulse_end-pulse_start
-                        distance = pulse_duration*17150
-                        distance = round(distance,2)
-                        print("distance:",distance,"cm")
-                        time.sleep(1)
-                        print("")
 
 
-        #Arm()
+        Arm()
         #Camera()
         #check_extra()
 
 except KeyboardInterrupt:
     GPIO.cleanup()
     print("Cleaning up!")
-    lcd.lcd_clear()
+    #lcd.lcd_clear()
 

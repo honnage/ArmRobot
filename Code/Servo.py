@@ -155,17 +155,6 @@ def scoop_rice():
 
 # xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 def scoop_up():    
-    def scoop_up_channel3(): #servo channel 3
-	for i in range(141, 100, -1):
-	    calDeg(3, 3, i)
-	    time.sleep(0.05)
-    
-    def scoop_up_channel2(): #servo channel 2
-	for i in range(50, 90, 1):
-	    calDeg(2, 2, i)
-	    time.sleep(0.03)
-	    #print("deg servo 2 "+str(i))
-    
     print ("Function: scoop up")
     calDeg(0, 0, 10)
     calDeg(1, 1, 90)
@@ -173,52 +162,47 @@ def scoop_up():
     calDeg(3, 3, 140)
     calDeg(4, 4, 90)
     
+    def scoop_up_channel1(): #servo channel 1
+	for i in range(90, 30, -1):
+	    calDeg(1, 1, i)
+	    time.sleep(0.05)
+	    
+    def scoop_up_channel2(): #servo channel 2
+	for i in range(50, 30, -1):
+	    calDeg(2, 2, i)
+	    time.sleep(0.03)
+	    
+    def scoop_up_channel3(): #servo channel 3
+	for i in range(141, 130, -1):
+	    calDeg(3, 3, i)
+	    time.sleep(0.05)
+
+    if(__name__=='__main__'):
+	p3 = mp.Process(target=scoop_up_channel3)
+	p2 = mp.Process(target=scoop_up_channel2)
+	p1 = mp.Process(target=scoop_up_channel1)
+	p3.start()
+	p2.start()
+	p1.start()
+
+    '''
     scoop_up_channel3()
     time.sleep(0.05)
     scoop_up_channel2()
     time.sleep(0.05)
-
+    scoop_up_channel1()
+    time.sleep(0.05)
+'''
+    time.sleep(0.5)
+    
 # xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
-def prepare_rotate():    
-    def prepare_rotate_channel1(): #servo channel 1
-	for i in range(90, 30, -1):
-	    calDeg(1, 1, i)
-	    time.sleep(0.05)
-    
-    def prepare_rotate_channel2(): #servo channel 2
-	for i in range(90, 30, -1):
-	    calDeg(2, 2, i)
-	    time.sleep(0.05)
-    
-    def prepare_rotate_channel3(): #servo channel 3
-	for i in range(100, 130, 1):
-	    calDeg(3, 3, i)
-	    time.sleep(0.05)
-	    
-    print ("Function: repare rotate")
-    calDeg(0, 0, 10)
-    calDeg(1, 1, 90)
-    calDeg(2, 2, 90)
-    calDeg(3, 3, 100)
-    calDeg(4, 4, 90)
-    
-    if(__name__=='__main__'):
-	p3 = mp.Process(target=prepare_rotate_channel3)
-	p2 = mp.Process(target=prepare_rotate_channel2)
-	p1 = mp.Process(target=prepare_rotate_channel1)
-	p3.start()
-	p2.start()
-	p1.start()
-    
-    time.sleep(1)
-# xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
-def arm2fit_prepare_rotate():
+def arm2fit_scoop_up():
     calDeg(0, 0, 10)
     calDeg(1, 1, 30)
     calDeg(2, 2, 30)
     calDeg(3, 3, 130)
     calDeg(4, 4, 90)
-    print 'Function: arm to fit prepare rotate'
+    print 'Function: arm to fit scoop up'
     time.sleep(0.05)
     
 # xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
@@ -287,12 +271,12 @@ def distance_deg(distance, valueDegX, valueDegY):
     
     def distance_deg_channel3(): #servo channel 3
 	if(int(valueDegY) < 151):
-	    for i in range(130, 100, -1):
+	    for i in range(130, 120, -1):
 		calDeg(3, 3, i)
 		print("servo 1 deg: "+str(i))
 		time.sleep(0.025)
 	else:
-	    for i in range(130, 100, -1):
+	    for i in range(130, 120, -1):
 		calDeg(3, 3, i)
 		print("servo 1 deg: "+str(i))
 		time.sleep(0.025)
@@ -400,10 +384,11 @@ def turn_back():
     time.sleep(0.05)
     
 # xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+#GPIO.cleanup()
 
 print("Run file Servo.py")
 
-time.sleep(3)
+time.sleep(1)
 default()
 
 time.sleep(1)
@@ -419,10 +404,7 @@ time.sleep(0.5)
 scoop_up()
 
 time.sleep(0.5)
-prepare_rotate()
-
-time.sleep(0.5)
-arm2fit_prepare_rotate()
+arm2fit_scoop_up()
 
 time.sleep(0.5)
 turn_corner_forward()
@@ -434,16 +416,19 @@ average_Camera = Ultrasonict.Camera()
 print("Ultrasonic Sensor by camera")
 print("Distance: "+ str(round(average_Camera,2)) + " cm\n")
 
-#distance_camera = average_Camera
+average_Arm = Ultrasonict.Arm()
+print("Ultrasonic Sensor by arm")
+print("Distance: "+ str(round(average_Arm,2)) + " cm\n")
 
+#distanceArm = average_Arm
 distance = average_Camera
 valueDegX = 30
 valueDegY = ((distance - valueDegX) * 2.5) + 30
 
-
 print("valueDegX: " + str(int(valueDegX)))
 print("process valueDegY = [("+ str(distance)+" - "+ str(valueDegX)+") x 2.5] + 30" )
 print("valueDegY: " + str(int(round(valueDegY))))
+
 
 time.sleep(0.5)
 distance_deg(distance, valueDegX, valueDegY)
@@ -452,14 +437,13 @@ time.sleep(0.5)
 print("Process Ultrasonic sensor")
 arm_dis = Ultrasonict.Arm()
 
-while arm_dis > 10:
+while average_Arm > 1:
     arm_dis = Ultrasonict.Arm()
     distance = arm_dis
     print("Distance: "+ str(distance) +" cm")
     
     time.sleep(1)
     print("======================")
-    
     
     if distance < 30:
 	print("Peocess stop 6 ")
@@ -477,4 +461,5 @@ time.sleep(0.5)
 turn_back()
 
 print("======================")
+
 
