@@ -282,12 +282,6 @@ def distance_case(distance, valueDegX, valueDegY, degServo0, degServo1, degServo
     calDeg(3, 3, 130)
     calDeg(4, 4, 90)
     
-    print("degServo 0: "+str(degServo0))
-    print("degServo 1: "+str(degServo1))
-    print("degServo 2: "+str(degServo2))
-    print("degServo 3: "+str(degServo3))
-    print("degServo 4: "+str(degServo4))
-    
     print('distance: '+str(distance))
     print('valueDegX: '+str(valueDegX))
     print('valueDegY: '+str(int(valueDegY)))
@@ -335,7 +329,6 @@ def distance_case(distance, valueDegX, valueDegY, degServo0, degServo1, degServo
 	p3.start()
 	p1.start()
 	p2.start()
-	
     time.sleep(0.05)
 # xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 def turn_cornerback(valueDegY):
@@ -428,8 +421,21 @@ def turn_back():
 	p1.start()
     time.sleep(0.05)
 # xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+def showMsg(distance, valueDegX, valueDegY, degServo0, degServo1, degServo2, degServo3, degServo4):
+    print("\nFunction: showMsg")
+    print("======================")
+    print("Servo 0: " + str(degServo0))
+    print("Servo 1: " + str(degServo1))
+    print("Servo 2: " + str(degServo2))
+    print("Servo 3: " + str(degServo3))
+    print("Servo 4: " + str(degServo4))
+	
+    print("\nvalueDegX: " + str(int(valueDegX)))
+    print("process valueDegY = [("+ str(distance)+" - "+ str(valueDegX)+") x 2.5] + 30" )
+    print("valueDegY: " + str(int(round(valueDegY)))+"\n")
+# xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 print("Run file Servo.py")
-'''
+
 time.sleep(1)
 default()
 
@@ -484,18 +490,13 @@ if average_Camera > 0 and average_Camera <= 30:
     distance = average_Camera
     valueDegX = 30
     valueDegY = ((distance - valueDegX) * 2.5) + 30
-    
     Servo0 = 90
     Servo1 = 60
     Servo2 = 120
     Servo3 = 170 
     Servo4 = 90
-    print("======================")
-    print("Servo 0: " + str(Servo0))
-    print("Servo 1: " + str(Servo1))
-    print("Servo 2: " + str(Servo2))
-    print("Servo 3: " + str(Servo3))
-    print("Servo 4: " + str(Servo4))
+    
+    showMsg(distance, valueDegX, valueDegY, Servo0, Servo1, Servo2, Servo3, Servo4)
     distance_case(distance, valueDegX, valueDegY, Servo0, Servo1, Servo2, Servo3, Servo4)
 	
 elif average_Camera >= 30 and average_Camera <= 40:
@@ -508,7 +509,6 @@ elif average_Camera >= 30 and average_Camera <= 40:
     distance = average_Camera
     valueDegX = 30
     valueDegY = ((distance - valueDegX) * 2.5) + 30
-    
     s1 = deg
     s2 = deg
     degServo0 = 90
@@ -516,16 +516,8 @@ elif average_Camera >= 30 and average_Camera <= 40:
     degServo2 = 120
     degServo3 = 160 - s2
     degServo4 = 90
-    print("======================")
-    print("Servo 0: " + str(degServo0))
-    print("Servo 1: " + str(degServo1))
-    print("Servo 2: " + str(degServo2))
-    print("Servo 3: " + str(degServo3))
-    print("Servo 4: " + str(degServo4))
-	
-    print("valueDegX: " + str(int(valueDegX)))
-    print("process valueDegY = [("+ str(distance)+" - "+ str(valueDegX)+") x 2.5] + 30" )
-    print("valueDegY: " + str(int(round(valueDegY)))+"\n")
+  
+    showMsg(distance, valueDegX, valueDegY, degServo0, degServo1, degServo2, degServo3, degServo4)
     distance_case(distance, valueDegX, valueDegY, degServo0, degServo1, degServo2, degServo3, degServo4)
     
 elif average_Camera >= 40 and average_Camera <= 50:
@@ -538,7 +530,6 @@ elif average_Camera >= 40 and average_Camera <= 50:
     distance = average_Camera
     valueDegX = 30
     valueDegY = ((distance - valueDegX) * 2.5) + 30
-    
     s1 = deg
     s2 = deg
     degServo0 = 90
@@ -546,16 +537,8 @@ elif average_Camera >= 40 and average_Camera <= 50:
     degServo2 = 120
     degServo3 = 150 - s2
     degServo4 = 90
-    print("======================")
-    print("Servo 0: " + str(degServo0))
-    print("Servo 1: " + str(degServo1))
-    print("Servo 2: " + str(degServo2))
-    print("Servo 3: " + str(degServo3))
-    print("Servo 4: " + str(degServo4))
-    
-    print("valueDegX: " + str(int(valueDegX)))
-    print("process valueDegY = [("+ str(distance)+" - "+ str(valueDegX)+") x 2.5] + 30" )
-    print("valueDegY: " + str(int(round(valueDegY)))+"\n")
+
+    showMsg(distance, valueDegX, valueDegY, degServo0, degServo1, degServo2, degServo3, degServo4)
     distance_case(distance, valueDegX, valueDegY, degServo0, degServo1, degServo2, degServo3, degServo4)
 	
 elif average_Camera >= 50 and average_Camera <= 60:
@@ -568,7 +551,6 @@ elif average_Camera >= 50 and average_Camera <= 60:
     distance = average_Camera
     valueDegX = 30
     valueDegY = ((distance - valueDegX) * 2.5) + 30
-    
     s1 = deg
     s2 = deg
     degServo0 = 90
@@ -576,16 +558,8 @@ elif average_Camera >= 50 and average_Camera <= 60:
     degServo2 = 120 
     degServo3 = 140 - s2
     degServo4 = 90
-    print("======================")
-    print("Servo 0: " + str(degServo0))
-    print("Servo 1: " + str(degServo1))
-    print("Servo 2: " + str(degServo2))
-    print("Servo 3: " + str(degServo3))
-    print("Servo 4: " + str(degServo4))
     
-    print("valueDegX: " + str(int(valueDegX)))
-    print("process valueDegY = [("+ str(distance)+" - "+ str(valueDegX)+") x 2.5] + 30" )
-    print("valueDegY: " + str(int(round(valueDegY)))+"\n")
+    showMsg(distance, valueDegX, valueDegY, degServo0, degServo1, degServo2, degServo3, degServo4)
     distance_case(distance, valueDegX, valueDegY, degServo0, degServo1, degServo2, degServo3, degServo4)
 	
 elif average_Camera >= 60 and average_Camera <= 70:
@@ -598,7 +572,6 @@ elif average_Camera >= 60 and average_Camera <= 70:
     distance = average_Camera
     valueDegX = 30
     valueDegY = ((distance - valueDegX) * 2.5) + 30
-    
     s1 = deg
     s2 = deg
     degServo0 = 90
@@ -606,16 +579,8 @@ elif average_Camera >= 60 and average_Camera <= 70:
     degServo2 = 120 
     degServo3 = 130 - s2
     degServo4 = 90
-    print("======================")
-    print("Servo 0: " + str(degServo0))
-    print("Servo 1: " + str(degServo1))
-    print("Servo 2: " + str(degServo2))
-    print("Servo 3: " + str(degServo3))
-    print("Servo 4: " + str(degServo4))
     
-    print("valueDegX: " + str(int(valueDegX)))
-    print("process valueDegY = [("+ str(distance)+" - "+ str(valueDegX)+") x 2.5] + 30" )
-    print("valueDegY: " + str(int(round(valueDegY)))+"\n")
+    showMsg(distance, valueDegX, valueDegY, degServo0, degServo1, degServo2, degServo3, degServo4)
     distance_case(distance, valueDegX, valueDegY, degServo0, degServo1, degServo2, degServo3, degServo4)
     
 elif average_Camera >= 70:
@@ -626,23 +591,14 @@ elif average_Camera >= 70:
     distance = average_Camera
     valueDegX = 30
     valueDegY = 70
-    
     degServo0 = 90
     degServo1 = 90 
     degServo2 = 110
     degServo3 = 100
     degServo4 = 90
-    print("======================")
-    print("Servo 0: " + str(degServo0))
-    print("Servo 1: " + str(degServo1))
-    print("Servo 2: " + str(degServo2))
-    print("Servo 3: " + str(degServo3))
-    print("Servo 4: " + str(degServo4))
 
-    print("valueDegX: " + str(int(valueDegX)))
-    print("valueDegY: " + str(int(round(valueDegY)))+"\n")
+    showMsg(distance, valueDegX, valueDegY, degServo0, degServo1, degServo2, degServo3, degServo4)
     distance_deg(distance, valueDegX, valueDegY)
-    
     
 time.sleep(0.5)
 print("Process Ultrasonic sensor")
@@ -672,7 +628,4 @@ time.sleep(0.5)
 turn_back()
 
 print("======================")
-'''
-calDeg(0, 0, 0)
-calDeg(1, 1, 90)
-calDeg(2, 2, 90)
+
