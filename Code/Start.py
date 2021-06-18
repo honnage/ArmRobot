@@ -32,6 +32,7 @@ def WorkingArmRoBot():
 	isWorking = False
 	return isWorking
 # xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+GPIO.cleanup()
 
 print ("Sound on")
 command = "aplay Sound_Power-on.wav"

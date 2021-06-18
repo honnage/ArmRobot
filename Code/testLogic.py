@@ -7,8 +7,6 @@ import os
 
 pwm = Adafruit_PCA9685.PCA9685()
 
-print("Run file Servo.py")
-
 def set_servo_pulse(channel, pulse):
     pulse_length = 1000000    # 1,000,000 us per second
     pulse_length //= 60       # 60 Hz                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    
@@ -55,16 +53,16 @@ def calDeg(a,b,c):
 
 # xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 def default():
+    print("Function: Set Degree Servo Default")
     calDeg(0, 0, 10)
     calDeg(1, 1, 90)
     calDeg(2, 2, 90)
     calDeg(3, 3, 85)
     calDeg(4, 4, 90)
-    print("Function: Set Degree Servo Default")
-
 
 # xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 def default_low():
+    print("Function: Set Degree default low")
     calDeg(0, 0, 10)
     calDeg(1, 1, 90)
     calDeg(2, 2, 90)
@@ -92,7 +90,6 @@ def default_low():
     #default_low_channel2()
 
 # xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
-
 def default_rice():
     def default_rice_channel1(): #servo channel 1
 	for i in range(20, 45, 1):
@@ -158,17 +155,6 @@ def scoop_rice():
 
 # xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 def scoop_up():    
-    def scoop_up_channel3(): #servo channel 3
-	for i in range(141, 100, -1):
-	    calDeg(3, 3, i)
-	    time.sleep(0.05)
-    
-    def scoop_up_channel2(): #servo channel 2
-	for i in range(50, 90, 1):
-	    calDeg(2, 2, i)
-	    time.sleep(0.03)
-	    #print("deg servo 2 "+str(i))
-    
     print ("Function: scoop up")
     calDeg(0, 0, 10)
     calDeg(1, 1, 90)
@@ -176,77 +162,237 @@ def scoop_up():
     calDeg(3, 3, 140)
     calDeg(4, 4, 90)
     
-    scoop_up_channel3()
-    time.sleep(0.05)
-    scoop_up_channel2()
-    time.sleep(0.05)
-    '''
+    def scoop_up_channel1(): #servo channel 1
+	for i in range(90, 29, -1):
+	    calDeg(1, 1, i)
+	    print("servo 1 deg: "+str(i))
+	    time.sleep(0.05)
+	    
+    def scoop_up_channel2(): #servo channel 2
+	for i in range(50, 29, -1):
+	    calDeg(2, 2, i)
+	    print("servo 2 deg: "+str(i))
+	    time.sleep(0.03)
+	    
+    def scoop_up_channel3(): #servo channel 3
+	for i in range(141, 129, -1):
+	    calDeg(3, 3, i)
+	    print("servo 3 deg: "+str(i))
+	    time.sleep(0.05)
+
     if(__name__=='__main__'):
 	p3 = mp.Process(target=scoop_up_channel3)
 	p2 = mp.Process(target=scoop_up_channel2)
+	p1 = mp.Process(target=scoop_up_channel1)
 	p3.start()
 	p2.start()
-    '''
+	p1.start()
+    time.sleep(0.5)
+    
+# xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+def arm2fit_scoop_up():
+    calDeg(0, 0, 10)
+    calDeg(1, 1, 29)
+    calDeg(2, 2, 29)
+    calDeg(3, 3, 129)
+    calDeg(4, 4, 90)
+    print 'Function: arm to fit scoop up'
+    time.sleep(0.05)
+    
 # xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 def turn_corner_forward():
     def turn_corner_forward_channel0(): #servo channel 0
 	for i in range(10, 90, 1):
 	    calDeg(0, 0, i)
-	    time.sleep(0.03)
+	    time.sleep(0.02)
 	    
     print ("Function: turn corner forward")
+    time.sleep(1)
     calDeg(0, 0, 10)
-    calDeg(1, 1, 90)
-    calDeg(2, 2, 90)
-    calDeg(3, 3, 100)
+    calDeg(1, 1, 30)
+    calDeg(2, 2, 30)
+    calDeg(3, 3, 130)
     calDeg(4, 4, 90)
     
     turn_corner_forward_channel0()
-    time.sleep(0.05)
+    time.sleep(0.03)
 
 # xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
-def arm2fit():
+def arm2fit_turn_corner_forward():
     calDeg(0, 0, 90)
-    calDeg(1, 1, 90)
-    calDeg(2, 2, 90)
-    calDeg(3, 3, 100)
+    calDeg(1, 1, 30)
+    calDeg(2, 2, 30)
+    calDeg(3, 3, 130)
     calDeg(4, 4, 90)
-    print 'Function: arm to fit'
+    print 'Function: arm to fit turn corner forward'
     time.sleep(0.05)
-
+    
 # xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
-def turn_cornerback(s1, s2):
+def distance_deg(distance, valueDegX, valueDegY):
+    print '\nFunction: distance deg'
+    calDeg(1, 1, 30)
+    calDeg(2, 2, 30)
+    calDeg(3, 3, 130)
+    calDeg(4, 4, 90)
+
+    print('distance: '+str(distance))
+    print('valueDegX: '+str(valueDegX))
+    print('valueDegY: '+str(int(valueDegY)))
+    
+    def distance_deg_channel1(): #servo channel 1
+	if(int(valueDegY) < 151):
+	    for i in range(int(valueDegX), int(valueDegY) + 1, 1):
+		calDeg(1, 1, i)
+		print("servo 1 deg: "+str(i))
+		time.sleep(0.025)
+	else:
+	    for i in range(int(valueDegX), 151 + 1, 1):
+		calDeg(1, 1, i)
+		print("servo 1 deg: "+str(i))
+		time.sleep(0.025)
+
+    def distance_deg_channel2(): #servo channel 2
+	if(int(valueDegY) < 151):
+	    for i in range(int(valueDegX), int(valueDegY) + 1, 1):
+		calDeg(2, 2, i)
+		print("servo 2 deg: "+str(i))
+		time.sleep(0.025)
+	else:
+	    for i in range(int(valueDegX), 151, 1):
+		calDeg(2, 2, i)
+		print("servo 2 deg: "+str(i))
+		time.sleep(0.025)
+    
+    def distance_deg_channel3(): #servo channel 3
+	if(int(valueDegY) < 151):
+	    for i in range(130, 120, -1):
+		calDeg(3, 3, i)
+		print("servo 1 deg: "+str(i))
+		time.sleep(0.025)
+	else:
+	    for i in range(130, 120, -1):
+		calDeg(3, 3, i)
+		print("servo 1 deg: "+str(i))
+		time.sleep(0.025)
+    
+    if(__name__=='__main__'):
+	p3 = mp.Process(target=distance_deg_channel3)
+	p2 = mp.Process(target=distance_deg_channel2)
+	p1 = mp.Process(target=distance_deg_channel1)
+	p3.start()
+	p2.start()
+	p1.start()    
+    time.sleep(0.05)
+    
+# xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+# xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+def distance_deg(distance, valueDegX, valueDegY):
+    print '\nFunction: distance deg'
+    calDeg(1, 1, 30)
+    calDeg(2, 2, 30)
+    calDeg(3, 3, 130)
+    calDeg(4, 4, 90)
+
+    print('distance: '+str(distance))
+    print('valueDegX: '+str(valueDegX))
+    print('valueDegY: '+str(int(valueDegY)))
+    
+    def distance_deg_channel1(): #servo channel 1
+	if(int(valueDegY) < 151):
+	    for i in range(int(valueDegX), int(valueDegY) + 1, 1):
+		calDeg(1, 1, i)
+		print("servo 1 deg: "+str(i))
+		time.sleep(0.025)
+	else:
+	    for i in range(int(valueDegX), 151 + 1, 1):
+		calDeg(1, 1, i)
+		print("servo 1 deg: "+str(i))
+		time.sleep(0.025)
+
+    def distance_deg_channel2(): #servo channel 2
+	if(int(valueDegY) < 151):
+	    for i in range(int(valueDegX), int(valueDegY) + 1, 1):
+		calDeg(2, 2, i)
+		print("servo 2 deg: "+str(i))
+		time.sleep(0.025)
+	else:
+	    for i in range(int(valueDegX), 151, 1):
+		calDeg(2, 2, i)
+		print("servo 2 deg: "+str(i))
+		time.sleep(0.025)
+    
+    def distance_deg_channel3(): #servo channel 3
+	if(int(valueDegY) < 151):
+	    for i in range(130, 120, -1):
+		calDeg(3, 3, i)
+		print("servo 1 deg: "+str(i))
+		time.sleep(0.025)
+	else:
+	    for i in range(130, 120, -1):
+		calDeg(3, 3, i)
+		print("servo 1 deg: "+str(i))
+		time.sleep(0.025)
+    
+    if(__name__=='__main__'):
+	p3 = mp.Process(target=distance_deg_channel3)
+	p2 = mp.Process(target=distance_deg_channel2)
+	p1 = mp.Process(target=distance_deg_channel1)
+	p3.start()
+	p2.start()
+	p1.start()    
+    time.sleep(0.05)
+    
+# xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+def turn_cornerback(valueDegY):
     print 'Function: turn cornerback'
-    print ("Value servo 1 = " + str(s1))
-    print ("Value servo 2 = " + str(s2))
+    valueDegY = int(valueDegY)
+    
+    print ("Value servo 1 = " + str(valueDegY))
+    print ("Value servo 2 = " + str(valueDegY))
     
     def turn_cornerback_channel1(): #servo channel 1
-	for i in range(s1, 90, -1):
-	    calDeg(1, 0, i)
-	    print("servo 1 deg: "+str(i))
-	    time.sleep(0.03)
-	
-	
+	if(valueDegY < 151):
+	    for i in range(valueDegY, 30, -1):
+		calDeg(1, 1, i)
+		print("servo 1 deg: "+str(i))
+		time.sleep(0.03)
+	else:
+	    for i in range(150, 30, -1):
+		calDeg(1, 1, i)
+		print("servo 1 deg: "+str(i))
+		time.sleep(0.03)
+		
     def turn_cornerback_channel2(): #servo channel 2
-	for i in range(s2, 90, -1):
-	    calDeg(2, 0, i)
-	    print("servo 2 deg: "+str(i))
-	    time.sleep(0.03)
+	if(valueDegY < 151):
+	    for i in range(valueDegY, 30, -1):
+		calDeg(2, 2, i)
+		print("servo 2 deg: "+str(i))
+		time.sleep(0.03)
+	else:
+	    for i in range(150, 30, -1):
+		calDeg(2, 2, i)
+		print("servo 2 deg: "+str(i))
+		time.sleep(0.03)
 	
-	    
     calDeg(3, 3, 100)
     calDeg(4, 4, 90)
-    #turn_cornerback_channel1()
-    #turn_cornerback_channel2()
-    
+
     if(__name__=='__main__'):
 	p2 = mp.Process(target=turn_cornerback_channel2)
 	p1 = mp.Process(target=turn_cornerback_channel1)
-	
 	p2.start()
 	p1.start()
-    
     time.sleep(0.05)
+
+# xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+def arm2fit_turn_back():
+    calDeg(0, 0, 90)
+    calDeg(1, 1, 30)
+    calDeg(2, 2, 30)
+    calDeg(3, 3, 130)
+    calDeg(4, 4, 90)
+    print 'Function: arm to fit turn_back'
+    time.sleep(0.5)
     
 # xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 def turn_back():
@@ -254,136 +400,172 @@ def turn_back():
 	for i in range(90, 10, -1):
 	    calDeg(0, 0, i)
 	    time.sleep(0.01)
+    
+    def turn_back_channel1(): #servo channel 1
+	for i in range(30, 90, 1):
+	    calDeg(1, 1, i)
+	    time.sleep(0.01)
+    
+    def turn_back_channel2(): #servo channel 2
+	for i in range(30, 90, 1):
+	    calDeg(2, 2, i)
+	    time.sleep(0.01)
+	    
+    def turn_back_channel3(): #servo channel 3
+	for i in range(130, 85, -1):
+	    calDeg(3, 3, i)
+	    time.sleep(0.01)
 
     print ("Function: turn back")
-    calDeg(0, 0, 10)
-    calDeg(1, 1, 90)
-    calDeg(2, 2, 90)
-    calDeg(3, 3, 100)
+    calDeg(0, 0, 90)
+    calDeg(1, 1, 30)
+    calDeg(2, 2, 30)
+    calDeg(3, 3, 130)
     calDeg(4, 4, 90)
+    
+    turn_back_channel3()
+    time.sleep(0.05)
     turn_back_channel0()
     time.sleep(0.05)
-
+    
+    if(__name__=='__main__'):
+	p2 = mp.Process(target=turn_back_channel2)
+	p1 = mp.Process(target=turn_back_channel1)
+	p2.start()
+	p1.start()
+    time.sleep(0.05)
+    
 # xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+
+def test():
+    '''
+    backip
+    calDeg(0, 0, 90)
+    calDeg(1, 1, 80)
+    calDeg(2, 2, 120)
+    calDeg(3, 3, 140)
+    calDeg(4, 4, 90)
+    '''
+    '''
+    # 30 - 40 
+    calDeg(0, 0, 90)
+    calDeg(1, 1, 60)
+    calDeg(2, 2, 120)
+    calDeg(3, 3, 180)
+    calDeg(4, 4, 90)
+    '''
+    '''
+    # 40 - 50 
+    calDeg(0, 0, 90)
+    calDeg(1, 1, 70)
+    calDeg(2, 2, 120)
+    calDeg(3, 3, 160)
+    calDeg(4, 4, 90)
+    '''
+    '''
+    # 50 - 60 
+    calDeg(0, 0, 90)
+    calDeg(1, 1, 90)
+    calDeg(2, 2, 120)
+    calDeg(3, 3, 140)
+    calDeg(4, 4, 90)
+    '''
+    # 60 - 70 
+    calDeg(0, 0, 90)
+    calDeg(1, 1, 65)
+    calDeg(2, 2, 120)
+    calDeg(3, 3, 160)
+    calDeg(4, 4, 90)
+test()
+
+average_Camera = Ultrasonict.Camera()
+print("Ultrasonic Sensor by camera")
+print("Distance: "+ str(round(average_Camera,2)) + " cm\n")
+
+average_Arm = Ultrasonict.Arm()
+print("Ultrasonic Sensor by arm")
+print("Distance: "+ str(round(average_Arm,2)) + " cm\n")
+
+distance = average_Camera
+valueDegX = 30
+valueDegY = ((distance - valueDegX) * 2.5) + 30
+
+print("valueDegX: " + str(int(valueDegX)))
+print("process valueDegY = [("+ str(distance)+" - "+ str(valueDegX)+") x 2.5] + 30" )
+print("valueDegY: " + str(int(round(valueDegY))))
+
 '''
-default()
+print("Run file Servo.py")
+
 time.sleep(1)
+default()
 
+time.sleep(1)
 default_low()
-time.sleep(0.5)
 
-time.sleep(0.1)
+time.sleep(1)
 default_rice()
 
-time.sleep(0.1)
+time.sleep(0.5)
 scoop_rice()
 
-time.sleep(0.1)
+time.sleep(0.5)
 scoop_up()
 
-time.sleep(0.1)
-turn_corner_forward()
-
-time.sleep(0.1)
-arm2fit()
-
-time.sleep(1)
-
-servo1 = calDeg(1, 1, 90)
-servo2 = calDeg(2, 2, 90)
+time.sleep(0.5)
+arm2fit_scoop_up()
 
 time.sleep(0.5)
-print("Ultrasonic sensor")
-arm_dis = Ultrasonict.check_extra()
-while arm_dis >= 20:
-    arm_dis = Ultrasonict.check_extra()
-    print(arm_dis)
-    if servo1 < 150:
-	servo1 += 1
-	calDeg(1, 1, servo1)
-	print("servo 1 deg: " + str(servo1))
-	
-    elif servo1 == 180:
-	calDeg(1, 1, 180)
-	
-	
-    if servo2 < 150:
-	servo2 += 1
-	calDeg(2, 2, servo2)
-	print("servo 2 deg: " + str(servo2))
-	
-    elif servo2 == 180:
-	calDeg(2, 2, 180)
-	
-    print("======================")
+turn_corner_forward()
 
-time.sleep(0.1)
+time.sleep(0.5)
+arm2fit_turn_corner_forward()
 
-arm_dis = Ultrasonict.check_extra()
-while arm_dis < 20:
-    arm_dis = Ultrasonict.check_extra()
+average_Camera = Ultrasonict.Camera()
+print("Ultrasonic Sensor by camera")
+print("Distance: "+ str(round(average_Camera,2)) + " cm\n")
 
-for i in range(3):
-    print('========== OK ==========')
+average_Arm = Ultrasonict.Arm()
+print("Ultrasonic Sensor by arm")
+print("Distance: "+ str(round(average_Arm,2)) + " cm\n")
+
+distance = average_Camera
+valueDegX = 30
+valueDegY = ((distance - valueDegX) * 2.5) + 30
+
+print("valueDegX: " + str(int(valueDegX)))
+print("process valueDegY = [("+ str(distance)+" - "+ str(valueDegX)+") x 2.5] + 30" )
+print("valueDegY: " + str(int(round(valueDegY))))
+
+time.sleep(0.5)
+distance_deg(distance, valueDegX, valueDegY)
+
+time.sleep(0.5)
+print("Process Ultrasonic sensor")
+arm_dis = Ultrasonict.Arm()
+
+while average_Arm > 1:
+    arm_dis = Ultrasonict.Arm()
+    distance = arm_dis
+    print("Distance: "+ str(distance) +" cm")
     
-time.sleep(5)
-turn_cornerback(servo1, servo2)
+    time.sleep(1)
+    print("======================")
+    
+    if distance < 30:
+	print("Stop working 6 seconds")
+	time.sleep(6)
+	print("Stop process Ultrasonic sensor")
+	break
+
+time.sleep(0.5)
+turn_cornerback(valueDegY)
+
+time.sleep(1.5)
+arm2fit_turn_back()
 
 time.sleep(0.5)
 turn_back()
 
-time.sleep(0.5)
-print ("Sound off")
-command = "aplay Sound_EndDetect.wav"
-os.system(command)
+print("======================")
 '''
-
-#arm2fit()
-
-time.sleep(1)
-
-servo0 = calDeg(0, 0, 10)
-servo1 = calDeg(1, 1, 90)
-servo2 = calDeg(2, 2, 90)
-
-time.sleep(0.5)
-'''
-print("Ultrasonic sensor")
-average_Camera = Ultrasonict.Camera()
-average_Arm = Ultrasonict.Arm()
-
-
-print ("average_Camera: "+str(average_Camera))
-print ("average_Arm: "+str(average_Arm))
-
-'''
-
-
-while True:  
-    valueDistance = input("Enter value Distance: ")
-    print("Distance: "+ str(valueDistance))
-    
-    if(valueDistance <= 30):
-	valueDeg = 90 - (int(valueDistance)*0.4)
-
-	print("Deg: "+ str(valueDeg))
-
-	servo = round(valueDistance)
-	print("Servo: " + str(int(round(servo))) )
-	print("=================== \n")
-    else:
-	valueDeg = 90 + (int(valueDistance)*0.4)
-
-	print("Deg: "+ str(valueDeg))
-
-	servo = round(valueDistance)
-	print("Servo: " + str(int(round(servo))) )
-	print("=================== \n")
-
-    
-  
-
-
-
-
-
