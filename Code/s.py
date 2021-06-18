@@ -476,156 +476,157 @@ print("valueDegX: " + str(int(valueDegX)))
 print("process valueDegY = [("+ str(distance)+" - "+ str(valueDegX)+") x 2.5] + 30" )
 print("valueDegY: " + str(int(round(valueDegY)))+"\n")
 '''
-average_Camera = input("\nEnter average_Arm: ")
-time.sleep(0.5)
-print("average_Camera: "+str(average_Camera)+"\n")
+while True:
+	average_Camera = input("\nEnter average_Arm: ")
+	time.sleep(0.5)
+	print("average_Camera: "+str(average_Camera)+"\n")
 
-if average_Camera > 0 and average_Camera <= 30:
-    print("case: 1")
-    print("distance >= 0 and distance <= 30")
-    deg = average_Camera
-    print("Deg: " + str(deg))
-    print("Degree: " + str(30))
-    
-    distance = average_Camera
-    valueDegX = 30
-    valueDegY = ((distance - valueDegX) * 2.5) + 30
-    Servo0 = 90
-    Servo1 = 60
-    Servo2 = 120
-    Servo3 = 170 
-    Servo4 = 90
-    
-    showMsg(distance, valueDegX, valueDegY, Servo0, Servo1, Servo2, Servo3, Servo4)
-    distance_case(distance, valueDegX, valueDegY, Servo0, Servo1, Servo2, Servo3, Servo4)
-	
-elif average_Camera >= 30 and average_Camera <= 40:
-    print("case: 2") 
-    print("distance >= 30 and distance <= 40")
-    deg = average_Camera - 30
-    print("Deg: " + str(deg))
-    print("Degree: " + str(30 + deg))
-    
-    distance = average_Camera
-    valueDegX = 30
-    valueDegY = ((distance - valueDegX) * 2.5) + 30
-    s1 = deg
-    s2 = deg
-    degServo0 = 90
-    degServo1 = 60 + s1
-    degServo2 = 120
-    degServo3 = 160 - s2
-    degServo4 = 90
-  
-    showMsg(distance, valueDegX, valueDegY, degServo0, degServo1, degServo2, degServo3, degServo4)
-    distance_case(distance, valueDegX, valueDegY, degServo0, degServo1, degServo2, degServo3, degServo4)
-    
-elif average_Camera >= 40 and average_Camera <= 50:
-    print("case: 3") 
-    print("distance >= 40 and distance <= 50")
-    deg = average_Camera - 40
-    print("Deg: " + str(deg))
-    print("Degree: " + str(40 + deg))
-    
-    distance = average_Camera
-    valueDegX = 30
-    valueDegY = ((distance - valueDegX) * 2.5) + 30
-    s1 = deg
-    s2 = deg
-    degServo0 = 90
-    degServo1 = 70 + s1
-    degServo2 = 120
-    degServo3 = 150 - s2
-    degServo4 = 90
+	if average_Camera > 0 and average_Camera <= 30:
+		print("case: 1")
+		print("distance >= 0 and distance <= 30")
+		deg = average_Camera
+		print("Deg: " + str(deg))
+		print("Degree: " + str(30))
+		
+		distance = average_Camera
+		valueDegX = 30
+		valueDegY = ((distance - valueDegX) * 2.5) + 30
+		Servo0 = 90
+		Servo1 = 60
+		Servo2 = 120
+		Servo3 = 170 
+		Servo4 = 90
+		
+		showMsg(distance, valueDegX, valueDegY, Servo0, Servo1, Servo2, Servo3, Servo4)
+		distance_case(distance, valueDegX, valueDegY, Servo0, Servo1, Servo2, Servo3, Servo4)
+		
+	elif average_Camera >= 30 and average_Camera <= 40:
+		print("case: 2") 
+		print("distance >= 30 and distance <= 40")
+		deg = average_Camera - 30
+		print("Deg: " + str(deg))
+		print("Degree: " + str(30 + deg))
+		
+		distance = average_Camera
+		valueDegX = 30
+		valueDegY = ((distance - valueDegX) * 2.5) + 30
+		s1 = deg
+		s2 = deg
+		degServo0 = 90
+		degServo1 = 60 + s1
+		degServo2 = 120
+		degServo3 = 160 - s2
+		degServo4 = 90
+	  
+		showMsg(distance, valueDegX, valueDegY, degServo0, degServo1, degServo2, degServo3, degServo4)
+		distance_case(distance, valueDegX, valueDegY, degServo0, degServo1, degServo2, degServo3, degServo4)
+		
+	elif average_Camera >= 40 and average_Camera <= 50:
+		print("case: 3") 
+		print("distance >= 40 and distance <= 50")
+		deg = average_Camera - 40
+		print("Deg: " + str(deg))
+		print("Degree: " + str(40 + deg))
+		
+		distance = average_Camera
+		valueDegX = 30
+		valueDegY = ((distance - valueDegX) * 2.5) + 30
+		s1 = deg
+		s2 = deg
+		degServo0 = 90
+		degServo1 = 70 + s1
+		degServo2 = 120
+		degServo3 = 150 - s2
+		degServo4 = 90
 
-    showMsg(distance, valueDegX, valueDegY, degServo0, degServo1, degServo2, degServo3, degServo4)
-    distance_case(distance, valueDegX, valueDegY, degServo0, degServo1, degServo2, degServo3, degServo4)
-	
-elif average_Camera >= 50 and average_Camera <= 60:
-    print("case: 4") 
-    print("distance >= 50 and distance <= 60")
-    deg = average_Camera - 50
-    print("Deg: " + str(deg))
-    print("Degree: " + str(50 + deg))
-    
-    distance = average_Camera
-    valueDegX = 30
-    valueDegY = ((distance - valueDegX) * 2.5) + 30
-    s1 = deg
-    s2 = deg
-    degServo0 = 90
-    degServo1 = 80 + s1
-    degServo2 = 120 
-    degServo3 = 140 - s2
-    degServo4 = 90
-    
-    showMsg(distance, valueDegX, valueDegY, degServo0, degServo1, degServo2, degServo3, degServo4)
-    distance_case(distance, valueDegX, valueDegY, degServo0, degServo1, degServo2, degServo3, degServo4)
-	
-elif average_Camera >= 60 and average_Camera <= 70:
-    print("case: 5") 
-    print("distance >= 60 and distance <= 70")
-    deg = average_Camera - 60
-    print("Deg: " + str(deg))
-    print("Degree: " + str(60 + deg))
-    
-    distance = average_Camera
-    valueDegX = 30
-    valueDegY = ((distance - valueDegX) * 2.5) + 30
-    s1 = deg
-    s2 = deg
-    degServo0 = 90
-    degServo1 = 90 + s1
-    degServo2 = 120 
-    degServo3 = 130 - s2
-    degServo4 = 90
-    
-    showMsg(distance, valueDegX, valueDegY, degServo0, degServo1, degServo2, degServo3, degServo4)
-    distance_case(distance, valueDegX, valueDegY, degServo0, degServo1, degServo2, degServo3, degServo4)
-    
-elif average_Camera >= 70:
-    print("case: 6") 
-    print("distance >= 70")
-    deg = average_Camera
-    print("Deg: " + str(deg))
-    distance = average_Camera
-    valueDegX = 30
-    valueDegY = 70
-    degServo0 = 90
-    degServo1 = 90 
-    degServo2 = 110
-    degServo3 = 100
-    degServo4 = 90
+		showMsg(distance, valueDegX, valueDegY, degServo0, degServo1, degServo2, degServo3, degServo4)
+		distance_case(distance, valueDegX, valueDegY, degServo0, degServo1, degServo2, degServo3, degServo4)
+		
+	elif average_Camera >= 50 and average_Camera <= 60:
+		print("case: 4") 
+		print("distance >= 50 and distance <= 60")
+		deg = average_Camera - 50
+		print("Deg: " + str(deg))
+		print("Degree: " + str(50 + deg))
+		
+		distance = average_Camera
+		valueDegX = 30
+		valueDegY = ((distance - valueDegX) * 2.5) + 30
+		s1 = deg
+		s2 = deg
+		degServo0 = 90
+		degServo1 = 80 + s1
+		degServo2 = 120 
+		degServo3 = 140 - s2
+		degServo4 = 90
+		
+		showMsg(distance, valueDegX, valueDegY, degServo0, degServo1, degServo2, degServo3, degServo4)
+		distance_case(distance, valueDegX, valueDegY, degServo0, degServo1, degServo2, degServo3, degServo4)
+		
+	elif average_Camera >= 60 and average_Camera <= 70:
+		print("case: 5") 
+		print("distance >= 60 and distance <= 70")
+		deg = average_Camera - 60
+		print("Deg: " + str(deg))
+		print("Degree: " + str(60 + deg))
+		
+		distance = average_Camera
+		valueDegX = 30
+		valueDegY = ((distance - valueDegX) * 2.5) + 30
+		s1 = deg
+		s2 = deg
+		degServo0 = 90
+		degServo1 = 90 + s1
+		degServo2 = 120 
+		degServo3 = 130 - s2
+		degServo4 = 90
+		
+		showMsg(distance, valueDegX, valueDegY, degServo0, degServo1, degServo2, degServo3, degServo4)
+		distance_case(distance, valueDegX, valueDegY, degServo0, degServo1, degServo2, degServo3, degServo4)
+		
+	elif average_Camera >= 70:
+		print("case: 6") 
+		print("distance >= 70")
+		deg = average_Camera
+		print("Deg: " + str(deg))
+		distance = average_Camera
+		valueDegX = 30
+		valueDegY = 70
+		degServo0 = 90
+		degServo1 = 90 
+		degServo2 = 110
+		degServo3 = 100
+		degServo4 = 90
 
-    showMsg(distance, valueDegX, valueDegY, degServo0, degServo1, degServo2, degServo3, degServo4)
-    distance_deg(distance, valueDegX, valueDegY)
-    
-time.sleep(0.5)
-print("Process Ultrasonic sensor")
-arm_dis = Ultrasonict.Arm()
+		showMsg(distance, valueDegX, valueDegY, degServo0, degServo1, degServo2, degServo3, degServo4)
+		distance_deg(distance, valueDegX, valueDegY)
+		
+	time.sleep(0.5)
+	print("Process Ultrasonic sensor")
+	arm_dis = Ultrasonict.Arm()
 
-while average_Arm > 1:
-    arm_dis = Ultrasonict.Arm()
-    distance = arm_dis
-    print("Distance: "+ str(distance) +" cm")
-    
-    time.sleep(1)
-    print("======================")
-    
-    if distance < 30:
-	print("Stop working 6 seconds")
-	time.sleep(6)
-	print("Stop process Ultrasonic sensor")
-	break
+	while average_Arm > 1:
+		arm_dis = Ultrasonict.Arm()
+		distance = arm_dis
+		print("Distance: "+ str(distance) +" cm")
+		
+		time.sleep(1)
+		print("======================")
+		
+		if distance < 30:
+		print("Stop working 6 seconds")
+		time.sleep(6)
+		print("Stop process Ultrasonic sensor")
+		break
 
-time.sleep(0.5)
-turn_cornerback(valueDegY)
+	time.sleep(0.5)
+	turn_cornerback(valueDegY)
 
-time.sleep(1.5)
-arm2fit_turn_back()
+	time.sleep(1.5)
+	arm2fit_turn_back()
 
-time.sleep(0.5)
-turn_back()
+	time.sleep(0.5)
+	turn_back()
 
-print("======================")
+	print("======================")
 
