@@ -438,20 +438,20 @@ def turn_back():
 # xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 
 def test():
-    '''
-    backip
+
+    #backip
     calDeg(0, 0, 90)
-    calDeg(1, 1, 80)
-    calDeg(2, 2, 120)
-    calDeg(3, 3, 140)
+    calDeg(1, 1, 100)
+    calDeg(2, 2, 100)
+    calDeg(3, 3, 110)
     calDeg(4, 4, 90)
-    '''
+
     '''
     # 30 - 40 
     calDeg(0, 0, 90)
-    calDeg(1, 1, 60)
+    calDeg(1, 1, 70)
     calDeg(2, 2, 120)
-    calDeg(3, 3, 180)
+    calDeg(3, 3, 160)
     calDeg(4, 4, 90)
     '''
     '''
@@ -470,12 +470,15 @@ def test():
     calDeg(3, 3, 140)
     calDeg(4, 4, 90)
     '''
+    '''
     # 60 - 70 
     calDeg(0, 0, 90)
-    calDeg(1, 1, 65)
+    calDeg(1, 1, 100)
     calDeg(2, 2, 120)
-    calDeg(3, 3, 160)
+    calDeg(3, 3, 130)
     calDeg(4, 4, 90)
+    
+    '''
 test()
 
 average_Camera = Ultrasonict.Camera()
@@ -485,7 +488,7 @@ print("Distance: "+ str(round(average_Camera,2)) + " cm\n")
 average_Arm = Ultrasonict.Arm()
 print("Ultrasonic Sensor by arm")
 print("Distance: "+ str(round(average_Arm,2)) + " cm\n")
-
+'''
 distance = average_Camera
 valueDegX = 30
 valueDegY = ((distance - valueDegX) * 2.5) + 30
@@ -493,7 +496,7 @@ valueDegY = ((distance - valueDegX) * 2.5) + 30
 print("valueDegX: " + str(int(valueDegX)))
 print("process valueDegY = [("+ str(distance)+" - "+ str(valueDegX)+") x 2.5] + 30" )
 print("valueDegY: " + str(int(round(valueDegY))))
-
+'''
 '''
 print("Run file Servo.py")
 
