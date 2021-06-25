@@ -251,21 +251,21 @@ def distance_case(Servo0, Servo1, Servo2, Servo3, Servo4, loop_degServo1, loop_d
     
     time_speack = 0.045
     
-    def distance_case_channel1():
+    def distance_case_channel1(): #servo channel 1
 	for i in range(0, 21, 1):
 	    degServo1 = int(math.ceil(start_servo1 + (loop_degServo1 * i)))
 	    calDeg(1, 1, degServo1)
 	    print("servo 1: N: " + str(i) + "\t| servo 1: "+ str(degServo1))
 	    time.sleep(time_speack)
     
-    def distance_case_channel2():
+    def distance_case_channel2(): #servo channel 2
 	for i in range(0, 21, 1):
 	    degServo2 = int(math.ceil(start_servo2 + (loop_degServo2 * i)))
 	    calDeg(2, 2, degServo2)
 	    print("servo 2: N: " + str(i) + "\t| servo 2: "+ str(degServo2))
 	    time.sleep(time_speack)
     
-    def distance_case_channel3():
+    def distance_case_channel3(): #servo channel 3
 	for i in range(0, 21, 1):
 	    degServo3 = int(math.ceil(start_servo3 + (loop_degServo3 * i)))
 	    calDeg(3, 3, degServo3)
