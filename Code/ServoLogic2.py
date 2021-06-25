@@ -85,8 +85,6 @@ def default_low():
 	p2.start()
 	p1.start()
     time.sleep(0.5)
-    
-    #default_low_channel2()
 # xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 def default_rice():
     def default_rice_channel1(): #servo channel 1
@@ -227,9 +225,10 @@ def distance_case(Servo0, Servo1, Servo2, Servo3, Servo4, loop_degServo1, loop_d
     calDeg(3, 3, 130)
     calDeg(4, 4, 90)
     
-    print("\nloop_degServo1: " + str(loop_degServo1))
-    print("loop_degServo2: " + str(loop_degServo2))
-    print("loop_degServo3: " + str(loop_degServo3))
+    #Debug Value
+    #print("\nloop_degServo1: " + str(loop_degServo1))
+    #print("loop_degServo2: " + str(loop_degServo2))
+    #print("loop_degServo3: " + str(loop_degServo3))
     
     start_servo1 = 30
     start_servo2 = 30
@@ -250,11 +249,10 @@ def distance_case(Servo0, Servo1, Servo2, Servo3, Servo4, loop_degServo1, loop_d
 		" ~ " + str(int(round(degServo3))))
 	print("\n")
     
-    
     def distance_case_channel1():
 	for i in range(0, 21, 1):
 	    degServo1 = int(math.ceil(start_servo1 + (loop_degServo1 * i)))
-	    calDeg(2, 2, degServo1)
+	    calDeg(1, 1, degServo1)
 	    print("servo 1: N: " + str(i) + "\t| servo 1: "+ str(degServo1))
 	    time.sleep(0.025)
     
@@ -284,16 +282,17 @@ def distance_case(Servo0, Servo1, Servo2, Servo3, Servo4, loop_degServo1, loop_d
     
     time.sleep(0.05)
 # xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
-def turn_cornerback(valueDegY):
+def turn_cornerback(Servo1, Servo2):
     print 'Function: turn cornerback'
-    valueDegY = int(valueDegY)
+    Servo1 = int(Servo1)
+    Servo2 = int(Servo2)
     
-    print ("Value servo 1 = " + str(valueDegY))
-    print ("Value servo 2 = " + str(valueDegY))
+    print ("Value servo 1 = " + str(Servo1))
+    print ("Value servo 2 = " + str(Servo2))
     
     def turn_cornerback_channel1(): #servo channel 1
-	if(valueDegY < 151):
-	    for i in range(valueDegY, 30, -1):
+	if(Servo1 < 151):
+	    for i in range(Servo1, 30, -1):
 		calDeg(1, 1, i)
 		print("servo 1 deg: "+str(i))
 		time.sleep(0.03)
@@ -304,8 +303,8 @@ def turn_cornerback(valueDegY):
 		time.sleep(0.03)
 		
     def turn_cornerback_channel2(): #servo channel 2
-	if(valueDegY < 151):
-	    for i in range(valueDegY, 30, -1):
+	if(Servo2 < 151):
+	    for i in range(Servo2, 30, -1):
 		calDeg(2, 2, i)
 		print("servo 2 deg: "+str(i))
 		time.sleep(0.03)
@@ -374,7 +373,7 @@ def turn_back():
 	p1.start()
     time.sleep(0.05)
 # xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
-def showMsg(distance, valueDegX, valueDegY, Servo0, Servo1, Servo2, Servo3, Servo4, loop_degServo1, loop_degServo2, loop_degServo3):
+def showMsg(Servo0, Servo1, Servo2, Servo3, Servo4, loop_degServo1, loop_degServo2, loop_degServo3):
     print("\nFunction: showMsg")
     print("======================")
     print("Servo 0: " + str(Servo0))
@@ -385,9 +384,6 @@ def showMsg(distance, valueDegX, valueDegY, Servo0, Servo1, Servo2, Servo3, Serv
     print("\nloop_degServo1: " + str(loop_degServo1))
     print("loop_degServo2: " + str(loop_degServo2))
     print("loop_degServo3: " + str(loop_degServo3))
-    print("\nvalueDegX: " + str(int(valueDegX)))
-    print("process valueDegY = [("+ str(distance)+" - "+ str(valueDegX)+") x 2.5] + 30" )
-    print("valueDegY: " + str(int(round(valueDegY)))+"\n")
 # xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 print("Run file Servo.py")
 '''
@@ -423,33 +419,15 @@ average_Arm = Ultrasonict.Arm()
 print("Ultrasonic Sensor by arm")
 print("Distance: "+ str(round(average_Arm,2)) + " cm\n")
 '''
+
 average_Camera = input("\nEnter average_Arm: ")
-
-distance = average_Camera
-valueDegX = 30
-valueDegY = ((distance - valueDegX) * 2.5) + 30
-
-print("valueDegX: " + str(int(valueDegX)))
-print("process valueDegY = [("+ str(distance)+" - "+ str(valueDegX)+") x 2.5] + 30" )
-print("valueDegY: " + str(int(round(valueDegY)))+"\n")
-
-
-time.sleep(0.5)
-print("average_Camera: "+str(average_Camera)+"\n")
-
-#global Servo0, Servo1, Servo2, Servo3, Servo4
-#global loop_degServo1, loop_degServo2, loop_degServo3
+#time.sleep(0.5)
+#print("average_Camera: "+str(average_Camera)+"\n")
 
 if average_Camera > 0 and average_Camera <= 30:
     print("case: 1")
     print("distance >= 0 and distance <= 30")
-    deg = average_Camera
-    print("Deg: " + str(deg))
-    print("Degree: " + str(30))
-    
-    distance = average_Camera
-    valueDegX = 30
-    valueDegY = ((distance - valueDegX) * 2.5) + 30
+
     Servo0 = 90
     Servo1 = 30
     Servo2 = 90
@@ -460,19 +438,13 @@ if average_Camera > 0 and average_Camera <= 30:
     loop_degServo2 = 3
     loop_degServo3 = 2.25
     
-    showMsg(distance, valueDegX, valueDegY, Servo0, Servo1, Servo2, Servo3, Servo4, loop_degServo1, loop_degServo2, loop_degServo3)
+    showMsg(Servo0, Servo1, Servo2, Servo3, Servo4, loop_degServo1, loop_degServo2, loop_degServo3)
     distance_case(Servo0, Servo1, Servo2, Servo3, Servo4, loop_degServo1, loop_degServo2, loop_degServo3) 
 	
 elif average_Camera >= 30 and average_Camera <= 35:
     print("case: 2") 
     print("distance >= 30 and distance <= 35")
-    deg = average_Camera - 30
-    print("Deg: " + str(deg))
-    print("Degree: " + str(30 + deg))
-    
-    distance = average_Camera
-    valueDegX = 30
-    valueDegY = ((distance - valueDegX) * 2.5) + 30
+
     Servo0 = 90
     Servo1 = 40
     Servo2 = 95
@@ -483,96 +455,128 @@ elif average_Camera >= 30 and average_Camera <= 35:
     loop_degServo2 = 3.25
     loop_degServo3 = 2
   
-    showMsg(distance, valueDegX, valueDegY, Servo0, Servo1, Servo2, Servo3, Servo4, loop_degServo1, loop_degServo2, loop_degServo3)
+    showMsg(Servo0, Servo1, Servo2, Servo3, Servo4, loop_degServo1, loop_degServo2, loop_degServo3)
     distance_case(Servo0, Servo1, Servo2, Servo3, Servo4, loop_degServo1, loop_degServo2, loop_degServo3) 
 
     
 elif average_Camera >= 35 and average_Camera <= 40:
     print("case: 3") 
     print("distance >= 35 and distance <= 40")
-    deg = average_Camera - 40
-    print("Deg: " + str(deg))
-    print("Degree: " + str(40 + deg))
     
-    distance = average_Camera
-    valueDegX = 30
-    valueDegY = ((distance - valueDegX) * 2.5) + 30
     Servo0 = 90
-    Servo1 = 40
-    Servo2 = 95
-    Servo3 = 170 
+    Servo1 = 50
+    Servo2 = 100
+    Servo3 = 165 
     Servo4 = 90
     
     loop_degServo1 = 1
-    loop_degServo2 = 6.5
-    loop_degServo3 = 4
+    loop_degServo2 = 3.5
+    loop_degServo3 = 1.75
   
-    showMsg(distance, valueDegX, valueDegY, Servo0, Servo1, Servo2, Servo3, Servo4, loop_degServo1, loop_degServo2, loop_degServo3)
-    distance_case(distance, valueDegX, valueDegY, Servo0, Servo1, Servo2, Servo3, Servo4, loop_degServo1, loop_degServo2, loop_degServo3) 
+    showMsg(Servo0, Servo1, Servo2, Servo3, Servo4, loop_degServo1, loop_degServo2, loop_degServo3)
+    distance_case(Servo0, Servo1, Servo2, Servo3, Servo4, loop_degServo1, loop_degServo2, loop_degServo3) 
 
-elif average_Camera >= 50 and average_Camera <= 60:
+elif average_Camera >= 40 and average_Camera <= 45:
     print("case: 4") 
     print("distance >= 50 and distance <= 60")
-    deg = average_Camera - 50
-    print("Deg: " + str(deg))
-    print("Degree: " + str(50 + deg))
-    
-    distance = average_Camera
-    valueDegX = 30
-    valueDegY = ((distance - valueDegX) * 2.5) + 30
+
     Servo0 = 90
-    Servo1 = 40
-    Servo2 = 95
-    Servo3 = 170 
+    Servo1 = 60
+    Servo2 = 105
+    Servo3 = 160 
     Servo4 = 90
     
-    loop_degServo1 = 1
-    loop_degServo2 = 6.5
-    loop_degServo3 = 4
-  
-    showMsg(distance, valueDegX, valueDegY, Servo0, Servo1, Servo2, Servo3, Servo4, loop_degServo1, loop_degServo2, loop_degServo3)
-    distance_case(distance, valueDegX, valueDegY, Servo0, Servo1, Servo2, Servo3, Servo4, loop_degServo1, loop_degServo2, loop_degServo3) 
-
-elif average_Camera >= 60 and average_Camera <= 70:
+    loop_degServo1 = 1.5
+    loop_degServo2 = 3.75
+    loop_degServo3 = 1.5
+    
+    showMsg(Servo0, Servo1, Servo2, Servo3, Servo4, loop_degServo1, loop_degServo2, loop_degServo3)
+    distance_case(Servo0, Servo1, Servo2, Servo3, Servo4, loop_degServo1, loop_degServo2, loop_degServo3) 
+    
+elif average_Camera >= 45 and average_Camera <= 50:
     print("case: 5") 
-    print("distance >= 60 and distance <= 70")
-    deg = average_Camera - 60
-    print("Deg: " + str(deg))
-    print("Degree: " + str(60 + deg))
+    print("distance >= 45 and distance <= 50")
     
-    distance = average_Camera
-    valueDegX = 30
-    valueDegY = ((distance - valueDegX) * 2.5) + 30
     Servo0 = 90
-    Servo1 = 40
-    Servo2 = 95
-    Servo3 = 170 
+    Servo1 = 70
+    Servo2 = 110
+    Servo3 = 155 
     Servo4 = 90
     
-    loop_degServo1 = 1
-    loop_degServo2 = 6.5
-    loop_degServo3 = 4
+    loop_degServo1 = 2
+    loop_degServo2 = 4
+    loop_degServo3 = 1.25
   
-    showMsg(distance, valueDegX, valueDegY, Servo0, Servo1, Servo2, Servo3, Servo4, loop_degServo1, loop_degServo2, loop_degServo3)
-    distance_case(distance, valueDegX, valueDegY, Servo0, Servo1, Servo2, Servo3, Servo4, loop_degServo1, loop_degServo2, loop_degServo3) 
+    showMsg(Servo0, Servo1, Servo2, Servo3, Servo4, loop_degServo1, loop_degServo2, loop_degServo3)
+    distance_case(Servo0, Servo1, Servo2, Servo3, Servo4, loop_degServo1, loop_degServo2, loop_degServo3) 
 
-elif average_Camera >= 70:
+elif average_Camera >= 50 and average_Camera <= 55:
     print("case: 6") 
-    print("distance >= 70")
-    deg = average_Camera
-    print("Deg: " + str(deg))
+    print("distance >= 50 and distance <= 55")
+    
     Servo0 = 90
-    Servo1 = 40
-    Servo2 = 95
-    Servo3 = 170 
+    Servo1 = 80
+    Servo2 = 115
+    Servo3 = 150 
     Servo4 = 90
     
-    loop_degServo1 = 1
-    loop_degServo2 = 6.5
-    loop_degServo3 = 4
+    loop_degServo1 = 2.5
+    loop_degServo2 = 4.25
+    loop_degServo3 = 1
   
-    showMsg(distance, valueDegX, valueDegY, Servo0, Servo1, Servo2, Servo3, Servo4, loop_degServo1, loop_degServo2, loop_degServo3)
-    distance_case(distance, valueDegX, valueDegY, Servo0, Servo1, Servo2, Servo3, Servo4, loop_degServo1, loop_degServo2, loop_degServo3) 
+    showMsg(Servo0, Servo1, Servo2, Servo3, Servo4, loop_degServo1, loop_degServo2, loop_degServo3)
+    distance_case(Servo0, Servo1, Servo2, Servo3, Servo4, loop_degServo1, loop_degServo2, loop_degServo3) 
+
+elif average_Camera >= 55 and average_Camera <= 60:
+    print("case: 7") 
+    print("distance >= 55 and distance <= 60")
+    
+    Servo0 = 90
+    Servo1 = 90
+    Servo2 = 120
+    Servo3 = 145 
+    Servo4 = 90
+    
+    loop_degServo1 = 3
+    loop_degServo2 = 4.5
+    loop_degServo3 = 0.75
+  
+    showMsg(Servo0, Servo1, Servo2, Servo3, Servo4, loop_degServo1, loop_degServo2, loop_degServo3)
+    distance_case(Servo0, Servo1, Servo2, Servo3, Servo4, loop_degServo1, loop_degServo2, loop_degServo3) 
+
+elif average_Camera >= 60 and average_Camera <= 65:
+    print("case: 8") 
+    print("distance >= 60 and distance <= 65")
+    
+    Servo0 = 90
+    Servo1 = 100
+    Servo2 = 125
+    Servo3 = 140 
+    Servo4 = 90
+    
+    loop_degServo1 = 3.5
+    loop_degServo2 = 4.75
+    loop_degServo3 = 0.5
+  
+    showMsg(Servo0, Servo1, Servo2, Servo3, Servo4, loop_degServo1, loop_degServo2, loop_degServo3)
+    distance_case(Servo0, Servo1, Servo2, Servo3, Servo4, loop_degServo1, loop_degServo2, loop_degServo3) 
+    
+elif average_Camera >= 65:
+    print("case: 9") 
+    print("distance >= 65")
+
+    Servo0 = 90
+    Servo1 = 110
+    Servo2 = 130
+    Servo3 = 135 
+    Servo4 = 90
+    
+    loop_degServo1 = 4
+    loop_degServo2 = 5
+    loop_degServo3 = 0.25
+  
+    showMsg(Servo0, Servo1, Servo2, Servo3, Servo4, loop_degServo1, loop_degServo2, loop_degServo3)
+    distance_case(Servo0, Servo1, Servo2, Servo3, Servo4, loop_degServo1, loop_degServo2, loop_degServo3) 
 
 '''
 time.sleep(0.5)
@@ -594,7 +598,7 @@ while average_Arm > 1:
 	break
 
 time.sleep(0.5)
-turn_cornerback(valueDegY)
+turn_cornerback(Servo1, Servo2)
 
 time.sleep(1.5)
 arm2fit_turn_back()
@@ -603,4 +607,5 @@ time.sleep(0.5)
 turn_back()
 
 print("======================")
+
 '''
