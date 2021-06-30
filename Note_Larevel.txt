@@ -1,0 +1,35 @@
+﻿-------------------------------------------------------------------------------------
+แบบ Model
+			  $request->validate([
+				'CustNo' => 'required',
+				'CustFirstName' => 'required',
+				'CustLastName' => 'required',
+				'CustBal' => 'required'
+			]);
+			DB::table('Customers')->insert([
+				'CustNo' => $request->CustNo,
+				'CustFirstName' => $request->CustFirstName,
+				'CustLastName' => $request->CustLastName,
+				'CustStreet' => $request->CustStreet,
+				'CustCity' => $request->CustCity,
+				'CustState' => $request->CustState,
+				'CustZip' => $request->CustZip,
+				'CustBal' => $request->CustBal,
+			]);
+			return redirect('customers');
+   
+---------------------------------------------------------------------------------
+แบบ DB
+        $customers = new CustomersModel;
+        $customers->CustNo = $request->CustNo;
+        $customers->CustFirstName = $request->CustFirstName;
+        $customers->CustLastName = $request->CustLastName;
+        $customers->CustStreet = $request->CustStreet;
+        $customers->CustCity = $request->CustCity;
+        $customers->CustState = $request->CustState;
+        $customers->CustZip = $request->CustZip;
+        $customers->CustBal = $request->CustBal;
+
+        $customers->save();
+        return redirect('customers');
+
