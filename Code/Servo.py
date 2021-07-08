@@ -583,7 +583,7 @@ time.sleep(0.5)
 print("Process Ultrasonic sensor")
 arm_dis = Ultrasonict.Arm()
 
-while average_Arm > 1:
+while average_Arm > 0:
     arm_dis = Ultrasonict.Arm()
     distance = arm_dis
     print("Distance: "+ str(distance) +" cm")
