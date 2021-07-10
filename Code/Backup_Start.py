@@ -1,46 +1,32 @@
 from __future__ import division
 from threading import Thread
+import multiprocessing as mp
 import RPi.GPIO as GPIO
 import time
 import os
-import sys
-import drivers
 
-#import FaceCV
+print(GPIO.VERSION)
+GPIO.setmode(GPIO.BCM)
 
-print ("Run File Start.py")
-display = drivers.Lcd()
+ledPin = 18
+swPin = 17
 
+GPIO.setup(ledPin, GPIO.OUT)
+GPIO.setup(swPin, GPIO.IN, pull_up_down=GPIO.PUD_UP)
 
-while True:
-    print("Writing to display")
-  
-    display.lcd_display_string("Start on", 1)  
-    display.lcd_display_string("This is Project", 2)  
-    time.sleep(0.5)                                           
-    display.lcd_clear()
+try:
+	while True:
+		if GPIO.input(swPin):
+			print("Port sw is 1/HIGH/True - LED ON")
+			GPIO.output(ledPin, 1)
 
-    display.lcd_display_string("Arm roboot", 1)   
-    time.sleep(0.5)                                          
-    display.lcd_clear()                           
-         
-    display.lcd_display_string("Open Camera", 1)   
-    print ("run file Servo.py")
-    command = "python Servo.py"
-    time.sleep(0.5)                                          
-    display.lcd_clear() 
-    os.system(command)
-    print ("Sound on")
-    command = "aplay Sound_Power-on.wav"
-    os.system(command)
+		else:
+			print("Port sw is 0/LOW/False - LED OFF")
+			GPIO.output(ledPin, 0)
+			
+		time.sleep(0.1)
 
-
-    command = "aplay Sound_EndDetect.wav"
-    os.system(command)
-    print ("Sound on")
-    time.sleep(0.5) 
-
-
-
-
-    
+finally:
+	GPIO.cleanup()
+	print("\n\nclean up")
+	time.sleep(3)
