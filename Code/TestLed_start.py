@@ -11,12 +11,13 @@ import time
 import os
 #import drivers
 print("Start Project ....")
-impoxrt Ultrasonict
+import Ultrasonict
  
 print(GPIO.VERSION)
 GPIO.setmode(GPIO.BCM)
-ledStart = 18
-ledWork = 15
+
+ledStart = 18 #Yellow
+ledWork = 17 #White
 
 GPIO.setup(ledStart, GPIO.OUT)
 GPIO.setup(ledWork, GPIO.OUT)
