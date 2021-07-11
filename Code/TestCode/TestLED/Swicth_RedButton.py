@@ -34,8 +34,7 @@ try:
 	GPIO.output(YelloLED, GPIO.LOW)	
 	
 	while True:
-	
-		# ==============================================================
+
 		if status_GreenLED_Working == False or status_GreenLED_Working == False:
 			print ("\n====================")
 			print ("\nSwicth Red case: 1")
@@ -83,9 +82,6 @@ try:
 					
 				time.sleep(0.01)
 		
-		# ==============================================================	
-	
-
 		
 finally:
 	GPIO.cleanup()
