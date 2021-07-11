@@ -66,9 +66,7 @@ try:
 					GPIO.output(ledWorkingPin, GPIO.LOW)
 					time.sleep(0.1)
 					
-		
 					
-			
 		if GPIO.input(sw):
 			print("Port sw is 1/HIGH/True - LED ON")	
 				
