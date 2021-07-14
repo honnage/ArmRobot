@@ -1,7 +1,6 @@
 import RPi.GPIO as GPIO
 import time
 
-#-*-codeing: utf8 -*-
 
 GPIO.setmode(GPIO.BCM)
 GPIO.setwarnings(False)

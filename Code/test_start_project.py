@@ -6,142 +6,165 @@ import time
 import os
 
 print(GPIO.VERSION)
-#GPIO.setmode(GPIO.BCM)
-GPIO.setmode(GPIO.BOARD)
+
+GPIO.setmode(GPIO.BCM)
 GPIO.setwarnings(False)
 
-GreenLED = 12 #Yellow
-YelloLED = 13 #Purple
+LED_Green = 14 #Purple
+LED_Yello = 17 #Purple
 
-SwicthButtonGreen = 11 #Blue
-SwicthButtonRed = 40 #
+SwicthButtonGreen = 15 #Yello
+SwicthButtonRed = 18 #Blue
 
-sw = 3
+GPIO.setup(LED_Green, GPIO.OUT)
+GPIO.setup(LED_Yello, GPIO.OUT)
 
-GPIO.setup(GreenLED, GPIO.OUT)
-GPIO.setup(YelloLED, GPIO.OUT)
 
-GPIO.setup(sw , GPIO.IN, pull_up_down=GPIO.PUD_UP)
+GPIO.setup(SwicthButtonGreen, GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
+GPIO.setup(SwicthButtonRed, GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
 
-GPIO.setup(SwicthButtonGreen , GPIO.IN, pull_up_down=GPIO.PUD_UP)
-GPIO.setup(SwicthButtonRed , GPIO.IN, pull_up_down=GPIO.PUD_UP)
 
-status_GreenLED_Working = False
-status_RedLED_Working = False
+StatusWorking_LEDGreen = 0
+statusWorking_LEDYello = 0
 
+statusButton_Green = False
+statusButton_Red = False
+
+
+def exit_ButtonGreen(button):
+	global statusButton_Green
+	statusButton_Green = 0
+
+def exit_ButtonRed(button):
+	global statusButton_Red
+	statusButton_Red = 0
+
+GPIO.add_event_detect(SwicthButtonGreen, GPIO.FALLING, callback=exit_ButtonGreen, bouncetime=300)
+GPIO.add_event_detect(SwicthButtonRed, GPIO.FALLING, callback=exit_ButtonRed, bouncetime=300)
+
+isWorking = False 
+
+def runfile_test():
+	command = "python runfile_test.py"
+	os.system(command)
+	print("Run file runfile_test.py ")
+	global isWorking 
+	isWorking = False
+	print("isWorking "+str(isWorking))
+	return isWorking
+
+def stop_run():
+	command = "^C"
+	isWorking = False
+	return isWorking
+	
 try:
-	GPIO.output(GreenLED, GPIO.LOW)
-	GPIO.output(YelloLED, GPIO.LOW)	
+	GPIO.output(LED_Green, GPIO.LOW)
+	GPIO.output(LED_Yello, GPIO.LOW)	
 	
-	SWG = status_GreenLED_Working
-	SWR = status_RedLED_Working
+	print("\nStatus Working LED Green is " + str(StatusWorking_LEDGreen))
+	print("Status Working LED Yello is " + str(statusWorking_LEDYello))
 	
-	while True:
+	while statusButton_Green or statusButton_Red or True:
 		
-		if SWG == False:
-			print ("\n====================")
-			print ("\nSwicth Green case: 1")
-			print ("\nStatus GreenLED Working = False")
-			print ("\nGreen LED: ON")
+		if StatusWorking_LEDGreen == 0:
+			print("\nStatusWorking_LEDGreen is 1/HIGH/True")
 		
-			while SWG == False:	
-			
-				if GPIO.input(SwicthButtonGreen):
-						
-					GPIO.output(GreenLED, GPIO.HIGH)
+			while StatusWorking_LEDGreen == 0 and statusButton_Green == False: 
+				if StatusWorking_LEDGreen == 0 and statusButton_Green == False :
+					GPIO.output(LED_Green, GPIO.HIGH)
 					print("\nGreen LED Working... ON")
-					time.sleep(0.1)
-						
-					GPIO.output(GreenLED, GPIO.LOW)
+					time.sleep(1)
+								
+					GPIO.output(LED_Green, GPIO.LOW)
 					print("Green LED Working... OFF")
-					time.sleep(0.1)
+					time.sleep(1)
 					
-			
-				else:
-					print ("\nStatus GreenLED Working = True")
-					SWG = True
-					GPIO.output(GreenLED, GPIO.LOW)
-					print("Green LED: OFF")
-						
-				time.sleep(0.1)
-						
-		# ==============================================================		
 				
-		if SWG == True and SWR == False:	
-			print ("\n====================")
-			print ("\nSwicth Green case: 2")
-			print ("\nStatus GreenLED Working = True")
-			print ("\nBlue LED: ON")	
-		
-			while SWG == True:
-				time.sleep(1)
-				if GPIO.input(SwicthButtonGreen):
-						
-					GPIO.output(YelloLED, GPIO.HIGH)
-					print("\nBlue LED Working... ON")
-					time.sleep(0.1)
-						
-					GPIO.output(YelloLED, GPIO.LOW)
-					print("Blue LED Working... OFF")
-					time.sleep(0.1)
-					
-			
-				else:
-					print ("\nStatus GreenLED Working = False")
-					SWG = False
-					GPIO.output(YelloLED, GPIO.LOW)
-					print("Blue LED: OFF")
-						
+				if GPIO.input(SwicthButtonGreen) == 1 :
+					GPIO.output(LED_Green, GPIO.LOW)
+					StatusWorking_LEDGreen = 0;
+					StatusWorking_LEDYello = 1;
+					statusButton_Green = True
+					statusButton_Red = False
+				
+				if GPIO.input(SwicthButtonRed) == 1 :
+					GPIO.output(LED_Green, GPIO.HIGH)
+					StatusWorking_LEDGreen = 1;
+					StatusWorking_LEDYello = 0;
+					statusButton_Green = False
+					statusButton_Red = True
+				
 				time.sleep(0.1)
 		
-		# ==============================================================
-		if SWG == False and SWR == False:
-			print ("\n====================")
-			print ("\nSwicth Red case: 1")
-			print ("\nStatus GreenLED Working = False")
-			print ("\nGreen LED: ON")
 		
-			while SWR == False:	
+		
+		if statusButton_Green == True and statusButton_Red == False:
+			print("OnClick Button Grren")
+			print("\nStatusWorking_LEDYello is 1/HIGH/True")
 			
-				if GPIO.input(SwicthButtonRed):
+			
+			if isWorking == False :
+				isWorking = True
+				print "Run servo armrobot"
+				Thread(target=runfile_test).start()
 						
-					GPIO.output(GreenLED, GPIO.HIGH)
+
+			
+			while StatusWorking_LEDYello == 1: 
+				
+				if StatusWorking_LEDYello == 1 and isWorking == True:
+					GPIO.output(LED_Yello, GPIO.HIGH)
+					print("\nYello LED Working... ON")
+					time.sleep(1)
+								
+					GPIO.output(LED_Yello, GPIO.LOW)
+					print("Yello LED Working... OFF")
+					time.sleep(1)
+					
+				
+				if StatusWorking_LEDYello == 1 and isWorking == False:
+					GPIO.output(LED_Green, GPIO.LOW)
+					StatusWorking_LEDGreen = 0;
+					StatusWorking_LEDYello = 0;
+					statusButton_Green = False
+					statusButton_Red = False
+					print("\nStatusWorking_LEDYeelo is 0/LOW/False")
+					print("\n========================================")
+					
+					
+				if GPIO.input(SwicthButtonRed) == 1 :
+					#Thread(target=stop_run).start()
+					GPIO.output(LED_Green, GPIO.HIGH)
+					StatusWorking_LEDGreen = 1;
+					StatusWorking_LEDYello = 0;
+					statusButton_Green = False
+					statusButton_Red = True
+					print("\nStatusWorking_LEDYeelo is 0/LOW/False")
+					print("\n========================================")
+			
+			
+					
+		if statusButton_Green == False and statusButton_Red == True:
+			print("OnClick Button Red")
+			print("\nStatusWorking_LEDGreen is 1/HIGH/True")
+			
+			while StatusWorking_LEDGreen == 1: 
+				if StatusWorking_LEDGreen == 1:
+					GPIO.output(LED_Green, GPIO.HIGH)
 					print("\nGreen LED Working... ON")
-					time.sleep(0.1)
-						
-					GPIO.output(GreenLED, GPIO.LOW)
-					print("Green LED Working... OFF")
-					time.sleep(0.1)
+					time.sleep(1)
 					
-			
-				else:
-					GPIO.output(GreenLED, GPIO.LOW) #close LED
-					SWR = True
+								
+				if GPIO.input(SwicthButtonGreen) == 1 :
+					GPIO.output(LED_Green, GPIO.LOW)
+					StatusWorking_LEDGreen = 0;
+					StatusWorking_LEDYello = 0;
+					statusButton_Green = False
+					statusButton_Red = False
+					print("\n========================================")
 					
-					
-				time.sleep(0.1)
-						
-		
-		# ==============================================================
-		if SWG == False or SWG == True or SWR == False :
-				
-			print ("\n====================")
-			print ("\nSwicth Red case: 2\n")
-			print ("Status GreenLED Working = False")
-			print ("Status RedLED Working = True")
-			print ("\nGreen LED: ON")
-			
-			while SWR == True:	
-			
-				if GPIO.input(SwicthButtonGreen):
-						
-					GPIO.output(GreenLED, GPIO.HIGH)
-			
-				else:
-					GPIO.output(GreenLED, GPIO.LOW) #close LED
-					SWR = False
-					
-				time.sleep(0.1)
+			time.sleep(0.1)
 		
 		
 		

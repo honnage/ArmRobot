@@ -50,11 +50,11 @@ try:
 				if GPIO.input(SwicthButtonGreen) == 0 and status_case2 != "T":
 					
 					GPIO.output(LED_Green, GPIO.HIGH)
-					print("\nGreen LED Working... ON")
+					print("\nGreen LED Working: ON")
 					time.sleep(1)
 						
 					GPIO.output(LED_Green, GPIO.LOW)
-					print("Green LED Working... OFF")
+					print("Green LED Working: OFF")
 					time.sleep(1)
 					
 			
