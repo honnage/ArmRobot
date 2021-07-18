@@ -10,128 +10,188 @@ print(GPIO.VERSION)
 GPIO.setmode(GPIO.BCM)
 GPIO.setwarnings(False)
 
-LED_Green = 14 #Purple
-LED_YelloLED = 17 #Purple
+GPIO.setmode(GPIO.BCM)
+GPIO.setwarnings(False)
 
-SwicthButtonGreen = 15 #Yello
-SwicthButtonRed = 18 #Blue
+LED_Green = 27 #Green
+LED_Yello = 22 #Yello
 
-GPIO.setup(14, GPIO.OUT)
-GPIO.setup(LED_YelloLED, GPIO.OUT)
+OnClick_ButtonGreen = 23 #Orange
+OnClick_ButtonRed = 24 #Yello
+Onclick_ButtonEmergent = 4 #Broen 
+
+GPIO.setup(LED_Green, GPIO.OUT)
+GPIO.setup(LED_Yello, GPIO.OUT)
 
 
-GPIO.setup(SwicthButtonGreen, GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
-GPIO.setup(SwicthButtonRed, GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
+GPIO.setup(OnClick_ButtonGreen, GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
+GPIO.setup(OnClick_ButtonRed, GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
+GPIO.setup(Onclick_ButtonEmergent, GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
 
+statusWorking_LEDGreen = 0
+statusWorking_LEDYello = 0
 
-status_SwicthGreen = 0
-status_SwicthRed = 0
+statusButton_Green = 0
+statusButton_Red = 0
+statusButton_Emergent = 0
 
-status_case1 = "T"
-status_case2 = "F"
+isWorking = False 
+
+def runfile_test():
+	command = "python runfile_test.py"
+	os.system(command)
+	print("Run file runfile_test.py ")
+	global isWorking 
+	isWorking = False
+	print("isWorking "+str(isWorking))
+	return isWorking
+
 try:
-	
-	
 	GPIO.output(LED_Green, GPIO.LOW)
-	GPIO.output(LED_YelloLED, GPIO.LOW)	
+	GPIO.output(LED_Yello, GPIO.LOW)	
 	
-	while 1:
-		
-		if status_SwicthGreen == 0:
-			#status_case1 = "T"
-			print ("\ncase: 1")
-			print ("status_SwicthGreen: "+str(status_SwicthGreen))
-			print ("status_SwicthRed: "+str(status_SwicthRed))
-			print ("status_case1: "+str(status_case1))
-			print ("status_case2: "+str(status_case2)+"\n")
+	while True:
+		#Setup Start Project 
+		if statusButton_Green == 0 and statusButton_Red == 0 and statusButton_Emergent ==0:
+			statusWorking_LEDGreen = 1
+			statusWorking_LEDYello = 0
+			statusButton_Green = 0
+			statusButton_Red = 0
+			statusButton_Emergent = 0
 			
-			
-			while status_SwicthGreen == 0:
-				if GPIO.input(SwicthButtonGreen) == 0 and status_case2 != "T":
+			if statusWorking_LEDGreen == 1:
+				GPIO.output(LED_Green, GPIO.HIGH)
+				print("\nGreen LED Working... ON")
+				time.sleep(1)
+								
+				GPIO.output(LED_Green, GPIO.LOW)
+				print("Green LED Working... OFF")
+				time.sleep(1)
 					
+					
+		#onClick Button Green
+		if GPIO.input(OnClick_ButtonGreen) == 1 and statusButton_Emergent == 0 and statusButton_Red != 1 :
+			statusWorking_LEDGreen = 0
+			statusWorking_LEDYello = 1
+			statusButton_Green = 1
+			statusButton_Red = 0
+			statusButton_Emergent = 0
+			
+			isWorking = False
+			
+			if isWorking == False :
+				isWorking = True
+				print "Run servo armrobot"
+				Thread(target=runfile_test).start()
+			
+			
+			while statusWorking_LEDYello == 1: 
+				print("\nOnClick Button Grren")
+				
+				if statusWorking_LEDYello == 1 and isWorking == True:
+					print("StatusWorking_LEDYello is 1/HIGH/True")
+					GPIO.output(LED_Yello, GPIO.LOW)
+					GPIO.output(LED_Yello, GPIO.HIGH)
+					print("\nYello LED Working... ON")
+					time.sleep(1)
+								
+					GPIO.output(LED_Yello, GPIO.LOW)
+					print("Yello LED Working... OFF\n")
+					time.sleep(1)
+					print("="*30)
+					
+				
+				if statusWorking_LEDYello == 1 and isWorking == False:
+					print("StatusWorking_LEDYeelo is 0/LOW/False")
+					GPIO.output(LED_Green, GPIO.LOW)
 					GPIO.output(LED_Green, GPIO.HIGH)
-					print("\nGreen LED Working: ON")
+					print("\nGreen LED Working... ON")
 					time.sleep(1)
-						
+									
 					GPIO.output(LED_Green, GPIO.LOW)
-					print("Green LED Working: OFF")
+					print("Green LED Working... OFF")
 					time.sleep(1)
-					
+					print("="*30)
+				
+				
+		#onClick Button Green But statusButton_Red have value 1
+		if GPIO.input(OnClick_ButtonGreen) == 1 and statusButton_Red ==1:
+				statusWorking_LEDGreen = 0
+				statusWorking_LEDYello = 0
+				statusButton_Green = 0
+				statusButton_Red = 0
+				statusButton_Emergent = 0
 			
-				if GPIO.input(SwicthButtonGreen) == 1 :
-					GPIO.output(LED_Green, GPIO.LOW)
-					status_SwicthGreen = 1
-					status_case1 = "F"
-					
-					
-					print ("\nstatus_SwicthGreen: "+str(status_SwicthGreen))
-					print ("status_SwicthRed: "+str(status_SwicthRed))
-					print ("status_case1: "+str(status_case1))
-					print ("status_case2: "+str(status_case2))
-					print("Green LED: OFF")
-					print("\n=========================================")
-					
-					
-				if GPIO.input(SwicthButtonRed) == 1:
-					if status_SwicthRed == 0:
-						GPIO.output(LED_Green, 1)
-						GPIO.output(LED_YelloLED, 0)
-						status_SwicthRed = 1
-						status_SwicthGreen = 1
-						status_case1 = "F"
-						print("Status Swicth Red: "+str(status_SwicthRed))
-						print("LED RED: OFF\n")
-					
-					else:
-						'''
-						GPIO.output(LED_YelloLED, 0)
-						status_SwicthRed = 1
-						status_SwicthGreen = 1
-						status_case1 = "F"
-						print("Status Swicth Red: "+str(status_SwicthRed))
-						'''
-						print("LED RED: OFF\n")
-						
-				time.sleep(0.1)
-						
-				
-				
+				GPIO.output(LED_Green, GPIO.LOW)
+				print("\nGreen LED Working... OFF\n")
 		
-		if GPIO.input(SwicthButtonGreen) == 1:
-			print ("\ncase: 2")
-			status_case2 = "T"
-			print ("status_SwicthGreen: "+str(status_SwicthGreen))
-			print ("status_SwicthRed: "+str(status_SwicthRed))
-			print ("status_case1: "+str(status_case1))
-			print ("status_case2: "+str(status_case2)+"\n")
-			
-			while status_SwicthGreen == 1:
-				if status_case2 == "T":
+		
+		#onClick Button Red
+		if GPIO.input(OnClick_ButtonRed) == 1:
+			print("OnClick Button Red")
+			statusWorking_LEDGreen = 1
+			statusWorking_LEDYello = 0
+			statusButton_Green = 0
+			statusButton_Red = 1
+			statusButton_Emergent = 0
 
-					if status_SwicthGreen == 1:
-						GPIO.output(LED_YelloLED, GPIO.HIGH)
-						print("\nYello LED Working... ON")
-						time.sleep(1)
-							
-						GPIO.output(LED_YelloLED, GPIO.LOW)
-						print("Yello LED Working... OFF")
-						time.sleep(1)
-				
-				
-				if GPIO.input(SwicthButtonRed) == 1 :
-					GPIO.output(LED_YelloLED, GPIO.LOW)
-					status_SwicthGreen = 0
-					status_case2 == "T"
-					print ("\nstatus_SwicthGreen: "+str(status_SwicthGreen))
-					print ("status_SwicthRed: "+str(status_SwicthRed))
-					print ("status_case1: "+str(status_case1))
-					print ("status_case2: "+str(status_case2))
-					print("Yello LED: OFF")
-					print("\n=========================================")
+			if statusButton_Red == 1:
+				GPIO.output(LED_Green, GPIO.HIGH)
+				statusWorking_LEDGreen = 1
+				statusButton_Red = 1
+				print("\nGreen LED Working... ON\n")	
+			
+			print("="*30)	
+			
+			
+		#onClick Button Emergent: ON 
+		if GPIO.input(Onclick_ButtonEmergent) == 1:
+			statusWorking_LEDGreen = 0
+			statusWorking_LEDYello = 1
+			statusButton_Green = 0
+			statusButton_Red = 0
+			statusButton_Emergent = 1
+			
+			GPIO.output(LED_Green, GPIO.LOW)
+			GPIO.output(LED_Yello, GPIO.LOW)
+			
+			if statusButton_Emergent == 1:
+				print("\nOnClick Button Emergent: ON")
+				print("statusButton_Emergent: "+str(statusButton_Emergent))
 					
-		
+				GPIO.output(LED_Yello, 1)
+				print("\nYello LED Working... ON")
+				time.sleep(0.1)
+								
+				GPIO.output(LED_Yello, 0)
+				print("Yello LED Working... OFF\n")
+				time.sleep(0.1)
+
+			print("="*30)	
+			
+			
+			if GPIO.input(OnClick_ButtonGreen) == 1 and  statusButton_Emergent == 1:\
+				pass
 				
-	
+				
+		#onClick Button Emergent: OFF	
+		if GPIO.input(Onclick_ButtonEmergent) == 0 and statusWorking_LEDGreen != 1:
+			statusWorking_LEDYello = 0
+			statusButton_Emergent = 0	
+			print("\nOnClick Button Emergent: OFF\n")
+			print("="*30)
+			
+			
+		else:
+			print("\nstatus button Green: "+"."*9 +"\t"+str(statusButton_Green))
+			print("status button Red: "+"."*11 +"\t"+str(statusButton_Red))
+			print("status button Emergent: "+"."*6 +"\t"+str(statusButton_Emergent))
+			
+			print("\nstatus Working LED Green: "+"."*4 +"\t"+str(statusWorking_LEDGreen))
+			print("status Working LED Red: "+"."*6 +"\t"+str(statusWorking_LEDYello)+"\n")
+			
+			print("="*30)	
+		time.sleep(0.1)
 					
 		
 		

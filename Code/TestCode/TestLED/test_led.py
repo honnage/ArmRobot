@@ -5,11 +5,11 @@ import os
 print(GPIO.VERSION)
 GPIO.setmode(GPIO.BOARD)
 GPIO.setwarnings(False)
-GPIO.setup(12, GPIO.OUT)
+GPIO.setup(13, GPIO.OUT)
 
-GPIO.output(12, True)
+GPIO.output(13, True)
 time.sleep(2)
-GPIO.output(12, False)
+#GPIO.output(13, False)
 
 
 GPIO.cleanup
