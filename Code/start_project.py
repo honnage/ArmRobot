@@ -195,8 +195,6 @@ try:
 					
 		
 		
-		
-		
 finally:
 	GPIO.cleanup()
 	print("\n\nclean up")
