@@ -4,12 +4,12 @@ import time
 #import drivers
 
 # Ultrasonict Canera
-TRIG_1 = 24 #Purple     
-ECHO_1 = 23 #Yellow
+TRIG_1 = 18 #Purple     
+ECHO_1 = 17 #Yellow
 
 # Ultrasonict Arm Robot
-TRIG_2 = 27 #Blue
-ECHO_2 = 22 #Green
+TRIG_2 = 15 #Blue
+ECHO_2 = 14 #Green
 
 GPIO.setmode(GPIO.BCM) # BCM is Number GPIO
 GPIO.setwarnings(False)
@@ -185,8 +185,8 @@ try:
                 distance_extra = pulse_duration*17000
                 distance_extra = round(distance_extra,2)
                 
-                #dis = str(distance_extra)
-                #print(dis)
+                dis = str(distance_extra)
+                print(dis)
                 
                 #lcd.lcd_clear()
                 #time.sleep(0.5)
