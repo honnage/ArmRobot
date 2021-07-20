@@ -54,24 +54,13 @@ def calDeg(a,b,c):
 # xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 def default():
     print("Function: Set Degree Servo Default")
-    calDeg(0, 0, 10)
+    calDeg(0, 0, 90)
     calDeg(1, 1, 90)
     calDeg(2, 2, 90)
     calDeg(3, 3, 85)
     calDeg(4, 4, 90)
     
 
-calDeg(0 ,0, 20)
-print(20)
-time.sleep(1)
-calDeg(0, 0, 30)
-print(30)
-time.sleep(1)
-calDeg(0, 0, 40)
-print(40)
-time.sleep(1)
-calDeg(0, 0, 60)
-print(60)
-time.sleep(1)
-calDeg(0, 0, 80)
+default()
+
 print(80)

@@ -145,7 +145,7 @@ try:
 			
 			
 		#onClick Button Emergent: ON 
-		if GPIO.input(Onclick_ButtonEmergent) == 1:
+		if GPIO.input(Onclick_ButtonEmergent) == 0:
 			statusWorking_LEDGreen = 0
 			statusWorking_LEDYello = 1
 			statusButton_Green = 0
@@ -175,7 +175,7 @@ try:
 				
 				
 		#onClick Button Emergent: OFF	
-		if GPIO.input(Onclick_ButtonEmergent) == 0 and statusWorking_LEDGreen != 1:
+		if GPIO.input(Onclick_ButtonEmergent) == 1 and statusWorking_LEDGreen != 1:
 			statusWorking_LEDYello = 0
 			statusButton_Emergent = 0	
 			print("\nOnClick Button Emergent: OFF\n")
