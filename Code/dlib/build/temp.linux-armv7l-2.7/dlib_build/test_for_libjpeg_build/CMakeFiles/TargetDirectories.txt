@@ -1,3 +1,0 @@
-/home/pi/Desktop/NSC2020/dlib/build/temp.linux-armv7l-2.7/dlib_build/test_for_libjpeg_build/CMakeFiles/rebuild_cache.dir
-/home/pi/Desktop/NSC2020/dlib/build/temp.linux-armv7l-2.7/dlib_build/test_for_libjpeg_build/CMakeFiles/libjpeg_test.dir
-/home/pi/Desktop/NSC2020/dlib/build/temp.linux-armv7l-2.7/dlib_build/test_for_libjpeg_build/CMakeFiles/edit_cache.dir

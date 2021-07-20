@@ -8,7 +8,7 @@ import math
 import time
 import os
 #import drivers
-import Ultrasonict 
+#import Ultrasonict 
 
 cap = cv2.VideoCapture(0)
 cap.set(3,320)
@@ -47,14 +47,14 @@ def OpenCV():
                         distance = math.sqrt( ((p1[0]-p2[0])**2)+((p1[1]-p2[1])**2) )
                         print "Distance mouth :",distance
                         
-                        
+                        '''
                         if distance >= 8:
                                 a = 0
                                 print "Run Ultrasonict function Camera \n"
                                 return a 
                         time.sleep(0.5)
                         
-                        
+                        '''
                 cv2.imshow("Frame", frame)
 
                 key = cv2.waitKey(1)
