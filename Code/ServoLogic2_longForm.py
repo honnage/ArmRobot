@@ -579,7 +579,7 @@ elif average_Camera >= 65:
     showMsg(Servo0, Servo1, Servo2, Servo3, Servo4, loop_degServo1, loop_degServo2, loop_degServo3)
     distance_case(Servo0, Servo1, Servo2, Servo3, Servo4, loop_degServo1, loop_degServo2, loop_degServo3) 
 
-'''
+
 time.sleep(0.5)
 print("Process Ultrasonic sensor")
 arm_dis = Ultrasonict.Arm()
@@ -609,4 +609,4 @@ turn_back()
 
 print("======================")
 
-'''
+

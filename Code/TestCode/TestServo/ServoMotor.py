@@ -3,7 +3,7 @@ import time
 import math
 import Adafruit_PCA9685
 import multiprocessing as mp
-
+import Ultrasonict
 import os
 
 pwm = Adafruit_PCA9685.PCA9685()
@@ -55,11 +55,88 @@ def calDeg(a,b,c):
 def default():
     print("Function: Set Degree Servo Default")
     calDeg(0, 0, 90)
-    calDeg(1, 1, 90)
-    calDeg(2, 2, 90)
-    calDeg(3, 3, 85)
+    calDeg(1, 1, 30)
+    calDeg(2, 2, 30)
+    calDeg(3, 3, 130)
     calDeg(4, 4, 90)
     
+def case_1():
+    calDeg(0, 0, 90)
+    calDeg(1, 1, 30)
+    calDeg(2, 2, 50)
+    calDeg(3, 3, 140)
+    calDeg(4, 4, 90)
+
+def case_2():
+    calDeg(0, 0, 90)
+    calDeg(1, 1, 50)
+    calDeg(2, 2, 70)
+    calDeg(3, 3, 130)
+    calDeg(4, 4, 90)
+
+def case_3():
+    calDeg(0, 0, 90)
+    calDeg(1, 1, 70)
+    calDeg(2, 2, 90)
+    calDeg(3, 3, 120)
+    calDeg(4, 4, 90)
+
+def case_4():
+    calDeg(0, 0, 90)
+    calDeg(1, 1, 90)
+    calDeg(2, 2, 110)
+    calDeg(3, 3, 120)
+    calDeg(4, 4, 90)
+    
+def case_5():
+    calDeg(0, 0, 90)
+    calDeg(1, 1, 110)
+    calDeg(2, 2, 130)
+    calDeg(3, 3, 120)
+    calDeg(4, 4, 90)
+    
+def case_6():
+    calDeg(0, 0, 90)
+    calDeg(1, 1, 130)
+    calDeg(2, 2, 150)
+    calDeg(3, 3, 110)
+    calDeg(4, 4, 90)
+    
+
+while True:
+    #x = input("Enter case: ")
+    camera_dis = Ultrasonict.Camera()
+    x = camera_dis
+    print(x)
+    
+    if x > 0 and x <= 50:
+        print("case: 1")
+        case_1()
+        
+    elif x >= 50 and x <= 55:
+        print("case: 2") 
+        case_2()
+        
+    elif x >= 55 and x <= 60:
+        print("case: 3") 
+        case_3()
+        
+    elif x >= 60 and x <= 65:
+        print("case: 4") 
+        case_4()
+        
+    elif x >= 65 and x <= 70:
+        print("case: 5") 
+        case_5()
+    
+    elif x >= 70 :
+        print("case: 6") 
+        case_6()
+   
+    
+    arm_dis = Ultrasonict.Arm()
+    time.sleep(0.5)
+
 
 default()
 

@@ -2,6 +2,7 @@ from __future__ import division
 import time
 import math
 import Adafruit_PCA9685
+import RPi.GPIO as GPIO
 import multiprocessing as mp
 import Ultrasonict
 import os
@@ -389,27 +390,30 @@ def showMsg(Servo0, Servo1, Servo2, Servo3, Servo4, loop_degServo1, loop_degServ
 print("Run file Servo.py")
 
 time.sleep(1)
+GPIO.cleanup()
+
+time.sleep(2)
 default()
 
-time.sleep(1)
+time.sleep(2)
 default_low()
 
-time.sleep(1)
+time.sleep(2)
 default_rice()
 
-time.sleep(0.5)
+time.sleep(1)
 scoop_rice()
 
-time.sleep(0.5)
+time.sleep(1)
 scoop_up()
 
-time.sleep(0.5)
+time.sleep(1)
 arm2fit_scoop_up()
 
-time.sleep(0.5)
+time.sleep(1)
 turn_corner_forward()
 
-time.sleep(0.5)
+time.sleep(1)
 arm2fit_turn_corner_forward()
 
 average_Camera = Ultrasonict.Camera()
