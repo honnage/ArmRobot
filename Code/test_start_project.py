@@ -4,6 +4,7 @@ import multiprocessing as mp
 import RPi.GPIO as GPIO
 import time
 import os
+import DisplayLCD  as dp
 
 print(GPIO.VERSION)
 
@@ -58,6 +59,7 @@ try:
 			statusButton_Green = 0
 			statusButton_Red = 0
 			statusButton_Emergent = 0
+			dp.ready()
 			
 			if statusWorking_LEDGreen == 1:
 				GPIO.output(LED_Green, GPIO.HIGH)
@@ -83,39 +85,43 @@ try:
 				isWorking = True
 				print "Run servo armrobot"
 				Thread(target=runfile_test).start()
-			
-			
+				
+				
 			while statusWorking_LEDYello == 1: 
-				print("\nOnClick Button Grren")
-				
-				if statusWorking_LEDYello == 1 and isWorking == True:
-					print("StatusWorking_LEDYello is 1/HIGH/True")
-					GPIO.output(LED_Yello, GPIO.LOW)
-					GPIO.output(LED_Yello, GPIO.HIGH)
-					print("\nYello LED Working... ON")
-					time.sleep(1)
-								
-					GPIO.output(LED_Yello, GPIO.LOW)
-					print("Yello LED Working... OFF\n")
-					time.sleep(1)
-					print("="*30)
+					print("\nOnClick Button Grren")
+					dp.onClickButtonGreen()
 					
-				
-				if statusWorking_LEDYello == 1 and isWorking == False:
-					print("StatusWorking_LEDYeelo is 0/LOW/False")
-					GPIO.output(LED_Green, GPIO.LOW)
-					GPIO.output(LED_Green, GPIO.HIGH)
-					print("\nGreen LED Working... ON")
-					time.sleep(1)
+					if statusWorking_LEDYello == 1 and isWorking == True:
+						print("StatusWorking_LEDYello is 1/HIGH/True")
+						GPIO.output(LED_Yello, GPIO.LOW)
+						GPIO.output(LED_Yello, GPIO.HIGH)
+						print("\nYello LED Working... ON")
+						time.sleep(1)
 									
-					GPIO.output(LED_Green, GPIO.LOW)
-					print("Green LED Working... OFF")
-					time.sleep(1)
-					print("="*30)
+						GPIO.output(LED_Yello, GPIO.LOW)
+						print("Yello LED Working... OFF\n")
+						time.sleep(1)
+						print("="*30)
+						
+					
+					if statusWorking_LEDYello == 1 and isWorking == False:
+						print("StatusWorking_LEDYeelo is 0/LOW/False")
+						GPIO.output(LED_Green, GPIO.LOW)
+						GPIO.output(LED_Green, GPIO.HIGH)
+						print("\nGreen LED Working... ON")
+						time.sleep(1)
+										
+						GPIO.output(LED_Green, GPIO.LOW)
+						print("Green LED Working... OFF")
+						time.sleep(1)
+						print("="*30)
 				
 				
+				
+			
+			
 		#onClick Button Green But statusButton_Red have value 1
-		if GPIO.input(OnClick_ButtonGreen) == 1 and statusButton_Red ==1:
+		if GPIO.input(OnClick_ButtonGreen) == 1 and statusButton_Red ==1 and statusButton_Emergent == 0:
 				statusWorking_LEDGreen = 0
 				statusWorking_LEDYello = 0
 				statusButton_Green = 0
@@ -134,6 +140,7 @@ try:
 			statusButton_Green = 0
 			statusButton_Red = 1
 			statusButton_Emergent = 0
+			dp.onClickButtonRed()
 
 			if statusButton_Red == 1:
 				GPIO.output(LED_Green, GPIO.HIGH)
@@ -154,6 +161,7 @@ try:
 			
 			GPIO.output(LED_Green, GPIO.LOW)
 			GPIO.output(LED_Yello, GPIO.LOW)
+			dp.onClickButtonEmergency_on()
 			
 			if statusButton_Emergent == 1:
 				print("\nOnClick Button Emergent: ON")
@@ -170,15 +178,20 @@ try:
 			print("="*30)	
 			
 			
-			if GPIO.input(OnClick_ButtonGreen) == 1 and  statusButton_Emergent == 1:\
+			if GPIO.input(OnClick_ButtonGreen) == 1 and  statusButton_Emergent == 1:
 				pass
 				
 				
 		#onClick Button Emergent: OFF	
-		if GPIO.input(Onclick_ButtonEmergent) == 1 and statusWorking_LEDGreen != 1:
+		if GPIO.input(Onclick_ButtonEmergent) == 1 and  statusButton_Emergent == 1:
+			statusWorking_LEDGreen = 0
 			statusWorking_LEDYello = 0
-			statusButton_Emergent = 0	
+			statusButton_Green = 0
+			statusButton_Red = 0
+			statusButton_Emergent = 0
+			
 			print("\nOnClick Button Emergent: OFF\n")
+
 			print("="*30)
 			
 			

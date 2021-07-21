@@ -1,6 +1,6 @@
 import RPi.GPIO as GPIO
 import time
-#import lcdlib
+import DisplayLCD  as dp
 #import drivers
 
 # Ultrasonict Canera
@@ -14,7 +14,6 @@ ECHO_2 = 14 #Green
 GPIO.setmode(GPIO.BCM) # BCM is Number GPIO
 GPIO.setwarnings(False)
 
-#lcd = lcdlib.lcd()
 
 print("Import file Ultrasonict.py")
 
@@ -51,7 +50,7 @@ try:
                         print "Ultrasonic 1 is Camera distance:",distance_Camera,"cm"
                         print 'Ultrasonic 1 is Camera sum = ', sum_Camera  
                         print('')
-                        
+                        dp.distance_camera(distance_Camera)
                         time.sleep(0.01)
                      
                 # Outside the loop       
@@ -65,75 +64,50 @@ try:
                 print ("---------------")
 
                 dist = str(average_Camera)
-                #lcd.lcd_display_string("Distance Camera",1)
-                #lcd.lcd_display_string(">>> "+dist+" cm",2)
                 print "Ultrasonic 1 is Camera Distance is >>> "+dist+" cm"
                 time.sleep(0.1)
                 
-                #lcd.lcd_clear()
                 print("\n \n")
                 return average_Camera
         
-        # ==============================================================
-        
-        #Arm
-        distance_Arm = 0
-        sum_Arm = 0
-        
-        def Arm_test():
-                print("distance measurement in progress 2 is Arm")
-                sum_Arm = 0
-                for i in range(5):
-                        #print "Ultrasonict 2 is i = ",i+1
-                        GPIO.setup(TRIG_2, GPIO.OUT)
-                        GPIO.setup(ECHO_2, GPIO.IN)
-                        GPIO.output(TRIG_2,False)
+       
+        # ==============================================================        
+        def Arm():
+                GPIO.setup(TRIG_2, GPIO.OUT)
+                GPIO.setup(ECHO_2, GPIO.IN)
+                GPIO.output(TRIG_2,False)
                         
-                        time.sleep(0.2) # Origin is 0.2
-                        GPIO.output(TRIG_2, True)
-                        time.sleep(0.00001)
-                        GPIO.output(TRIG_2, False)
-                        
-                        while GPIO.input(ECHO_2) == 0:
-                            pulse_start = time.time()
-                        while GPIO.input(ECHO_2) == 1:
-                            pulse_end = time.time()
-                            
-                        pulse_duration = pulse_end-pulse_start
-                        distance_Arm = pulse_duration*17000
-                        distance_Arm = round(distance_Arm,2)
-                        
+                time.sleep(0.1) # Origin is 0.2
+                GPIO.output(TRIG_2, True)
+                time.sleep(0.00001)
+                GPIO.output(TRIG_2, False)
                 
-                        sum_Arm += distance_Arm 
-
-                        print "Ultrasonict 2 is distance:",distance_Arm,"cm"
-                        print 'Ultrasonict 2 is sum = ', sum_Arm 
-                        print('')
-                        
-                        time.sleep(0.01)
-                     
-                # Outside the loop       
-                print ("---------------")
-                print "Ultrasonict 2 is sum = ", sum_Arm
-                print "Ultrasonict 2 is num = ", i+1
+                while GPIO.input(ECHO_2) == 0:
+                    pulse_start = time.time()
+                while GPIO.input(ECHO_2) == 1:
+                    pulse_end = time.time()
+                    
+                pulse_duration = pulse_end-pulse_start
+                distance_extra = pulse_duration*17000
+                distance_extra = round(distance_extra,2)
                 
-                average_Arm = round( sum_Arm / (i + 1) , 2 )
-               
-                print "Ultrasonict 2 is average =", average_Arm
-                print ("---------------")
-
-                dist = str(average_Arm)
-                #lcd.lcd_display_string("Distance Arm",1)
-                #lcd.lcd_display_string(">>> "+dist+" cm",2)
-                print "Ultrasonic 2 is Camera Distance is >>> "+dist+" cm"
-                time.sleep(0.1)
-                
+                dis = str(distance_extra)
+                print(dis)
+                dp.distance_arm(dis)
                 #lcd.lcd_clear()
-                print("\n \n")
-                return average_Arm
+                #time.sleep(0.5)
+                return distance_extra
+                
                 
         # ==============================================================
-                 
+
+
+        Arm()
+        #Camera()
+        #check_extra()
+
+
+        '''    
         def extra_arm():
                 GPIO.setup(TRIG_2, GPIO.OUT)
                 GPIO.setup(ECHO_2, GPIO.IN)
@@ -164,42 +138,8 @@ try:
                         c = extra_arm()
                         print(c)
                 return a
-                        
-        # ==============================================================        
-        def Arm():
-                GPIO.setup(TRIG_2, GPIO.OUT)
-                GPIO.setup(ECHO_2, GPIO.IN)
-                GPIO.output(TRIG_2,False)
-                        
-                time.sleep(0.1) # Origin is 0.2
-                GPIO.output(TRIG_2, True)
-                time.sleep(0.00001)
-                GPIO.output(TRIG_2, False)
-                
-                while GPIO.input(ECHO_2) == 0:
-                    pulse_start = time.time()
-                while GPIO.input(ECHO_2) == 1:
-                    pulse_end = time.time()
-                    
-                pulse_duration = pulse_end-pulse_start
-                distance_extra = pulse_duration*17000
-                distance_extra = round(distance_extra,2)
-                
-                dis = str(distance_extra)
-                print(dis)
-                
-                #lcd.lcd_clear()
-                #time.sleep(0.5)
-                return distance_extra
-                
-                
-        # ==============================================================
-
-
-        #Arm()
-        #Camera()
-        #check_extra()
-
+        '''
+        
 except KeyboardInterrupt:
     GPIO.cleanup()
     print("Cleaning up!")

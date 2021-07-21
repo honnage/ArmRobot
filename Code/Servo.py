@@ -388,13 +388,13 @@ def showMsg():
     print("loop_degServo3: " + str(loop_degServo3))
 # xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 print("Run file Servo.py")
-'''
+
 time.sleep(1)
 GPIO.cleanup()
 
 time.sleep(1)
 default()
-
+'''
 time.sleep(1)
 default_low()
 
@@ -412,7 +412,7 @@ arm2fit_scoop_up()
 
 time.sleep(1)
 turn_corner_forward()
-'''
+
 time.sleep(1)
 arm2fit_turn_corner_forward()
 '''
@@ -563,4 +563,4 @@ turn_back()
 
 print("======================")
 
-
+'''
