@@ -104,11 +104,13 @@ def case_6():
     
 
 while True:
-    #x = input("Enter case: ")
-    camera_dis = Ultrasonict.Camera()
-    x = camera_dis
+    default()
+    x = input("Enter case: ")
+    #camera_dis = Ultrasonict.Camera()
+    #x = camera_dis
     print(x)
     
+   
     if x > 0 and x <= 50:
         print("case: 1")
         case_1()
@@ -135,7 +137,7 @@ while True:
    
     
     arm_dis = Ultrasonict.Arm()
-    time.sleep(0.5)
+    time.sleep(10)
 
 
 default()
