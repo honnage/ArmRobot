@@ -55,29 +55,29 @@ def calDeg(a,b,c):
 def default():
     print("Function: Set Degree Servo Default")
     calDeg(0, 0, 90)
-    calDeg(1, 1, 30)
-    calDeg(2, 2, 30)
+    calDeg(1, 1, 40)
+    calDeg(2, 2, 50)
     calDeg(3, 3, 130)
     calDeg(4, 4, 90)
     
 def case_1():
     calDeg(0, 0, 90)
-    calDeg(1, 1, 30)
-    calDeg(2, 2, 50)
-    calDeg(3, 3, 140)
+    calDeg(1, 1, 60)
+    calDeg(2, 2, 80)
+    calDeg(3, 3, 130)
     calDeg(4, 4, 90)
 
 def case_2():
     calDeg(0, 0, 90)
-    calDeg(1, 1, 50)
-    calDeg(2, 2, 70)
+    calDeg(1, 1, 70)
+    calDeg(2, 2, 90)
     calDeg(3, 3, 130)
     calDeg(4, 4, 90)
 
 def case_3():
     calDeg(0, 0, 90)
-    calDeg(1, 1, 70)
-    calDeg(2, 2, 90)
+    calDeg(1, 1, 80)
+    calDeg(2, 2, 100)
     calDeg(3, 3, 120)
     calDeg(4, 4, 90)
 
@@ -90,15 +90,15 @@ def case_4():
     
 def case_5():
     calDeg(0, 0, 90)
-    calDeg(1, 1, 110)
-    calDeg(2, 2, 130)
+    calDeg(1, 1, 100)
+    calDeg(2, 2, 120)
     calDeg(3, 3, 120)
     calDeg(4, 4, 90)
     
 def case_6():
     calDeg(0, 0, 90)
-    calDeg(1, 1, 130)
-    calDeg(2, 2, 150)
+    calDeg(1, 1, 110)
+    calDeg(2, 2, 130)
     calDeg(3, 3, 110)
     calDeg(4, 4, 90)
     
