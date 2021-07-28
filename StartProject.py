@@ -52,8 +52,6 @@ predictor = dlib.shape_predictor("shape_predictor_68_face_landmarks.dat")
 
 
 
-
-
 def WorkingArmRoBot():
 	command = "python Servo.py"
 	os.system(command)
@@ -112,6 +110,9 @@ try:
 						
 						print ("Distance mouth :"+str(distance))
 						print "Run servo armrobot"
+						time.sleep(1)
+						distance = 0
+						time.sleep(1)
 						Thread(target=WorkingArmRoBot).start()
 							
 							
@@ -133,48 +134,29 @@ try:
 			
 			#onClick Button Green
 			if GPIO.input(OnClick_ButtonGreen) == 1 :
+				isWorking = True
+				time.sleep(1)
+				distance = 0
+				time.sleep(1)
+				Thread(target=WorkingArmRoBot).start()
+				
+				'''
 				statusWorking_LEDGreen = 0
 				statusWorking_LEDYello = 1
 				statusButton_Green = 1
 				statusButton_Red = 0
 				statusButton_Emergent = 0
+				'''
 				
 			# ==========================================================
 				
-			'''
-			#onClick Button Green But statusButton_Red have value 1
-			if GPIO.input(OnClick_ButtonGreen) == 1 and statusButton_Red ==1 and statusButton_Emergent == 0:
-					statusWorking_LEDGreen = 0
-					statusWorking_LEDYello = 0
-					statusButton_Green = 0
-					statusButton_Red = 0
-					statusButton_Emergent = 0
-				
-					GPIO.output(LED_Green, GPIO.LOW)
-					print("\nGreen LED Working... OFF\n")
-			
-			'''
 			#onClick Button Red
+			'''
 			if GPIO.input(OnClick_ButtonRed) == 1:
 				print("OnClick Button Red")
-				statusWorking_LEDGreen = 1
-				statusWorking_LEDYello = 0
-				statusButton_Green = 0
-				statusButton_Red = 1
-				statusButton_Emergent = 0
-				dp.onClickButtonRed()
-
-
-
-			if statusButton_Red == 1:
-				GPIO.output(LED_Green, GPIO.HIGH)
-				statusWorking_LEDGreen = 1
-				statusButton_Red = 1
-				print("\nGreen LED Working... ON\n")	
-			
-			print("="*30)	
-				
-			
+				exit()	
+			'''
+			# ==========================================================
 			
 			#onClick Button Emergent: ON 
 			if GPIO.input(Onclick_ButtonEmergent) == 0:

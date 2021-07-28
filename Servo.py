@@ -8,6 +8,14 @@ import Ultrasonict
 import os
 pwm = Adafruit_PCA9685.PCA9685()
 
+GPIO.setmode(GPIO.BCM)
+GPIO.setwarnings(False)
+
+OnClick_ButtonRed = 24 #Yello
+GPIO.setup(OnClick_ButtonRed, GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
+
+statusButton_Red = 0
+
 def set_servo_pulse(channel, pulse):
     pulse_length = 1000000    # 1,000,000 us per second
     pulse_length //= 60       # 60 Hz                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    
@@ -24,13 +32,24 @@ def set_servo_pulse(channel, pulse):
 
 pwm.set_pwm_freq(60)
 
+# xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 def calDeg(a,b,c):
+    if GPIO.input(OnClick_ButtonRed) == 0:
 	re_deg = c
 	degree = 2.77*c
 	degree = degree+100
 	degree = int(degree)
 	pwm.set_pwm(a,b,degree)
 	return re_deg
+	
+    else:
+	time.sleep(0.1)
+	default()
+	isWorking = False
+	exit()
+	return isWorking
+	
+	
 # xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 def default():
     print("Function: Set Degree Servo Default")
@@ -354,6 +373,7 @@ def showMsg():
     print("loop_degServo2: " + str(loop_degServo2))
     print("loop_degServo3: " + str(loop_degServo3))
 # xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+
 print("Run file Servo.py")
 default()
 
