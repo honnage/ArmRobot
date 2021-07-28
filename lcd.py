@@ -51,10 +51,7 @@ try:
 	GPIO.output(LED_Green, GPIO.LOW)
 	GPIO.output(LED_Yello, GPIO.LOW)
 	print("Strat Camera Process ...")
-	
-	print ("Sound on")
-	command = "aplay Sound_Power-on.wav"
-	os.system(command)
+
 	
 	while True:
 	

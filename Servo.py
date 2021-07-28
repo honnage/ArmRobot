@@ -70,12 +70,12 @@ def default_low():
     def default_low_channel1(): #servo channel 0
 	for i in range(90, 20, -1):
 	    calDeg(1, 1, i)
-	    time.sleep(0.01)
+	    time.sleep(0.02)
 	    
     def default_low_channel2(): #servo channel 0
 	for i in range(90, 0, -1):
 	    calDeg(2, 2, i)
-	    time.sleep(0.01)
+	    time.sleep(0.02)
 	    
     if(__name__=='__main__'):
 	p2 = mp.Process(target=default_low_channel2)
@@ -83,23 +83,24 @@ def default_low():
 	
 	p2.start()
 	p1.start()
+    time.sleep(1)
 # xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 def default_rice():
     def default_rice_channel1(): #servo channel 1
 	for i in range(20, 45, 1):
 	    calDeg(1, 1, i)
-	    time.sleep(0.02)
+	    time.sleep(0.03)
 
     def default_rice_channel2(): #servo channel 2
 	for i in range(10, 50, 1):
 	    calDeg(2, 2, i)
-	    time.sleep(0.02)
+	    time.sleep(0.03)
 	    #print("deg servo 2 "+str(i))
    
     def default_rice_channel3(): #servo channel 3
 	for i in range(60, 90, 1):
 	    calDeg(3, 3, i)
-	    time.sleep(0.02)
+	    time.sleep(0.03)
 	    
     print ("Function: default rice")
     calDeg(0, 0, 10)
@@ -111,6 +112,7 @@ def default_rice():
     default_rice_channel2()
     default_rice_channel1()
     default_rice_channel3()
+    time.sleep(0.1)
 # xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 def scoop_rice():
     def scoop_rice_channel1(): #servo channel 1
@@ -143,6 +145,7 @@ def scoop_rice():
     
     time.sleep(0.5)
     scoop_rice_channel4()
+    time.sleep(0.5)
 # xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 def scoop_up():    
     print ("Function: scoop up")
@@ -177,6 +180,7 @@ def scoop_up():
 	p3.start()
 	p2.start()
 	p1.start()
+    time.sleep(1)
 # xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 def arm2fit_scoop_up():
     calDeg(0, 0, 10)
@@ -185,6 +189,7 @@ def arm2fit_scoop_up():
     calDeg(3, 3, 129)
     calDeg(4, 4, 90)
     print 'Function: arm to fit scoop up'
+    time.sleep(0.5)
 # xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 def turn_corner_forward():
     def turn_corner_forward_channel0(): #servo channel 0
@@ -201,6 +206,7 @@ def turn_corner_forward():
     calDeg(4, 4, 90)
     
     turn_corner_forward_channel0()
+    time.sleep(1)
 # xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 def arm2fit_turn_corner_forward():
     calDeg(0, 0, 90)
@@ -209,8 +215,9 @@ def arm2fit_turn_corner_forward():
     calDeg(3, 3, 130)
     calDeg(4, 4, 90)
     print 'Function: arm to fit turn corner forward'
+    time.sleep(0.5)
 # xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
-def distance_case(Servo0, Servo1, Servo2, Servo3, Servo4, loop_degServo1, loop_degServo2, loop_degServo3):
+def distance_case(Servo0, Servo1, Servo2, Servo3, Servo4, loop_degServo1, loop_degServo2, loop_degServo3, time_case):
     print '\nFunction: distance case'
     calDeg(1, 1, 30)
     calDeg(2, 2, 30)
@@ -242,27 +249,28 @@ def distance_case(Servo0, Servo1, Servo2, Servo3, Servo4, loop_degServo1, loop_d
 	print("\n")
     
     time_speack = 0.05
+    print("time_case: "+str(time_speack+time_case))
     
     def distance_case_channel1(): #servo channel 1
 	for i in range(0, 21, 1):
 	    degServo1 = int(round(start_servo1 + (loop_degServo1 * i)))
 	    calDeg(1, 1, degServo1)
 	    print("servo 1: N: " + str(i) + "\t| servo 1: "+ str(degServo1))
-	    time.sleep(time_speack)
+	    time.sleep(time_speack + time_case)
     
     def distance_case_channel2(): #servo channel 2
 	for i in range(0, 21, 1):
 	    degServo2 = int(round(start_servo2 + (loop_degServo2 * i)))
 	    calDeg(2, 2, degServo2)
 	    print("servo 2: N: " + str(i) + "\t| servo 2: "+ str(degServo2))
-	    time.sleep(time_speack)
+	    time.sleep(time_speack + time_case)
     
     def distance_case_channel3(): #servo channel 3
 	for i in range(0, 21, 1):
 	    degServo3 = int(round(start_servo3 + (loop_degServo3 * i)))
 	    calDeg(3, 3, degServo3)
 	    print("servo 3: N: " + str(i) + "\t| servo 3: "+ str(degServo3))
-	    time.sleep(time_speack)
+	    time.sleep(time_speack + time_case)
     
     distance_detail()    
     if(__name__=='__main__'):
@@ -272,6 +280,7 @@ def distance_case(Servo0, Servo1, Servo2, Servo3, Servo4, loop_degServo1, loop_d
 	p1.start()
 	p2.start()
 	p3.start()
+    time.sleep(0.5)
 # xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 def turn_cornerback(Servo1, Servo2):
     print 'Function: turn cornerback'
@@ -313,6 +322,7 @@ def turn_cornerback(Servo1, Servo2):
 	p1 = mp.Process(target=turn_cornerback_channel1)
 	p2.start()
 	p1.start()
+    time.sleep(1)
 # xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 def arm2fit_turn_back():
     calDeg(0, 0, 90)
@@ -321,6 +331,7 @@ def arm2fit_turn_back():
     calDeg(3, 3, 130)
     calDeg(4, 4, 90)
     print 'Function: arm to fit turn_back'
+    time.sleep(0.5)
 # xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 def turn_back():
     def turn_back_channel0(): #servo channel 0
@@ -360,6 +371,7 @@ def turn_back():
 	p1 = mp.Process(target=turn_back_channel1)
 	p2.start()
 	p1.start()
+    time.sleep(0.5)
 # xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 def showMsg():
     print("\nFunction: showMsg")
@@ -425,9 +437,10 @@ if average_Camera > 0 and average_Camera < 50:
     loop_degServo1 = 1
     loop_degServo2 = 2
     loop_degServo3 = 0
+    time_case = 0
     
     showMsg()
-    distance_case(Servo0, Servo1, Servo2, Servo3, Servo4, loop_degServo1, loop_degServo2, loop_degServo3) 
+    distance_case(Servo0, Servo1, Servo2, Servo3, Servo4, loop_degServo1, loop_degServo2, loop_degServo3, time_case) 
 	
 elif average_Camera >= 50 and average_Camera < 55:
     print("case: 2") 
@@ -442,9 +455,10 @@ elif average_Camera >= 50 and average_Camera < 55:
     loop_degServo1 = 2
     loop_degServo2 = 3
     loop_degServo3 = 0
-  
+    time_case = 0.05
+    
     showMsg()
-    distance_case(Servo0, Servo1, Servo2, Servo3, Servo4, loop_degServo1, loop_degServo2, loop_degServo3) 
+    distance_case(Servo0, Servo1, Servo2, Servo3, Servo4, loop_degServo1, loop_degServo2, loop_degServo3, time_case) 
 
     
 elif average_Camera >= 55 and average_Camera < 60:
@@ -460,9 +474,10 @@ elif average_Camera >= 55 and average_Camera < 60:
     loop_degServo1 = 3
     loop_degServo2 = 4
     loop_degServo3 = -0.5
+    time_case = 0.01
   
     showMsg()
-    distance_case(Servo0, Servo1, Servo2, Servo3, Servo4, loop_degServo1, loop_degServo2, loop_degServo3) 
+    distance_case(Servo0, Servo1, Servo2, Servo3, Servo4, loop_degServo1, loop_degServo2, loop_degServo3, time_case) 
 
 elif average_Camera >= 60 and average_Camera < 65:
     print("case: 4") 
@@ -477,9 +492,10 @@ elif average_Camera >= 60 and average_Camera < 65:
     loop_degServo1 = 4
     loop_degServo2 = 5
     loop_degServo3 = -0.5
+    time_case = 0.015
     
     showMsg()
-    distance_case(Servo0, Servo1, Servo2, Servo3, Servo4, loop_degServo1, loop_degServo2, loop_degServo3) 
+    distance_case(Servo0, Servo1, Servo2, Servo3, Servo4, loop_degServo1, loop_degServo2, loop_degServo3, time_case) 
     
 elif average_Camera >= 65 and average_Camera < 70:
     print("case: 5") 
@@ -494,9 +510,10 @@ elif average_Camera >= 65 and average_Camera < 70:
     loop_degServo1 = 5
     loop_degServo2 = 6
     loop_degServo3 = -0.5
+    time_case = 0.02
   
     showMsg()
-    distance_case(Servo0, Servo1, Servo2, Servo3, Servo4, loop_degServo1, loop_degServo2, loop_degServo3) 
+    distance_case(Servo0, Servo1, Servo2, Servo3, Servo4, loop_degServo1, loop_degServo2, loop_degServo3, time_case)  
 
 
 elif average_Camera >= 70:
@@ -512,9 +529,10 @@ elif average_Camera >= 70:
     loop_degServo1 = 6
     loop_degServo2 = 7
     loop_degServo3 = -1
+    time_case = 0.025
   
     showMsg()
-    distance_case(Servo0, Servo1, Servo2, Servo3, Servo4, loop_degServo1, loop_degServo2, loop_degServo3) 
+    distance_case(Servo0, Servo1, Servo2, Servo3, Servo4, loop_degServo1, loop_degServo2, loop_degServo3, time_case) 
 
 time.sleep(0.5)
 print("Process Ultrasonic sensor")

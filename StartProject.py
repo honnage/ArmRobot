@@ -61,6 +61,10 @@ def WorkingArmRoBot():
 	return isWorking
 	
 try:
+	print ("Sound on")
+	command = "aplay Sound_Power-on.wav"
+	os.system(command)
+	
 	GPIO.output(LED_Green, GPIO.LOW)
 	GPIO.output(LED_Yello, GPIO.LOW)
 	print("Strat Camera Process ...")
