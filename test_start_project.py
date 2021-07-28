@@ -11,9 +11,6 @@ print(GPIO.VERSION)
 GPIO.setmode(GPIO.BCM)
 GPIO.setwarnings(False)
 
-GPIO.setmode(GPIO.BCM)
-GPIO.setwarnings(False)
-
 LED_Green = 27 #Green
 LED_Yello = 22 #Yello
 
@@ -117,9 +114,6 @@ try:
 						print("="*30)
 				
 				
-				
-			
-			
 		#onClick Button Green But statusButton_Red have value 1
 		if GPIO.input(OnClick_ButtonGreen) == 1 and statusButton_Red ==1 and statusButton_Emergent == 0:
 				statusWorking_LEDGreen = 0
@@ -191,7 +185,6 @@ try:
 			statusButton_Emergent = 0
 			
 			print("\nOnClick Button Emergent: OFF\n")
-
 			print("="*30)
 			
 			

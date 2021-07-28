@@ -83,6 +83,8 @@ while True:
 		#else:
 		    # print "IS WORKING ARM ROBOT ..."
 		'''
+		
+		
 	cv2.imshow("Frame", frame)
 
 	key = cv2.waitKey(1)

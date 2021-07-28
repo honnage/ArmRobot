@@ -85,7 +85,6 @@ def default_low():
 	
 	p2.start()
 	p1.start()
-    time.sleep(0.5)
 # xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 def default_rice():
     def default_rice_channel1(): #servo channel 1
@@ -114,7 +113,6 @@ def default_rice():
     default_rice_channel2()
     default_rice_channel1()
     default_rice_channel3()
-    time.sleep(0.5)
 # xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 def scoop_rice():
     def scoop_rice_channel1(): #servo channel 1
@@ -147,7 +145,6 @@ def scoop_rice():
     
     time.sleep(0.5)
     scoop_rice_channel4()
-    time.sleep(0.5)
 # xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 def scoop_up():    
     print ("Function: scoop up")
@@ -182,7 +179,6 @@ def scoop_up():
 	p3.start()
 	p2.start()
 	p1.start()
-    time.sleep(0.5)
 # xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 def arm2fit_scoop_up():
     calDeg(0, 0, 10)
@@ -191,7 +187,6 @@ def arm2fit_scoop_up():
     calDeg(3, 3, 129)
     calDeg(4, 4, 90)
     print 'Function: arm to fit scoop up'
-    time.sleep(0.05)
 # xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 def turn_corner_forward():
     def turn_corner_forward_channel0(): #servo channel 0
@@ -208,7 +203,6 @@ def turn_corner_forward():
     calDeg(4, 4, 90)
     
     turn_corner_forward_channel0()
-    time.sleep(0.03)
 # xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 def arm2fit_turn_corner_forward():
     calDeg(0, 0, 90)
@@ -217,7 +211,6 @@ def arm2fit_turn_corner_forward():
     calDeg(3, 3, 130)
     calDeg(4, 4, 90)
     print 'Function: arm to fit turn corner forward'
-    time.sleep(0.05)
 # xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 def distance_case(Servo0, Servo1, Servo2, Servo3, Servo4, loop_degServo1, loop_degServo2, loop_degServo3):
     print '\nFunction: distance case'
@@ -281,8 +274,6 @@ def distance_case(Servo0, Servo1, Servo2, Servo3, Servo4, loop_degServo1, loop_d
 	p1.start()
 	p2.start()
 	p3.start()
-    
-    time.sleep(0.05)
 # xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 def turn_cornerback(Servo1, Servo2):
     print 'Function: turn cornerback'
@@ -324,7 +315,6 @@ def turn_cornerback(Servo1, Servo2):
 	p1 = mp.Process(target=turn_cornerback_channel1)
 	p2.start()
 	p1.start()
-    time.sleep(0.05)
 # xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 def arm2fit_turn_back():
     calDeg(0, 0, 90)
@@ -333,7 +323,6 @@ def arm2fit_turn_back():
     calDeg(3, 3, 130)
     calDeg(4, 4, 90)
     print 'Function: arm to fit turn_back'
-    time.sleep(0.5)
 # xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 def turn_back():
     def turn_back_channel0(): #servo channel 0
@@ -373,7 +362,6 @@ def turn_back():
 	p1 = mp.Process(target=turn_back_channel1)
 	p2.start()
 	p1.start()
-    time.sleep(0.05)
 # xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 def showMsg():
     print("\nFunction: showMsg")
@@ -394,7 +382,7 @@ GPIO.cleanup()
 
 time.sleep(1)
 default()
-'''
+
 time.sleep(1)
 default_low()
 
@@ -415,20 +403,20 @@ turn_corner_forward()
 
 time.sleep(1)
 arm2fit_turn_corner_forward()
-'''
+
 average_Camera = Ultrasonict.Camera()
 print("Ultrasonic Sensor by camera")
 print("Distance: "+ str(round(average_Camera,2)) + " cm\n")
-'''
+
 average_Arm = Ultrasonict.Arm()
 print("Ultrasonic Sensor by arm")
 print("Distance: "+ str(round(average_Arm,2)) + " cm\n")
 
-average_Camera = input("\nEnter average_Camera: ")
-print("Distance: "+ str(round(average_Camera,2)) + " cm\n")
+#average_Camera = input("\nEnter average_Camera: ")
+#print("Distance: "+ str(round(average_Camera,2)) + " cm\n")
 
 time.sleep(0.5)
-#print("average_Camera: "+str(average_Camera)+"\n")
+
 
 if average_Camera > 0 and average_Camera < 50:
     print("case: 1")
@@ -511,7 +499,7 @@ elif average_Camera >= 65 and average_Camera < 70:
     
     loop_degServo1 = 5
     loop_degServo2 = 6
-    loop_degServo3 = 0.5
+    loop_degServo3 = -0.5
   
     showMsg()
     distance_case(Servo0, Servo1, Servo2, Servo3, Servo4, loop_degServo1, loop_degServo2, loop_degServo3) 
@@ -543,7 +531,7 @@ while average_Arm > 0:
     distance = arm_dis
     print("Distance: "+ str(distance) +" cm")
     
-    time.sleep(1)
+    time.sleep(0.1)
     print("======================")
     
     if distance < 30:
@@ -552,15 +540,16 @@ while average_Arm > 0:
 	print("Stop process Ultrasonic sensor")
 	break
 
-time.sleep(0.5)
+
+
+time.sleep(1)
 turn_cornerback(Servo1, Servo2)
 
-time.sleep(1.5)
+time.sleep(2)
 arm2fit_turn_back()
 
-time.sleep(0.5)
+time.sleep(2)
 turn_back()
 
+time.sleep(2)
 print("======================")
-
-'''
