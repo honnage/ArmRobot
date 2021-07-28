@@ -215,7 +215,7 @@ def arm2fit_turn_corner_forward():
     calDeg(3, 3, 130)
     calDeg(4, 4, 90)
     print 'Function: arm to fit turn corner forward'
-    time.sleep(0.5)
+    time.sleep(0.1)
 # xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 def distance_case(Servo0, Servo1, Servo2, Servo3, Servo4, loop_degServo1, loop_degServo2, loop_degServo3, time_case):
     print '\nFunction: distance case'
@@ -280,7 +280,7 @@ def distance_case(Servo0, Servo1, Servo2, Servo3, Servo4, loop_degServo1, loop_d
 	p1.start()
 	p2.start()
 	p3.start()
-    time.sleep(0.5)
+    time.sleep(0.1)
 # xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 def turn_cornerback(Servo1, Servo2):
     print 'Function: turn cornerback'
@@ -331,7 +331,7 @@ def arm2fit_turn_back():
     calDeg(3, 3, 130)
     calDeg(4, 4, 90)
     print 'Function: arm to fit turn_back'
-    time.sleep(0.5)
+    time.sleep(0.1)
 # xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 def turn_back():
     def turn_back_channel0(): #servo channel 0
@@ -371,7 +371,7 @@ def turn_back():
 	p1 = mp.Process(target=turn_back_channel1)
 	p2.start()
 	p1.start()
-    time.sleep(0.5)
+    time.sleep(0.1)
 # xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 def showMsg():
     print("\nFunction: showMsg")
@@ -557,13 +557,13 @@ while average_Arm > 0:
 time.sleep(1)
 turn_cornerback(Servo1, Servo2)
 
-time.sleep(2)
+time.sleep(1)
 arm2fit_turn_back()
 
-time.sleep(2)
+time.sleep(1)
 turn_back()
 
-time.sleep(2)
+time.sleep(1)
 print("======================")
 GPIO.cleanup()
 

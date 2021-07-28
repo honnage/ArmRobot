@@ -30,7 +30,6 @@ Onclick_ButtonEmergent = 4 #Broen
 GPIO.setup(LED_Green, GPIO.OUT)
 GPIO.setup(LED_Yello, GPIO.OUT)
 
-
 GPIO.setup(OnClick_ButtonGreen, GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
 GPIO.setup(OnClick_ButtonRed, GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
 GPIO.setup(Onclick_ButtonEmergent, GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
@@ -49,7 +48,6 @@ cap.set(4,200)
 
 detector = dlib.get_frontal_face_detector()
 predictor = dlib.shape_predictor("shape_predictor_68_face_landmarks.dat")
-
 
 
 def WorkingArmRoBot():
