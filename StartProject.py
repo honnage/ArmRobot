@@ -9,10 +9,13 @@ import dlib
 import math 
 import time
 import os
+import SetDegree as sd
 
+sd.default()
 print("GPIO Version "+GPIO.VERSION)
 print("Start Project ....")
-
+GPIO.cleanup()
+	
 GPIO.setmode(GPIO.BCM)
 GPIO.setwarnings(False)
 
@@ -47,7 +50,8 @@ cap.set(4,200)
 detector = dlib.get_frontal_face_detector()
 predictor = dlib.shape_predictor("shape_predictor_68_face_landmarks.dat")
 
-isWorking = False	
+
+
 
 
 def WorkingArmRoBot():
@@ -58,10 +62,12 @@ def WorkingArmRoBot():
 	isWorking = False
 	return isWorking
 	
-	
-
 try:
+	GPIO.output(LED_Green, GPIO.LOW)
+	GPIO.output(LED_Yello, GPIO.LOW)
 	print("Strat Camera Process ...")
+	dp.ready()
+	
 	while True:
 		_, frame = cap.read()
 		gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
@@ -86,29 +92,11 @@ try:
 			p1 = [TOP_X,TOP_Y]
 			p2 = [BOTTOM_X,BOTTOM_Y]
 			distance = math.sqrt( ((p1[0]-p2[0])**2)+((p1[1]-p2[1])**2) )
-			'''
-			if isWorking == False :
-				if distance >= 12 :
-					
-					print "Distance mouth :",distance
-					isWorking = True
-					print "Run servo armrobot"
-					Thread(target=WorkingArmRoBot).start()
-						
-						#if(__name__=='__main__'):
-						#	p1 = mp.Process(target=WorkingArmRoBot())
-						#	p1.start()
-				else:
-					print "Distance mouth :",distance
-			'''	
-			'''
-			show message "IS WORK ARM ROBOT ..."
-			#else:
-				# print "IS WORKING ARM ROBOT ..."
-			'''
+		
 			# ==========================================================
+		
 			#Setup Start Project 
-			if statusButton_Green == 0 and statusButton_Red == 0 and statusButton_Emergent ==0:
+			if statusButton_Emergent == 0 and statusButton_Red == 0:
 				statusWorking_LEDGreen = 1
 				statusWorking_LEDYello = 0
 				statusButton_Green = 0
@@ -116,18 +104,31 @@ try:
 				statusButton_Emergent = 0
 				dp.ready()
 				
-				if statusWorking_LEDGreen == 1:
-					def Working_GreedLED():
-						GPIO.output(LED_Green, GPIO.HIGH)
-						print("\nGreen LED Working... ON")
-						time.sleep(1)
-										
-						GPIO.output(LED_Green, GPIO.LOW)
-						print("Green LED Working... OFF")
-						time.sleep(1)
+				isWorking = False	
+				
+				if isWorking == False :
+					if distance >= 7:
+						isWorking = True
 						
-					Thread(target=Working_GreedLED).start()
-		
+						print ("Distance mouth :"+str(distance))
+						print "Run servo armrobot"
+						Thread(target=WorkingArmRoBot).start()
+							
+							
+					if statusWorking_LEDGreen == 1:
+						print ("Distance mouth :"+str(distance))
+						
+						def Working_GreedLED():
+							GPIO.output(LED_Green, GPIO.HIGH)
+							print("\nGreen LED Working... ON")
+							time.sleep(1)
+											
+							GPIO.output(LED_Green, GPIO.LOW)
+							print("Green LED Working... OFF")
+							time.sleep(1)
+							
+						Thread(target=Working_GreedLED).start()
+			
 			# ==========================================================
 			
 			#onClick Button Green
@@ -138,40 +139,6 @@ try:
 				statusButton_Red = 0
 				statusButton_Emergent = 0
 				
-			# ==========================================================
-				
-			if statusButton_Emergent == 0 and statusButton_Red != 1 and statusWorking_LEDYello == 1:
-				print("111")
-				dp.onClickButtonGreen()
-				GPIO.output(LED_Green, GPIO.LOW)
-				GPIO.output(LED_Green, GPIO.LOW)
-						
-				if isWorking == False :
-					if distance >= 9:
-						
-						#print "Distance mouth :",distance
-						#isWorking = True
-						print "Run servo armrobot"
-						#Thread(target=WorkingArmRoBot).start()
-							
-							#if(__name__=='__main__'):
-							#	p1 = mp.Process(target=WorkingArmRoBot())
-							#	p1.start()
-							
-					else:
-						print "Distance mouth :"+str(distance)
-						
-						def Working_YelloLED():
-							GPIO.output(LED_Yello, GPIO.HIGH)
-							print("\nYello LED Working... ON")
-							time.sleep(1)
-										
-							GPIO.output(LED_Yello, GPIO.LOW)
-							print("Yello LED Working... OFF\n")
-							time.sleep(1)
-							
-						Thread(target=Working_YelloLED).start()
-		
 			# ==========================================================
 				
 			'''
@@ -186,7 +153,7 @@ try:
 					GPIO.output(LED_Green, GPIO.LOW)
 					print("\nGreen LED Working... OFF\n")
 			
-			
+			'''
 			#onClick Button Red
 			if GPIO.input(OnClick_ButtonRed) == 1:
 				print("OnClick Button Red")
@@ -197,15 +164,17 @@ try:
 				statusButton_Emergent = 0
 				dp.onClickButtonRed()
 
-				if statusButton_Red == 1:
-					GPIO.output(LED_Green, GPIO.HIGH)
-					statusWorking_LEDGreen = 1
-					statusButton_Red = 1
-					print("\nGreen LED Working... ON\n")	
+
+
+			if statusButton_Red == 1:
+				GPIO.output(LED_Green, GPIO.HIGH)
+				statusWorking_LEDGreen = 1
+				statusButton_Red = 1
+				print("\nGreen LED Working... ON\n")	
+			
+			print("="*30)	
 				
-				print("="*30)	
-				
-			'''
+			
 			
 			#onClick Button Emergent: ON 
 			if GPIO.input(Onclick_ButtonEmergent) == 0:
@@ -242,12 +211,14 @@ try:
 				statusButton_Green = 0
 				statusButton_Red = 0
 				statusButton_Emergent = 0
+				GPIO.output(LED_Green, GPIO.LOW)
+				GPIO.output(LED_Yello, GPIO.LOW)
 				
 				print("\nOnClick Button Emergent: OFF\n")
 				print("="*30)
 				
 			# ==========================================================
-			
+			'''
 			else:
 				print("\nstatus button Green: "+"."*9 +"\t"+str(statusButton_Green))
 				print("status button Red: "+"."*11 +"\t"+str(statusButton_Red))
@@ -257,7 +228,7 @@ try:
 				print("="*30)
 		
 			time.sleep(0.001)
-			
+			'''
 			# ==========================================================
 		
 		
