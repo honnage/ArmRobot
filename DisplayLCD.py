@@ -42,3 +42,10 @@ def distance_arm(distance):
 	print("Function: distance_arm")
 	display.lcd_display_string("ARM DISTANCE", 1)
 	display.lcd_display_string(">>> "+distance+" cm", 2)
+
+def servoWorking():
+	display.lcd_clear()
+	print("Function: servoWorking")
+	display.lcd_display_string("WORKING ...", 1)
+	display.lcd_display_string("SERVO MOTOR", 2)
+	

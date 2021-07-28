@@ -52,6 +52,21 @@ predictor = dlib.shape_predictor("shape_predictor_68_face_landmarks.dat")
 isWorking = False
 status_arm = 0
 
+def Working_GreedLED():
+	GPIO.output(LED_Green, GPIO.HIGH)
+	print("\nGreen LED Working... ON")
+	time.sleep(1)
+						
+	GPIO.output(LED_Green, GPIO.LOW)
+	print("Green LED Working... OFF")
+	time.sleep(1)
+	
+
+def EmergentON():
+	GPIO.output(LED_Yello, GPIO.HIGH)
+	print("\nYello LED Working... ON")
+	time.sleep(0.1)
+	
 
 try:
 	print ("Sound on")
@@ -64,6 +79,10 @@ try:
 	dp.ready()
 	
 	while True:
+		sd.default()
+		GPIO.output(LED_Green, GPIO.LOW)
+		GPIO.output(LED_Yello, GPIO.LOW)
+				
 		_, frame = cap.read()
 		gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
 
@@ -89,8 +108,19 @@ try:
 			distance = math.sqrt( ((p1[0]-p2[0])**2)+((p1[1]-p2[1])**2) )
 
 		
+			#Working Servo Motor if distance >= 7 cm
 			if isWorking == False and status_arm == 0 :
-				if distance >= 1:
+				statusWorking_LEDGreen = 1
+				statusWorking_LEDYello = 0
+				statusButton_Green = 0
+				statusButton_Red = 0
+				statusButton_Emergent = 0
+				dp.ready()
+				
+				
+				if distance >= 1 and statusWorking_LEDGreen == 1 and statusButton_Emergent == 0:
+					Thread(target=Working_GreedLED).start()
+						
 					if distance >= 7 :
 						print "Distance mouth :",distance
 						distance = 0
@@ -102,15 +132,16 @@ try:
 						command = "python Servo.py"
 						os.system(command)
 						
-
 					else:
 						print "Distance mouth :",distance
-
+	
 				else:
 					print "Distance mouth :",distance
 			
-					
+			
+			#Close Process Servo Motor and reset working
 			if isWorking == True and distance >= 7 :
+				sd.default()
 				if status_arm == 1:
 					status_arm = 0
 					print("\n")
@@ -119,15 +150,80 @@ try:
 					print("="*20)
 					time.sleep(0.5)
 				
-				
 				if status_arm == 0:
 					isWorking = False
 					distance = 0
 					print("200")
 					time.sleep(1)
-					
+					for i in range(10):
+						cv2.imshow("Frame", frame)
+						time.sleep(0.2)
 				time.sleep(1)
 				
+			
+			#onClick Button Green
+			if GPIO.input(OnClick_ButtonGreen) == 1 :
+				isWorking = True
+				print("Run file Servo.py ")
+				command = "python Servo.py"
+				os.system(command)
+				
+				
+			#onClick Button Red
+			'''
+			if GPIO.input(OnClick_ButtonRed) == 1:
+				print("OnClick Button Red")
+				exit()	
+			'''
+			
+			#onClick Button Emergent: ON 
+			if GPIO.input(Onclick_ButtonEmergent) == 0:
+				statusWorking_LEDGreen = 0
+				statusWorking_LEDYello = 1
+				statusButton_Green = 0
+				statusButton_Red = 0
+				statusButton_Emergent = 1
+				
+				GPIO.output(LED_Green, GPIO.LOW)
+				GPIO.output(LED_Yello, GPIO.LOW)
+				dp.onClickButtonEmergency_on()
+				
+				
+			if statusButton_Emergent == 1 and statusWorking_LEDYello == 1:
+				Thread(target=EmergentON).start()
+
+			
+			if GPIO.input(OnClick_ButtonGreen) == 1 and  statusButton_Emergent == 1:
+				pass
+				
+					
+			#onClick Button Emergent: OFF	
+			if GPIO.input(Onclick_ButtonEmergent) == 1 and  statusButton_Emergent == 1:
+				statusWorking_LEDGreen = 0
+				statusWorking_LEDYello = 0
+				statusButton_Green = 0
+				statusButton_Red = 0
+				statusButton_Emergent = 0
+				GPIO.output(LED_Green, GPIO.LOW)
+				GPIO.output(LED_Yello, GPIO.LOW)
+				
+				print("\nOnClick Button Emergent: OFF\n")
+				print("="*30)
+				
+
+			'''
+			else:
+				print("\nstatus button Green: "+"."*9 +"\t"+str(statusButton_Green))
+				print("status button Red: "+"."*11 +"\t"+str(statusButton_Red))
+				print("status button Emergent: "+"."*6 +"\t"+str(statusButton_Emergent))
+				print("\nstatus Working LED Green: "+"."*4 +"\t"+str(statusWorking_LEDGreen))
+				print("status Working LED Red: "+"."*6 +"\t"+str(statusWorking_LEDYello)+"\n")
+				print("="*30)
+		
+			time.sleep(0.001)
+			'''
+			# ==========================================================
+		
 		
 		cv2.imshow("Frame", frame)
 

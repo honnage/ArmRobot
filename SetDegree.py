@@ -4,7 +4,6 @@ import math
 import Adafruit_PCA9685
 import RPi.GPIO as GPIO
 import multiprocessing as mp
-import Ultrasonict
 import os
 
 pwm = Adafruit_PCA9685.PCA9685()
@@ -54,7 +53,7 @@ def calDeg(a,b,c):
 	return re_deg
 # xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 def default():
-    print("Function: Set Degree Servo Default")
+    #print("Function: Set Degree Servo Default")
     calDeg(0, 0, 10)
     calDeg(1, 1, 90)
     calDeg(2, 2, 90)

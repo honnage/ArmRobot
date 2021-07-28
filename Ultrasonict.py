@@ -9,7 +9,7 @@ ECHO_1 = 17 #Yellow
 
 # Ultrasonict Arm Robot
 TRIG_2 = 15 #Blue
-ECHO_2 = 14 #Green
+ECHO_2 = 14 #Purple
 
 GPIO.setmode(GPIO.BCM) # BCM is Number GPIO
 GPIO.setwarnings(False)
