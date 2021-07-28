@@ -1,94 +1,171 @@
 from __future__ import division
 from threading import Thread
-import RPi.GPIO as GPIO
 import multiprocessing as mp
-import Adafruit_PCA9685
-import cv2
-import numpy as np
-import dlib
+import RPi.GPIO as GPIO
+import DisplayLCD  as dp
 import math 
 import time
 import os
-#import drivers
+import SetDegree as sd
+
+sd.default()
+print("GPIO Version "+GPIO.VERSION)
 print("Start Project ....")
-import Ultrasonict
- 
-cap = cv2.VideoCapture(0)
-cap.set(3,320)
-cap.set(4,200)
+GPIO.cleanup()
+	
+GPIO.setmode(GPIO.BCM)
+GPIO.setwarnings(False)
 
-detector = dlib.get_frontal_face_detector()
-predictor = dlib.shape_predictor("shape_predictor_68_face_landmarks.dat")
+# --- Set GPIO ---
+LED_Green = 27 #Green
+LED_Yello = 22 #Yello
 
-#Check status work armrobot
-isWorking = False
+OnClick_ButtonGreen = 23 #Orange
+OnClick_ButtonRed = 24 #Yello
+Onclick_ButtonEmergent = 4 #Broen 
 
-# xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
-def WorkingArmRoBot():
-	command = "python Servo.py"
+GPIO.setup(LED_Green, GPIO.OUT)
+GPIO.setup(LED_Yello, GPIO.OUT)
+
+
+GPIO.setup(OnClick_ButtonGreen, GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
+GPIO.setup(OnClick_ButtonRed, GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
+GPIO.setup(Onclick_ButtonEmergent, GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
+
+statusWorking_LEDGreen = 0
+statusWorking_LEDYello = 0
+
+statusButton_Green = 0
+statusButton_Red = 0
+statusButton_Emergent = 0
+
+
+
+def WorkingCamera():
+	command = "python FaceCV.py"
 	os.system(command)
-	print("Run file Servo.py ")
+	print("Run file FaceCV.py")
 	global isWorking 
 	isWorking = False
 	return isWorking
-# xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
-GPIO.cleanup()
-
-print ("Sound on")
-command = "aplay Sound_Power-on.wav"
-os.system(command)
-
-print("Opening Camera ...")
-while True:
-	_, frame = cap.read()
-	gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
-
-	faces = detector(gray)
-	for face in faces:
-		x1 = face.left()
-		y1 = face.top()
-		x2 = face.right()
-		y2 = face.bottom()
-		#cv2.rectangle(frame, (x1, y1), (x2, y2), (0, 255, 0), 3)
-
-		landmarks = predictor(gray, face)
-
-		TOP_X = landmarks.part(62).x
-		TOP_Y = landmarks.part(62).y
-		BOTTOM_X = landmarks.part(66).x
-		BOTTOM_Y = landmarks.part(66).y
-		cv2.circle(frame, (TOP_X, TOP_Y), 2, (255,0,0), -1)
-		cv2.circle(frame, (BOTTOM_X, BOTTOM_Y), 2, (0,0,255), -1)
-                        
-		p1 = [TOP_X,TOP_Y]
-		p2 = [BOTTOM_X,BOTTOM_Y]
-		distance = math.sqrt( ((p1[0]-p2[0])**2)+((p1[1]-p2[1])**2) )
-		
-		if isWorking == False :
-		    if distance >= 12 :
+	
+try:
+	GPIO.output(LED_Green, GPIO.LOW)
+	GPIO.output(LED_Yello, GPIO.LOW)
+	print("Strat Camera Process ...")
+	dp.ready()
+	
+	while True:
+	
+		#Setup Start Project 
+		if statusButton_Emergent == 0 and statusButton_Red == 0 and statusWorking_LEDYello == 0 and statusButton_Green == 0:
+			statusWorking_LEDGreen = 1
+			statusWorking_LEDYello = 0
+			statusButton_Green = 0
+			statusButton_Red = 0
+			statusButton_Emergent = 0
+			dp.ready()
 				
-				print "Distance mouth :",distance
-				isWorking = True
-				print "Run servo armrobot"
-				Thread(target=WorkingArmRoBot).start()
-					
-					#if(__name__=='__main__'):
-					#	p1 = mp.Process(target=WorkingArmRoBot())
-					#	p1.start()
-		    else:
-				print "Distance mouth :",distance
+			isWorking = False	
+				
+			if isWorking == False :
+
+				if statusWorking_LEDGreen == 1:
+					GPIO.output(LED_Green, GPIO.HIGH)
+					print("\nGreen LED Working... ON")
+					time.sleep(1)
+											
+					GPIO.output(LED_Green, GPIO.LOW)
+					print("Green LED Working... OFF")
+					time.sleep(1)
+		# ==========================================================
+		#onClick Button Green
+		if GPIO.input(OnClick_ButtonGreen) == 1 :
+			isWorking = True
+			time.sleep(1)
+			distance = 0
+			time.sleep(1)
+			Thread(target=WorkingCamera).start()
+				
+			statusWorking_LEDGreen = 0
+			statusWorking_LEDYello = 1
+			statusButton_Green = 1
+			statusButton_Red = 0
+			statusButton_Emergent = 0
+		# ==========================================================
+		if isWorking == True and statusWorking_LEDYello == 1 and statusButton_Green == 1:
+			GPIO.output(LED_Yello, GPIO.HIGH)
+			print("Yello LED Working... ON")
+			time.sleep(1)
+											
+			GPIO.output(LED_Yello, GPIO.LOW)
+			print("Yello LED Working... OFF")
+			time.sleep(1)
+		# ==========================================================
+		#onClick Button Red
+		if GPIO.input(OnClick_ButtonRed) == 1:
+			print("OnClick Button Red")
+			exit()	
+		# ==========================================================
+		#onClick Button Emergent: ON 
+		if GPIO.input(Onclick_ButtonEmergent) == 0:
+			statusWorking_LEDGreen = 0
+			statusWorking_LEDYello = 1
+			statusButton_Green = 0
+			statusButton_Red = 0
+			statusButton_Emergent = 1
+				
+			GPIO.output(LED_Green, GPIO.LOW)
+			GPIO.output(LED_Yello, GPIO.LOW)
+			dp.onClickButtonEmergency_on()
 			
+			if statusButton_Emergent == 1:
+				GPIO.output(LED_Yello, GPIO.HIGH)
+				print("\Yello LED Working... ON")
+				time.sleep(0.1)
+											
+				GPIO.output(LED_Yello, GPIO.LOW)
+				print("Yello LED Working... OFF")
+				time.sleep(0.1)
+		# ==========================================================
+		if statusButton_Emergent == 1 and statusWorking_LEDYello == 1:
+			pass
+		# ==========================================================
+		if GPIO.input(OnClick_ButtonGreen) == 1 and  statusButton_Emergent == 1:
+			pass	
+		# ==========================================================
+					
+		#onClick Button Emergent: OFF	
+		if GPIO.input(Onclick_ButtonEmergent) == 1 and  statusButton_Emergent == 1:
+			statusWorking_LEDGreen = 0
+			statusWorking_LEDYello = 0
+			statusButton_Green = 0
+			statusButton_Red = 0
+			statusButton_Emergent = 0
+			GPIO.output(LED_Green, GPIO.LOW)
+			GPIO.output(LED_Yello, GPIO.LOW)
+				
+			print("\nOnClick Button Emergent: OFF\n")
+			print("="*30)
+				
+		# ==========================================================
 		'''
-		show message "IS WORK ARM ROBOT ..."
-		#else:
-		    # print "IS WORKING ARM ROBOT ..."
+		else:
+			print("\nstatus button Green: "+"."*9 +"\t"+str(statusButton_Green))
+			print("status button Red: "+"."*11 +"\t"+str(statusButton_Red))
+			print("status button Emergent: "+"."*6 +"\t"+str(statusButton_Emergent))
+			print("\nstatus Working LED Green: "+"."*4 +"\t"+str(statusWorking_LEDGreen))
+			print("status Working LED Red: "+"."*6 +"\t"+str(statusWorking_LEDYello)+"\n")
+			print("="*30)
+		
+		time.sleep(0.001)
 		'''
+		# ==========================================================
 		
 		
-	cv2.imshow("Frame", frame)
-
-	key = cv2.waitKey(1)
-	if key == 27:
-	    break
 
 
+finally:
+	GPIO.cleanup()
+	print("\n\nclean up")
+	time.sleep(3)
