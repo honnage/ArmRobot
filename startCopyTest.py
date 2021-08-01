@@ -82,6 +82,63 @@ try:
 		sd.default()
 		GPIO.output(LED_Green, GPIO.LOW)
 		GPIO.output(LED_Yello, GPIO.LOW)
+			
+		#onClick Button Red
+		'''
+		if GPIO.input(OnClick_ButtonRed) == 1:
+			print("OnClick Button Red")
+			exit()	
+		'''
+		
+		#onClick Button Emergent: ON 
+		if GPIO.input(Onclick_ButtonEmergent) == 0:
+			statusWorking_LEDGreen = 0
+			statusWorking_LEDYello = 1
+			statusButton_Green = 0
+			statusButton_Red = 0
+			statusButton_Emergent = 1
+			
+			GPIO.output(LED_Green, GPIO.LOW)
+			GPIO.output(LED_Yello, GPIO.LOW)
+			dp.onClickButtonEmergency_on()
+			EmergentON()
+			time.sleep(1)
+			
+		if statusButton_Emergent == 1 and statusWorking_LEDYello == 1:
+			Thread(target=EmergentON).start()
+
+		
+		if GPIO.input(OnClick_ButtonGreen) == 1 and  statusButton_Emergent == 1:
+			pass
+			
+				
+		#onClick Button Emergent: OFF	
+		if GPIO.input(Onclick_ButtonEmergent) == 1 and  statusButton_Emergent == 1:
+			statusWorking_LEDGreen = 0
+			statusWorking_LEDYello = 0
+			statusButton_Green = 0
+			statusButton_Red = 0
+			statusButton_Emergent = 0
+			GPIO.output(LED_Green, GPIO.LOW)
+			GPIO.output(LED_Yello, GPIO.LOW)
+			
+			print("\nOnClick Button Emergent: OFF\n")
+			print("="*30)
+			
+
+		'''
+		else:
+			print("\nstatus button Green: "+"."*9 +"\t"+str(statusButton_Green))
+			print("status button Red: "+"."*11 +"\t"+str(statusButton_Red))
+			print("status button Emergent: "+"."*6 +"\t"+str(statusButton_Emergent))
+			print("\nstatus Working LED Green: "+"."*4 +"\t"+str(statusWorking_LEDGreen))
+			print("status Working LED Red: "+"."*6 +"\t"+str(statusWorking_LEDYello)+"\n")
+			print("="*30)
+	
+		time.sleep(0.001)
+		'''
+		# ==========================================================
+	
 				
 		_, frame = cap.read()
 		gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
@@ -139,6 +196,17 @@ try:
 					print "Distance mouth :",distance
 			
 			
+			
+			#onClick Button Green
+			if GPIO.input(OnClick_ButtonGreen) == 1 :
+				isWorking = True
+				Working_GreedLED()
+				print("Run file Servo.py ")
+				command = "python Servo.py"
+				os.system(command)
+			
+			
+				
 			#Close Process Servo Motor and reset working
 			if isWorking == True and distance >= 7 :
 				sd.default()
@@ -160,70 +228,8 @@ try:
 						time.sleep(0.2)
 				time.sleep(1)
 				
-			
-			#onClick Button Green
-			if GPIO.input(OnClick_ButtonGreen) == 1 :
-				isWorking = True
-				print("Run file Servo.py ")
-				command = "python Servo.py"
-				os.system(command)
 				
 				
-			#onClick Button Red
-			'''
-			if GPIO.input(OnClick_ButtonRed) == 1:
-				print("OnClick Button Red")
-				exit()	
-			'''
-			
-			#onClick Button Emergent: ON 
-			if GPIO.input(Onclick_ButtonEmergent) == 0:
-				statusWorking_LEDGreen = 0
-				statusWorking_LEDYello = 1
-				statusButton_Green = 0
-				statusButton_Red = 0
-				statusButton_Emergent = 1
-				
-				GPIO.output(LED_Green, GPIO.LOW)
-				GPIO.output(LED_Yello, GPIO.LOW)
-				dp.onClickButtonEmergency_on()
-				EmergentON()
-				time.sleep(1)
-				
-			if statusButton_Emergent == 1 and statusWorking_LEDYello == 1:
-				Thread(target=EmergentON).start()
-
-			
-			if GPIO.input(OnClick_ButtonGreen) == 1 and  statusButton_Emergent == 1:
-				pass
-				
-					
-			#onClick Button Emergent: OFF	
-			if GPIO.input(Onclick_ButtonEmergent) == 1 and  statusButton_Emergent == 1:
-				statusWorking_LEDGreen = 0
-				statusWorking_LEDYello = 0
-				statusButton_Green = 0
-				statusButton_Red = 0
-				statusButton_Emergent = 0
-				GPIO.output(LED_Green, GPIO.LOW)
-				GPIO.output(LED_Yello, GPIO.LOW)
-				
-				print("\nOnClick Button Emergent: OFF\n")
-				print("="*30)
-				
-
-			'''
-			else:
-				print("\nstatus button Green: "+"."*9 +"\t"+str(statusButton_Green))
-				print("status button Red: "+"."*11 +"\t"+str(statusButton_Red))
-				print("status button Emergent: "+"."*6 +"\t"+str(statusButton_Emergent))
-				print("\nstatus Working LED Green: "+"."*4 +"\t"+str(statusWorking_LEDGreen))
-				print("status Working LED Red: "+"."*6 +"\t"+str(statusWorking_LEDYello)+"\n")
-				print("="*30)
-		
-			time.sleep(0.001)
-			'''
-			# ==========================================================
 		
 		
 		cv2.imshow("Frame", frame)

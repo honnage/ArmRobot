@@ -25,6 +25,7 @@ try:
 	def Camera():
 			print("distance measurement in progress 1 is Camera")
 			
+			
 			GPIO.setup(TRIG_1, GPIO.OUT)
 			GPIO.setup(ECHO_1, GPIO.IN)
 			GPIO.output(TRIG_1,False)
@@ -49,7 +50,7 @@ try:
 			a = Camera()
 			while a<1 or a> 150:
 				a = Camera()
-				print "loopCheckCamera =",a
+				print("loopCheckCamera =",a)
 				time.sleep(1)
 			print "check arm =",a
 			
@@ -111,7 +112,7 @@ try:
 			distance_extra = round(distance_extra,2)
 			
 			dis = str(distance_extra)
-			print "arm distance =",dis
+			print("arm distance =",dis)
 			dp.distance_arm(dis)
 			#lcd.lcd_clear()
 			#time.sleep(0.5)
@@ -127,7 +128,7 @@ try:
 	# ==============================================================
 
 
-	#sumCamera()
+	sumCamera()
 	#Camera()
    
  
