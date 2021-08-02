@@ -213,13 +213,13 @@ def scoop_up():
     calDeg(4, 4, 90)
     
     def scoop_up_channel1(): #servo channel 1
-	for i in range(90, 39, -1):
+	for i in range(90, 40, -1):
 	    calDeg(1, 1, i)
 	    print("servo 1 deg: "+str(i))
 	    time.sleep(0.05)
 
     def scoop_up_channel3(): #servo channel 3
-	for i in range(141, 129, -1):
+	for i in range(140, 130, -1):
 	    calDeg(3, 3, i)
 	    print("servo 3 deg: "+str(i))
 	    time.sleep(0.05)
@@ -537,6 +537,8 @@ while average_Arm >= 1 :
     arm_dis = Ultrasonict.Arm()
     distance = arm_dis
     print("Distance: "+ str(distance) +" cm")
+    time.sleep(0.1)
+    print("======================")
     
     if GPIO.input(OnClick_ButtonRed) == 1:
 	time.sleep(0.1)
@@ -544,18 +546,16 @@ while average_Arm >= 1 :
 	command = "aplay Sound_Shutdown.wav"
 	os.system(command)
 	
-	dp.onClickButtonRed()
+	dp.onCickButtonRed()
 	exit()
 
 	
-    if distance > 75:
+    if distance > 50:
 	print ("Sound on")
 	command = "aplay Sound_PleaseMoveCloser.wav"
 	os.system(command)
 	time.sleep(1)
     
-    time.sleep(0.1)
-    print("======================")
     
     if distance < 30:
 	print("Stop working 6 seconds")

@@ -23,37 +23,37 @@ try:
 	sum_Camera = 0
 	
 	def Camera():
-			print("distance measurement in progress 1 is Camera")
-			
-			GPIO.setup(TRIG_1, GPIO.OUT)
-			GPIO.setup(ECHO_1, GPIO.IN)
-			GPIO.output(TRIG_1,False)
+		print("distance measurement in progress is Camera")
+		
+		GPIO.setup(TRIG_1, GPIO.OUT)
+		GPIO.setup(ECHO_1, GPIO.IN)
+		GPIO.output(TRIG_1,False)
+				
+		time.sleep(0.2) # Origin is 0.2
+		GPIO.output(TRIG_1, True)
+		time.sleep(0.00001)
+		GPIO.output(TRIG_1, False)
+				
+		while GPIO.input(ECHO_1) == 0:
+			pulse_start = time.time()
+		while GPIO.input(ECHO_1) == 1:
+			pulse_end = time.time()
 					
-			time.sleep(0.2) # Origin is 0.2
-			GPIO.output(TRIG_1, True)
-			time.sleep(0.00001)
-			GPIO.output(TRIG_1, False)
-					
-			while GPIO.input(ECHO_1) == 0:
-				pulse_start = time.time()
-			while GPIO.input(ECHO_1) == 1:
-				pulse_end = time.time()
-						
-			pulse_duration = pulse_end-pulse_start
-			distance_Camera = pulse_duration*17000
-			distance_Camera = round(distance_Camera,2)
-			
-			return distance_Camera
+		pulse_duration = pulse_end-pulse_start
+		distance_Camera = pulse_duration*17000
+		distance_Camera = round(distance_Camera,2)
+		dp.distance_camera(distance_Camera)
+		return distance_Camera
 			
 	def checkCamera():
+		a = Camera()
+		while a<1 or a> 150:
 			a = Camera()
-			while a<1 or a> 150:
-				a = Camera()
-				print "loopCheckCamera =",a
-				time.sleep(1)
-			print "check arm =",a
-			
-			return a
+			print "loopCheckCamera =",a
+			time.sleep(1)
+		print "check arm =",a
+		
+		return a
 			
 			
 			
@@ -64,8 +64,8 @@ try:
 			distance_Camera = checkCamera()
 			sum_Camera += distance_Camera 
 
-			print "Ultrasonic 1 is Camera distance:",distance_Camera,"cm"
-			print 'Ultrasonic 1 is Camera sum = ', sum_Camera  
+			print "Ultrasonic is Camera distance:",distance_Camera,"cm"
+			print 'Ultrasonic is Camera sum = ', sum_Camera  
 			print('')
 			dp.distance_camera(distance_Camera)
 			time.sleep(0.01)
