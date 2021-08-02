@@ -1,4 +1,6 @@
 from __future__ import division
+from threading import Thread
+import multiprocessing as mp
 import time
 import math
 import Adafruit_PCA9685
@@ -6,7 +8,7 @@ import RPi.GPIO as GPIO
 import multiprocessing as mp
 import Ultrasonict
 import os
-import SetDegree as sd
+#import SetDegree as sd
 import DisplayLCD  as dp
 import drivers
 
@@ -69,8 +71,12 @@ def calDeg(a,b,c):
     
     if GPIO.input(OnClick_ButtonRed) == 1:
 	time.sleep(0.1)
-	#default()
 	isWorking = False
+	
+	print ("Sound on")
+	command = "aplay Sound_Shutdown.wav"
+	os.system(command)
+	
 	dp.onClickButtonRed()
 	exit()
 	return isWorking
@@ -365,10 +371,17 @@ def showMsg():
     print("loop_degServo3: " + str(loop_degServo3))
 # xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 
+def Sound_Working():
+    print ("Sound on")
+    command = "aplay Sound_StartWorking.wav"
+    os.system(command)
+    
+
 time.sleep(0.5)
+Thread(target=Sound_Working).start()
 print("Run file Servo.py")
 dp.servoWorking()
-sd.default()
+#sd.default()
 
 time.sleep(1)
 default()
@@ -395,8 +408,7 @@ average_Camera = Ultrasonict.Camera()
 print("Ultrasonic Sensor by camera")
 print("Distance: "+ str(round(average_Camera,2)) + " cm\n")
 
-average_Arm = Ultrasonict.Arm()
-print("Ultrasonic Sensor by arm")
+
 '''
 average_Camera = input("\nEnter average_Camera: ")
 print("Distance: "+ str(round(average_Camera,2)) + " cm\n")
@@ -516,12 +528,31 @@ elif average_Camera >= 70:
 
 time.sleep(0.5)
 print("Process Ultrasonic sensor")
-arm_dis = Ultrasonict.Arm()
 
-while average_Arm >= 1:
+
+average_Arm = Ultrasonict.Arm()
+print("Ultrasonic Sensor by arm")
+
+while average_Arm >= 1 :
     arm_dis = Ultrasonict.Arm()
     distance = arm_dis
     print("Distance: "+ str(distance) +" cm")
+    
+    if GPIO.input(OnClick_ButtonRed) == 1:
+	time.sleep(0.1)
+	print ("Sound on")
+	command = "aplay Sound_Shutdown.wav"
+	os.system(command)
+	
+	dp.onClickButtonRed()
+	exit()
+
+	
+    if distance > 75:
+	print ("Sound on")
+	command = "aplay Sound_PleaseMoveCloser.wav"
+	os.system(command)
+	time.sleep(1)
     
     time.sleep(0.1)
     print("======================")
