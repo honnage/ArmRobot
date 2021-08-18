@@ -550,7 +550,7 @@ while average_Arm >= 1 :
 	exit()
 
 	
-    if distance > 50:
+    if distance > 40:
 	print ("Sound on")
 	command = "aplay Sound_PleaseMoveCloser.wav"
 	os.system(command)
